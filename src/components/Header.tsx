@@ -1,0 +1,21 @@
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import './Header.css';
+
+interface HeaderProps {
+  onMenuToggle: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
+  return (
+    <header className="header">
+      <button className="hamburger-btn" onClick={onMenuToggle}>
+        <FontAwesomeIcon icon={faBars} />
+      </button>
+      <h1 className="header-title">Our Life Together</h1>
+    </header>
+  );
+};
+
+export default Header;

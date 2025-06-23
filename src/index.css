@@ -1,0 +1,91 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Color Variables */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-card: rgba(45, 45, 45, 0.95);
+  --bg-button: #2d2d2d;
+  --bg-button-hover: #3a3a3a;
+  
+  --text-primary: #e1e5e9;
+  --text-secondary: #b8bcc8;
+  --text-muted: #888;
+  
+  --brand-maroon: #8B1538;
+  --brand-navy: #1e3a5f;
+  --brand-maroon-light: #ff6b8a;
+  --brand-navy-light: #4facfe;
+  
+  --gradient-primary: linear-gradient(135deg, var(--brand-maroon) 0%, var(--brand-navy) 100%);
+  --gradient-light: linear-gradient(135deg, var(--brand-maroon-light) 0%, var(--brand-navy-light) 100%);
+  --gradient-bg: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(139, 21, 56, 0.2);
+  --border-accent-strong: rgba(139, 21, 56, 0.3);
+  
+  --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-strong: 0 8px 25px rgba(139, 21, 56, 0.3);
+  --shadow-header: 0 2px 20px rgba(0, 0, 0, 0.3);
+  --shadow-sidebar: 2px 0 20px rgba(0, 0, 0, 0.4);
+  
+  --overlay-light: rgba(0, 0, 0, 0.7);
+  --accent-bg: rgba(139, 21, 56, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--bg-button);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: var(--text-primary);
+
+  &:hover {
+    background-color: var(--bg-button-hover);
+    border-color: var(--text-muted);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid var(--brand-maroon);
+    outline-offset: 2px;
+  }
+}
