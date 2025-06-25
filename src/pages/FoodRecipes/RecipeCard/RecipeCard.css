@@ -36,6 +36,11 @@
       }
     }
   }
+
+  .adjustments {
+    font-size: 0.95em;
+    color: hsl(0, 0%, 73%);
+  }
   
   h2 {
     margin: 0;

@@ -14,7 +14,7 @@ export default function RecipeCard({ recipe }: Props) {
   const autumnEnabled = seasons.includes('Autumn') ? 'enabled' : 'disabled';
   const winterEnabled = seasons.includes('Winter') ? 'enabled' : 'disabled';
 
-  function ingredientToString(ingredient: Ingredient): string {
+  function ingredientToDisplay(ingredient: Ingredient): React.ReactNode {
     const parts: string[] = [];
     if (ingredient.quantity) {
       parts.push(`${fractionize(ingredient.quantity * quantity)}`);
@@ -23,10 +23,12 @@ export default function RecipeCard({ recipe }: Props) {
       parts.push(ingredient.unit);
     }
     parts.push(ingredient.name);
-    if (ingredient.adjustments) {
-      parts.push(`(${ingredient.adjustments})`);
-    }
-    return parts.join(' ').trim();
+    return (<>
+      {parts.join(' ').trim()}
+      {ingredient.adjustments 
+        && <span className="adjustments"> ({ingredient.adjustments})</span>
+      }
+    </>);
   }
 
   const fractionize = (quantity: number): string => {
@@ -101,7 +103,7 @@ export default function RecipeCard({ recipe }: Props) {
             { list.title && <h4>{list.title}</h4> }
             <ul>
               {list.ingredients.map((ingredient, j) => (
-                <li key={'ingredient-list-'+i+'-item-'+j}>{ingredientToString(ingredient)}</li>
+                <li key={'ingredient-list-'+i+'-item-'+j}>{ingredientToDisplay(ingredient)}</li>
               ))}
             </ul>
           </div>))

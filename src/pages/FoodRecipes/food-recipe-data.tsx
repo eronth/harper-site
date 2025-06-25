@@ -162,7 +162,8 @@ const recipes: Recipe[] = [
         'Add a dash of Louisiana sauce.',
         'Reduce heat to mid.',
         'Let sit with lid on for 15 min.',
-        'Finish with a bit of parsley, stir again. Serve hot.',
+        'Finish with a bit of parsley, stir again.',
+        'Serve hot!',
       ]
     })
   },
@@ -196,7 +197,7 @@ const recipes: Recipe[] = [
         'Cook until it’s the dente you like.',
         'Reduce to low, stir in butter and basil until butter melted.',
         'Turn off heat, add cheese, stir until melted.',
-        'Serve',
+        'Serve.',
       ]
     })
   }
