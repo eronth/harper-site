@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import type { Season } from "../../../types/recipe-types";
+import type { RecipeCategory, Season } from "../../../types/recipe-types";
 import type { Recipe } from "../food-recipe-data";
 import './RecipeSearch.css';
 
@@ -11,13 +11,19 @@ type Props = {
 export default function RecipeSearch({ recipes, onFilterChange }: Props) {
   type SeasonFilterType = Season | 'None'; // 'None' for recipes without a season
   const minFilterCharacters = 3;
-  const allSeasons: Season[] = ['Spring', 'Summer', 'Autumn', 'Winter'];
   const [searchTerm, setSearchTerm] = useState('');
+  const allSeasons: Season[] = ['Spring', 'Summer', 'Autumn', 'Winter'];
   const [selectedSeasons, setSelectedSeasons] = useState<SeasonFilterType[]>([]);
+  const allCategories: RecipeCategory[] = [
+    //'Breakfast', 'Lunch', 
+    'Dinner', 'Dessert',
+    //'Drink'
+  ];
+  const [selectedCategories, setSelectedCategories] = useState<RecipeCategory[]>([]);
 
   const shouldFilter = useCallback((): boolean => {
-    return searchTerm.length >= minFilterCharacters || selectedSeasons.length > 0;
-  }, [searchTerm, selectedSeasons]);
+    return searchTerm.length >= minFilterCharacters || selectedSeasons.length > 0 || selectedCategories.length > 0;
+  }, [searchTerm, selectedSeasons, selectedCategories]);
 
   useEffect(() => {
     if (!shouldFilter()) {
@@ -45,16 +51,29 @@ export default function RecipeSearch({ recipes, onFilterChange }: Props) {
         || (recipe.seasons.length === 0 && selectedSeasons.includes('None'))
       );
 
-      return matchesSearch && matchesSeasons;
+      const matchesCategories = (
+        selectedCategories.length === 0
+        || selectedCategories.includes(recipe.category)
+      );
+
+      return matchesSearch && matchesSeasons && matchesCategories;
     });
     onFilterChange(filtered);
-  }, [onFilterChange, recipes, searchTerm, selectedSeasons, shouldFilter]);
+  }, [onFilterChange, recipes, searchTerm, selectedSeasons, selectedCategories, shouldFilter]);
 
   const handleSeasonToggle = (season: SeasonFilterType) => {
     setSelectedSeasons(prev => 
       prev.includes(season)
         ? prev.filter(s => s !== season)
         : [...prev, season]
+    );
+  };
+
+  const handleCategoryToggle = (category: RecipeCategory) => {
+    setSelectedCategories(prev =>
+      prev.includes(category)
+        ? prev.filter(c => c !== category)
+        : [...prev, category]
     );
   };
 
@@ -70,10 +89,10 @@ export default function RecipeSearch({ recipes, onFilterChange }: Props) {
         />
       </div>
       
-      <div className="season-filters">
+      <div className="checkbox-filters">
         <span className="filter-label">Filter by season:</span>
         {allSeasons.map(season => (
-          <label key={season} className="season-checkbox">
+          <label key={season} className="filter-checkbox">
             <input
               type="checkbox"
               checked={selectedSeasons.includes(season)}
@@ -82,7 +101,7 @@ export default function RecipeSearch({ recipes, onFilterChange }: Props) {
             {season}
           </label>
         ))}
-        <label className="season-checkbox">
+        <label className="filter-checkbox">
           <input
             type="checkbox"
             checked={selectedSeasons.includes('None')}
@@ -90,6 +109,20 @@ export default function RecipeSearch({ recipes, onFilterChange }: Props) {
           />
           No Seasons (yet)
         </label>
+      </div>
+
+      <div className="checkbox-filters">
+        <span className="filter-label">Filter by category:</span>
+        {allCategories.map(category => (
+          <label key={category} className="filter-checkbox">
+            <input
+              type="checkbox"
+              checked={selectedCategories.includes(category)}
+              onChange={() => handleCategoryToggle(category)}
+            />
+            {category}
+          </label>
+        ))}
       </div>
     </div>
   );

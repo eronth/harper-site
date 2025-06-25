@@ -21,11 +21,9 @@
     }
   }
 
-  .season-filters {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
+  .checkbox-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     
     .filter-label {
       font-weight: 600;
@@ -33,13 +31,14 @@
     }
   }
 
-  .season-checkbox {
+  .filter-checkbox {
     display: flex;
     align-items: center;
     cursor: pointer;
     font-size: 0.95rem;
     color: hsl(210, 13%, 73%);
     user-select: none;
+    cursor: pointer;
     
     input[type="checkbox"] {
       margin-right: 0.5rem;
