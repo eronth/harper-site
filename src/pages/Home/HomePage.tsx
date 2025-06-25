@@ -1,6 +1,5 @@
-import React from 'react';
 
-const Home: React.FC = () => {
+export default function Home() {
   return (
     <div className="page-content">
       <h1>Welcome to Our Life Together</h1>
@@ -9,4 +8,3 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
