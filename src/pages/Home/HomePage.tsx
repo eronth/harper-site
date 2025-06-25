@@ -7,6 +7,7 @@ import {
   faPaintBrush,
   faStar
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import './HomePage.css';
 
 export default function Home() {
@@ -29,23 +30,23 @@ export default function Home() {
     { id: 'winter-village', title: 'Winter Village', icon: faHouseChimney,
       text: 'Our holiday traditions and winter displays'
     },
-  ]
+  ];
 
   return (
-    <main className="main-content">
+    <main className="page-content">
       <div className="content-section">
         <h2>Welcome to Our Life Together</h2>
         <p>This is a special place where we share our adventures, recipes, and memories!</p>
         <div className="welcome-content">
           <div className="feature-grid">
             {featureItems.map((item) => (
-              <a key={item.id} href={`/${item.id}`} className="feature-card">
+              <Link key={item.id} to={`/${item.id}`} className="feature-card">
                 <h3>
                   <FontAwesomeIcon icon={item.icon} />
                   {item.title}
                 </h3>
                 <p>{item.text}</p>
-              </a>
+              </Link>
             ))}
           </div>
           <p className="instruction">

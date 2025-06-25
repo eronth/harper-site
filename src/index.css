@@ -7,7 +7,6 @@
 
   color-scheme: dark;
   color: var(--text-primary);
-  background-color: var(--bg-primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,8 +14,6 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Color Variables */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
   --bg-card: rgba(45, 45, 45, 0.95);
   --bg-button: #2d2d2d;
   --bg-button-hover: #3a3a3a;
@@ -32,7 +29,6 @@
   
   --gradient-primary: linear-gradient(135deg, var(--brand-maroon) 0%, var(--brand-navy) 100%);
   --gradient-light: linear-gradient(135deg, var(--brand-maroon-light) 0%, var(--brand-navy-light) 100%);
-  --gradient-bg: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   
   --border-light: rgba(255, 255, 255, 0.1);
   --border-accent: rgba(139, 21, 56, 0.2);
@@ -62,7 +58,6 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
