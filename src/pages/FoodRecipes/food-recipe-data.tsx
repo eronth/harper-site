@@ -1,3 +1,4 @@
+import type { Season } from "../../types/recipe-types";
 
 export type Recipe = StandardRecipeParts & {
   ingredientsLists: Ingredients[];
@@ -16,7 +17,6 @@ type StandardRecipeParts = {
   seasons: Season[];
 };
 
-type Season = 'Spring' | 'Summer' | 'Autumn' | 'Winter';
 const spring: Season = 'Spring';
 const summer: Season = 'Summer';
 const autumn: Season = 'Autumn';

@@ -1,17 +1,35 @@
-import React from 'react';
-
-import recipes from './food-recipe-data';
+import React, { useState } from 'react';
+// Components
 import RecipeCard from './RecipeCard/RecipeCard';
-
+import RecipeSearch from './RecipeSearch/RecipeSearch';
+// Data
+import recipes from './food-recipe-data';
+// CSS
 import './FoodRecipesPage.css';
 
 const FoodRecipes: React.FC = () => {
+  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
+  
+  const handleFilterChange = (newFilteredRecipesList: typeof recipes) => {
+    setFilteredRecipes(newFilteredRecipesList);
+  };
+  
   return (
     <div className="page-content">
       <h1>Food Recipes</h1>
       <p>Our favorite recipes to cook together.</p>
+      
+      <RecipeSearch
+        recipes={recipes}
+        onFilterChange={handleFilterChange}
+      />
+
+      <div className="results-info">
+        Showing {filteredRecipes.length} of {recipes.length} recipes
+      </div>
+
       <div className="recipe-grid">
-        {recipes.map((recipe, index) => (
+        {filteredRecipes.map((recipe, index) => (
           <RecipeCard key={index} recipe={recipe} />
         ))}
       </div>
