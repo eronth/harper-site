@@ -1,0 +1,59 @@
+.recipe-card {
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+
+  .season-icons {
+    --side: 2em;
+    height: calc(var(--side) + .25em);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: var(--side);
+      height: var(--side);
+      margin-right: 0.25em;
+      display: inline-block;
+      background-size: cover;
+    }
+  }
+
+  .recipe-title-region {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .qty-select {
+      margin-left: 1em;
+      label {
+        margin-right: 0.25em;
+      }
+      select {
+        padding: 0.25em;
+        width: 2.75em;
+      }
+    }
+  }
+  
+  h2 {
+    margin: 0;
+  }
+
+  h3 {
+    margin: 0;
+    color: #bdbdbd;
+  }
+
+  h4 {
+    margin: 0;
+    color: #a1a1a1;
+    font-style: italic;
+  }
+
+  ul, ol {
+    margin: 0;
+    margin-bottom: .5em;
+  }
+}
