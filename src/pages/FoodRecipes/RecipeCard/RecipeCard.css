@@ -52,19 +52,19 @@
   h2 {
     margin: 0;
     &.dessert {
-      color: hsl(300, 40%, 40%);
+      color: var(--dessert);
     }
     &.dinner {
-      color: hsl(120, 40%, 40%);
+      color: var(--dinner);
     }
     &.lunch {
-      color: hsl(60, 40%, 40%);
+      color: var(--lunch);
     }
     &.breakfast {
-      color: hsl(30, 40%, 40%);
+      color: var(--breakfast);
     }
     &.drink {
-      color: hsl(210, 40%, 40%);
+      color: var(--drink);
     }
   }
 

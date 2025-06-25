@@ -45,6 +45,12 @@
   
   --overlay-light: rgba(0, 0, 0, 0.7);
   --accent-bg: rgba(139, 21, 56, 0.15);
+
+  --breakfast: hsl(30, 40%, 40%);
+  --lunch: hsl(60, 40%, 40%);
+  --dinner: hsl(120, 40%, 40%);
+  --dessert: hsl(300, 40%, 40%);
+  --drink: hsl(210, 40%, 40%);
 }
 
 * {

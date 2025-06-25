@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
         <FontAwesomeIcon icon={faBars} />
       </button>
       <Link to="/" className="header-title-link">
-        <h1 className="header-title">Our Life Together</h1>
+        <h1 className="header-title">The Nic and Leslie Experience</h1>
       </Link>
     </header>
   );

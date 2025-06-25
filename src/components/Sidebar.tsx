@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUmbrellaBeach,
+  faUtensils,
+  faCocktail,
+  faHouseChimney,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
 
 interface SidebarProps {
@@ -11,10 +17,10 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const menuItems = [
-    { id: 'vacations', label: 'Vacations and Activities', path: '/vacations' },
-    { id: 'food-recipes', label: 'Food Recipes', path: '/food-recipes' },
-    { id: 'drink-recipes', label: 'Drink Recipes', path: '/drink-recipes' },
-    { id: 'winter-village', label: 'Winter Village', path: '/winter-village' },
+    { id: 'vacations', label: 'Vacations and Staycations', path: '/vacations', icon: faUmbrellaBeach},
+    { id: 'food-recipes', label: 'Food Recipes', path: '/food-recipes', icon: faUtensils},
+    { id: 'drink-recipes', label: 'Drink Recipes', path: '/drink-recipes', icon: faCocktail},
+    { id: 'winter-village', label: 'Winter Village', path: '/winter-village', icon: faHouseChimney},
   ];
 
   return (
@@ -42,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                   className="nav-item"
                   onClick={onClose}
                 >
-                  {item.label}
+                  <FontAwesomeIcon icon={item.icon} /> {item.label}
                 </Link>
               </li>
             ))}
