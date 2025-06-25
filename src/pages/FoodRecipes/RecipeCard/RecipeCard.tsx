@@ -80,7 +80,7 @@ export default function RecipeCard({ recipe }: Props) {
         {seasonsIcons}
       </div>
       <div className="recipe-title-region">
-        <h2>{recipe.title}</h2>
+        <h2 className={recipe.category.toLowerCase()}>{recipe.title}</h2>
         <span className="qty-select">
           <label htmlFor='recipe-quantity-select'>
             Qty ×
@@ -94,7 +94,8 @@ export default function RecipeCard({ recipe }: Props) {
             ))}
           </select>
         </span>
-      </div> 
+      </div>
+      <div className="subtitle">{recipe.subtitle || <>&nbsp;</>}</div>
       <hr />
       <div>
         <h3>Starring:</h3>
@@ -115,7 +116,8 @@ export default function RecipeCard({ recipe }: Props) {
         {
           recipe.stepsLists.map((list, i) => (<div key={'steps-list-'+i}>
             { list.title && <h4>{list.title}</h4> }
-            <ol>
+            <ol start={list.step0 ? 0 : 1}>
+              {list.step0 && <li className="step-0">{list.step0}</li>}
               {list.steps.map((step, j) => (
                 <li key={'step-list-'+i+'-item-'+j}>{step}</li>
               ))}

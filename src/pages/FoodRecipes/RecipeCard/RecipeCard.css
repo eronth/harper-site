@@ -37,6 +37,13 @@
     }
   }
 
+  .subtitle {
+    font-weight: 600;
+    font-size: 0.95em;
+    font-style: italic;
+    text-align: center;
+  }
+
   .adjustments {
     font-size: 0.95em;
     color: hsl(0, 0%, 73%);
@@ -44,6 +51,21 @@
   
   h2 {
     margin: 0;
+    &.dessert {
+      color: hsl(300, 40%, 40%);
+    }
+    &.dinner {
+      color: hsl(120, 40%, 40%);
+    }
+    &.lunch {
+      color: hsl(60, 40%, 40%);
+    }
+    &.breakfast {
+      color: hsl(30, 40%, 40%);
+    }
+    &.drink {
+      color: hsl(210, 40%, 40%);
+    }
   }
 
   h3 {
@@ -60,5 +82,9 @@
   ul, ol {
     margin: 0;
     margin-bottom: .5em;
+
+    li.step-0 {
+      color: var(--brand-maroon-light);
+    }
   }
 }

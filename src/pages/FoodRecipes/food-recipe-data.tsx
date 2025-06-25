@@ -1,4 +1,4 @@
-import type { Season } from "../../types/recipe-types";
+import type { RecipeCategory, Season } from "../../types/recipe-types";
 
 export type Recipe = StandardRecipeParts & {
   ingredientsLists: Ingredients[];
@@ -7,15 +7,19 @@ export type Recipe = StandardRecipeParts & {
 
 type SimplifiedRecipe = StandardRecipeParts & {
   ingredients: Ingredient[];
+  step0?: string;
   steps: string[];
 };
 
 type StandardRecipeParts = {
   title: string;
+  subtitle?: string;
+  category: RecipeCategory;
   searchTerms?: string[];
   description?: string;
   seasons: Season[];
 };
+
 
 const spring: Season = 'Spring';
 const summer: Season = 'Summer';
@@ -58,7 +62,7 @@ type QuantityUnit = 'g' | 'kg'
 | 'cup'
 | 'tbsp' | 'tsp' 
 | 'oz' | 'lb' 
-| 'piece' | 'spoonful' | 'pinch';
+| 'piece' | 'spoonful' | 'pinch' | 'bunch';
 const g: QuantityUnit = 'g';
 const ml: QuantityUnit = 'ml';
 const cup: QuantityUnit = 'cup';
@@ -66,9 +70,16 @@ const tbsp: QuantityUnit = 'tbsp';
 const tsp: QuantityUnit = 'tsp';
 const oz: QuantityUnit = 'oz';
 const lb: QuantityUnit = 'lb';
+const lbs: QuantityUnit = 'lb'; // Alias for lb
 const piece: QuantityUnit = 'piece';
 const spoonful: QuantityUnit = 'spoonful';
 const pinch: QuantityUnit = 'pinch';
+const bunch: QuantityUnit = 'bunch';
+
+const breakfast: RecipeCategory = 'Breakfast';
+const lunch: RecipeCategory = 'Lunch';
+const dinner: RecipeCategory = 'Dinner';
+const dessert: RecipeCategory = 'Dessert';
 
 // type SimplifiedRecipe = {
 //   title: string;
@@ -79,6 +90,8 @@ const pinch: QuantityUnit = 'pinch';
 
 const simpleRecipe = (r: SimplifiedRecipe): Recipe => ({
   title: r.title,
+  subtitle: r.subtitle,
+  category: r.category,
   seasons: r.seasons,
   searchTerms: r.searchTerms,
   description: r.description,
@@ -89,6 +102,7 @@ const simpleRecipe = (r: SimplifiedRecipe): Recipe => ({
   ],
   stepsLists: [
     {
+      step0: r.step0,
       steps: r.steps
     }
   ]
@@ -105,6 +119,7 @@ const simpleSteps = (s: string[]): Steps[] => (
 const recipes: Recipe[] = [
   { // Showa Yaki
     title: 'Showa Yaki',
+    category: dinner,
     seasons: [],
     ingredientsLists: [
       {
@@ -136,6 +151,7 @@ const recipes: Recipe[] = [
   { // Jambalaya
     ...simpleRecipe({
       title: 'Jambalaya',
+      category: dinner,
       seasons: [spring, summer, autumn, winter],
       ingredients: [
         ing(0, null, 'salt & pepper', 'to taste'),
@@ -170,6 +186,7 @@ const recipes: Recipe[] = [
   { // Grilled Sketty
     ...simpleRecipe({
       title: 'Grilled Sketty',
+      category: dinner,
       searchTerms: ['grilled spaghetti', 'spaghetti'],
       seasons: [spring, summer],
       ingredients: [
@@ -200,7 +217,63 @@ const recipes: Recipe[] = [
         'Serve.',
       ]
     })
+  },
+  { // Spaghetti Aglio e Olio
+    ...simpleRecipe({
+      title: 'Aglio e Olio',
+      subtitle: 'without oil for some reason',
+      category: dinner,
+      seasons: [summer, autumn],
+      ingredients: [
+        ing(.5, lb, 'dry linguine'),
+        ing(.5, null, 'head of garlic'),
+        ing(1, bunch, 'parsley'),
+        ing(.5, null, 'lemon'),
+        ing(1, tsp, 'red pepper flakes'),
+      ],
+      steps: [
+        'Bring pot of water to boil.',
+        'Peel and thin-slice garlic.',
+        'Pasta into boiling water.',
+        'Butter sauté pan.',
+        'Add garlic.',
+        'When it starts to brown, add pepper flakes + remove from heat.',
+        'When garlic hits golden brown, add pasta (and slight pasta water).',
+        'Parsley, mix around.',
+        'Lemon juice as hell.',
+        'Dash salt, dash pepper.',
+      ]
+    })
+  },
+  { // Bokius Butter Cookies
+    ...simpleRecipe({
+      title: 'Bokius Butter Cookies',
+      searchTerms: ['pereira', 'christmas', 'holiday', 'sugar cookies'],
+      category: dessert,
+      seasons: [winter],
+      ingredients: [
+        ing(.25, lbs, 'butter'),
+        ing(.25, lb, 'lard'),
+        ing(2, null, 'egg'),
+        ing(1, cup, 'sugar'),
+        ing(1, tsp, 'vanilla extract', 'extra good stuff'),
+        ing(3, cup, 'all-purpose flour', 'unsifted'),
+        ing(3, tsp, 'baking powder'),
+      ],
+      step0: 'No more than double this recipe in mixer!',
+      steps: [
+        'Melt lard and butter. Let it cool a bit.',
+        'In separate (non-mixer) bowl, mix flour and baking powder, set aside.',
+        'In blender mixing bowl on medium speed, blend lard-butter mix, sugar, vanilla, and eggs until light and fluffy.',
+        'Add flour-mix on low speed until combined.',
+        'Refrigerate for 1 hour (or overnight) before rolling out.',
+        'Decorate with sprinkles (NOT ICING!)',
+        'Bake at 375° for 4 mins (more likely 8 mins) until edges just barely brown.'
+        +' --Baking Tip! You want to pull them just before they are done, they will continue to cook on the tray.--',
+        'Do NOT eat yet! These should be fully cooled, probably overnight, before eating. They are optimized for the season.',
+      ]
+    })
   }
-];
+].sort((a, b) => a.title.localeCompare(b.title));
 
 export default recipes;
