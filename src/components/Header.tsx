@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import './Header.css';
@@ -13,7 +14,9 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
       <button className="hamburger-btn" onClick={onMenuToggle}>
         <FontAwesomeIcon icon={faBars} />
       </button>
-      <h1 className="header-title">Our Life Together</h1>
+      <Link to="/" className="header-title-link">
+        <h1 className="header-title">Our Life Together</h1>
+      </Link>
     </header>
   );
 };

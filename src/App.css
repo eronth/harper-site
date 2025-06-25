@@ -18,3 +18,24 @@ body {
   padding: 0;
   background-color: var(--bg-primary);
 }
+
+.main-content {
+  margin-top: 70px; /* Account for fixed header */
+  padding: 2rem;
+  min-height: calc(100vh - 70px);
+}
+
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-content h1 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.page-content p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

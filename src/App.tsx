@@ -1,12 +1,16 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
-import MainContent from './components/MainContent'
+import Home from './pages/Home'
+import VacaStayca from './pages/VacaStayca'
+import FoodRecipes from './pages/FoodRecipes'
+import DrinkRecipes from './pages/DrinkRecipes'
+import WinterVillage from './pages/WinterVillage'
 import './App.css'
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen)
@@ -16,19 +20,22 @@ function App() {
     setIsSidebarOpen(false)
   }
 
-  const handleSectionSelect = (section: string) => {
-    setActiveSection(section)
-  }
-
   return (
     <div className="app">
       <Header onMenuToggle={toggleSidebar} />
       <Sidebar 
         isOpen={isSidebarOpen} 
         onClose={closeSidebar}
-        onSectionSelect={handleSectionSelect}
       />
-      <MainContent activeSection={activeSection} />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/vacations" element={<VacaStayca />} />
+          <Route path="/food-recipes" element={<FoodRecipes />} />
+          <Route path="/drink-recipes" element={<DrinkRecipes />} />
+          <Route path="/winter-village" element={<WinterVillage />} />
+        </Routes>
+      </main>
     </div>
   )
 }

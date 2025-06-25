@@ -89,6 +89,7 @@
   transition: all 0.2s ease;
   border-left: 4px solid transparent;
   display: block;
+  text-decoration: none;
 
   &:hover {
     background: var(--border-light);

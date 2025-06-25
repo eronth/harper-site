@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
@@ -6,21 +7,15 @@ import './Sidebar.css';
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  onSectionSelect: (section: string) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onSectionSelect }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const menuItems = [
-    { id: 'vacations', label: 'Vacations and Activities' },
-    { id: 'food-recipes', label: 'Food Recipes' },
-    { id: 'drink-recipes', label: 'Drink Recipes' },
-    { id: 'winter-village', label: 'Winter Village' },
+    { id: 'vacations', label: 'Vacations and Activities', path: '/vacations' },
+    { id: 'food-recipes', label: 'Food Recipes', path: '/food-recipes' },
+    { id: 'drink-recipes', label: 'Drink Recipes', path: '/drink-recipes' },
+    { id: 'winter-village', label: 'Winter Village', path: '/winter-village' },
   ];
-
-  const handleItemClick = (sectionId: string) => {
-    onSectionSelect(sectionId);
-    onClose();
-  };
 
   return (
     <>
@@ -30,7 +25,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onSectionSelect }) =
       {/* Sidebar */}
       <div className={`sidebar ${isOpen ? 'sidebar-open' : ''}`}>
         <div className="sidebar-header">
-          <h2>Hargus & Pereira</h2>
+          <Link to="/" onClick={onClose}>
+            <h2>Hargus & Pereira</h2>
+          </Link>
           <button className="close-btn" onClick={onClose}>
             <FontAwesomeIcon icon={faTimes} />
           </button>
@@ -40,12 +37,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onSectionSelect }) =
           <ul>
             {menuItems.map((item) => (
               <li key={item.id}>
-                <button
+                <Link
+                  to={item.path}
                   className="nav-item"
-                  onClick={() => handleItemClick(item.id)}
+                  onClick={onClose}
                 >
                   {item.label}
-                </button>
+                </Link>
               </li>
             ))}
           </ul>

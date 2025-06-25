@@ -44,6 +44,16 @@
   color: white;
 }
 
+.header-title-link {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.header-title-link:hover {
+  opacity: 0.8;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .header {
