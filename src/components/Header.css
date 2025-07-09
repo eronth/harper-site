@@ -38,10 +38,24 @@
 }
 
 .header-title {
+  position: relative;
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
   color: white;
+
+  .float-text {
+    position: absolute;
+    top: 10px;
+    left: 10%;
+    color:  var(--brand-navy);
+    font-size: 1.05em;
+    font-weight: 900;
+    /* slightly tilt the text */
+    transform: rotate(-5deg);
+    width: 200px;
+    -webkit-text-stroke: 2px var(--brand-maroon-light);
+  }
 }
 
 .header-title-link {

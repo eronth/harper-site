@@ -9,13 +9,25 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
+
+  const titles = [
+    <>The Nic and Leslie Experience</>,
+    <>A Leslie and Nic (LAN) Party</>,
+    <>Leslie... and the rest</>,
+    <>
+      <s>Tom and Kelsey</s>
+      <div className='float-text'>Nic and Leslie</div>
+    </>
+  ];
+  const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+
   return (
     <header className="header">
       <button className="hamburger-btn" onClick={onMenuToggle}>
         <FontAwesomeIcon icon={faBars} />
       </button>
       <Link to="/" className="header-title-link">
-        <h1 className="header-title">The Nic and Leslie Experience</h1>
+        <h1 className="header-title">{randomTitle}</h1>
       </Link>
     </header>
   );

@@ -26,6 +26,8 @@ body {
 .page-content {
   max-width: 1200px;
   margin: 0 auto;
+  /* Add the same animation as the home page */
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .page-content h1 {
@@ -36,4 +38,16 @@ body {
 .page-content p {
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+/* Global fadeIn animation for all pages */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
