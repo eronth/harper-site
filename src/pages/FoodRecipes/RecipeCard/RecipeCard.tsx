@@ -1,11 +1,12 @@
 import React from "react";
-import type { Ingredient, Recipe } from "../food-recipe-data";
+import type { Ingredient, Recipe, Steps } from "../food-recipe-data";
 import './RecipeCard.css';
 
 type Props = {
   recipe: Recipe;
+  unnumbered?: boolean; // If true, steps will be displayed as an unnumbered list
 };
-export default function RecipeCard({ recipe }: Props) {
+export default function RecipeCard({ recipe, unnumbered }: Props) {
   const [quantity, setQuantity] = React.useState(1);
   const maxQuantity = 5;
   const seasons = recipe.seasons || [];
@@ -74,6 +75,15 @@ export default function RecipeCard({ recipe }: Props) {
     />
   </>);
 
+  const stepsInnards = (steps: Steps, listIndex: number) => {
+    return <>
+      {steps.step0 && <li className="step-0">{steps.step0}</li>}
+      {steps.steps.map((step, j) => (
+        <li key={'step-list-'+listIndex+'-item-'+j}>{step}</li>
+      ))}
+    </>;
+  }
+
   return (
     <div className="recipe-card">
       <div className="season-icons">
@@ -114,14 +124,16 @@ export default function RecipeCard({ recipe }: Props) {
       <div>
         <h3>Directions:</h3>
         {
-          recipe.stepsLists.map((list, i) => (<div key={'steps-list-'+i}>
-            { list.title && <h4>{list.title}</h4> }
-            <ol start={list.step0 ? 0 : 1}>
-              {list.step0 && <li className="step-0">{list.step0}</li>}
-              {list.steps.map((step, j) => (
-                <li key={'step-list-'+i+'-item-'+j}>{step}</li>
-              ))}
-            </ol>
+          recipe.stepsLists.map((steps, i) => (<div key={'steps-list-'+i}>
+            { steps.title && <h4>{steps.title}</h4> }
+            {unnumbered 
+            ? <ul>
+                {stepsInnards(steps, i)}
+              </ul>
+            : <ol start={steps.step0 ? 0 : 1}>
+                {stepsInnards(steps, i)}
+              </ol>
+            }
           </div>))
         }
       </div>

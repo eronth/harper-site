@@ -39,7 +39,7 @@ export type Ingredient = {
   adjustments?: string;
 };
 
-type Steps = {
+export type Steps = {
   title?: string;
   step0?: string;
   steps: string[];
@@ -57,12 +57,12 @@ const ing = (
   adjustments
 });
 
-type QuantityUnit = 'g' | 'kg' 
+export type QuantityUnit = 'g' | 'kg' 
 | 'ml' | 'l' 
 | 'cup'
 | 'tbsp' | 'tsp' 
 | 'oz' | 'lb' 
-| 'piece' | 'spoonful' | 'pinch' | 'bunch';
+| 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash';
 const g: QuantityUnit = 'g';
 const ml: QuantityUnit = 'ml';
 const cup: QuantityUnit = 'cup';
@@ -75,6 +75,7 @@ const piece: QuantityUnit = 'piece';
 const spoonful: QuantityUnit = 'spoonful';
 const pinch: QuantityUnit = 'pinch';
 const bunch: QuantityUnit = 'bunch';
+const dash: QuantityUnit = 'dash';
 
 const breakfast: RecipeCategory = 'Breakfast';
 const lunch: RecipeCategory = 'Lunch';
@@ -273,6 +274,32 @@ const recipes: Recipe[] = [
         'Do NOT eat yet! These should be fully cooled, probably overnight, before eating. They are optimized for the season.',
       ]
     })
+  },
+  { // Hot Dog Chili
+    ...simpleRecipe({
+      title: 'Hot Dog Chili',
+      subtitle: 'for chili dogs',
+      category: lunch,
+      seasons: [spring, summer, autumn],
+      ingredients: [
+        ing(1, lb, 'ground beef'),
+        ing(.5, cup, 'water'),
+        ing(5, oz, 'tomato sauce'),
+        ing(.5, cup, 'ketchup'),
+        ing(2.5, tsp, 'chili powder'),
+        ing(.5, tsp, 'salt'),
+        ing(.5, tsp, 'black pepper'),
+        ing(.5, tsp, 'white sugar'),
+        ing(.5, tsp, 'onion powder'),
+        ing(1, dash, 'worcestershire sauce'),
+      ],
+      steps: [
+        'Place ground beef and water in a large saucepan; use a potato masher to break apart beef.',
+        'Stir in tomato sauce, ketchup, chili powder, salt, black pepper, sugar, onion powder, and Worcestershire sauce.',
+        'Bring to a boil, then simmer over medium heat until beef is cooked and chili thickens, about 20 minutes.',
+        'Serve over hot dogs and enjoy!',
+      ]
+    }),
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
