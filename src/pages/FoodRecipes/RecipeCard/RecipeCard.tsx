@@ -47,11 +47,17 @@ export default function RecipeCard({ recipe, unnumbered }: Props) {
 
   function decimalToFraction(decimal: number): string {
     switch (decimal) {
-      case 0.25: return '¼';
+      // Halve
       case 0.5: return '½';
+      // Fourths
+      case 0.25: return '¼';
       case 0.75: return '¾';
-      case 0.33: return '⅓';
-      case 0.66: return '⅔';
+      // Thirds
+      case 0.33:
+      case 1/3: return '⅓';
+      case 0.66:
+      case 2/3: return '⅔';
+      // Eighths
       case 0.125: return '⅛';
       case 0.375: return '⅜';
       case 0.625: return '⅝';

@@ -57,7 +57,6 @@ const recipes: Recipe[] = [
     ...drink({
       title: 'Clover Club',
       seasons: [spring, summer],
-      searchTerms: ['gin', 'lemon', 'raspberry'],
       description: 'A refreshing gin cocktail with raspberry and lemon.',
       ingredients: [
         add(2, 'gin'),
@@ -70,9 +69,30 @@ const recipes: Recipe[] = [
         'Strain into a coupe',
         'Optional: Garnish with 3 fresh raspberries on a pick.',
       ],
+      searchTerms: ['gin', 'lemon', 'raspberry'],
+    })
+  },
+  {
+    ...drink({
+      // A shadowfell drink
+      title: 'Stillswill',
+      seasons: [autumn],
+      description: 'A shadowy cocktail from the Shadowfell.',
+      ingredients: [
+        add(2, 'star zenith or white rum'),
+        add(1, 'hopefill ichor or coconut rum'),
+        add(1/2, 'raspberry syrup'),
+        add(1/2, 'creme de violette'),
+        add(0, 'black glitter', { adjustments: 'a ton' }),
+        add(0, 'black ice',),
+      ],
+      steps: [
+        'Stir all ingredients with regular ice',
+        'Strain into a rocks glass over black ice',
+        'Garnish with a twist of lemon peel (optional)',
+      ]
     })
   }
-
 ].sort((a, b) => a.title.localeCompare(b.title));
 
 export default recipes;

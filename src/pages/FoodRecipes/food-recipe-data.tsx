@@ -60,12 +60,13 @@ const ing = (
 export type QuantityUnit = 'g' | 'kg' 
 | 'ml' | 'l' 
 | 'cup'
-| 'tbsp' | 'tsp' 
+| 'tbsp' | 'tsp' | 'generous tbsp'
 | 'oz' | 'lb' 
 | 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash';
 const g: QuantityUnit = 'g';
 const ml: QuantityUnit = 'ml';
 const cup: QuantityUnit = 'cup';
+const gtbsp: QuantityUnit = 'generous tbsp';
 const tbsp: QuantityUnit = 'tbsp';
 const tsp: QuantityUnit = 'tsp';
 const oz: QuantityUnit = 'oz';
@@ -153,7 +154,7 @@ const recipes: Recipe[] = [
     ...simpleRecipe({
       title: 'Jambalaya',
       category: dinner,
-      seasons: [spring, summer, autumn, winter],
+      seasons: [spring, summer, fall, winter],
       ingredients: [
         ing(0, null, 'salt & pepper', 'to taste'),
         ing(4, null, 'chicken thighs'),
@@ -300,6 +301,53 @@ const recipes: Recipe[] = [
         'Serve over hot dogs and enjoy!',
       ]
     }),
+  },
+  { // Chicken Teriyaki Skewers
+    title: 'Chicken Teriyaki Skewers',
+    subtitle: 'with miso ranch dip',
+    searchTerms: ['yakitori', 'miso ranch', 'miso dip', 'grilled chicken'],
+    category: dinner,
+    seasons: [summer],
+    ingredientsLists: [
+      {
+        ingredients: [
+          ing(2, lb, 'chicken thighs'),
+          ing(.5, cup, 'soy sauce'),
+          ing(.5, cup, 'sake'),
+          ing(.33, cup, 'mirin'),
+          ing(2, tbsp, 'green onions', 'finely minced'),
+          ing(2, tsp, 'brown sugar'),
+          ing(.25, cup, 'brown sugar'),
+          ing(1, tbsp, 'vegetable oil'),
+        ]
+      },
+      {
+        title: 'Miso Ranch Dip',
+        ingredients: [
+          ing(3/4, cup, 'mayonnaise'),
+          ing(1/3, cup, 'buttermilk'),
+          ing(1/4, cup, 'sour cream or creme fraiche'),
+          ing(1, gtbsp, 'white miso paste'),
+          ing(1, tbsp, 'green onions', 'finely minced'),
+          ing(1, null, 'clove garlic', 'crushed'),
+          ing(1, tbsp, 'fresh terragon', 'finely chopped'),
+          ing(1, tbsp, 'fresh dill', 'finely chopped'),
+          ing(1, tbsp, 'fresh chives', 'finely chopped'),
+          ing(0, null, 'fresh ground black pepper'),
+          ing(0, null, 'cayenne')
+        ]
+      }
+    ],
+    stepsLists: simpleSteps([
+      'Soak bamboo sticks if desired.',
+      'Cut that chicken into 3 - 4 chunks each.',
+      'Throw chicken in bowl. Add soy, sake, mirin.',
+      'Add grated or powder ginger and green onions.',
+      'Add brown sugar and vegetable oil.',
+      'Mix by hand! Cover, pop in fridge 4+ hours.',
+      'Mix all the miso ranch stuff in another bowl.',
+      'Skewer chicken. Grill chicken. Eat chicken.',
+    ])
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
