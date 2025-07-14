@@ -67,16 +67,16 @@ export default function RecipeCard({ recipe, unnumbered }: Props) {
   }
 
   const seasonsIcons = (<>
-    <img alt="Spring"
+    <img alt={`${springEnabled ? '' : 'not '}Spring`}
       src={`/src/assets/season-icons/${springEnabled}/spring.png`}
     />
-    <img alt="Summer"
+    <img alt={`${summerEnabled ? '' : 'not '}Summer`}
       src={`/src/assets/season-icons/${summerEnabled}/summer.png`}
     />
-    <img alt="Autumn"
+    <img alt={`${autumnEnabled ? '' : 'not '}Autumn`}
       src={`/src/assets/season-icons/${autumnEnabled}/autumn.png`}
     />
-    <img alt="Winter"
+    <img alt={`${winterEnabled ? '' : 'not '}Winter`}
       src={`/src/assets/season-icons/${winterEnabled}/winter.png`}
     />
   </>);
@@ -90,6 +90,22 @@ export default function RecipeCard({ recipe, unnumbered }: Props) {
     </>;
   }
 
+  const quantitySwitcher = (
+    <span className="qty-select">
+      <label htmlFor='recipe-quantity-select'>
+        Qty ×
+      </label>
+      <select id='recipe-quantity-select'
+        value={quantity} 
+        onChange={e => setQuantity(Number(e.target.value))}
+      >
+        {Array.from({ length: maxQuantity }, (_, i) => i + 1).map(qty => (
+          <option key={'quantity-option-'+qty} value={qty}>{qty}</option>
+        ))}
+      </select>
+    </span>
+  );
+
   return (
     <div className="recipe-card">
       <div className="season-icons">
@@ -97,19 +113,7 @@ export default function RecipeCard({ recipe, unnumbered }: Props) {
       </div>
       <div className="recipe-title-region">
         <h2 className={recipe.category.toLowerCase()}>{recipe.title}</h2>
-        <span className="qty-select">
-          <label htmlFor='recipe-quantity-select'>
-            Qty ×
-          </label>
-          <select id='recipe-quantity-select'
-            value={quantity} 
-            onChange={e => setQuantity(Number(e.target.value))}
-          >
-            {Array.from({ length: maxQuantity }, (_, i) => i + 1).map(qty => (
-              <option key={'quantity-option-'+qty} value={qty}>{qty}</option>
-            ))}
-          </select>
-        </span>
+        {quantitySwitcher}
       </div>
       <div className="subtitle">{recipe.subtitle || <>&nbsp;</>}</div>
       <hr />
