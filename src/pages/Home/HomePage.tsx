@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <main className="page-content">
       <div className="content-section">
-        <h2>Welcome to Our Life Together</h2>
+        <h2>Welcome to the Harper Space</h2>
         <p>This is a special place where we share our adventures, recipes, and memories!</p>
         <div className="welcome-content">
           <div className="feature-grid">

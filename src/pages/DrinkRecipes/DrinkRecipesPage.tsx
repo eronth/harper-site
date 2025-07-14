@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 // Components
 import RecipeSearch from '../FoodRecipes/RecipeSearch/RecipeSearch';
+import RecipeCard from '../FoodRecipes/RecipeCard/RecipeCard';
+// Types
+import type { RecipeCategory } from '../../types/recipe-types';
 // Data
 import recipes from './drink-recipe-data';
-import RecipeCard from '../FoodRecipes/RecipeCard/RecipeCard';
 
 const DrinkRecipes: React.FC = () => {
 
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
+  const filterCats: RecipeCategory[] = ['Cocktail', 'Smoothie', 'Coffee', 'Tea', 'Other'];
   
   const handleFilterChange = (newFilteredRecipesList: typeof recipes) => {
     setFilteredRecipes(newFilteredRecipesList);
@@ -21,6 +24,7 @@ const DrinkRecipes: React.FC = () => {
       <RecipeSearch
         recipes={recipes}
         onFilterChange={handleFilterChange}
+        filterCategories={filterCats}
       />
 
       <div className="results-info">

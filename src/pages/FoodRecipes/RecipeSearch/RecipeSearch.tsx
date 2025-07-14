@@ -6,19 +6,16 @@ import './RecipeSearch.css';
 type Props = {
   recipes: Recipe[];
   onFilterChange: (filtered: Recipe[]) => void;
+  filterCategories: RecipeCategory[];
 };
 
-export default function RecipeSearch({ recipes, onFilterChange }: Props) {
+export default function RecipeSearch({ recipes, onFilterChange, filterCategories }: Props) {
   type SeasonFilterType = Season | 'None'; // 'None' for recipes without a season
   const minFilterCharacters = 3;
   const [searchTerm, setSearchTerm] = useState('');
   const allSeasons: Season[] = ['Spring', 'Summer', 'Autumn', 'Winter'];
   const [selectedSeasons, setSelectedSeasons] = useState<SeasonFilterType[]>([]);
-  const allCategories: RecipeCategory[] = [
-    //'Breakfast', 'Lunch', 
-    'Dinner', 'Dessert',
-    //'Drink'
-  ];
+
   const [selectedCategories, setSelectedCategories] = useState<RecipeCategory[]>([]);
 
   const shouldFilter = useCallback((): boolean => {
@@ -113,7 +110,7 @@ export default function RecipeSearch({ recipes, onFilterChange }: Props) {
 
       <div className="checkbox-filters">
         <span className="filter-label">Filter by category:</span>
-        {allCategories.map(category => (
+        {filterCategories.map(category => (
           <label key={category} className="filter-checkbox">
             <input
               type="checkbox"

@@ -26,6 +26,7 @@ const summer: Season = 'Summer';
 const autumn: Season = 'Autumn';
 const fall: Season = 'Autumn'; // Alias for Autumn
 const winter: Season = 'Winter';
+const yearround: Season[] = [spring, summer, autumn, winter];
 
 type Ingredients = {
   title?: string;
@@ -62,7 +63,7 @@ export type QuantityUnit = 'g' | 'kg'
 | 'cup'
 | 'tbsp' | 'tsp' | 'generous tbsp'
 | 'oz' | 'lb' 
-| 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash'
+| 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash' | 'splash'
 | 'strips' | 'bottle';
 const g: QuantityUnit = 'g';
 //const ml: QuantityUnit = 'ml';
@@ -78,10 +79,12 @@ const spoonful: QuantityUnit = 'spoonful';
 const pinch: QuantityUnit = 'pinch';
 const bunch: QuantityUnit = 'bunch';
 const dash: QuantityUnit = 'dash';
+const splash: QuantityUnit = 'splash';
 
 //const breakfast: RecipeCategory = 'Breakfast';
 const lunch: RecipeCategory = 'Lunch';
 const dinner: RecipeCategory = 'Dinner';
+const snack: RecipeCategory = 'Dessert'; // Using Dessert as Snack category
 const dessert: RecipeCategory = 'Dessert';
 
 // type SimplifiedRecipe = {
@@ -373,6 +376,103 @@ const recipes: Recipe[] = [
         'When onion is gold, add chicken, wine, and bacon.',
         'Cook until wine bubbles.',
         '375° oven for 40 mins.',
+      ]
+    })
+  },
+  { // Muddy Buddies
+    ...simpleRecipe({
+      title: 'Muddy Buddies',
+      category: snack,
+      searchTerms: ['puppy chow', 'chocolate chex'],
+      seasons: [...yearround],
+      ingredients: [
+        ing(1, null, 'box chex', 'family size; any flavor, we like rice'),
+        ing(2, cup, 'hershey milk chocolate chips', 'that\'s the whole bag'),
+        ing(1, cup, 'peanut butter'),
+        ing(1/2, cup, 'butter'),
+        ing(1, tsp, 'vanilla extract'),
+        ing(1, cup, 'powdered sugar per bag', 
+          'This is impossible to get right. I have measured so many times, and each time it is a different amount.'
+          +' Space and Time do not apply to powdered sugar. Just add it until it looks right. Start with 1 cup.'),
+      ],
+      steps: [
+        'Microwave chocolate, butter, and peanut butter until they can be stirred smooth.',
+        'Add vanilla and stir!',
+        'Pour Chex into giant bowl.',
+        'Stir an absolute truckload. Seriously keep stirring.',
+        'Put powdered sugar into each bag, zip, shake shake shake!',
+      ]
+    })
+  },
+  { // Chili Lime Chicken
+    ...simpleRecipe({
+      title: 'Chili Lime Chicken',
+      category: dinner,
+      seasons: [summer, fall],
+      ingredients: [
+        ing(2, lbs, 'chicken thighs'),
+        ing(2, tbsp, 'butter'),
+        ing(3, tsp, 'chili powder'),
+        ing(1, tsp, 'paprika'),
+        ing(1, tsp, 'garlic powder'),
+        ing(1, tsp, 'pleasoning'),
+        ing(1/8, tsp, 'cayenne'),
+        ing(0, null, 'salt & pepper'),
+        ing(1, null, 'lime juice (one lime’s worth)'),
+        ing(1, null, 'cilantro'),
+        ing(1, cup, 'white rice'),
+        ing(2.25, cup, 'chicken broth'),
+      ],
+      steps: [
+        'Mix all spices excluding cilantro.',
+        'Put ¼ spice in bowl, then add chicken, then add ¼ more spice to bowl.',
+        'Mix until chicken is coated.',
+        'Pan fry that chicken.',
+        'Remove chicken, add broth, lime juice, and rice, then mix.',
+        'After mixed, add rest of seasoning.',
+        'Place chicken on rice, lid on pan, and let cook for 15 minutes. ',
+        'Top with cilantro and a teeny bit more lime juice. Enjoy!',
+      ]
+    })
+  },
+  { // Stuffed Acorn Squash
+    ...simpleRecipe({
+      title: 'Stuffed Acorn Squash',
+      subtitle: 'with Apple, Parsnip, and Sage',
+      category: dinner,
+      seasons: [autumn],
+      ingredients: [
+        ing(3, null, 'small acorn squash'),
+        ing(1, tbsp, 'olive oil'),
+        ing(1, tbsp, 'maple syrup'),
+        ing(0, null, 'salt & pepper'),
+        ing(1, cup, 'Italian sausage'),
+        ing(2, tbsp, 'olive oil'),
+        ing(2, cup, 'peeled and diced parsnips'),
+        ing(1/2, null, 'onion', 'diced'),
+        ing(1, cup, 'apple (like gala)', 'diced'),
+        ing(2, tbsp, 'sage', 'chopped'),
+        ing(0, null, 'salt & pepper'),
+        ing(1, splash, 'white wine'),
+        ing(2, cup, 'chopped kale'),
+        ing(1/2, cup, 'maple pecans (or toasted)'),
+        ing(1, tbsp, 'maple syrup'),
+        ing(0, null, 'fresh grated nutmeg'),
+      ],
+      steps: [
+        'Preheat to 400° F.',
+        'Cut acorn squash lengthwise, scoop out seeds.',
+        'Mix 1 tbsp maple and 1 tbsp olive oil.',
+        'Brush insides with the mix. Sprinkle with salt.',
+        'Place skin-side up on baking sheet, roast in oven for 30-40 mins until you can pierce skin and flesh with fork. Then remove, turn back over.',
+        'While roasting, brown Italian sausage.',
+        'Oven to 350° F.',
+        'Sauté parsnips and onions in olive oil (10 min).',
+        'Add apples, kale, and sage for 5 mins.',
+        'Splash with white wine, add pecans.',
+        'When wine evaporates, add 1 tbsp maple.',
+        'Add sausage back in, mix, add nutmeg.',
+        'Fill squash with mixture, oven for 15-20 mins.',
       ]
     })
   }
