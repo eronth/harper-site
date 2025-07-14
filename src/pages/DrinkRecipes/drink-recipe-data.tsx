@@ -29,7 +29,7 @@ const add = (
   name,
   quantity,
   adjustments: options?.adjustments,
-  unit: options?.unit ?? 'oz', // Default unit for drinks is oz
+  unit: options?.unit ?? (quantity ? 'oz' : null), // Default unit for drinks is oz
 });
 
 const drink = (r: DrinkRecipe): Recipe => ({
@@ -53,7 +53,7 @@ const drink = (r: DrinkRecipe): Recipe => ({
 });
 
 const recipes: Recipe[] = [
-  { // A drink
+  { // Clover Club
     ...drink({
       title: 'Clover Club',
       seasons: [spring, summer],
@@ -72,9 +72,8 @@ const recipes: Recipe[] = [
       searchTerms: ['gin', 'lemon', 'raspberry'],
     })
   },
-  {
+  { // Stillswill
     ...drink({
-      // A shadowfell drink
       title: 'Stillswill',
       seasons: [autumn],
       description: 'A shadowy cocktail from the Shadowfell.',
@@ -92,6 +91,99 @@ const recipes: Recipe[] = [
         'Garnish with a twist of lemon peel (optional)',
       ],
       searchTerms: ['rum', 'coconut', 'raspberry', 'violette', 'glitter', 'starfinder', 'starfinder 2e', 'shadowfell'],
+    })
+  },
+  { // Zolezzi Cocktail
+    ...drink({
+      title: 'Zolezzi Cocktail',
+      seasons: [],
+      ingredients: [
+        add(1, 'blue curacao'),
+        add(1, 'vanilla vodka'),
+        add(1, 'white rum'),
+        add(1, 'midori'),
+        add(0, 'pineapple juice'),
+      ],
+      steps: [
+        'Add directly to collins glass with ice',
+        'Stir gently to combine',
+        'Drink and get drunk'
+      ],
+    })
+  },
+  { // Luscious Leslie
+    ...drink({
+      title: 'Luscious Leslie',
+      seasons: [],
+      ingredients: [
+        add(1, 'amaretto'),
+        add(1, 'malibu coconut rum'),
+        add(1, 'dark/spiced rum'),
+        add(4, 'pineapple juice', { adjustments: '4-8oz' }),
+        add(1, 'peach schnapps'),
+        add(1, 'grenadine', { unit: 'splash' }),
+      ],
+      steps: [
+        'Add alcohol to shaker with ice',
+        'add pineapple juice to shaker',
+        'shake classily',
+      ],
+    })
+  },
+  { // Rum Martinez
+    ...drink({
+      title: 'Rum Martinez',
+      seasons: [],
+      ingredients: [
+        add(0, 'applewood smoke stick', { adjustments: 'for smoking glass' }),
+        add(1.5, 'dark rum'),
+        add(1.5, 'sweet vermouth'),
+        add(.5, 'classic liqueur'),
+        add(1, 'maraschino liqueur', { unit: 'bar spoon' }),
+        add(2, 'bitters', { unit: 'dashes' }),
+      ],
+      steps: [
+        'Light smoke stick and capture smoke in glass (perfume glass works well), set aside',
+        'Add all ingredients to shaker with ice',
+        'Shake until cold',
+        'Strain into smoked bottle',
+        'Shake the smoked bottle like twice',
+        'Drink and be classy',
+      ],
+    })
+  },
+  { // The Manhatten
+    ...drink({
+      title: 'The Manhatten',
+      seasons: [],
+      ingredients: [
+        add(2, 'rye whiskey'),
+        add(1, 'sweet vermouth'),
+        add(2, 'bitters', { unit: 'dashes' }),
+      ],
+      steps: [
+        'Add all ingredients to mixing glass with ice',
+        'Stir until cold',
+        'Strain into rocks glass with ice',
+      ],
+    })
+  },
+  {
+    // Great White Cocktail
+    ...drink({
+      title: 'Great White Cocktail',
+      seasons: [],
+      ingredients: [
+        add(1.5, 'citron'),
+        add(1, 'lemonade'),
+        add(.5, 'triple sec'),
+        add(.25, 'lime'),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until cold',
+        'Strain into chilled rocks glass',
+      ],
     })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));

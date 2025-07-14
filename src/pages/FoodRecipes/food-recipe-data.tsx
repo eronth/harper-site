@@ -64,7 +64,8 @@ export type QuantityUnit = 'g' | 'kg'
 | 'tbsp' | 'tsp' | 'generous tbsp'
 | 'oz' | 'lb' 
 | 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash' | 'splash'
-| 'strips' | 'bottle';
+| 'strips' | 'bottle'
+| 'dashes' | 'bar spoon';
 const g: QuantityUnit = 'g';
 //const ml: QuantityUnit = 'ml';
 const cup: QuantityUnit = 'cup';
