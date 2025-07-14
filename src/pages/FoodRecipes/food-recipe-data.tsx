@@ -62,9 +62,10 @@ export type QuantityUnit = 'g' | 'kg'
 | 'cup'
 | 'tbsp' | 'tsp' | 'generous tbsp'
 | 'oz' | 'lb' 
-| 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash';
+| 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash'
+| 'strips' | 'bottle';
 const g: QuantityUnit = 'g';
-const ml: QuantityUnit = 'ml';
+//const ml: QuantityUnit = 'ml';
 const cup: QuantityUnit = 'cup';
 const gtbsp: QuantityUnit = 'generous tbsp';
 const tbsp: QuantityUnit = 'tbsp';
@@ -72,13 +73,13 @@ const tsp: QuantityUnit = 'tsp';
 const oz: QuantityUnit = 'oz';
 const lb: QuantityUnit = 'lb';
 const lbs: QuantityUnit = 'lb'; // Alias for lb
-const piece: QuantityUnit = 'piece';
+//const piece: QuantityUnit = 'piece';
 const spoonful: QuantityUnit = 'spoonful';
 const pinch: QuantityUnit = 'pinch';
 const bunch: QuantityUnit = 'bunch';
 const dash: QuantityUnit = 'dash';
 
-const breakfast: RecipeCategory = 'Breakfast';
+//const breakfast: RecipeCategory = 'Breakfast';
 const lunch: RecipeCategory = 'Lunch';
 const dinner: RecipeCategory = 'Dinner';
 const dessert: RecipeCategory = 'Dessert';
@@ -110,9 +111,9 @@ const simpleRecipe = (r: SimplifiedRecipe): Recipe => ({
   ]
 });
 
-const simpleIngredients = (i: Ingredient[]): Ingredients[] => (
-  [{ ingredients: i }]
-);
+// const simpleIngredients = (i: Ingredient[]): Ingredients[] => (
+//   [{ ingredients: i }]
+// );
 
 const simpleSteps = (s: string[]): Steps[] => (
   [{ steps: s }]
@@ -348,6 +349,32 @@ const recipes: Recipe[] = [
       'Mix all the miso ranch stuff in another bowl.',
       'Skewer chicken. Grill chicken. Eat chicken.',
     ])
+  },
+  { // Chicken and Wine
+    ...simpleRecipe({
+      title: 'Chicken and Wine',
+      category: dinner,
+      seasons: [summer, spring, autumn, winter],
+      ingredients: [
+        ing(2, lbs, 'chicken thighs'),
+        ing(2, 'strips', 'bacon'),
+        ing(1, null, 'yellow onion', 'diced'),
+        ing(1/3, 'bottle', 'semi-sweet red wine'),
+      ],
+      steps: [
+        'Slice one bacon strip into pan.',
+        'Place the second strip into pan (this is the sacrificial bacon you snack on to preserve the bits).',
+        'Cook bacon on stove.',
+        'Remove bacon when done.',
+        'Salt and pepper chicken.',
+        'Brown chicken in bacon grease.',
+        'Cut half yellow onion.',
+        'Remove chicken, add onion.',
+        'When onion is gold, add chicken, wine, and bacon.',
+        'Cook until wine bubbles.',
+        '375° oven for 40 mins.',
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 

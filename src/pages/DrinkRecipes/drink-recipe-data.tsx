@@ -15,8 +15,8 @@ type DrinkRecipe = {
 const spring: Season = 'Spring';
 const summer: Season = 'Summer';
 const autumn: Season = 'Autumn';
-const fall: Season = 'Autumn'; // Alias for Autumn
-const winter: Season = 'Winter';
+// const fall: Season = 'Autumn'; // Alias for Autumn
+// const winter: Season = 'Winter';
 
 const add = (
   quantity: number,
@@ -90,7 +90,8 @@ const recipes: Recipe[] = [
         'Stir all ingredients with regular ice',
         'Strain into a rocks glass over black ice',
         'Garnish with a twist of lemon peel (optional)',
-      ]
+      ],
+      searchTerms: ['rum', 'coconut', 'raspberry', 'violette', 'glitter', 'starfinder', 'starfinder 2e', 'shadowfell'],
     })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
