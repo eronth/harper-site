@@ -118,12 +118,14 @@ export default function RecipeCard({ recipe, unnumbered }: Props) {
 
   return (
     <div className="recipe-card">
-      <div className="season-icons">
-        {seasonsIcons}
+      <div className="season-icons-row">
+        <div className="season-icons">
+          {seasonsIcons}
+        </div>
+        {quantitySwitcher}
       </div>
       <div className="recipe-title-region">
         <h2 className={recipe.category.toLowerCase()}>{recipe.title}</h2>
-        {quantitySwitcher}
       </div>
       <div className="subtitle">{recipe.subtitle || <>&nbsp;</>}</div>
       <hr />
