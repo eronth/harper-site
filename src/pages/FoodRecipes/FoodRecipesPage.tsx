@@ -11,7 +11,7 @@ import './FoodRecipesPage.css';
 
 const FoodRecipes: React.FC = () => {
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
-  const filterCats: RecipeCategory[] = ['Dinner', 'Dessert'];
+  const filterCats: RecipeCategory[] = ['Dinner', 'Dessert', 'Desert'];
 
   const handleFilterChange = (newFilteredRecipesList: typeof recipes) => {
     setFilteredRecipes(newFilteredRecipesList);

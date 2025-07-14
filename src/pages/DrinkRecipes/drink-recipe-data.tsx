@@ -168,8 +168,7 @@ const recipes: Recipe[] = [
       ],
     })
   },
-  {
-    // Great White Cocktail
+  { // Great White Cocktail
     ...drink({
       title: 'Great White Cocktail',
       seasons: [],

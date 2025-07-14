@@ -60,7 +60,7 @@ const ing = (
 
 export type QuantityUnit = 'g' | 'kg' 
 | 'ml' | 'l' 
-| 'cup'
+| 'cup' | 'gal' | 'quart'
 | 'tbsp' | 'tsp' | 'generous tbsp'
 | 'oz' | 'lb' 
 | 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash' | 'splash'
@@ -69,6 +69,8 @@ export type QuantityUnit = 'g' | 'kg'
 const g: QuantityUnit = 'g';
 //const ml: QuantityUnit = 'ml';
 const cup: QuantityUnit = 'cup';
+const quart: QuantityUnit = 'quart';
+const gal: QuantityUnit = 'gal';
 const gtbsp: QuantityUnit = 'generous tbsp';
 const tbsp: QuantityUnit = 'tbsp';
 const tsp: QuantityUnit = 'tsp';
@@ -436,6 +438,22 @@ const recipes: Recipe[] = [
       ]
     })
   },
+  { // Desert
+    ...simpleRecipe({
+      title: 'Desert',
+      category: 'Desert',
+      seasons: [summer],
+      ingredients: [
+        ing(1000, gal, 'sand'),
+      ],
+      steps: [
+        'Go to desert.',
+        'Look at sand.',
+        'Maybe build a sandcastle if you\'re into that kind of thing.',
+        'Leave.',
+      ]
+    })
+  },
   { // Stuffed Acorn Squash
     ...simpleRecipe({
       title: 'Stuffed Acorn Squash',
@@ -474,6 +492,138 @@ const recipes: Recipe[] = [
         'When wine evaporates, add 1 tbsp maple.',
         'Add sausage back in, mix, add nutmeg.',
         'Fill squash with mixture, oven for 15-20 mins.',
+      ]
+    })
+  },
+  { // Easy Paella
+    title: 'Easy Paella',
+    subtitle: 'Well, relatively easy',
+    category: dinner,
+    seasons: [],
+    ingredientsLists: [
+      {
+        title: 'Marinade',
+        ingredients: [
+          ing(2, tbsp, 'olive oil'),
+          ing(1, tbsp, 'ground paprika'),
+          ing(2, tsp, 'dried oregano'),
+          ing(0, null, 'salt and pepper'),
+        ]
+      },
+      {
+        title: 'Paella',
+        ingredients: [
+          ing(2, lbs, 'boneless, skinless, chicken thighs'),
+          ing(2, tbsp, 'olive oil', 'divided'),
+          ing(3, null, 'cloves garlic', 'crushed (or, like, just minced)'),
+          ing(1, tsp, 'crushed red pepper flakes'),
+          ing(2, cup, 'uncooked short-grain white rice'),
+          ing(1, pinch, 'saffron threads/2 pinch tumeric'),
+          ing(1, null, 'large bay leaf'),
+          ing(1/2, bunch, 'Italian flat leaf parsley', 'chopped'),
+          ing(1, quart, 'chicken stock'),
+          ing(2, null, 'medium lemons', 'zested'),
+          ing(2, tbsp, 'olive oil'),
+          ing(1, null, 'Spanish onion', 'chopped'),
+          ing(1, null, 'red bell pepper', 'coarsely chopped'),
+          ing(1, lbs, 'shrimp', 'peeled and deveined'),
+          ing(1, lbs, 'chorizo sausage', 'casings removed and crumbled')
+        ]
+      }
+    ],
+    stepsLists: [
+      {
+        title: 'Prep Chicken',
+        steps: [
+          'Mix marinade into glass bowl.',
+          'Add and mix chicken, fridge until needed.',
+        ]
+      },
+      {
+        title: 'Rice Mixture',
+        steps: [
+          'Medium heat. 2 tbl olive oil in large skillet/paella pan. Add pepper flakes and rice.',
+          'Cook and stir for 3 minutes or less.',
+          'Add saffron, bay leafe, parsley, stock, and zest. Stir until well combined and boiling.',
+          'Reduce heat to medium-low, cover and let simmer for 20 minutes.',
+        ]
+      },
+      {
+        title: 'Meat Mixture',
+        steps: [
+          'In separate skillet, heat oil over medium heat.',
+          'Add ingredients and cook for specified time, stir often while this is happening.',
+          'Stir in marinated chicken, 3 min.',
+          'Add onion, 5 min.',
+          'Add bell pepper and sausage, 5 min.',
+          'Add shrimp, 2 min.',
+        ]
+      },
+      {
+        title: 'Final Assembly',
+        steps: [
+          'Spread meat mixture onto rice mixture.',
+        ]
+      }
+    ]
+  },
+  { // Apple Cider Glazed Chicken
+    ...simpleRecipe({
+      title: 'Apple Cider Glazed Chicken',
+      category: dinner,
+      seasons: [autumn],
+      ingredients: [
+        ing(1, null, 'pack chicken thighs'),
+        ing(2, tbsp, 'olive oil'),
+        ing(1, cup, 'apple cider'),
+        ing(1/4, cup, 'brown sugar'),
+        ing(1/2, tsp, 'ground cinnamon'),
+        ing(1/4, tsp, 'ground nutmeg'),
+        ing(1/4, tsp, 'ground cloves'),
+        ing(1, tbsp, 'butter'),
+        ing(2, null, 'apples', 'peeled, cored, sliced'),
+        ing(1, null, 'onion', 'sliced')
+      ],
+      steps: [
+        'Preheat oven to 375° F. Salt/pepper chicken.',
+        'Start by slicing onions and getting them on low heat. Caramelize that shit!',
+        'In large ovenproof skillet, heat olive oil over medium-high heat.',
+        'Cook chicken for 3-4 minutes per side, until browned. Remove and set aside.',
+        'In same skillet, add cider, brown sugar, spices.',
+        'Stir to combine, scrape up browned bits of chkn.',
+        'Return chicken to skillet, spoon cider mix over.',
+        'Oven for 20-25 mins.',
+        'While chicken is baking, add sliced apples to the onion sauté, 5-7 mins.',
+        'Serve!',
+      ]
+    })
+  },
+  { // Amena Cookies
+    ...simpleRecipe({
+      title: 'Amena Cookies',
+      category: dessert,
+      seasons: [summer],
+      ingredients: [
+        ing(1/2, cup, 'unsalted butter'),
+        ing(1/2, cup, 'white sugar'),
+        ing(1/4, cup, 'packed light brown sugar'),
+        ing(1, null, 'large egg'),
+        ing(1/2, tsp, 'vanilla extract'),
+        ing(1+1/8, cup, 'all-purpose flour'),
+        ing(1/2, tsp, 'salt'),
+        ing(1/2, tsp, 'baking soda'),
+        ing(1/3, cup, 'semi-sweet chocolate chips'),
+        ing(1/3, cup, 'white chocolate chips'),
+        ing(1/3, cup, 'milk chocolate chips'),
+      ],
+      steps: [
+        'Mash butter and sugars in large bowl until creamy smooth.',
+        'Add egg and whisk vigorously.',
+        'In separate bowl, whisk flour, salt, baking soda.',
+        'Use mixer to dump flour mix into mash.',
+        'Add chocolate chips bit by bit.',
+        'Preheat oven 375° F.',
+        'Cookies in oven for 10 mins.',
       ]
     })
   }

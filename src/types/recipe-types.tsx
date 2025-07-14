@@ -6,7 +6,7 @@ export type RecipeCategory =
 type MealCategory = 
 'Breakfast' | 'Lunch' | 'Dinner' 
 //| 'Appetizer' | 'Side Dish'
-| 'Dessert'
+| 'Dessert' | 'Desert'
 | 'Drink';
 
 type DrinkCategory =
