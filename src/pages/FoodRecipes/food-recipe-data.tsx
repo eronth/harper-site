@@ -196,7 +196,7 @@ const recipes: Recipe[] = [
     ...simpleRecipe({
       title: 'Grilled Sketty',
       category: dinner,
-      searchTerms: ['grilled spaghetti', 'spaghetti'],
+      searchTerms: ['grill', 'grilled', 'grilled spaghetti', 'spaghetti'],
       seasons: [spring, summer],
       ingredients: [
         ing(8, oz, 'thick dry spaghetti'),
@@ -312,7 +312,7 @@ const recipes: Recipe[] = [
   { // Chicken Teriyaki Skewers
     title: 'Chicken Teriyaki Skewers',
     subtitle: 'with miso ranch dip',
-    searchTerms: ['yakitori', 'miso ranch', 'miso dip', 'grilled chicken'],
+    searchTerms: ['yakitori', 'miso ranch', 'miso dip', 'grill', 'grilled', 'grilled chicken'],
     category: dinner,
     seasons: [summer],
     ingredientsLists: [
@@ -626,6 +626,53 @@ const recipes: Recipe[] = [
         'Cookies in oven for 10 mins.',
       ]
     })
+  },
+  { // Aussie Bites
+    title: 'Aussie Bites',
+    category: dessert,
+    seasons: [spring, summer],
+    ingredientsLists: [
+      { // Stage 1
+        title: 'Stage 1',
+        ingredients: [
+          ing(1+3/4, cup, 'old fashioned rolled oats')
+        ]
+      },
+      { // Stage 2
+        title: 'Stage 2',
+        ingredients: [
+          ing(1/4, cup, 'granulated sugar'),
+          ing(1/4, cup, 'chopped dried apricots'),
+          ing(1/4, cup, 'raisins'),
+          ing(1/4, cup, 'ground flaxseed'),
+          ing(1/4, cup, 'unsalted sunflower seeds'),
+          ing(1/4, cup, 'unsweetened shredded coconut'),
+          ing(1/4, cup, 'quinoa; cooked or uncooked'),
+          ing(2, tbsp, 'chia seeds'),
+          ing(1/4, tsp, 'baking soda')
+        ]
+      },
+      { // Stage 3
+        title: 'Stage 3',
+        ingredients: [
+          ing(1/4, cup, 'honey'),
+          ing(1/4, cup, 'unsalted butter; melted'),
+          ing(1/4, cup, 'canola oil', 'not choosing canola really changes the structure, but other neutral oils will work'),
+          ing(1/2, tsp, 'vanilla extract')
+        ]
+      }
+    ],
+    stepsLists: simpleSteps([
+      'Preheat oven to 350° F.',
+      'Lightly grease a 24 count mini muffin pan.',
+      'Put 1 cup oats in food processor and pulverize. Original recipe says a minute, but hell no that’s way too long.',
+      'Add stage 2 stuff and pulse until apricots are in small bits.',
+      'Add stage 3 and pulse until combined.',
+      'Divide into muffin cups.',
+      'Bake in oven for 10-12 mins until golden brown.',
+      'Let cool until firm.',
+      'Once cooled, put them in airtight container for 4-5 days. Unless you can’t wait that long then wait like a day instead.',
+    ])
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
