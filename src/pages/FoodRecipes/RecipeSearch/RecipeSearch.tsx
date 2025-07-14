@@ -24,11 +24,21 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
 
   useEffect(() => {
     if (!shouldFilter()) {
-      onFilterChange(recipes); // Always reset to full list if no filter is applied
+      // Even when no filter is applied, hide Desert items unless explicitly selected
+      const filteredRecipes = recipes.filter(recipe => recipe.category !== 'Desert');
+      onFilterChange(filteredRecipes);
       return;
     }
 
     const filtered = recipes.filter(recipe => {
+      // Special handling for Desert category - only show when explicitly selected
+      const isDesertCategory = recipe.category === 'Desert';
+      const isDesertSelected = selectedCategories.includes('Desert');
+      
+      if (isDesertCategory && !isDesertSelected) {
+        return false; // Hide Desert items unless Desert is selected
+      }
+
       // Text search filter
       const searchLower = searchTerm.toLowerCase();
       const matchesSearch = searchTerm === '' || 
@@ -48,6 +58,7 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
         || (recipe.seasons.length === 0 && selectedSeasons.includes('None'))
       );
 
+      // Category filter (excluding Desert which is handled above)
       const matchesCategories = (
         selectedCategories.length === 0
         || selectedCategories.includes(recipe.category)
