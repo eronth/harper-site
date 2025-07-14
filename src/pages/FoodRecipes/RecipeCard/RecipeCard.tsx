@@ -2,6 +2,16 @@ import React from "react";
 import type { Ingredient, Recipe, Steps } from "../food-recipe-data";
 import './RecipeCard.css';
 
+// Import season icons
+import springEnabledIcon from '../../../assets/season-icons/enabled/spring.png';
+import summerEnabledIcon from '../../../assets/season-icons/enabled/summer.png';
+import autumnEnabledIcon from '../../../assets/season-icons/enabled/autumn.png';
+import winterEnabledIcon from '../../../assets/season-icons/enabled/winter.png';
+import springDisabledIcon from '../../../assets/season-icons/disabled/spring.png';
+import summerDisabledIcon from '../../../assets/season-icons/disabled/summer.png';
+import autumnDisabledIcon from '../../../assets/season-icons/disabled/autumn.png';
+import winterDisabledIcon from '../../../assets/season-icons/disabled/winter.png';
+
 type Props = {
   recipe: Recipe;
   unnumbered?: boolean; // If true, steps will be displayed as an unnumbered list
@@ -10,10 +20,10 @@ export default function RecipeCard({ recipe, unnumbered }: Props) {
   const [quantity, setQuantity] = React.useState(1);
   const maxQuantity = 5;
   const seasons = recipe.seasons || [];
-  const springEnabled = seasons.includes('Spring') ? 'enabled' : 'disabled';
-  const summerEnabled = seasons.includes('Summer') ? 'enabled' : 'disabled';
-  const autumnEnabled = seasons.includes('Autumn') ? 'enabled' : 'disabled';
-  const winterEnabled = seasons.includes('Winter') ? 'enabled' : 'disabled';
+  const isSpringEnabled: boolean = seasons.includes('Spring');
+  const isSummerEnabled: boolean = seasons.includes('Summer');
+  const isAutumnEnabled: boolean = seasons.includes('Autumn');
+  const isWinterEnabled: boolean = seasons.includes('Winter');
 
   function ingredientToDisplay(ingredient: Ingredient): React.ReactNode {
     const parts: string[] = [];
@@ -67,17 +77,17 @@ export default function RecipeCard({ recipe, unnumbered }: Props) {
   }
 
   const seasonsIcons = (<>
-    <img alt={`${springEnabled ? '' : 'not '}Spring`}
-      src={`/src/assets/season-icons/${springEnabled}/spring.png`}
+    <img alt={`${isSpringEnabled ? '' : 'not '}Spring`}
+      src={isSpringEnabled ? springEnabledIcon : springDisabledIcon}
     />
-    <img alt={`${summerEnabled ? '' : 'not '}Summer`}
-      src={`/src/assets/season-icons/${summerEnabled}/summer.png`}
+    <img alt={`${isSummerEnabled ? '' : 'not '}Summer`}
+      src={isSummerEnabled ? summerEnabledIcon : summerDisabledIcon}
     />
-    <img alt={`${autumnEnabled ? '' : 'not '}Autumn`}
-      src={`/src/assets/season-icons/${autumnEnabled}/autumn.png`}
+    <img alt={`${isAutumnEnabled ? '' : 'not '}Autumn`}
+      src={isAutumnEnabled ? autumnEnabledIcon : autumnDisabledIcon}
     />
-    <img alt={`${winterEnabled ? '' : 'not '}Winter`}
-      src={`/src/assets/season-icons/${winterEnabled}/winter.png`}
+    <img alt={`${isWinterEnabled ? '' : 'not '}Winter`}
+      src={isWinterEnabled ? winterEnabledIcon : winterDisabledIcon}
     />
   </>);
 
