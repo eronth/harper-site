@@ -12,3 +12,17 @@
   gap: 1rem;
   animation: fadeIn 0.5s ease-in-out;
 }
+
+/* Mobile responsive improvements for recipe grid */
+@media (max-width: 768px) {
+  .recipe-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .recipe-grid {
+    gap: 0.5rem;
+  }
+}

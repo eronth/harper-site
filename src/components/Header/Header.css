@@ -72,10 +72,18 @@
 @media (max-width: 768px) {
   .header {
     padding: 0 0.75rem;
+    height: 60px; /* Consistent with App.css mobile margin */
   }
   
   .header-title {
     font-size: 1.25rem;
+  }
+  
+  .header-title .float-text {
+    font-size: 0.95em;
+    top: 8px;
+    left: 8%;
+    width: 180px;
   }
   
   .hamburger-btn {
@@ -91,6 +99,14 @@
   
   .header-title {
     font-size: 1.1rem;
+  }
+  
+  .header-title .float-text {
+    font-size: 0.85em;
+    top: 6px;
+    left: 5%;
+    width: 160px;
+    -webkit-text-stroke: 1.5px var(--brand-maroon-light);
   }
   
   .hamburger-btn {

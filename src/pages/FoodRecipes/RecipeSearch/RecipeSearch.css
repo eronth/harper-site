@@ -51,17 +51,25 @@
   }
 }
 
-
-
-
-
-
-
-
 /* Responsive design */
 @media (max-width: 768px) {
   .recipe-filters {
     padding: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .recipe-filters .search-box {
+    margin-bottom: 1rem;
+  }
+  
+  .recipe-filters .search-input {
+    max-width: 100%;
+    padding: 0.625rem 0.875rem;
+  }
+  
+  .recipe-filters .checkbox-filters {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
   }
   
   .season-filters {
@@ -73,8 +81,25 @@
   .filter-label {
     margin-bottom: 0.5rem;
   }
+}
+
+@media (max-width: 480px) {
+  .recipe-filters {
+    padding: 0.75rem;
+    margin: 1rem 0;
+  }
   
-  .search-input {
-    max-width: 100%;
+  .recipe-filters .checkbox-filters {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  
+  .recipe-filters .filter-checkbox {
+    font-size: 0.875rem;
+  }
+  
+  .recipe-filters .search-input {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
   }
 }

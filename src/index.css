@@ -90,3 +90,50 @@ button {
     outline-offset: 2px;
   }
 }
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px; /* Slightly smaller base font size on tablets */
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  button {
+    padding: 0.5em 1em;
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: 13px; /* Even smaller base font size on phones */
+  }
+  
+  body {
+    min-width: 280px; /* Support very small screens */
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  button {
+    padding: 0.5em 0.875em;
+    font-size: 0.9em;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  button {
+    min-height: 44px; /* iOS/Android recommended touch target */
+    min-width: 44px;
+  }
+  
+  .nav-item {
+    min-height: 48px; /* Larger touch targets for navigation */
+  }
+}
