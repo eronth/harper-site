@@ -62,11 +62,54 @@
   text-decoration: none;
   color: inherit;
   transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
-.header-title-link:hover {
-  opacity: 0.8;
+.transformative-title {
+  position: relative;
+  height: 1.5em; /* Set a fixed height to prevent layout shifts */
+  width: 17em; /* Adjust width as needed */
+  display: flex;
+  align-items: center;
+  
+  div {
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    
+    /* Default positions - spell out LESLIE HARGUS & NIC PEREIRA */
+    &.leslie-text { left: 0; }
+    &.har-text { left: 3.5em; }
+    &.gus-text { left: 5.6em; }
+    &.and-text { left: 7.9em; }
+    &.nic-text { left: 9em; }
+    &.per-text { left: 11em; }
+    &.erei-text { left: 12.9em; }
+    
+  }
+  
+  &:hover {
+    div {
+      /* Hover positions - spell out LESLIE & NIC HARPER */
+      &.leslie-text { left: 0; }
+      &.and-text { left: 3.5em; }
+      &.nic-text { left: 4.5em; }
+      --har-start: 6.5em;
+      &.har-text { left: var(--har-start); }
+      &.per-text { left: calc(var(--har-start) + 2.1em); }
+      
+      /* Fade out the unwanted parts */
+      &.gus-text, &.erei-text {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+    }
+  }
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

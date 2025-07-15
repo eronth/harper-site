@@ -11,13 +11,22 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
 
   const titles = [
-    <>The Nic and Leslie Experience</>,
-    <>A Leslie and Nic (LAN) Party</>,
-    <>Leslie... and the rest</>,
-    <>
-      <s>Tom and Kelsey</s>
-      <div className='float-text'>Nic and Leslie</div>
-    </>
+    // <>The Nic and Leslie Experience</>,
+    // <>A Leslie and Nic (LAN) Party</>,
+    // <>Leslie... and the rest</>,
+    // <>
+    //   <s>Tom and Kelsey</s>
+    //   <div className='float-text'>Nic and Leslie</div>
+    // </>,
+    <div className="transformative-title">
+      <div className='leslie-text'>LESLIE</div>
+      <div className='har-text moving-text'>HAR</div>
+      <div className='gus-text fading-text'>GUS</div>
+      <div className='and-text'>&</div>
+      <div className='nic-text'>NIC</div>
+      <div className='per-text moving-text'>PER</div>
+      <div className='erei-text fading-text'>EIRA</div>
+    </div>
   ];
   const randomTitle = titles[Math.floor(Math.random() * titles.length)];
 
