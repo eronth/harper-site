@@ -26,6 +26,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
       <div className='nic-text'>NIC</div>
       <div className='per-text moving-text'>PER</div>
       <div className='erei-text fading-text'>EIRA</div>
+      <div className='harper-text'>HARPER</div>
     </div>
   ];
   const randomTitle = titles[Math.floor(Math.random() * titles.length)];

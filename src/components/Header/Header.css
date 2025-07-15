@@ -100,6 +100,13 @@
     &.nic-text { left: 9em; }
     &.per-text { left: 11em; }
     &.erei-text { left: 12.9em; }
+    
+    /* Hide HARPER by default */
+    &.harper-text { 
+      left: 6.5em;
+      opacity: 0;
+      transform: scale(0.8);
+    }
   }
   
   &:hover {
@@ -108,9 +115,24 @@
       &.leslie-text { left: 0; }
       &.and-text { left: 3.5em; }
       &.nic-text { left: 4.5em; }
-      --har-start: 6.5em;
-      &.har-text { 
-        left: var(--har-start);
+      --harper-start: 6.5em;
+      &.har-text {
+        left: var(--harper-start);
+      }
+      &.per-text {
+        left: calc(var(--harper-start) + 2.1em);
+      }
+      
+      &.gus-text, &.erei-text {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      
+      /* Show the unified HARPER with shimmer effect */
+      &.harper-text { 
+        left: 6.5em;
+        opacity: 1;
+        transform: scale(1);
         background: linear-gradient(
           45deg,
           #ff6b6b,
@@ -125,31 +147,8 @@
         background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: shimmer 2s ease-in-out infinite;
-        filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.5));
-      }
-      &.per-text { 
-        left: calc(var(--har-start) + 2.1em);
-        background: linear-gradient(
-          45deg,
-          #ff6b6b,
-          #4ecdc4,
-          #45b7d1,
-          #96ceb4,
-          #ffecd2,
-          #ff6b6b
-        );
-        background-size: 300% 300%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shimmer 2s ease-in-out infinite 0.2s; /* Offset animation */
-        filter: drop-shadow(0 0 8px rgba(78, 205, 196, 0.5));
-      }
-      
-      /* Fade out the unwanted parts */
-      &.gus-text, &.erei-text {
-        opacity: 0;
-        transform: scale(0.8);
+        filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.6)) 
+                drop-shadow(0 0 20px rgba(78, 205, 196, 0.4));
       }
     }
   }
