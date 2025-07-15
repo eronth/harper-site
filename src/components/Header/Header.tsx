@@ -11,13 +11,13 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
 
   const titles = [
-    // <>The Nic and Leslie Experience</>,
-    // <>A Leslie and Nic (LAN) Party</>,
-    // <>Leslie... and the rest</>,
-    // <>
-    //   <s>Tom and Kelsey</s>
-    //   <div className='float-text'>Nic and Leslie</div>
-    // </>,
+    <>The Nic and Leslie Experience</>,
+    <>A Leslie and Nic (LAN) Party</>,
+    <>Leslie... and the rest</>,
+    <>
+      <s>Tom and Kelsey</s>
+      <div className='float-text'>Nic and Leslie</div>
+    </>,
     <div className="transformative-title">
       <div className='leslie-text'>LESLIE</div>
       <div className='har-text moving-text'>HAR</div>
