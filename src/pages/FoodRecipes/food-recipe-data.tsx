@@ -63,7 +63,7 @@ export type QuantityUnit = 'g' | 'kg'
 | 'cup' | 'gal' | 'quart'
 | 'tbsp' | 'tsp' | 'generous tbsp'
 | 'oz' | 'lb' 
-| 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash' | 'splash'
+| 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash' | 'splash' | 'clove'
 | 'strips' | 'bottle'
 | 'dashes' | 'bar spoon';
 const g: QuantityUnit = 'g';
@@ -83,6 +83,7 @@ const pinch: QuantityUnit = 'pinch';
 const bunch: QuantityUnit = 'bunch';
 const dash: QuantityUnit = 'dash';
 const splash: QuantityUnit = 'splash';
+const clove: QuantityUnit = 'clove';
 
 //const breakfast: RecipeCategory = 'Breakfast';
 const lunch: RecipeCategory = 'Lunch';
@@ -673,6 +674,184 @@ const recipes: Recipe[] = [
       'Let cool until firm.',
       'Once cooled, put them in airtight container for 4-5 days. Unless you can’t wait that long then wait like a day instead.',
     ])
+  },
+  { // Delux Breakfast Burgers
+    ...simpleRecipe({
+      title: 'Delux Breakfast Burgers',
+      category: lunch,
+      seasons: [summer],
+      ingredients: [
+        ing(0, null, '90% or 80% lean beef'),
+        ing(0, null, 'ground breakfast sausage'),
+        ing(0, null, 'onion'),
+        ing(0, null, 'lettuce'),
+        ing(0, null, 'egg'),
+        ing(0, null, 'maple syrup'),
+        ing(0, null, 'swiss cheese (though there are probably other great options to try)'),
+        ing(0, null, 'Burger Buns.')
+      ],
+      steps: [
+        'Start with onion, caramelize it low and slow on a thin layer of oil (I just used vegetable).',
+        'Brush inside of buns with a light layer of the oil.',
+        'Hand mix the beef and sausage together. Last time I used 90%, but I’m thinking I should have used 80%. Once mixed, shape into patties.',
+        'Prep maple sauce. Maple syrup and a bit of water, heat and mix a bit. Amounts have been eyeballed so far.',
+        'Add a bit of the sauce to the onions.',
+        'Get grill heated up. Grill patties over fairly high heat, drop buns on a lower heat.',
+        'Buns come off pretty quick, set aside with lettuce on bottom bun. While patties are searing, pour a bit of the sauce on the patties.',
+        'When ready, flip and add cheese.',
+        'Cook eggs to have runny yolk.',
+        'Put patty on lettuce/bun, then egg, then onion.',
+        'Top burger with just a touch of the maple sauce before adding the top bun.',
+      ]
+    })
+  },
+  { // Nanaimo Bars
+    title: 'Nanaimo Bars',
+    category: dessert,
+    seasons: [spring, winter],
+    description: 'A Canadian classic, these no-bake bars are rich, chocolatey, and perfect for any occasion.',
+    ingredientsLists: [
+      { // Top Layer
+        title: 'Top Layer',
+        ingredients: [
+          ing(2, tsp, 'butter'),
+          ing(4, oz, 'semisweet baker’s chocolate')
+        ]
+      },
+      { // Mid Layer
+        title: 'Mid Layer',
+        ingredients: [
+          ing(1/2, cup, 'softened butter'),
+          ing(3, tbsp, 'heavy cream'),
+          ing(2, tbsp, 'custard powder'),
+          ing(2, cup, 'confectioner’s sugar')
+        ]
+      },
+      { // Bottom Layer
+        title: 'Bottom Layer',
+        ingredients: [
+          ing(1/2, cup, 'butter'),
+          ing(1/4, cup, 'white sugar'),
+          ing(5, tbsp, 'cocoa powder'),
+          ing(1, null, 'egg'),
+          ing(1, null, 'graham cracker crumbs'),
+          ing(1, null, 'coconut'),
+          ing(1, null, 'almonds')
+        ]
+      }
+    ],
+    stepsLists: [
+      { // Bottom Layer
+        title: 'Bottom Layer',
+        steps: [
+          'In double boiler, melt butter, cocoa, and sugar',
+          'Stir ‘til melted. Beat in egg until thick (2-3 min)',
+          'Remove from heat, add the rest of the bottom.',
+          'Press very firmly into 8x8 inch pan.',
+          'Chill to set.',
+        ]
+      },
+      { // Mid Layer
+        title: 'Mid Layer',
+        steps: [
+          'Mix butter, heavy cream, and custard until light and fluffy.',
+          'Spread over bottom layer. Chill to set (again).'
+        ]
+      },
+      { // Top Layer
+        title: 'Top Layer',
+        steps: [
+          'Mix chocolate and butter in microwave (???).',
+          'You almost definitely need extra chocolate.',
+          'Pour over top. Tap tap tap until even!',
+          'Let set in fridge (again (again)).',
+        ]
+      }
+    ]
+  },
+  { // Firecracker Shrimp Roll with Crab Aioli
+    title: 'Firecracker Shrimp Roll',
+    subtitle: 'with Crab Aioli',
+    category: lunch,
+    seasons: [summer],
+    ingredientsLists: [
+      {
+        ingredients: [
+          ing(4, null, 'soft sandwich rolls, split and toasted'),
+          ing(2, cup, 'thinly sliced romaine lettuce'),
+          ing(2, lb, 'shrimp', 'peeled and deveined'),
+        ]
+      },
+      {
+        title: 'Soak',
+        ingredients: [
+          ing(1, cup, 'buttermilk'),
+          ing(2, tsp, 'hot sauce'),
+          ing(1, tsp, 'chipotle pepper'),
+          ing(1, tsp, 'cayenne'),
+          ing(1, tsp, 'pepper'),
+          ing(2, tsp, 'salt'),
+        ]
+      },
+      {
+        title: 'Breading',
+        ingredients: [
+          ing(1, cup, 'all-purpose flour'),
+          ing(1/3, cup, 'corn meal'),
+          ing(2, tsp, 'paprika'),
+          ing(2, tsp, 'salt')
+        ]
+      },
+      {
+        title: 'Crab Aioli',
+        ingredients: [
+          ing(1, cup, 'mayonnaise'),
+          ing(1, cup, 'lump crabmeat'),
+          ing(2, clove, 'garlic', 'finely crushed'),
+          ing(1/4, tsp, 'Worcestershire sauce'),
+          ing(1, tsp, 'lemon juice'),
+          ing(1, tbsp, 'chopped tarragon'),
+          ing(0, null, 'salt and cayenne'),
+        ]
+      }
+    ],
+    stepsLists: simpleSteps([
+      'Add all the Crab Aioli stuff to bowl and mix.',
+      'Pop into fridge until needed.',
+      'Mix the soak ingredients and whisk.',
+      'Mix the breading materials in new bowl.',
+      'Transfer shrimp to soak for 5 mins.',
+      'Spread crab Aioli *generously* on bread, add lettuce.',
+      'Transfer shrimp to breading, toss.',
+      'Put into pan with oil on med-high heat.',
+      'Put on paper towel lined plate, then to sandwich roll immediately.',
+    ])
+  },
+  { // Chorizo Pumpkin Pasta
+    ...simpleRecipe({
+      title: 'Chorizo Pumpkin Pasta',
+      subtitle: 'with Sage and Parmesan',
+      category: dinner,
+      seasons: [fall],
+      ingredients: [
+        ing(3, cup, 'uncooked spiral pasta', '12 oz'),
+        ing(1, null, '12oz pkg fullcook chorizo chicken sausage'),
+        ing(1, cup, 'canned pumpkin'),
+        ing(1, cup, 'half-and-half cream'),
+        ing(3/4, tsp, 'salt'),
+        ing(1/4, tsp, 'pepper'),
+        ing(1.5, cup, 'shredded Manchego OR Monterey jack cheese')
+      ],
+      steps: [
+        'Cook pasta, drain, reserve ¾ cup water.',
+        'In large skillet, sauté sausage until light brown.',
+        'Reduce heat to med-low.',
+        'Add pumpkin, cream, salt, pepper.',
+        'Cook and stir until heated through.',
+        'Toss in pasta and enough water to moisten.',
+        'Stir in cheese.',
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 

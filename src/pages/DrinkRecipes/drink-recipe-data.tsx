@@ -184,6 +184,24 @@ const recipes: Recipe[] = [
         'Strain into chilled rocks glass',
       ],
     })
+  },
+  { // Mezcal Negroni
+    ...drink({ 
+      title: 'Mezcal Negroni',
+      description: 'A sophisticated cocktail with a smoky and bitter flavor.',
+      seasons: [],
+      ingredients: [
+        add(1, 'mezcal'),
+        add(1, 'sweet vermouth'),
+        add(1, 'campari'),
+      ],
+      steps: [
+        'Add all ingredients to mixing glass with ice.',
+        'Stir until cold.',
+        'Strain into rocks glass with ice.',
+        'Garnish with orange peel (optional).',
+      ],
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
