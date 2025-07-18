@@ -15,8 +15,9 @@ type DrinkRecipe = {
 const spring: Season = 'Spring';
 const summer: Season = 'Summer';
 const autumn: Season = 'Autumn';
-// const fall: Season = 'Autumn'; // Alias for Autumn
-// const winter: Season = 'Winter';
+const fall: Season = 'Autumn'; // Alias for Autumn
+const winter: Season = 'Winter';
+const allSeasons: Season[] = [spring, summer, fall, winter];
 
 const add = (
   quantity: number,
@@ -201,6 +202,119 @@ const recipes: Recipe[] = [
         'Strain into rocks glass with ice.',
         'Garnish with orange peel (optional).',
       ],
+    })
+  },
+  { // Improved Whiskey Cocktail
+    ...drink({
+      title: 'Improved Whiskey Cocktail',
+      description: 'A classic and classy cocktail. It\'s existance is why we have something called the "Old Fashioned".',
+      seasons: [...allSeasons],
+      ingredients: [
+        add(1/4, 'simple syrup'),
+        add(1/4, 'luxardo maraschino liqueur'),
+        add(2, 'rittenhouse rye whiskey'),
+        add(2, 'bitters', { unit: 'dashes' }),
+        add(1, 'absinthe', { unit: 'dash' }),
+      ],
+      steps: [
+        'Add all ingredients to mixing glass with ice',
+        'Stir until cold',
+        'Strain into rocks glass with ice',
+        'Garnish with lemon twist (optional)',
+      ]
+    })
+  },
+  { // White Chocolate Mocha
+    ...drink({
+      title: 'White Chocolate Mocha',
+      seasons: [...allSeasons],
+      description: 'A cozy and indulgent coffee drink. The eventual \'Leslie Hargus\' at the Afterlife Bar.',
+      ingredients: [
+        add(1, 'Mr. Black'),
+        add(1, 'Kaluha'),
+        add(1, 'creme de cacao'),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until cold',
+        'Strain into chilled coupe glass',
+      ],
+      searchTerms: ['coffee', 'espresso', 'white chocolate', 'mocha'],
+    })
+  },
+  { // Cold Brew Old Fashioned
+    ...drink({
+      title: 'Cold Brew Old Fashioned',
+      seasons: [...allSeasons],
+      description: 'A coffee twist on the classic Old Fashioned cocktail.',
+      ingredients: [
+        add(1, 'Mr. Black'),
+        add(1, 'rye whiskey'),
+        add(2, 'orange bitters', { unit: 'dashes' }),
+      ],
+      steps: [
+        'Add all ingredients to mixing glass with ice',
+        'Stir until cold',
+        'Strain into rocks glass with ice',
+        'Garnish with orange twist (optional)',
+      ]
+    })
+  },
+  { // Sweet Embrace
+    ...drink({
+      title: 'Sweet Embrace',
+      seasons: [...allSeasons],
+      description: 'A sweet and comforting bourbon cocktail. The eventual \'Nic Pereira\' at the Afterlife Bar',
+      ingredients: [
+        add(2, 'bourbon'),
+        add(1, 'benedictine'),
+        add(1, 'maple syrup'),
+        add(0, '2-3 maraschino cherries'),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until cold',
+        'Strain into rocks glass with ice',
+        'Garnish with maraschino cherries on pick',
+        'Dip cherries in the drink for extra sweetness',
+      ]
+    })
+  },
+  { // King Kong
+    ...drink({
+      title: 'King Kong',
+      seasons: [summer],
+      ingredients: [
+        add(2, 'banana rum'),
+        add(2, 'pineapple juice'),
+        add(1, 'coconut rum'),
+        add(1, 'coconut cream')
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake *violently* until cold',
+        'Strain into barrel glass with ice',
+      ]
+    })
+  },
+  { // Punkin' Gin Fashioned
+    ...drink({
+      title: 'Punkin\' Gin Fashioned',
+      seasons: [autumn],
+      description: 'A fall twist on the classic Old Fashioned cocktail.',
+      ingredients: [
+        add(1.5, 'botanist gin'),
+        add(.25, 'dry vermouth'),
+        add(.25, 'maple syrup'),
+        add(2, 'orange bitters', { unit: 'dashes' }),
+        add(0, 'cinnamon stick', { adjustments: 'optional for garnish' }),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until cold',
+        'Strain into rocks glass with ice',
+        'Garnish with cinnamon stick (optional)',
+      ]
     })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
