@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -29,44 +29,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
       <div className='harper-text'>HARPER</div>
     </div>,
     <>It's the NIC & LESLIE Show! Starring, Nic... & Leslie!!!</>,
-    // <>Les<span style={{fontSize: '0.8em', opacity: 0.7}}>lie</span> & Nic<span style={{fontSize: '0.8em', opacity: 0.7}}>ely</span></>,
-    // <>Two Names, One <span style={{fontStyle: 'italic', color: 'var(--brand-maroon-light)'}}>Adventure</span></>,
-    // <>
-    //   <span style={{transform: 'rotate(-5deg)', display: 'inline-block'}}>L</span>eslie 
-    //   <span style={{fontSize: '1.2em', fontWeight: 'bold'}}>&</span> 
-    //   <span style={{transform: 'rotate(5deg)', display: 'inline-block'}}>N</span>ic
-    // </>,
-    // <>The <span style={{textDecoration: 'underline wavy'}}>L&N</span> Chronicles</>,
-    // <>Leslie ↔ Nic</>,
-    // <>
-    //   <span style={{background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>
-    //     LESLIE
-    //   </span> 
-    //   {' & '} 
-    //   <span style={{background: 'linear-gradient(45deg, #4ecdc4, #ff6b6b)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>
-    //     NIC
-    //   </span>
-    // </>,
-    // <>Les & Nic <span style={{fontSize: '0.7em', verticalAlign: 'super'}}>™</span></>,
-    // <>
-    //   <span style={{letterSpacing: '0.2em'}}>L•E•S•L•I•E</span> 
-    //   {' & '} 
-    //   <span style={{letterSpacing: '0.2em'}}>N•I•C</span>
-    // </>,
-    // <>The Dynamic Duo: <em>Leslie & Nic</em></>,
-    // <>
-    //   <span style={{fontFamily: 'monospace', background: 'rgba(255,255,255,0.1)', padding: '2px 4px', borderRadius: '3px'}}>
-    //     console.log("Leslie & Nic");
-    //   </span>
-    // </>,
+    // ...existing code...
     <>Leslie 🤝 Nic</>,
-    // <>
-    //   <span style={{fontSize: '1.3em'}}>L</span>eslie{' '}
-    //   <span style={{fontSize: '0.8em', opacity: 0.8}}>plus</span>{' '}
-    //   <span style={{fontSize: '1.3em'}}>N</span>ic
-    // </>,
+    // ...existing code...
   ];
-  const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+  
+  // Only calculate random title once when component mounts
+  const [randomTitle] = useState(() => titles[Math.floor(Math.random() * titles.length)]);
 
   return (
     <header className="header">

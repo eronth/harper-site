@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 // Components
 import RecipeSearch from '../FoodRecipes/RecipeSearch/RecipeSearch';
 import RecipeCard from '../FoodRecipes/RecipeCard/RecipeCard';
@@ -12,9 +12,9 @@ const DrinkRecipes: React.FC = () => {
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
   const filterCats: RecipeCategory[] = ['Cocktail', 'Smoothie', 'Coffee', 'Tea', 'Other'];
   
-  const handleFilterChange = (newFilteredRecipesList: typeof recipes) => {
+  const handleFilterChange = useCallback((newFilteredRecipesList: typeof recipes) => {
     setFilteredRecipes(newFilteredRecipesList);
-  };
+  }, []);
   
   return (
     <div className="page-content">
