@@ -131,9 +131,9 @@ const recipes: Recipe[] = [
       ],
     })
   },
-  { // Rum Martinez
+  { // Smoked Rum Martinez
     ...drink({
-      title: 'Rum Martinez',
+      title: 'Smoked Rum Martinez',
       seasons: [],
       ingredients: [
         add(0, 'applewood smoke stick', { adjustments: 'for smoking glass' }),
@@ -297,6 +297,24 @@ const recipes: Recipe[] = [
       ]
     })
   },
+  { // Boozy Banana
+    ...drink({
+      title: 'Boozy Banana',
+      seasons: [summer],
+      ingredients: [
+        add(2, 'banana rum'),
+        add(4, 'pineapple juice'),
+        add(1, 'cream of coconut'),
+        add(1, 'orange juice'),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until cold',
+        'Strain into hurricane glass with ice',
+        'Sip until satisfied'
+      ]
+    })
+  },
   { // Punkin' Gin Fashioned
     ...drink({
       title: 'Punkin\' Gin Fashioned',
@@ -315,6 +333,101 @@ const recipes: Recipe[] = [
         'Strain into rocks glass with ice',
         'Garnish with cinnamon stick (optional)',
       ]
+    })
+  },
+  { // Moscow Mule
+    ...drink({
+      title: 'Moscow Mule',
+      seasons: [...allSeasons],
+      description: 'A refreshing and zesty cocktail with a ginger kick.',
+      ingredients: [
+        add(2, 'vodka'),
+        add(4, 'ginger beer'),
+        add(.5, 'lime juice'),
+        add(0, 'mint leaf', { adjustments: 'for garnish' }),
+      ],
+      steps: [
+        'Add vodka and lime juice to copper mug (with tin lining for safety) with ice',
+        'Top with ginger beer',
+        'Stir gently to combine',
+        'Garnish with mint leaf (optional)',
+      ],
+    })
+  },
+  { // Farwell to Arms
+    ...drink({
+      title: 'Farewell to Arms',
+      seasons: [fall],
+      ingredients: [
+        add(1, 'bourbon'),
+        add(1, 'apple brandy'),
+        add(1/2, 'benedictine'),
+        add(1/2, 'sweet sherry'),
+        add(2, 'bitters', { unit: 'dashes' }),
+        add(0, 'lemon twist', { adjustments: 'for garnish' }),
+      ],
+      steps: [
+        'Add all ingredients to mixing glass with ice',
+        'Stir until cold',
+        'Strain into rocks glass with ice',
+        'Garnish with lemon twist (optional)',
+      ],
+    })
+
+  },
+  { // The Alexander
+    ...drink({
+      title: 'The Alexander',
+      seasons: [],
+      ingredients: [
+        add(1, 'sweet cream'),
+        add(1, 'creme de cacao'),
+        add(1.5, 'gin'),
+        add(0, 'grated nutmeg'),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake shake shake until cold',
+        'Strain into chilled coupe glass',
+        'Garnish with grated nutmeg',
+      ],
+    })
+  },
+  { // Alexander's Sister
+    ...drink({
+      title: 'Alexander\'s Sister',
+      seasons: [],
+      ingredients: [
+        add(1, 'sweet cream'),
+        add(1, 'creme de menth'),
+        add(1.5, 'gin'),
+        add(0, 'grated cinnamon'),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake shake shake until cold',
+        'Strain into chilled coupe glass',
+        'Garnish with grated cinnamon',
+      ],
+    })
+  },
+  { // Shamrock Shake
+    ...drink({
+      title: 'Alexander\'s Sister',
+      seasons: [],
+      ingredients: [
+        add(1, 'sweet cream'),
+        add(.5, 'creme de cacao'),
+        add(.5, 'creme de menth'),
+        add(1.5, 'gin'),
+        add(0, 'grated nutmeg'),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shakey until cold',
+        'Strain into chilled coupe glass',
+        'Garnish with grated nutmeg (or cinnamon (or both!))',
+      ],
     })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
