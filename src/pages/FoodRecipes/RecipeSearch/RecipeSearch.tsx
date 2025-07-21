@@ -14,7 +14,18 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
   const minFilterCharacters = 3;
   const [searchTerm, setSearchTerm] = useState('');
   const allSeasons: Season[] = ['Spring', 'Summer', 'Autumn', 'Winter'];
-  const [selectedSeasons, setSelectedSeasons] = useState<SeasonFilterType[]>([]);
+  
+  // Function to determine current season based on month
+  const getCurrentSeason = (): Season => {
+    const month = new Date().getMonth(); // 0-11 (Jan = 0, Dec = 11)
+    
+    if (month >= 11 || month <= 1) return 'Winter'; // Dec, Jan, Feb
+    if (month >= 2 && month <= 4) return 'Spring'; // Mar, Apr, May
+    if (month >= 5 && month <= 7) return 'Summer'; // Jun, Jul, Aug
+    return 'Autumn'; // Sep, Oct, Nov
+  };
+  
+  const [selectedSeasons, setSelectedSeasons] = useState<SeasonFilterType[]>([getCurrentSeason()]);
 
   const [selectedCategories, setSelectedCategories] = useState<RecipeCategory[]>([]);
 
