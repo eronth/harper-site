@@ -1,16 +1,16 @@
 import React from "react";
-import type { Ingredient, Recipe, Steps } from "../food-recipe-data";
+import type { Ingredient, Recipe, Steps } from "../recipe-types";
 import './RecipeCard.css';
 
 // Import season icons
-import springEnabledIcon from '../../../assets/season-icons/enabled/spring.png';
-import summerEnabledIcon from '../../../assets/season-icons/enabled/summer.png';
-import autumnEnabledIcon from '../../../assets/season-icons/enabled/autumn.png';
-import winterEnabledIcon from '../../../assets/season-icons/enabled/winter.png';
-import springDisabledIcon from '../../../assets/season-icons/disabled/spring.png';
-import summerDisabledIcon from '../../../assets/season-icons/disabled/summer.png';
-import autumnDisabledIcon from '../../../assets/season-icons/disabled/autumn.png';
-import winterDisabledIcon from '../../../assets/season-icons/disabled/winter.png';
+import springEnabledIcon from '../../../../assets/season-icons/enabled/spring.png';
+import summerEnabledIcon from '../../../../assets/season-icons/enabled/summer.png';
+import autumnEnabledIcon from '../../../../assets/season-icons/enabled/autumn.png';
+import winterEnabledIcon from '../../../../assets/season-icons/enabled/winter.png';
+import springDisabledIcon from '../../../../assets/season-icons/disabled/spring.png';
+import summerDisabledIcon from '../../../../assets/season-icons/disabled/summer.png';
+import autumnDisabledIcon from '../../../../assets/season-icons/disabled/autumn.png';
+import winterDisabledIcon from '../../../../assets/season-icons/disabled/winter.png';
 
 type Props = {
   recipe: Recipe;

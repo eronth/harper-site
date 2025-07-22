@@ -1,25 +1,5 @@
-import type { RecipeCategory, Season } from "../../types/recipe-types";
-
-export type Recipe = StandardRecipeParts & {
-  ingredientsLists: Ingredients[];
-  stepsLists: Steps[];
-};
-
-type SimplifiedRecipe = StandardRecipeParts & {
-  ingredients: Ingredient[];
-  step0?: string;
-  steps: string[];
-};
-
-type StandardRecipeParts = {
-  title: string;
-  subtitle?: string;
-  category: RecipeCategory;
-  searchTerms?: string[];
-  description?: string;
-  seasons: Season[];
-};
-
+import type { RecipeCategory, Season } from "../../../types/recipe-types";
+import type { Ingredient, QuantityUnit, Recipe, SimplifiedRecipe, Steps } from "../SharedRecipeComponents/recipe-types";
 
 const spring: Season = 'Spring';
 const summer: Season = 'Summer';
@@ -28,23 +8,6 @@ const fall: Season = 'Autumn'; // Alias for Autumn
 const winter: Season = 'Winter';
 const yearround: Season[] = [spring, summer, autumn, winter];
 
-type Ingredients = {
-  title?: string;
-  ingredients: Ingredient[];
-};
-
-export type Ingredient = {
-  name: string;
-  quantity: number | [number, number];
-  unit?: QuantityUnit | null;
-  adjustments?: string;
-};
-
-export type Steps = {
-  title?: string;
-  step0?: string;
-  steps: string[];
-};
 
 const ing = (
   quantity: number | [number, number],
@@ -58,14 +21,6 @@ const ing = (
   adjustments
 });
 
-export type QuantityUnit = 'g' | 'kg' 
-| 'ml' | 'l' 
-| 'cup' | 'gal' | 'quart'
-| 'tbsp' | 'tsp' | 'generous tbsp'
-| 'oz' | 'lb' 
-| 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash' | 'splash' | 'clove'
-| 'strips' | 'bottle'
-| 'dashes' | 'bar spoon';
 const g: QuantityUnit = 'g';
 //const ml: QuantityUnit = 'ml';
 const cup: QuantityUnit = 'cup';

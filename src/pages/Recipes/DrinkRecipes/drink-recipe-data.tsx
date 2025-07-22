@@ -1,5 +1,5 @@
-import type { Season } from "../../types/recipe-types";
-import { type Ingredient, type QuantityUnit, type Recipe } from "../FoodRecipes/food-recipe-data";
+import type { Season } from "../../../types/recipe-types";
+import type { Ingredient, Recipe, QuantityUnit } from "../SharedRecipeComponents/recipe-types";
 
 type DrinkRecipe = {
   title: string;

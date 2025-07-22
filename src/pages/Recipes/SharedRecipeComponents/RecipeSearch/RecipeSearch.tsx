@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import type { RecipeCategory, Season } from "../../../types/recipe-types";
-import type { Recipe } from "../food-recipe-data";
+import type { RecipeCategory, Season } from "../../../../types/recipe-types";
+import type { Recipe } from "../recipe-types";
 import './RecipeSearch.css';
 
 type Props = {
