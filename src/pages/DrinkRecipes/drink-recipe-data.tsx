@@ -20,17 +20,21 @@ const winter: Season = 'Winter';
 const allSeasons: Season[] = [spring, summer, fall, winter];
 
 const add = (
-  quantity: number,
+  quantity: number | [number, number],
   name: string,
   options?: {
-    unit?: QuantityUnit,
+    unit?: QuantityUnit | 'none' | 'blank' | 'null',
     adjustments?: string,
   }
 ): Ingredient => ({
   name,
   quantity,
   adjustments: options?.adjustments,
-  unit: options?.unit ?? (quantity ? 'oz' : null), // Default unit for drinks is oz
+  unit: (
+    (options?.unit == 'none' || options?.unit == 'blank' || options?.unit == 'null')
+    ? null
+    : (options?.unit ?? (quantity ? 'oz' : null)) // Default unit for drinks is oz
+  ),
 });
 
 const drink = (r: DrinkRecipe): Recipe => ({
@@ -63,7 +67,7 @@ const recipes: Recipe[] = [
         add(2, 'gin'),
         add(.5, 'lemon juice'),
         add(.5, 'raspberry syrup'),
-        add(1, 'egg white', { adjustments: 'optional for frothiness' }),
+        add(1, 'egg white', { unit: 'none', adjustments: 'optional for frothiness' }),
       ],
       steps: [
         'Shake all ingredients (dry shake first if using egg white, then shake with ice)',
@@ -269,7 +273,7 @@ const recipes: Recipe[] = [
         add(2, 'bourbon'),
         add(1, 'benedictine'),
         add(1, 'maple syrup'),
-        add(0, '2-3 maraschino cherries'),
+        add([2, 3], 'maraschino cherries'),
       ],
       steps: [
         'Add all ingredients to shaker with ice',
@@ -501,7 +505,7 @@ const recipes: Recipe[] = [
         add(2, 'vanilla vodka'),
         add(1.5, 'honey'),
         add(.5, 'lemon juice'),
-        add(2, 'hot water', { adjustments: 'to taste, 2-4 oz' }),
+        add([2, 4], 'hot water', { adjustments: 'to taste, usually 2 per' }),
       ],
       steps: [
         'Water to a heatproof glass',
@@ -551,7 +555,7 @@ const recipes: Recipe[] = [
       ingredients: [
         add(1.5, 'gin'),
         add(3/4, 'sweet vermouth'),
-        //add([1, 3], 'maraschino cherries'),
+        add([1, 3], 'maraschino cherries'),
       ],
       steps: [
         'Add all ingredients to mixing glass with ice',

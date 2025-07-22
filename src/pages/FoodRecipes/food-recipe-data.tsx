@@ -35,7 +35,7 @@ type Ingredients = {
 
 export type Ingredient = {
   name: string;
-  quantity: number;
+  quantity: number | [number, number];
   unit?: QuantityUnit | null;
   adjustments?: string;
 };
@@ -47,7 +47,7 @@ export type Steps = {
 };
 
 const ing = (
-  quantity: number,
+  quantity: number | [number, number],
   unit: QuantityUnit | null,
   name: string,
   adjustments?: string

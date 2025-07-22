@@ -28,7 +28,11 @@ export default function RecipeCard({ recipe, unnumbered }: Props) {
   function ingredientToDisplay(ingredient: Ingredient): React.ReactNode {
     const parts: string[] = [];
     if (ingredient.quantity) {
-      parts.push(`${fractionize(ingredient.quantity * quantity)}`);
+      if (Array.isArray(ingredient.quantity)) {
+        parts.push(`${fractionize(ingredient.quantity[0] * quantity)} - ${fractionize(ingredient.quantity[1] * quantity)}`);
+      } else {
+        parts.push(`${fractionize(ingredient.quantity * quantity)}`);
+      }
     }
     if (ingredient.unit) {
       parts.push(ingredient.unit);
