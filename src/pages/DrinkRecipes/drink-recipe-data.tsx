@@ -429,6 +429,232 @@ const recipes: Recipe[] = [
         'Garnish with grated nutmeg (or cinnamon (or both!))',
       ],
     })
+  },
+  { // Kingston Coffee
+    ...drink({
+      title: 'Kingston Coffee',
+      seasons: [...allSeasons],
+      ingredients: [
+        add(1.5, 'plantation xaymaca jamaican rum'),
+        add(.5, 'Mr. Black or Kaluha'),
+        add(4, 'hot coffee', { adjustments: 'to taste, I used highlander grogg' }),
+        add(.5, 'brown sugar syrup'),
+        add(0, 'grated cinnamon and/or nutmeg'),
+        add(0, 'whipped cream', { adjustments: 'optional' }),
+      ],
+      steps: [
+        'Add rum, Mr. Black or Kaluha, and brown sugar syrup to a heatproof glass',
+        'Mix well (if using brown sugar instead of syrup, mix until dissolved)',
+        'Add hot coffee to taste (I use about 4.5oz)',
+        'Stir gently to combine',
+        'Top with grated cinnamon and/or nutmeg',
+        'Garnish with whipped cream (optional)',
+      ]
+    })
+  },
+  { // Oatmeal Cookie
+    ...drink({
+      title: 'Oatmeal Cookie',
+      seasons: [],
+      description: 'A dessert cocktail that tastes a bit like an oatmeal cookie.',
+      ingredients: [
+        add(1, 'Goldshlager'),
+        add(1, 'baileys irish cream'),
+        add(1, 'butterscotch schnapps'),
+        add(.5, 'vanilla vodka'),
+        add(0, 'cinnamon', { adjustments: 'optional, a sprinkle' }),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until well chilled',
+        'Strain into glass',
+        'Garnish with a sprinkle of cinnamon (optional)',
+      ],
+    })
+  },
+  { // Blue Hurricane
+    ...drink({
+      title: 'Blue Hurricane',
+      seasons: [summer],
+      ingredients: [
+        add(2, 'coconut rum'),
+        add(1, 'blue curacao'),
+        add(2, 'pineapple juice'),
+        add(0, 'orange peel', { adjustments: 'for garnish' }),
+        add(0, 'cherry', { adjustments: 'for garnish' }),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until cold',
+        'Strain into coupe glass (or maybe hurricane glass?) with an ice cube',
+        'Garnish with orange peel and cherry (optional)',
+        'Splash the ice cube with grenadine for a "Shark Attack" (optional)',
+      ],
+    })
+  },
+  { // The Winter Warmer
+    ...drink({
+      title: 'The Winter Warmer',
+      seasons: [winter],
+      description: 'A cozy and warming cocktail perfect for cold weather.',
+      ingredients: [
+        add(2, 'vanilla vodka'),
+        add(1.5, 'honey'),
+        add(.5, 'lemon juice'),
+        add(2, 'hot water', { adjustments: 'to taste, 2-4 oz' }),
+      ],
+      steps: [
+        'Water to a heatproof glass',
+        'Add honey and lemon juice, stir until honey is dissolved',
+        'Add vanilla vodka and stir to combine',
+        'Serve very warm'
+      ],
+    })
+  },
+  { // Sweet Martini
+    ...drink({
+      title: 'Sweet Martini',
+      seasons: [],
+      ingredients: [
+        add(1.5, 'gin'),
+        add(1.5, 'sweet vermouth'),
+        add(1, 'orange bitters', { unit: 'dash' }),
+        add(1, 'simple syrup', { unit: "tsp" }),
+        add(.5, 'grand marnier', { adjustments: 'optional' }),
+      ],
+      steps: [
+        'Add all ingredients to mixing glass with ice',
+        'Stir until cold',
+        'Strain into chilled coupe glass',
+      ],
+    })
+  },
+  { // Agent Orange
+    ...drink({
+      title: 'Agent Orange',
+      seasons: [],
+      ingredients: [
+        add(2, 'orange juice'),
+        add(1, 'vodka'),
+        add(1, 'triple sec'),
+        add(0, 'orange peel/slice', { adjustments: 'for garnish' }),
+      ],
+      steps: [
+        '',
+      ]
+    })
+  },
+  { // Gin & It
+    ...drink({
+      title: 'Gin & It',
+      seasons: [],
+      ingredients: [
+        add(1.5, 'gin'),
+        add(3/4, 'sweet vermouth'),
+        //add([1, 3], 'maraschino cherries'),
+      ],
+      steps: [
+        'Add all ingredients to mixing glass with ice',
+        'Stir until cold',
+        'Strain into chilled coupe glass',
+      ],
+    })
+  },
+  { // Daiquiri
+    ...drink({
+      title: 'Daiquiri',
+      seasons: [],
+      ingredients: [
+        add(2, 'rum'),
+        add(1, 'simple syrup'),
+        add(1, 'lime juice'),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until well chilled',
+        'Strain into chilled coupe glass',
+      ],
+    })
+  },
+  { // Jungle Bird
+    ...drink({
+      title: 'Jungle Bird',
+      seasons: [summer],
+      description: 'A tropical cocktail with a strong hint of bitterness.',
+      ingredients: [
+        add(.5, 'simple syrup'),
+        add(1.5, 'blackstrap rum'),
+        add(3/4, 'campari'),
+        add(1.5, 'pineapple juice'),
+        add(.5, 'lime juice'),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until well chilled',
+        'Strain into rocks glass with ice',
+      ],
+      searchTerms: ['tiki'],
+    })
+  },
+  { // Blue Mountain King
+    ...drink({
+      title: 'Blue Mountain King',
+      seasons: [summer],
+      description: 'A tropical cocktail with a hint of coconut and blue curaçao.',
+      ingredients: [
+        add(.75, 'doblin blanc vermouth'),
+        add(1, 'mr black'),
+        add(1, 'jamaican rum'),
+        add(1, 'bitters', { unit: 'dash' }),
+        add(1, 'dry curaçao', { unit: 'bar spoon' }),
+        add(0, 'maraschino cherry', { adjustments: 'for garnish' }),
+      ],
+      steps: [
+        'Add all ingredients to mixing glass with ice',
+        'Stir until well chilled',
+        'Strain into coupe with ice',
+      ],
+      searchTerms: ['tiki'],
+    })
+  },
+  { // Good News
+    ...drink({
+      title: 'Good News',
+      seasons: [],
+      ingredients: [
+        add(2, 'bourbon'),
+        add(.5, 'cynar'),
+        add(.5, 'benedictine'),
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until well chilled',
+        'Strain into glass',
+      ],
+    })
+
+  },
+  { // Color Changer
+    ...drink({
+      title: 'Color Changer',
+      seasons: [],
+      ingredients: [
+        add(2, 'navy strength gin'),
+        add(.75, 'simple syrup'),
+        add(1, 'butterfly pea flower tea', { adjustments: 'strongly brewed and chilled' }),
+        add(.5, 'citric acid', { unit: 'tsp' }),
+        add(3, 'water'),
+      ],
+      steps: [
+        'Create citric acid solution by dissolving citric acid in water, set aside',
+        'Add gin, simple syrup, and butterfly pea flower tea to shaker with ice',
+        'Consider adding the absolute faintest hint of something basic, like baking soda',
+        'Seriously, just a tiny tiny tiny pinch',
+        'Shake until well chilled',
+        'Strain into glass, serve with about .5oz of the citric acid solution on the side',
+        'Before drinking, add the citric acid solution to the glass and watch the color change!',
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
