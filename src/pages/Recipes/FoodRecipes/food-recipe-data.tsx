@@ -24,6 +24,7 @@ const ing = (
 const g: QuantityUnit = 'g';
 //const ml: QuantityUnit = 'ml';
 const cup: QuantityUnit = 'cup';
+const cups: QuantityUnit = 'cup'; // Alias for cup
 const quart: QuantityUnit = 'quart';
 const gal: QuantityUnit = 'gal';
 const gtbsp: QuantityUnit = 'generous tbsp';
@@ -790,7 +791,7 @@ const recipes: Recipe[] = [
       seasons: [fall],
       ingredients: [
         ing(3, cup, 'uncooked spiral pasta', '12 oz'),
-        ing(1, null, '12oz pkg fullcook chorizo chicken sausage'),
+        ing(12, oz, 'fullcook chorizo chicken sausage'),
         ing(1, cup, 'canned pumpkin'),
         ing(1, cup, 'half-and-half cream'),
         ing(3/4, tsp, 'salt'),
@@ -805,6 +806,123 @@ const recipes: Recipe[] = [
         'Cook and stir until heated through.',
         'Toss in pasta and enough water to moisten.',
         'Stir in cheese.',
+      ]
+    })
+  },
+  { // Truffle Gnocchi
+    ...simpleRecipe({
+      title: 'Truffle Gnocchi',
+      category: dinner,
+      seasons: [autumn, winter],
+      ingredients: [
+        ing(32, oz, 'gnocchi'),
+        ing(2, tbsp, 'truffle butter'),
+        ing(1, tbsp, 'butter'),
+        ing(3, tbsp, 'all-purpose flour'),
+        ing(2, cup, 'whole milk'),
+        ing(1.5, cup, 'Wisconsin Swiss cheese'),
+        ing(1, cup, 'Wisconsin white cheddar'),
+        ing(.5, cup, 'Wisconsin parmesean'),
+        ing(2, tbsp, 'Wisconsin parmesean'),
+        ing(1, tsp, 'ground white pepper'),
+        ing(1/4, cup, 'italian bread crumbs'),
+        ing(1, clove, 'garlic')
+      ],
+      steps: [
+        'Oven to 375°',
+        'Cook gnocchi as says package.',
+        'Separate a small bit of truffle butter from the 2 tbl. ',
+        'Melt rest of 2 tbl truffle and 1 tbl regular butter in oven proof pan.',
+        'Whisk in flour for ~3 mins.',
+        'Whisk in milk for 5-10 mins.',
+        'Melt extra trutter into bread crumbs.',
+        'Mix with 2 tbl parmesan and garlic in food processor. Set aside.',
+        'Add remaining cheeses to sauce. Stir.',
+        'Add salt and white pepper.',
+        'Add drained gnocchi and stir.',
+        'Oven for 10-15 mins.',
+        'Torch cheese?',
+        'Into bowl, some breadcrumb topping.',
+      ]
+    })
+  },
+  { // Bavarian Apple-Sausage Hash
+    ...simpleRecipe({
+      title: 'Bavarian Apple-Sausage Hash',
+      category: dinner,
+      seasons: [autumn],
+      ingredients: [
+        ing(2, tbsp, 'canola oil'),
+        ing(1/2, cup, 'onion', 'chopped'),
+        ing(4, null, 'fully cooked apple chicken sausages'),
+        ing( 1.5, cup, 'brussel sprouts', 'thinly sliced'),
+        ing(1, null, 'large tart apple, peeled and chopped', 'like Granny Smith'),
+        ing(1, tsp, 'caraway seeds'),
+        ing(1/4, tsp, 'salt'),
+        ing(1/4, tsp, 'pepper'),
+        ing(2, tbsp, 'finely chopped walnuts', 'to crunch preference'),
+        ing(1, tbsp, 'brown sugar'),
+        ing(1, tbsp, 'whole grain mustard'),
+        ing(1, tbsp, 'cider vinegar'),
+      ],
+      steps: [
+        'In large skillet, heat oil on med-high, sauté onion.',
+        'Add sausages, brussel sprouts, apple, and seasonings. Sauté until lightly browned, 6-8 min.',
+        'Stir in walnuts, brown sugar, mustard, and vinegar. Cook and stir for 2 mins.',
+      ]
+    })
+  },
+  { // Turkey and Biscuit Stew
+    ...simpleRecipe({
+      title: 'Turkey and Biscuit Stew',
+      category: dinner,
+      seasons: [autumn, winter],
+      ingredients: [
+        ing(2, cups, 'cooked turkey'),
+        ing(1/3, cup, 'chopped onion'),
+        ing(1/4, cup, 'butter', 'cubed'),
+        ing(1/3, cup, 'all-purpose flour'),
+        ing(1/2, tsp, 'salt'),
+        ing(1/8, tsp, 'pepper'),
+        ing(1.25, cup, 'chicken broth'),
+        ing(3/4, cup, 'whole milk'),
+        ing(1, cup, 'cooked peas'),
+        ing(1, cup, 'sliced baby carrots'),
+        ing(4, null, 'refrigerated buttermilk biscuit doughs'),
+      ],
+      steps: [
+        'Preheat oven to 375°F.',
+        'Cube turkey, cook if not already.',
+        'Sauté onion in butter until tender.',
+        'Stir in flour, salt, pepper, until blended.',
+        'Gradually add broth and milk.',
+        'Cook about 2 mins, until thickened and bubbly.',
+        'Add turkey, peas, and carrots. Heat.',
+        'Arrange biscuits over stew.',
+        'Bake in oven for 20-25 min.',
+      ]
+    })
+  },
+  { // No Bake Peanut Butter Bars
+    ...simpleRecipe({
+      title: 'No Bake Peanut Butter Bars',
+      category: dessert,
+      seasons: [],
+      ingredients: [
+        ing(3/4, cup, 'almond flour'),
+        ing(4, tbsp, 'butter'),
+        ing(1/4, cup, 'powdered sugar'),
+        ing(1/2, cup, 'peanut butter'),
+        ing(1/2, tsp, 'vanilla'),
+        ing(1/2, cup, 'sugar-free chocolate chips'),
+      ],
+      steps: [
+        'Mix all except chocolate chips.',
+        'Layer flat into roughly 6” pan.',
+        'Refrigerate mix for about 15 min.',
+        'Melt chocolate in microwave.',
+        'Pour chocolate over chilled peanut butter mix.',
+        'Chill in fridge for an hour.',
       ]
     })
   }
