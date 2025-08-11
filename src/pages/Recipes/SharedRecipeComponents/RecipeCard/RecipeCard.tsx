@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import type { Ingredient, Recipe, Steps } from "../recipe-types";
 import './RecipeCard.css';
 
@@ -17,6 +18,7 @@ type Props = {
   unnumbered?: boolean; // If true, steps will be displayed as an unnumbered list
 };
 export default function RecipeCard({ recipe, unnumbered }: Props) {
+  const location = useLocation();
   const [quantity, setQuantity] = React.useState(1);
   const maxQuantity = 5;
   const seasons = recipe.seasons || [];
@@ -24,6 +26,29 @@ export default function RecipeCard({ recipe, unnumbered }: Props) {
   const isSummerEnabled: boolean = seasons.includes('Summer');
   const isAutumnEnabled: boolean = seasons.includes('Autumn');
   const isWinterEnabled: boolean = seasons.includes('Winter');
+
+  // Create a slug from recipe title for URL-friendly ID
+  const createSlug = (title: string): string => {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
+
+  // Determine the base path for the recipe link
+  const getRecipeLink = (): string => {
+    const currentPath = location.pathname;
+    const recipeSlug = createSlug(recipe.title);
+    
+    if (currentPath.includes('/food-recipes')) {
+      return `/food-recipes/recipe/${recipeSlug}`;
+    } else if (currentPath.includes('/drink-recipes')) {
+      return `/drink-recipes/recipe/${recipeSlug}`;
+    }
+    
+    // Fallback - shouldn't happen in normal use
+    return `/recipe/${recipeSlug}`;
+  };
 
   function ingredientToDisplay(ingredient: Ingredient): React.ReactNode {
     const parts: string[] = [];
@@ -129,7 +154,9 @@ export default function RecipeCard({ recipe, unnumbered }: Props) {
         {quantitySwitcher}
       </div>
       <div className="recipe-title-region">
-        <h2 className={recipe.category.toLowerCase()}>{recipe.title}</h2>
+        <Link to={getRecipeLink()} className="recipe-title-link">
+          <h2 className={recipe.category.toLowerCase()}>{recipe.title}</h2>
+        </Link>
       </div>
       <div className="subtitle">{recipe.subtitle || <>&nbsp;</>}</div>
       <hr />

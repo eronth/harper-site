@@ -5,7 +5,9 @@ import Sidebar from './components/Sidebar/Sidebar'
 import Home from './pages/Home/HomePage'
 import VacaStayca from './pages/VacaStayca/VacaStaycaPage'
 import FoodRecipes from './pages/Recipes/FoodRecipes/FoodRecipesPage'
+import IndividualFoodRecipePage from './pages/Recipes/FoodRecipes/IndividualFoodRecipePage'
 import DrinkRecipes from './pages/Recipes/DrinkRecipes/DrinkRecipesPage'
+import IndividualDrinkRecipePage from './pages/Recipes/DrinkRecipes/IndividualDrinkRecipePage'
 import WinterVillage from './pages/WinterVillage/WinterVillagePage'
 import './App.css'
 
@@ -32,7 +34,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/vacations" element={<VacaStayca />} />
           <Route path="/food-recipes" element={<FoodRecipes />} />
+          <Route path="/food-recipes/recipe/:recipeId" element={<IndividualFoodRecipePage />} />
           <Route path="/drink-recipes" element={<DrinkRecipes />} />
+          <Route path="/drink-recipes/recipe/:recipeId" element={<IndividualDrinkRecipePage />} />
           <Route path="/winter-village" element={<WinterVillage />} />
         </Routes>
       </main>
