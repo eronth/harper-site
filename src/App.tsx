@@ -10,6 +10,7 @@ import DrinkRecipes from './pages/Recipes/DrinkRecipes/DrinkRecipesPage'
 import IndividualDrinkRecipePage from './pages/Recipes/DrinkRecipes/IndividualDrinkRecipePage'
 import WinterVillage from './pages/WinterVillage/WinterVillagePage'
 import PassionsAndHobbies from './pages/PassionsAndHobbies/PassionsAndHobbies'
+import IndividualProjectPage from './pages/PassionsAndHobbies/IndividualProjectPage/IndividualProjectPage'
 import './App.css'
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/drink-recipes" element={<DrinkRecipes />} />
           <Route path="/drink-recipes/recipe/:recipeId" element={<IndividualDrinkRecipePage />} />
           <Route path="/passions" element={<PassionsAndHobbies />} />
+          <Route path="/passions/project/:projectId" element={<IndividualProjectPage />} />
           <Route path="/winter-village" element={<WinterVillage />} />
         </Routes>
       </main>
