@@ -102,9 +102,14 @@
       
       img {
         width: 100%;
+        height: auto;
+        min-height: 200px;
         border-radius: 12px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease;
+        object-fit: cover;
+        display: block;
+        background-color: rgba(255, 255, 255, 0.1);
     
         &:hover {
           transform: scale(1.02);

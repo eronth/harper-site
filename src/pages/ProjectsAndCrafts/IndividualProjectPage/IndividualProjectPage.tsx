@@ -108,6 +108,7 @@ export default function IndividualProjectPage() {
                     alt={image.alt}
                     onError={(e) => {
                       e.currentTarget.src = '/images/placeholder-project.jpg';
+                      e.currentTarget.alt = 'Project image placeholder';
                     }}
                   />
                   {image.caption && (
