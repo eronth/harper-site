@@ -2,18 +2,30 @@ import type { Project } from "../../../../types/project-types";
 
 const project: Project = {
   id: 'pc-flight-throttle-repair',
-  title: 'PC Flight Throttle Electronics Repair',
+  title: 'PC Flight Throttle Electronics 2nd Repair',
   worker: 'Nic',
   category: 'Electronics',
   status: 'In Progress',
   startDate: '2024-12-15',
   lastUpdated: '2025-08-11',
   shortDescription: 'Rewiring and repairing the internal electronics of a vintage PC flight throttle controller to bring it back to life.',
-  detailedDescription: `This project involves completely rewiring the internal electronics of an old PC flight throttle that stopped working. The original potentiometers had worn out and several connections had corroded over time. 
-
-The goal is to replace the internal components with modern equivalents while maintaining the original external appearance and feel. This includes installing new potentiometers, updating the wiring harness, and potentially adding USB connectivity if the original serial connection proves problematic.
-
-The throttle has sentimental value as it was used for countless hours of flight simulation, so restoring it to working condition feels like bringing back a piece of gaming history.`,
+  detailedDescription:
+  <>
+    This project involves trying to repair the functionality of a vintage PC flight throttle. It's a
+    Thrustmaster "Attack Throttle" controller I <s>looted</s> inherited from my grandfather.
+    It appears it was once used for a top-gun flight game.
+    <br />
+    <br />
+    I had previously removed and replaced the electronics with a custom setup using entirely new wiring,
+    and a Leonardo board with pinouts for the throttle controls, 
+    but somewhere along the way something went wrong and it stopped working.
+    <br />
+    <br />
+    In diagnosing the issue, I largely found that the wiring I had set up was frustrating to actually measure.
+    Part of the attempt here was to break up some of the less-modular parts of the wiring to ensure
+    better accessibility and easier troubleshooting in the future. Additionally, I obviously wanted to
+    get things working again.
+  </>,
   images: [
     {
       src: '/images/projects/throttle-before.jpg',
@@ -23,22 +35,22 @@ The throttle has sentimental value as it was used for countless hours of flight 
     {
       src: '/images/projects/throttle-internals.jpg',
       alt: 'Internal electronics exposed',
-      caption: 'Corroded connections and worn potentiometers visible after opening'
+      caption: 'Disassembled view of the throttle internals'
     }
   ],
   materials: [
-    'Linear potentiometers (10kΩ)',
-    'Multi-strand copper wire',
+    'Simple multi-colored wires',
+    'Wire connectors of various types',
+    'Solder',
     'Heat shrink tubing',
-    'Electrical solder',
-    'Cleaning supplies (isopropyl alcohol, etc.)'
+    'Electrical tape',
   ],
   tools: [
     'Soldering iron and station',
-    'Wire strippers',
+    'Wire strippers and clippers',
     'Multimeter',
-    'Small screwdrivers',
-    'Desoldering braid'
+    'Small screwdrivers (from kit)',
+    'Various Equipment for testing',
   ],
   steps: [
     'Disassemble the throttle housing carefully',

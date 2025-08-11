@@ -9,11 +9,9 @@ const project: Project = {
   startDate: '2025-01-10',
   lastUpdated: '2025-08-11',
   shortDescription: 'Creating a custom leather messenger bag from scratch using traditional leatherworking techniques.',
-  detailedDescription: `This project involves creating a completely custom leather messenger bag using traditional hand-stitching techniques and high-quality leather. The design focuses on both functionality and aesthetics, with multiple compartments for organization and a classic, timeless appearance.
-
-The bag is being constructed using vegetable-tanned leather which will develop a beautiful patina over time. All hardware is brass for durability and visual appeal. The construction uses saddle-stitching throughout for maximum strength and longevity.
-
-This is both a functional project and a learning experience in traditional craftsmanship techniques that have been used for centuries.`,
+  detailedDescription: <>
+  
+  </>,
   images: [
     {
       src: '/images/projects/leather-pattern.jpg',

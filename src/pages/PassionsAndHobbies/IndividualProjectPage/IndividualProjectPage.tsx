@@ -122,9 +122,7 @@ export default function IndividualProjectPage() {
           <div className="project-description">
             <h2>About This Project</h2>
             <div className="description-content">
-              {project.detailedDescription.split('\n\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              {project.detailedDescription}
             </div>
           </div>
 

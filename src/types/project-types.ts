@@ -33,7 +33,7 @@ export interface Project {
   completedDate?: string; // ISO date string
 
   shortDescription: string;
-  detailedDescription: string;
+  detailedDescription: React.ReactNode;
   
   images: ProjectImage[];
   materials?: string[];
