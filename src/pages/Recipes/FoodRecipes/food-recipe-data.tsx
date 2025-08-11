@@ -378,7 +378,7 @@ const recipes: Recipe[] = [
         ing(1, tsp, 'pleasoning'),
         ing(1/8, tsp, 'cayenne'),
         ing(0, null, 'salt & pepper'),
-        ing(1, null, 'lime juice (one lime’s worth)'),
+        ing(1, null, 'lime juice (one lime’s worth)', 'optional'),
         ing(1, null, 'cilantro'),
         ing(1, cup, 'white rice'),
         ing(2.25, cup, 'chicken broth'),

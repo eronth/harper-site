@@ -9,9 +9,10 @@ type Props = {
   recipes: Recipe[];
   backPath: string;
   backLabel: string;
+  unnumbered?: boolean;
 };
 
-export default function IndividualRecipePage({ recipes, backPath, backLabel }: Props) {
+export default function IndividualRecipePage({ recipes, backPath, backLabel, unnumbered }: Props) {
   const { recipeId } = useParams<{ recipeId: string }>();
   const navigate = useNavigate();
   
@@ -26,7 +27,27 @@ export default function IndividualRecipePage({ recipes, backPath, backLabel }: P
   // Find the recipe by matching the slug
   const recipe = recipes.find(r => createSlug(r.title) === recipeId);
   
-  const recipeNotFound = (
+  if (!recipe) {
+    return (
+      <div className="page-content">
+        <div className="individual-recipe-page">
+          <button 
+            className="back-button"
+            onClick={() => navigate(backPath)}
+          >
+            <FontAwesomeIcon icon={faArrowLeft} />
+            Back to {backLabel}
+          </button>
+          <div className="error-message">
+            <h1>Recipe Not Found</h1>
+            <p>The recipe you're looking for doesn't exist.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  return (
     <div className="page-content">
       <div className="individual-recipe-page">
         <button 
@@ -36,30 +57,11 @@ export default function IndividualRecipePage({ recipes, backPath, backLabel }: P
           <FontAwesomeIcon icon={faArrowLeft} />
           Back to {backLabel}
         </button>
-        <div className="error-message">
-          <h1>Recipe Not Found</h1>
-          <p>The recipe you're looking for doesn't exist.</p>
+        
+        <div className="individual-recipe-container">
+          <RecipeCard recipe={recipe} interactive unnumbered={unnumbered} />
         </div>
       </div>
     </div>
-  );
-  
-  return (recipe
-    ? <div className="page-content">
-        <div className="individual-recipe-page">
-          <button 
-            className="back-button"
-            onClick={() => navigate(backPath)}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} />
-            Back to {backLabel}
-          </button>
-          
-          <div className="individual-recipe-container">
-            <RecipeCard recipe={recipe} />
-          </div>
-        </div>
-      </div>
-    : recipeNotFound
   );
 }

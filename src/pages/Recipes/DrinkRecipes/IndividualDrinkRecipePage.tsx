@@ -7,6 +7,7 @@ export default function IndividualDrinkRecipePage() {
       recipes={recipes}
       backPath="/drink-recipes"
       backLabel="Drink Recipes"
+      unnumbered
     />
   );
 }
