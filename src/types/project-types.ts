@@ -37,10 +37,15 @@ export interface Project {
   
   images: ProjectImage[];
   materials?: string[];
+
   tools?: string[];
   steps?: string[];
-  challenges?: string[];
-  learnings?: string[];
-  nextSteps?: string[];
-  relatedLinks?: { title: string; url: string }[];
+  walkthrough: React.ReactNode;
+
+  summary: {
+    challenges?: string[];
+    learnings?: string[];
+    nextSteps?: string[];
+    relatedLinks?: { title: string; url: string }[];
+  };
 };

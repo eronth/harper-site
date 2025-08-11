@@ -19,7 +19,7 @@ export default function SmallProjectCard({ project }: Props) {
   return (
     <Link
       key={project.id} 
-      to={`/passions/project/${createSlug(project.id)}`} 
+      to={`/projects/project/${createSlug(project.id)}`} 
       className="project-card"
     >
       {/* Project image */}

@@ -9,10 +9,10 @@ import type { Project, ProjectWorker, ProjectStatus, ProjectCategory } from '../
 // Data
 import projects from './ProjectData/project-data';
 // Css
-import './PassionsAndHobbies.css';
+import './ProjectsAndCrafts.css';
 import SmallProjectCard from './SmallProjectCard/SmallProjectCard';
 
-export default function PassionsAndHobbies() {
+export default function ProjectsAndCrafts() {
   const [filterWorker, setFilterWorker] = useState<ProjectWorker | 'All'>('All');
   const [filterStatus, setFilterStatus] = useState<ProjectStatus | 'All'>('All');
   const [filterCategory, setFilterCategory] = useState<ProjectCategory | 'All'>('All');
@@ -36,8 +36,8 @@ export default function PassionsAndHobbies() {
 
   return (
     <div className="page-content">
-      <div className="passions-header">
-        <h1>Passions & Hobbies</h1>
+      <div className="projects-header">
+        <h1>Projects & Crafts</h1>
         <p>Our creative projects, repairs, and experiments - where curiosity meets craftsmanship!</p>
       </div>
 

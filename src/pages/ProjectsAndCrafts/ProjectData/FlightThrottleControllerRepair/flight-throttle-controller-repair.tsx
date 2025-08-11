@@ -63,21 +63,25 @@ const project: Project = {
     'Test functionality before reassembly',
     'Reassemble and calibrate'
   ],
-  challenges: [
-    'Sourcing exact replacement potentiometers with correct dimensions',
-    'Working in the cramped internal space',
-    'Maintaining original calibration and feel'
-  ],
-  learnings: [
-    'Better understanding of potentiometer types and applications',
-    'Improved soldering technique for tight spaces',
-    'Importance of documenting original state before modification'
-  ],
-  nextSteps: [
-    'Complete potentiometer replacement',
-    'Test with flight simulation software',
-    'Consider adding USB interface for modern compatibility'
-  ]
+  walkthrough: <>
+  </>,
+  summary: {
+    challenges: [
+      'Sourcing exact replacement potentiometers with correct dimensions',
+      'Working in the cramped internal space',
+      'Maintaining original calibration and feel'
+    ],
+    learnings: [
+      'Better understanding of potentiometer types and applications',
+      'Improved soldering technique for tight spaces',
+      'Importance of documenting original state before modification'
+    ],
+    nextSteps: [
+      'Complete potentiometer replacement',
+      'Test with flight simulation software',
+      'Consider adding USB interface for modern compatibility'
+    ]
+  },
 };
 
 export default project;

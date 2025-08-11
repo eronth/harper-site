@@ -51,21 +51,25 @@ const project: Project = {
     'Attach straps and hardware',
     'Final conditioning and finishing'
   ],
-  challenges: [
-    'Ensuring consistent stitch spacing by hand',
-    'Getting clean, professional-looking edges',
-    'Proper planning to avoid mistakes in expensive leather'
-  ],
-  learnings: [
-    'Patience is essential in leatherwork',
-    'The importance of sharp tools for clean cuts',
-    'How leather grain direction affects durability'
-  ],
-  nextSteps: [
-    'Complete main body assembly',
-    'Add internal pocket structure',
-    'Install shoulder strap and hardware'
-  ]
+  walkthrough: <>
+  </>,
+  summary: {
+    challenges: [
+      'Ensuring consistent stitch spacing by hand',
+      'Getting clean, professional-looking edges',
+      'Proper planning to avoid mistakes in expensive leather'
+    ],
+    learnings: [
+      'Patience is essential in leatherwork',
+      'The importance of sharp tools for clean cuts',
+      'How leather grain direction affects durability'
+    ],
+    nextSteps: [
+      'Complete main body assembly',
+      'Add internal pocket structure',
+      'Install shoulder strap and hardware'
+    ]
+  }
 };
 
 export default project;

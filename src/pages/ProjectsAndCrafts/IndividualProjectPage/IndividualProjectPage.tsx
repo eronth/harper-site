@@ -29,10 +29,10 @@ export default function IndividualProjectPage() {
         <div className="individual-project-page">
           <button 
             className="back-button"
-            onClick={() => navigate('/passions')}
+            onClick={() => navigate('/projects')}
           >
             <FontAwesomeIcon icon={faArrowLeft} />
-            Back to Passions & Hobbies
+            Back to Projects & Crafts
           </button>
           <div className="error-message">
             <h1>Project Not Found</h1>
@@ -48,10 +48,10 @@ export default function IndividualProjectPage() {
       <div className="individual-project-page">
         <button 
           className="back-button"
-          onClick={() => navigate('/passions')}
+          onClick={() => navigate('/projects')}
         >
           <FontAwesomeIcon icon={faArrowLeft} />
-          Back to Passions & Hobbies
+          Back to Projects & Crafts
         </button>
         
         <div className="project-container">
@@ -174,14 +174,14 @@ export default function IndividualProjectPage() {
             )}
 
             {/* Challenges */}
-            {project.challenges && project.challenges.length > 0 && (
+            {project?.summary?.challenges && project.summary.challenges.length > 0 && (
               <div className="detail-section">
                 <h3>
                   <FontAwesomeIcon icon={faExclamationTriangle} />
                   Challenges
                 </h3>
                 <ul>
-                  {project.challenges.map((challenge, index) => (
+                  {project.summary.challenges.map((challenge, index) => (
                     <li key={index}>{challenge}</li>
                   ))}
                 </ul>
@@ -189,14 +189,14 @@ export default function IndividualProjectPage() {
             )}
 
             {/* Learnings */}
-            {project.learnings && project.learnings.length > 0 && (
+            {project?.summary?.learnings && project.summary.learnings.length > 0 && (
               <div className="detail-section">
                 <h3>
                   <FontAwesomeIcon icon={faGraduationCap} />
                   What I Learned
                 </h3>
                 <ul>
-                  {project.learnings.map((learning, index) => (
+                  {project.summary.learnings.map((learning, index) => (
                     <li key={index}>{learning}</li>
                   ))}
                 </ul>
@@ -204,14 +204,14 @@ export default function IndividualProjectPage() {
             )}
 
             {/* Next Steps */}
-            {project.nextSteps && project.nextSteps.length > 0 && (
-              <div className="detail-section">
+            {project?.summary?.nextSteps && project.summary.nextSteps.length > 0 && (
+              <div className="detail-section full-width">
                 <h3>
                   <FontAwesomeIcon icon={faArrowRight} />
                   Next Steps
                 </h3>
                 <ul>
-                  {project.nextSteps.map((step, index) => (
+                  {project.summary.nextSteps.map((step, index) => (
                     <li key={index}>{step}</li>
                   ))}
                 </ul>
@@ -219,18 +219,18 @@ export default function IndividualProjectPage() {
             )}
 
             {/* Related Links */}
-            {project.relatedLinks && project.relatedLinks.length > 0 && (
+            {project?.summary?.relatedLinks && project.summary.relatedLinks.length > 0 && (
               <div className="detail-section full-width">
                 <h3>
                   <FontAwesomeIcon icon={faExternalLinkAlt} />
                   Related Links
                 </h3>
                 <div className="related-links">
-                  {project.relatedLinks.map((link, index) => (
-                    <a 
-                      key={index} 
-                      href={link.url} 
-                      target="_blank" 
+                  {project.summary.relatedLinks.map((link, index) => (
+                    <a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="related-link"
                     >

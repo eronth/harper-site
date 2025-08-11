@@ -21,7 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { id: 'vacations', label: 'Vacations and Staycations', path: '/vacations', icon: faUmbrellaBeach},
     { id: 'food-recipes', label: 'Food Recipes', path: '/food-recipes', icon: faUtensils},
     { id: 'drink-recipes', label: 'Drink Recipes', path: '/drink-recipes', icon: faCocktail},
-    { id: 'passions', label: 'Passions & Hobbies', path: '/passions', icon: faStar},
+    { id: 'projects', label: 'Projects & Crafts', path: '/projects', icon: faStar},
     { id: 'winter-village', label: 'Winter Village', path: '/winter-village', icon: faHouseChimney},
   ];
 

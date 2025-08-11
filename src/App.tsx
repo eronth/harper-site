@@ -9,8 +9,8 @@ import IndividualFoodRecipePage from './pages/Recipes/FoodRecipes/IndividualFood
 import DrinkRecipes from './pages/Recipes/DrinkRecipes/DrinkRecipesPage'
 import IndividualDrinkRecipePage from './pages/Recipes/DrinkRecipes/IndividualDrinkRecipePage'
 import WinterVillage from './pages/WinterVillage/WinterVillagePage'
-import PassionsAndHobbies from './pages/PassionsAndHobbies/PassionsAndHobbies'
-import IndividualProjectPage from './pages/PassionsAndHobbies/IndividualProjectPage/IndividualProjectPage'
+import ProjectsAndCrafts from './pages/ProjectsAndCrafts/ProjectsAndCrafts'
+import IndividualProjectPage from './pages/ProjectsAndCrafts/IndividualProjectPage/IndividualProjectPage'
 import './App.css'
 
 function App() {
@@ -39,8 +39,8 @@ function App() {
           <Route path="/food-recipes/recipe/:recipeId" element={<IndividualFoodRecipePage />} />
           <Route path="/drink-recipes" element={<DrinkRecipes />} />
           <Route path="/drink-recipes/recipe/:recipeId" element={<IndividualDrinkRecipePage />} />
-          <Route path="/passions" element={<PassionsAndHobbies />} />
-          <Route path="/passions/project/:projectId" element={<IndividualProjectPage />} />
+          <Route path="/projects" element={<ProjectsAndCrafts />} />
+          <Route path="/projects/project/:projectId" element={<IndividualProjectPage />} />
           <Route path="/winter-village" element={<WinterVillage />} />
         </Routes>
       </main>
