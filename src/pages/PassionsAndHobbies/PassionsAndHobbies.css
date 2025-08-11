@@ -1,18 +1,18 @@
 .passions-header {
   text-align: center;
   margin-bottom: 2rem;
-}
 
-.passions-header h1 {
-  margin-bottom: 1rem;
-  color: #fff;
-}
+  h1 {
+    margin-bottom: 1rem;
+    color: #fff;
+  }
 
-.passions-header p {
-  font-size: 1.2rem;
-  color: #ccc;
-  max-width: 600px;
-  margin: 0 auto;
+  p {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }
 
 /* Results info */
@@ -36,38 +36,40 @@
   text-align: center;
   padding: 4rem 2rem;
   color: #666;
-}
 
-.no-projects svg {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  opacity: 0.5;
-}
+  svg {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
 
-.no-projects h3 {
-  margin: 0 0 0.5rem 0;
-  color: #999;
-}
+  h3 {
+    margin: 0 0 0.5rem 0;
+    color: #999;
+  }
 
-.no-projects p {
-  margin: 0;
-  color: #777;
+  p {
+    margin: 0;
+    color: #777;
+  }
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
+  .passions-header {
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-  
-  .passions-header h1 {
-    font-size: 2rem;
-  }
-  
-  .passions-header p {
-    font-size: 1rem;
-    padding: 0 1rem;
   }
 }
 
