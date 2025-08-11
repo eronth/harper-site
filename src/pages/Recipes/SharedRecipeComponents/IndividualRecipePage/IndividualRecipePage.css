@@ -125,6 +125,7 @@
     .season-icons {
       grid-column: 1;
       grid-row: 1;
+      --side: 2.5em;
     }
     
     .qty-select {
