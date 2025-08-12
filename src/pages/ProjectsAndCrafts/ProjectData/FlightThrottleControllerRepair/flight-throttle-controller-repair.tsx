@@ -53,17 +53,55 @@ const project: Project = {
     'Various Equipment for testing',
   ],
   steps: [
-    'Disassemble the throttle housing carefully',
-    'Document original wiring with photos',
-    'Test all components to identify failures',
-    'Remove corroded and broken components',
-    'Clean all surfaces and connections',
-    'Install new potentiometers',
-    'Rewire with fresh connections',
-    'Test functionality before reassembly',
-    'Reassemble and calibrate'
+    'Disassemble the throttle',
+    ''
   ],
   walkthrough: <>
+    First, I recreated the original button-press wiring just to test the very basics. Here I show 
+    the incredibly roughly done wiring just for testing. The blue wire acts as the pin-out (leading to
+    pin 8 in this example), and the short orange wire is my "button", so to speak.
+    I simply plug the orange wire in the same row as the blue wire to "press" the button.
+
+    <br /><br />
+
+    It can be seen from the terminal output that the button press is registered correctly. In this case, the button we
+    have wired up is the first value of the "Grip Button States". While unplugged (or button unpressed) we get 0, 
+    when plugged we get 1. The other values are just wrong for now.
+
+    <br /><br />
+
+    Once we're confident the basic button presses work, it's time to test the other components. Here we wire up a few
+    of the actual buttons, and replace the fake-button orange wire. Tests with an actual button show the same results.
+
+    <br /><br />
+
+    So with a series of tests using the functional button, I narrow down that, somehow, the 
+    5v-in wires are all non-functional in the throttle. That's a pretty weird failure mode, but it is what it is.
+    So the plan of attack for here is as follows:
+    <ol>
+      <li>
+        Ensure each purple signal-pin wire still works.
+      </li>
+      <li>
+        Map the purple signal-pin wires to their respective pinouts on the Leonardo board and give them
+        color-coded ends to more easily assess connections in the future.
+      </li>
+      <li>
+        Update the purple wires (now with color-coded ends) to have a connector for easier future repairs.
+      </li>
+      <li>
+        Ensure each white grounding wire still works.
+      </li>
+      <li>
+        Determine best course of action for resistors (directly to button, directly to ground,
+         or disconnectable from both).
+      </li>
+      <li>
+        Ensure everything so far works at this point, then assess the 5v black wire situation.
+      </li>
+    </ol>
+
+
   </>,
   summary: {
     challenges: [

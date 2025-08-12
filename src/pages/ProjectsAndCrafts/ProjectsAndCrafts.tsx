@@ -4,13 +4,13 @@ import { useMemo, useState } from 'react';
 import ProjectPageFilters from './ProjectPageFilters/ProjectPageFilters';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import SmallProjectCard from './SmallProjectCard/SmallProjectCard';
 // Types
 import type { Project, ProjectWorker, ProjectStatus, ProjectCategory } from '../../types/project-types';
 // Data
 import projects from './ProjectData/project-data';
 // Css
 import './ProjectsAndCrafts.css';
-import SmallProjectCard from './SmallProjectCard/SmallProjectCard';
 
 export default function ProjectsAndCrafts() {
   const [filterWorker, setFilterWorker] = useState<ProjectWorker | 'All'>('All');
@@ -34,6 +34,36 @@ export default function ProjectsAndCrafts() {
     );
   }, [filteredProjects]);
 
+  const filters = useMemo(() =>
+    <ProjectPageFilters
+      filterWorkerReactState={[filterWorker, setFilterWorker]}
+      filterStatusReactState={[filterStatus, setFilterStatus]}
+      filterCategoryReactState={[filterCategory, setFilterCategory]}
+    />,
+  [filterCategory, filterStatus, filterWorker]);
+
+  const resultCount = useMemo(() =>
+    <div className="results-info">
+      Showing {sortedProjects.length} of {projects.length} projects
+    </div>,
+  [sortedProjects.length]);
+
+  const projectsGrid = useMemo(() =>
+    <div className="projects-grid">
+      {sortedProjects.map((project) => (
+        <SmallProjectCard key={project.id} project={project} />
+      ))}
+    </div>,
+  [sortedProjects]);
+
+  const noProjects = useMemo(() =>
+    <div className="no-projects">
+      <FontAwesomeIcon icon={faLightbulb} />
+      <h3>No projects match your filters</h3>
+      <p>Try adjusting your filter criteria to see more projects.</p>
+    </div>,
+  []);
+
   return (
     <div className="page-content">
       <div className="projects-header">
@@ -42,31 +72,15 @@ export default function ProjectsAndCrafts() {
       </div>
 
       {/* Filters */}
-      <ProjectPageFilters
-        filterWorkerReactState={[filterWorker, setFilterWorker]}
-        filterStatusReactState={[filterStatus, setFilterStatus]}
-        filterCategoryReactState={[filterCategory, setFilterCategory]}
-      />
+      {filters}
 
       {/* Results count */}
-      <div className="results-info">
-        Showing {sortedProjects.length} of {projects.length} projects
-      </div>
+      {resultCount}
 
       {/* Project grid */}
-      <div className="projects-grid">
-        {sortedProjects.map((project) => (
-          <SmallProjectCard key={project.id} project={project} />
-        ))}
-      </div>
+      {projectsGrid}
 
-      {sortedProjects.length === 0 && (
-        <div className="no-projects">
-          <FontAwesomeIcon icon={faLightbulb} />
-          <h3>No projects match your filters</h3>
-          <p>Try adjusting your filter criteria to see more projects.</p>
-        </div>
-      )}
+      {sortedProjects.length === 0 && (noProjects)}
     </div>
   );
 };
