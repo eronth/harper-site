@@ -22,8 +22,10 @@ export interface MtgDeck {
   commander?: MtgCard;
   keyCards?: MtgCard[];
   owner: Owner;
-  deckbox: string;
-  case: string;
+  location: {
+    case?: string;
+    deckbox: string;
+  };
   status: DeckStatus;
   lastUpdated: string; // ISO date string
 }

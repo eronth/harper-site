@@ -32,8 +32,10 @@ const mtgDecks: MtgDeck[] = [
       }
     ],
     owner: 'Nic',
-    deckbox: 'Red Ultra Pro',
-    case: 'Large Black Case',
+    location: {
+      deckbox: 'Red Ultra Pro',
+      case: 'Large Black Case',
+    },
     status: 'Good',
     lastUpdated: '2024-12-15'
   },
@@ -59,8 +61,10 @@ const mtgDecks: MtgDeck[] = [
       }
     ],
     owner: 'Leslie',
-    deckbox: 'Blue BCW',
-    case: 'Small White Case',
+    location: {
+      deckbox: 'Blue BCW',
+      case: 'Small White Case',
+    },
     status: 'Needs Improvement',
     lastUpdated: '2024-11-20'
   },
@@ -86,8 +90,10 @@ const mtgDecks: MtgDeck[] = [
       }
     ],
     owner: 'Nic',
-    deckbox: 'Green Dragon Shield',
-    case: 'Large Black Case',
+    location: {
+      deckbox: 'Green Dragon Shield',
+      case: 'Large Black Case',
+    },
     status: 'Great',
     lastUpdated: '2025-01-10'
   }

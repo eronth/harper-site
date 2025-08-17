@@ -123,23 +123,25 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
       <div className="deck-details">
         <div className="detail-group">
           <span className="detail-label">Owner:</span>
-          <span className={`detail-value ${getOwnerClass(deck.owner)}`}>
+          <span className={`detail-value owner ${getOwnerClass(deck.owner)}`}>
             {deck.owner}
           </span>
         </div>
         <div className="detail-group">
           <span className="detail-label">Status:</span>
-          <span className={`detail-value ${getStatusClass(deck.status)}`}>
+          <span className={`detail-value status ${getStatusClass(deck.status)}`}>
             {deck.status}
           </span>
         </div>
-        <div className="detail-group">
-          <span className="detail-label">Deckbox:</span>
-          <span className="detail-value">{deck.deckbox}</span>
-        </div>
-        <div className="detail-group">
-          <span className="detail-label">Case:</span>
-          <span className="detail-value">{deck.case}</span>
+        <div className="detail-group deck-location">
+          <span className="detail-label">Container:</span>
+          <span className="detail-value">
+            {deck.location.case 
+              ? deck.location.case + ' - '
+              : null
+            }
+            {deck.location.deckbox}
+          </span>
         </div>
       </div>
     </div>

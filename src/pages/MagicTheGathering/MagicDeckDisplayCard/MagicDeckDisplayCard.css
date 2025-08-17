@@ -8,30 +8,32 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-strong);
+    border-color: var(--border-accent-strong);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+  
 }
 
-.deck-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--gradient-primary);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.deck-card:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: var(--shadow-strong);
-  border-color: var(--border-accent-strong);
-}
-
-.deck-card:hover::before {
-  opacity: 1;
-}
 
 .deck-header {
   display: flex;
@@ -232,53 +234,64 @@
   padding-top: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: .2em;
 }
 
 .detail-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.25rem;
+
+  &.deck-location {
+    /*Span all grid columns*/
+    grid-column: 1 / -1;
+    flex-direction: column;
+  }
+
+  .detail-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+
+  .detail-value {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+
+    &.owner {
+      &.owner-nic {
+        color: var(--brand-maroon-light);
+        font-weight: bold;
+      }
+      
+      &.owner-leslie {
+        color: #9b59b6;
+        font-weight: bold;
+      }
+    }
+    &.status {
+      &.status-incomplete { 
+        color: #e74c3c; 
+        font-weight: 600;
+      }
+      &.status-needs-improvement { 
+        color: #f39c12; 
+        font-weight: 600;
+      }
+      &.status-good { 
+        color: #27ae60; 
+        font-weight: 600;
+      }
+      &.status-great { 
+        color: #2ecc71; 
+        font-weight: bold;
+        text-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+      }
+    }
+  }
 }
 
-.detail-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.detail-value {
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-.owner-nic {
-  color: var(--brand-maroon-light);
-  font-weight: bold;
-}
-
-.owner-leslie {
-  color: #9b59b6;
-  font-weight: bold;
-}
-
-.status-incomplete { 
-  color: #e74c3c; 
-  font-weight: 600;
-}
-.status-needs-improvement { 
-  color: #f39c12; 
-  font-weight: 600;
-}
-.status-good { 
-  color: #27ae60; 
-  font-weight: 600;
-}
-.status-great { 
-  color: #2ecc71; 
-  font-weight: bold;
-  text-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
-}
