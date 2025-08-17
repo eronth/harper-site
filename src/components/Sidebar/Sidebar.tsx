@@ -7,7 +7,8 @@ import {
   faCocktail,
   faHouseChimney,
   faStar,
-  faTimes
+  faTimes,
+  faMagic
 } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
 
@@ -23,6 +24,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { id: 'drink-recipes', label: 'Drink Recipes', path: '/drink-recipes', icon: faCocktail},
     { id: 'projects', label: 'Projects & Crafts', path: '/projects', icon: faStar},
     { id: 'winter-village', label: 'Winter Village', path: '/winter-village', icon: faHouseChimney},
+    { id: 'magic-the-gathering', label: 'Magic: The Gathering', path: '/magic-the-gathering', icon: faMagic},
   ];
 
   return (

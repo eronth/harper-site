@@ -11,6 +11,7 @@ import IndividualDrinkRecipePage from './pages/Recipes/DrinkRecipes/IndividualDr
 import WinterVillage from './pages/WinterVillage/WinterVillagePage'
 import ProjectsAndCrafts from './pages/ProjectsAndCrafts/ProjectsAndCrafts'
 import IndividualProjectPage from './pages/ProjectsAndCrafts/IndividualProjectPage/IndividualProjectPage'
+import MagicTheGathering from './pages/MagicTheGathering/MagicTheGatheringPage'
 import './App.css'
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           <Route path="/projects" element={<ProjectsAndCrafts />} />
           <Route path="/projects/project/:projectId" element={<IndividualProjectPage />} />
           <Route path="/winter-village" element={<WinterVillage />} />
+          <Route path="/magic-the-gathering" element={<MagicTheGathering />} />
         </Routes>
       </main>
     </div>
