@@ -31,50 +31,49 @@
       opacity: 1;
     }
   }
-  
 }
-
 
 .deck-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1rem;
-}
 
-.deck-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: var(--text-primary);
-  margin: 0;
-}
+  .deck-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0;
+  }
 
-.deck-colors {
-  display: flex;
-  gap: 0.25rem;
-}
+  .deck-colors {
+    display: flex;
+    gap: 0.25rem;
 
-.deck-colors .ms {
-  font-size: 1.2rem;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-  transition: transform 0.2s ease;
-}
+    .ms {
+      font-size: 1.2rem;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+      transition: transform 0.2s ease;
 
-.deck-colors .ms:hover {
-  transform: scale(1.1);
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
 }
 
 .mana-cost {
   display: inline-flex;
   gap: 0.15rem;
   align-items: center;
+
+  .ms {
+    font-size: 1rem;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  }
 }
 
-.mana-cost .ms {
-  font-size: 1rem;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
-}
-
+/* Legacy color classes - can be removed if not used */
 .color-W { 
   background: linear-gradient(135deg, #FFFBD5 0%, #F5F5DC 100%); 
   color: #8B4513; 
@@ -100,133 +99,133 @@
 
 .deck-info {
   margin-bottom: 1rem;
-}
 
-.deck-type-commander {
-  background: linear-gradient(135deg, var(--brand-maroon) 0%, #A020F0 100%);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3);
-}
+  .deck-type-commander {
+    background: linear-gradient(135deg, var(--brand-maroon) 0%, #A020F0 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3);
+  }
 
-.deck-type-60card {
-  background: linear-gradient(135deg, var(--brand-navy) 0%, #1E90FF 100%);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  box-shadow: 0 2px 8px rgba(30, 58, 95, 0.3);
-}
+  .deck-type-60card {
+    background: linear-gradient(135deg, var(--brand-navy) 0%, #1E90FF 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 8px rgba(30, 58, 95, 0.3);
+  }
 
-.commander-info {
-  background: var(--accent-bg);
-  padding: 0.75rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  border-left: 4px solid var(--brand-maroon);
-  border: 1px solid var(--border-accent);
-}
+  .commander-info {
+    background: var(--accent-bg);
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--brand-maroon);
+    border: 1px solid var(--border-accent);
 
-.commander-name {
-  font-weight: bold;
-  color: var(--brand-maroon-light);
-  margin-bottom: 0.25rem;
-}
+    .commander-name {
+      font-weight: bold;
+      color: var(--brand-maroon-light);
+      margin-bottom: 0.25rem;
 
-.commander-name a {
-  color: var(--brand-maroon-light);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
+      a {
+        color: var(--brand-maroon-light);
+        text-decoration: none;
+        transition: color 0.2s ease;
 
-.commander-name a:hover {
-  color: #ff8fa3;
-  text-decoration: underline;
-}
+        &:hover {
+          color: #ff8fa3;
+          text-decoration: underline;
+        }
+      }
+    }
 
-.commander-cost {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
+    .commander-cost {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  }
 
-.short-description {
-  color: var(--text-secondary);
-  font-style: italic;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-}
+  .short-description {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
 
-.long-description {
-  color: var(--text-primary);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
+  .long-description {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
 
-.key-cards {
-  margin-bottom: 1rem;
-}
+  .key-cards {
+    margin-bottom: 1rem;
 
-.key-cards h4 {
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
+    h4 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
 
-.key-cards-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
+    .key-cards-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
 
-.key-card {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-light);
-  transition: all 0.2s ease;
-}
+      .key-card {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 0.25rem 0.5rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        border: 1px solid var(--border-light);
+        transition: all 0.2s ease;
 
-.key-card:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: var(--border-accent);
-}
+        &:hover {
+          background: rgba(255, 255, 255, 0.12);
+          border-color: var(--border-accent);
+        }
 
-.key-card a {
-  color: var(--brand-navy-light);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
+        a {
+          color: var(--brand-navy-light);
+          text-decoration: none;
+          transition: color 0.2s ease;
 
-.key-card a:hover {
-  color: #66BFFF;
-  text-decoration: underline;
-}
+          &:hover {
+            color: #66BFFF;
+            text-decoration: underline;
+          }
+        }
 
-.key-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
+        .key-card-content {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
 
-.key-card-cost {
-  font-size: 0.7rem;
-  opacity: 0.8;
-}
+          .key-card-cost {
+            font-size: 0.7rem;
+            opacity: 0.8;
 
-.key-card-cost .ms {
-  font-size: 0.8rem;
+            .ms {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .deck-details {
@@ -234,62 +233,62 @@
   padding-top: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: .2em;
-}
+  gap: 0.2em;
 
-.detail-group {
-  display: flex;
-  flex-direction: row;
-  gap: 0.25rem;
+  .detail-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
 
-  &.deck-location {
-    /*Span all grid columns*/
-    grid-column: 1 / -1;
-    flex-direction: column;
-  }
-
-  .detail-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-
-  .detail-value {
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    font-weight: 500;
-
-    &.owner {
-      &.owner-nic {
-        color: var(--brand-maroon-light);
-        font-weight: bold;
-      }
-      
-      &.owner-leslie {
-        color: #9b59b6;
-        font-weight: bold;
-      }
+    &.deck-location {
+      /* Span all grid columns */
+      grid-column: 1 / -1;
+      flex-direction: column;
     }
-    &.status {
-      &.status-incomplete { 
-        color: #e74c3c; 
-        font-weight: 600;
+
+    .detail-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-value {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      font-weight: 500;
+
+      &.owner {
+        &.owner-nic {
+          color: var(--brand-maroon-light);
+          font-weight: bold;
+        }
+        
+        &.owner-leslie {
+          color: #9b59b6;
+          font-weight: bold;
+        }
       }
-      &.status-needs-improvement { 
-        color: #f39c12; 
-        font-weight: 600;
-      }
-      &.status-good { 
-        color: #27ae60; 
-        font-weight: 600;
-      }
-      &.status-great { 
-        color: #2ecc71; 
-        font-weight: bold;
-        text-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+
+      &.status {
+        &.status-incomplete { 
+          color: #e74c3c; 
+          font-weight: 600;
+        }
+        &.status-needs-improvement { 
+          color: #f39c12; 
+          font-weight: 600;
+        }
+        &.status-good { 
+          color: #27ae60; 
+          font-weight: 600;
+        }
+        &.status-great { 
+          color: #2ecc71; 
+          font-weight: bold;
+          text-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
+        }
       }
     }
   }
