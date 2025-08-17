@@ -10,6 +10,7 @@ export interface MtgCard {
   name: string;
   manaCost?: string;
   magicardsInfoUrl?: string;
+  description?: string; // Short description of what the card does
 }
 
 export interface MtgDeck {

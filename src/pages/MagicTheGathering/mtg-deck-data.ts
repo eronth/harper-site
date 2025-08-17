@@ -12,7 +12,8 @@ const mtgDecks: MtgDeck[] = [
     commander: {
       name: 'Edgar Markov',
       manaCost: '3RWB',
-      magicardsInfoUrl: 'https://magiccards.info/c17/en/36.html'
+      magicardsInfoUrl: 'https://magiccards.info/c17/en/36.html',
+      description: 'Eminence ability creates vampire tokens whenever you cast vampire spells. Flying, first strike, haste, and makes all vampires +1/+1.'
     },
     keyCards: [
       {

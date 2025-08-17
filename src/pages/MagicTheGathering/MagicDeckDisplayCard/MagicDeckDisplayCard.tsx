@@ -59,32 +59,46 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
   };
 
   return (<>
-    <div key={deck.id} className="deck-card">
+    <div key={deck.id} className="deck-card colorful">
       <div className="deck-header">
-        <h3 className="deck-title">{deck.name}</h3>
-        <div className="deck-colors">
-          {deck.colors.map((color, index) => (
-            <i key={index} className={getManaSymbol(color)}></i>
-          ))}
+        <h3 className="deck-title">
+          <span className="deck-colors">
+            {deck.colors.map((color, index) => (
+              <i key={index} className={getManaSymbol(color)}></i>
+            ))}
+          </span>
+          <span className="deck-name">
+            {deck.name}
+          </span>
+        </h3>
+        <div className={getDeckTypeClass(deck.deckType)}>
+          {deck.deckType}
         </div>
       </div>
 
       <div className="deck-info">
-        <div className={getDeckTypeClass(deck.deckType)}>
-          {deck.deckType}
-        </div>
         
         {deck.commander && (
           <div className="commander-info">
-            <div className="commander-name">
-              Commander: {deck.commander.magicardsInfoUrl ? (
-                <a href={deck.commander.magicardsInfoUrl} target="_blank" rel="noopener noreferrer">
-                  {deck.commander.name}
-                </a>
-              ) : deck.commander.name}
+            <div className="commander-header">
+              <div className="commander-name">
+                <span className="commander-label">Commander:</span>
+                {deck.commander.magicardsInfoUrl ? (
+                  <a href={deck.commander.magicardsInfoUrl} target="_blank" rel="noopener noreferrer">
+                    {deck.commander.name}
+                  </a>
+                ) : (
+                  <span className="commander-name-text">{deck.commander.name}</span>
+                )}
+              </div>
+              {deck.commander.manaCost && (
+                <div className="commander-cost">{renderManaCost(deck.commander.manaCost)}</div>
+              )}
             </div>
-            {deck.commander.manaCost && (
-              <div className="commander-cost">{renderManaCost(deck.commander.manaCost)}</div>
+            {deck.commander.description && (
+              <div className="commander-description">
+                {deck.commander.description}
+              </div>
             )}
           </div>
         )}
@@ -104,13 +118,20 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
               {deck.keyCards.map((card, index) => (
                 <div key={index} className="key-card">
                   <div className="key-card-content">
-                    {card.magicardsInfoUrl ? (
-                      <a href={card.magicardsInfoUrl} target="_blank" rel="noopener noreferrer">
-                        {card.name}
-                      </a>
-                    ) : card.name}
-                    {card.manaCost && (
-                      <div className="key-card-cost">{renderManaCost(card.manaCost)}</div>
+                    <div className="key-card-name-line">
+                      {card.magicardsInfoUrl ? (
+                        <a href={card.magicardsInfoUrl} target="_blank" rel="noopener noreferrer">
+                          {card.name}
+                        </a>
+                      ) : (
+                        <span className="card-name">{card.name}</span>
+                      )}
+                      {card.manaCost && (
+                        <span className="key-card-cost">{renderManaCost(card.manaCost)}</span>
+                      )}
+                    </div>
+                    {card.description && (
+                      <div className="key-card-description">{card.description}</div>
                     )}
                   </div>
                 </div>
@@ -137,7 +158,7 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
           <span className="detail-label">Container:</span>
           <span className="detail-value">
             {deck.location.case 
-              ? deck.location.case + ' - '
+              ? deck.location.case + ' — '
               : null
             }
             {deck.location.deckbox}

@@ -1,0 +1,20 @@
+.colorful { 
+  .ms-w {
+    color: var(--ms-mana-w);
+  }
+  .ms-u {
+    color: var(--ms-mana-u);
+  }
+  .ms-b {
+    color: var(--ms-mana-b);
+  }
+  .ms-r {
+    color: var(--ms-mana-r);
+  }
+  .ms-g {
+    color: var(--ms-mana-g)
+  }
+  .ms-c {
+    color: var(--ms-mana-c);
+  }
+}
