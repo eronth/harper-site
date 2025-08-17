@@ -1,4 +1,12 @@
 import type { MtgColor, MtgDeck } from "../../../types/mtg-types";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faStar, 
+  faCheck, 
+  faExclamationTriangle, 
+  faWrench, 
+  faBox 
+} from '@fortawesome/free-solid-svg-icons';
 import './MagicDeckDisplayCard.css';
 
 // Helper function to convert mana cost string to mana symbols
@@ -144,27 +152,51 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
       </div>
 
       <div className="deck-details">
-        <div className="detail-group">
-          <i className="ms ms-planeswalker"></i>
-          <span className={`detail-value owner ${getOwnerClass(deck.owner)}`}>
-            {deck.owner}
-          </span>
+        <div className="deck-meta">
+          <div className="meta-item owner-item">
+            <div className="meta-icon">
+              <i className="ms ms-planeswalker"></i>
+            </div>
+            <div className="meta-content">
+              <span className="meta-label">Owner</span>
+              <span className={`meta-value owner ${getOwnerClass(deck.owner)}`}>
+                {deck.owner}
+              </span>
+            </div>
+          </div>
+
+          <div className="meta-item status-item">
+            <div className="meta-icon status-icon">
+              {deck.status === 'Great' && <FontAwesomeIcon icon={faStar} />}
+              {deck.status === 'Good' && <FontAwesomeIcon icon={faCheck} />}
+              {deck.status === 'Needs Improvement' && <FontAwesomeIcon icon={faExclamationTriangle} />}
+              {deck.status === 'Incomplete' && <FontAwesomeIcon icon={faWrench} />}
+            </div>
+            <div className="meta-content">
+              <span className="meta-label">Status</span>
+              <span className={`meta-value status ${getStatusClass(deck.status)}`}>
+                {deck.status}
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="detail-group">
-          <span className="detail-label">Status:</span>
-          <span className={`detail-value status ${getStatusClass(deck.status)}`}>
-            {deck.status}
-          </span>
-        </div>
-        <div className="detail-group deck-location">
-          <span className="detail-label">Container:</span>
-          <span className="detail-value">
-            {deck.location.case 
-              ? deck.location.case + ' — '
-              : null
-            }
-            {deck.location.deckbox}
-          </span>
+
+        <div className="storage-info">
+          <div className="storage-icon">
+            <FontAwesomeIcon icon={faBox} />
+          </div>
+          <div className="storage-content">
+            <span className="storage-label">Storage</span>
+            <span className="storage-value">
+              {deck.location.case && (
+                <span className="case-name">{deck.location.case}</span>
+              )}
+              {deck.location.case && deck.location.deckbox && (
+                <span className="separator">→</span>
+              )}
+              <span className="deckbox-name">{deck.location.deckbox}</span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
