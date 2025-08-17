@@ -78,6 +78,12 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
 
       <div className="deck-info">
         
+
+        <div className="short-description">
+          {deck.shortDescription}
+        </div>
+
+        
         {deck.commander && (
           <div className="commander-info">
             <div className="commander-header">
@@ -102,10 +108,6 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
             )}
           </div>
         )}
-
-        <div className="short-description">
-          {deck.shortDescription}
-        </div>
 
         <div className="long-description">
           {deck.longDescription}
@@ -143,7 +145,7 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
 
       <div className="deck-details">
         <div className="detail-group">
-          <span className="detail-label">Owner:</span>
+          <i className="ms ms-planeswalker"></i>
           <span className={`detail-value owner ${getOwnerClass(deck.owner)}`}>
             {deck.owner}
           </span>

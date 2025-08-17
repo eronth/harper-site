@@ -310,7 +310,6 @@
     }
 
     .detail-label {
-      font-size: 0.8rem;
       color: var(--text-muted);
       font-weight: 500;
       text-transform: uppercase;
@@ -318,7 +317,6 @@
     }
 
     .detail-value {
-      font-size: 0.9rem;
       color: var(--text-primary);
       font-weight: 500;
 

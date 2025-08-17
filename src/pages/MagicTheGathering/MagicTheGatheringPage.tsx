@@ -4,12 +4,14 @@ import './MagicTheGatheringPage.css';
 import './ManaColors.css';
 
 export default function MagicTheGatheringPage() {
+  const titleIconChoice = (false ? 'planeswalker' : 'rarity');
   return (
     <div className="mtg-page">
       <div className="mtg-header">
         <h1>
-          <i className="ms ms-planeswalker"></i>
+          <i className={`ms ms-${titleIconChoice}`}></i>
           Magic: The Gathering Collection
+          <i className={`ms ms-${titleIconChoice}`}></i>
         </h1>
         <p className='colorful'>
           <i className="ms ms-g"></i>
