@@ -7,6 +7,7 @@ import {
   faWrench, 
   faBox 
 } from '@fortawesome/free-solid-svg-icons';
+import CommanderSection from './CommanderSection/CommanderSection';
 import './MagicDeckDisplayCard.css';
 
 // Helper function to convert mana cost string to mana symbols
@@ -93,28 +94,10 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
 
         
         {deck.commander && (
-          <div className="commander-info">
-            <div className="commander-header">
-              <div className="commander-name">
-                <span className="commander-label">Commander:</span>
-                {deck.commander.magicardsInfoUrl ? (
-                  <a href={deck.commander.magicardsInfoUrl} target="_blank" rel="noopener noreferrer">
-                    {deck.commander.name}
-                  </a>
-                ) : (
-                  <span className="commander-name-text">{deck.commander.name}</span>
-                )}
-              </div>
-              {deck.commander.manaCost && (
-                <div className="commander-cost">{renderManaCost(deck.commander.manaCost)}</div>
-              )}
-            </div>
-            {deck.commander.description && (
-              <div className="commander-description">
-                {deck.commander.description}
-              </div>
-            )}
-          </div>
+          <CommanderSection 
+            commander={deck.commander} 
+            renderManaCost={renderManaCost}
+          />
         )}
 
         <div className="long-description">

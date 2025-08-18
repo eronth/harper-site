@@ -1,0 +1,210 @@
+.commander-section {
+  background: var(--accent-bg);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--brand-maroon);
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 2px 12px rgba(139, 21, 56, 0.15);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(139, 21, 56, 0.2);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-maroon), var(--brand-maroon-light));
+    opacity: 0.6;
+  }
+
+  .commander-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .commander-label {
+      font-size: 1em;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      margin-right: .1em;
+    }
+
+    .right-side {
+        display: flex;
+        flex-direction: row;
+        .expand-icon {
+          margin-left: 0.5rem;
+        }
+      }
+
+    .commander-names {
+      flex: 1;
+      margin: 0 1rem;
+
+      a {
+        color: var(--brand-maroon-light);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        font-weight: bold;
+        font-size: 1rem;
+        padding: 0.25rem 0;
+        border-radius: 4px;
+        width: fit-content;
+
+        &:hover {
+          color: #ff8fa3;
+          text-decoration: underline;
+          background: rgba(255, 255, 255, 0.05);
+          transform: translateY(-1px);
+        }
+      }
+    }
+
+    .commander-cost-desktop {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      padding: 0.25rem 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      border: 1px solid var(--border-light);
+      margin-right: 0.75rem;
+    }
+
+    .commander-chevron {
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                  color 0.2s ease-out;
+      color: var(--brand-maroon-light);
+      font-size: 0.8rem;
+
+      &.expanded {
+        transform: rotate(180deg);
+        color: var(--brand-cream);
+      }
+
+      &.collapsing {
+        transform: rotate(0deg);
+        color: var(--brand-maroon-light);
+      }
+    }
+  }
+
+  .commander-expanded-content {
+    padding: 0 1rem 1rem 1rem;
+    border-top: 1px solid var(--border-light);
+    overflow: hidden;
+    animation: slideDown 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: top;
+
+    &.collapsing {
+      animation: slideUp 0.3s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+    }
+
+    .commander-cost-mobile {
+      display: none;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      padding: 0.5rem 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      border: 1px solid var(--border-light);
+      margin-bottom: 0.75rem;
+      width: fit-content;
+      opacity: 0;
+      animation: fadeInUp 0.5s ease-out 0.2s forwards;
+    }
+
+    .commander-description {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      line-height: 1.4;
+      font-style: italic;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.75rem;
+      border-radius: 6px;
+      border-left: 2px solid var(--brand-maroon-light);
+      opacity: 0;
+      animation: fadeInUp 0.5s ease-out 0.1s forwards;
+    }
+  }
+
+  .commander-description {
+    padding-inline: 1.1rem;
+    padding-bottom: .5em;
+    &.collapsed {
+      /* Styles for collapsed state */
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      max-height: 200px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      max-height: 200px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 640px) {
+    .commander-header {
+      .commander-header-right {
+        .commander-cost {
+          display: none; /* Hide in header on mobile */
+        }
+      }
+    }
+
+    .commander-expanded-content {
+      .commander-cost-mobile {
+        display: block; /* Show in expanded content on mobile */
+      }
+    }
+  }
+}
