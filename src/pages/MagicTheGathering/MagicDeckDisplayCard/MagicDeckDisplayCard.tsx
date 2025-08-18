@@ -137,13 +137,29 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
       <div className="deck-details">
         <div className="deck-meta">
           <div className="meta-item owner-item">
-            <div className="meta-icon">
+            <div className="meta-icon owner-icon">
               <i className="ms ms-planeswalker"></i>
             </div>
             <div className="meta-content">
-              <span className="meta-label">Owner</span>
               <span className={`meta-value owner ${getOwnerClass(deck.owner)}`}>
                 {deck.owner}
+              </span>
+            </div>
+          </div>
+
+          <div className="meta-item storage-info">
+            <div className="meta-icon storage-icon">
+              <FontAwesomeIcon icon={faBox} />
+            </div>
+            <div className="meta-content">
+              <span className="meta-value storage-value">
+                {deck.location.case && (
+                  <span className="case-name">{deck.location.case}</span>
+                )}
+                {deck.location.case && deck.location.deckbox && (
+                  <span className="separator"> → </span>
+                )}
+                <span className="deckbox-name">{deck.location.deckbox}</span>
               </span>
             </div>
           </div>
@@ -156,31 +172,14 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
               {deck.status === 'Incomplete' && <FontAwesomeIcon icon={faWrench} />}
             </div>
             <div className="meta-content">
-              <span className="meta-label">Status</span>
               <span className={`meta-value status ${getStatusClass(deck.status)}`}>
                 {deck.status}
               </span>
             </div>
           </div>
+        
         </div>
 
-        <div className="storage-info">
-          <div className="storage-icon">
-            <FontAwesomeIcon icon={faBox} />
-          </div>
-          <div className="storage-content">
-            <span className="storage-label">Storage</span>
-            <span className="storage-value">
-              {deck.location.case && (
-                <span className="case-name">{deck.location.case}</span>
-              )}
-              {deck.location.case && deck.location.deckbox && (
-                <span className="separator">→</span>
-              )}
-              <span className="deckbox-name">{deck.location.deckbox}</span>
-            </span>
-          </div>
-        </div>
       </div>
     </div>
   </>)

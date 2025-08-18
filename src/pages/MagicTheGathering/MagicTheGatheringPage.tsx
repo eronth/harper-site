@@ -4,7 +4,7 @@ import './MagicTheGatheringPage.css';
 import './ManaColors.css';
 
 export default function MagicTheGatheringPage() {
-  const titleIconChoice = (false ? 'planeswalker' : 'rarity');
+  const titleIconChoice = ('rarity');
   return (
     <div className="mtg-page">
       <div className="mtg-header">

@@ -209,7 +209,7 @@
 
   .deck-meta {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     gap: 1rem;
 
     .meta-item {
@@ -232,12 +232,14 @@
         align-items: center;
         justify-content: center;
         width: 30px;
-        font-size: 2rem;
+        font-size: 1.3rem;
         color: var(--text-secondary);
 
+        &.owner-icon {
+          font-size: 1.9rem;
+        }
+
         &.status-icon {
-          font-size: 1rem;
-          
           /* Status-specific colors */
           svg[data-icon="star"] {
             color: #2ecc71;
@@ -274,6 +276,7 @@
           font-weight: 600;
 
           &.owner {
+            font-size: .95rem;
             &.owner-nic {
               color: var(--brand-maroon-light);
             }
@@ -298,69 +301,6 @@
               text-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
             }
           }
-        }
-      }
-    }
-  }
-
-  .storage-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
-    border: 1px solid var(--border-light);
-    transition: all 0.2s ease;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: var(--border-accent);
-    }
-
-    .storage-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: var(--text-secondary);
-    }
-
-    .storage-content {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      flex: 1;
-
-      .storage-label {
-        font-size: 0.7rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-weight: 600;
-      }
-
-      .storage-value {
-        font-size: 0.85rem;
-        color: var(--text-primary);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-
-        .case-name {
-          color: var(--text-secondary);
-          font-weight: 500;
-        }
-
-        .separator {
-          color: var(--text-muted);
-          font-size: 0.8rem;
-        }
-
-        .deckbox-name {
-          color: var(--text-primary);
-          font-weight: 600;
         }
       }
     }
