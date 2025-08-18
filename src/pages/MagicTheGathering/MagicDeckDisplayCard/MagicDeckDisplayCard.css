@@ -276,11 +276,11 @@
           &.owner {
             font-size: .95rem;
             &.owner-nic {
-              color: var(--brand-maroon-light);
+              color: var(--brand-navy-light);
             }
             
             &.owner-leslie {
-              color: #9b59b6;
+              color: var(--brand-maroon-light);
             }
           }
 

@@ -1,6 +1,7 @@
 import type { MtgDeck } from '../../types/mtg-types';
 
 // Sample deck data - you can replace this with your actual decks
+const winterCase = "";
 const mtgDecks: MtgDeck[] = [
   {
     id: 'edgar-markov-vampires',
@@ -34,8 +35,8 @@ const mtgDecks: MtgDeck[] = [
     ],
     owner: 'Nic',
     location: {
-      deckbox: 'Red Ultra Pro',
       case: 'Large Black Case',
+      deckbox: 'Red Ultra Pro',
     },
     status: 'Good',
     lastUpdated: '2024-12-15'
@@ -63,8 +64,8 @@ const mtgDecks: MtgDeck[] = [
     ],
     owner: 'Leslie',
     location: {
-      deckbox: 'Blue BCW',
       case: 'Small White Case',
+      deckbox: 'Blue BCW',
     },
     status: 'Needs Improvement',
     lastUpdated: '2024-11-20'
@@ -92,8 +93,8 @@ const mtgDecks: MtgDeck[] = [
     ],
     owner: 'Nic',
     location: {
-      deckbox: 'Green Dragon Shield',
       case: 'Large Black Case',
+      deckbox: 'Green Dragon Shield',
     },
     status: 'Great',
     lastUpdated: '2025-01-10'

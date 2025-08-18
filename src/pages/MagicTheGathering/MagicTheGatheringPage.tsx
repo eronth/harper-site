@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import mtgDecks from './mtg-deck-data';
 import MagicDeckDisplayCard from './MagicDeckDisplayCard/MagicDeckDisplayCard';
+import type { MtgDeck } from '../../types/mtg-types';
 import './MagicTheGatheringPage.css';
 import './ManaColors.css';
+import MtgDeckFilter from './MtgDeckFilter/MtgDeckFilter';
 
 export default function MagicTheGatheringPage() {
+  const [filteredDecks, setFilteredDecks] = useState<MtgDeck[]>(mtgDecks);
   const titleIconChoice = ('rarity');
+  
   return (
     <div className="mtg-page">
       <div className="mtg-header">
@@ -25,8 +30,13 @@ export default function MagicTheGatheringPage() {
         </p>
       </div>
 
+      <MtgDeckFilter
+        decks={mtgDecks}
+        onFilteredDecksChange={setFilteredDecks}
+      />
+
       <div className="deck-grid">
-        {mtgDecks.map((deck) => (
+        {filteredDecks.map((deck) => (
           <MagicDeckDisplayCard key={deck.id} deck={deck} />
         ))}
       </div>
