@@ -178,6 +178,10 @@ export default function IndividualProjectPage() {
                 </div>
               )}
 
+              <div className="detail-section full-width">
+                {project.walkthrough}
+              </div>
+
               {/* Challenges */}
               {project?.summary?.challenges && project.summary.challenges.length > 0 && (
                 <div className="detail-section">
