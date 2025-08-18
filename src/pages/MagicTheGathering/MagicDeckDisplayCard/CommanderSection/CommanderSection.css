@@ -1,7 +1,7 @@
 .commander-section {
   background: var(--accent-bg);
   border-radius: 12px;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   border-left: 4px solid var(--brand-maroon);
   border: 1px solid var(--border-accent);
   box-shadow: 0 2px 12px rgba(139, 21, 56, 0.15);
@@ -28,7 +28,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: .5em;
     cursor: pointer;
     user-select: none;
     transition: background-color 0.2s ease;
@@ -48,8 +48,11 @@
     .right-side {
         display: flex;
         flex-direction: row;
+        align-items: center;
+
         .expand-icon {
-          margin-left: 0.5rem;
+          margin-left: 2em;
+          margin-right: .5em;
         }
       }
 
