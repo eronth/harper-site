@@ -96,11 +96,6 @@
         transform: rotate(180deg);
         color: var(--brand-cream);
       }
-
-      &.collapsing {
-        transform: rotate(0deg);
-        color: var(--brand-maroon-light);
-      }
     }
   }
 
@@ -144,13 +139,34 @@
   }
 
   .commander-description {
+    --transition-time: 0.3s ease-out;
+    padding: .5em;
     padding-inline: 1.1rem;
-    padding-bottom: .5em;
+    -moz-transition: 
+      max-height var(--transition-time),
+      padding var(--transition-time);
+    -ms-transition: 
+      max-height var(--transition-time),
+      padding var(--transition-time);
+    -o-transition: 
+      max-height var(--transition-time),
+      padding var(--transition-time);
+    -webkit-transition: 
+      max-height var(--transition-time),
+      padding var(--transition-time);
+    transition:
+      max-height var(--transition-time),
+      padding var(--transition-time);
+    overflow: hidden;
+
     &.collapsed {
-      /* Styles for collapsed state */
       max-height: 0;
-      opacity: 0;
-      transform: translateY(-10px);
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    &.expanded {
+      max-height: 200px;
     }
   }
 

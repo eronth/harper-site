@@ -14,15 +14,12 @@ export default function CommanderSection({
   renderManaCost
 }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isCollapsing, setIsCollapsing] = useState(false);
 
   const handleToggle = () => {
     if (isExpanded) {
-      setIsCollapsing(true);
       // Allow animation to complete before hiding content
       setTimeout(() => {
         setIsExpanded(false);
-        setIsCollapsing(false);
       }, 300);
     } else {
       setIsExpanded(true);
@@ -59,13 +56,13 @@ export default function CommanderSection({
           )}
           <FontAwesomeIcon
             icon={faChevronUp}
-            className={`expand-icon commander-chevron ${isExpanded ? 'expanded' : ''} ${isCollapsing ? 'collapsing' : ''}`}
+            className={`expand-icon commander-chevron ${isExpanded ? 'expanded' : ''}`}
           />
         </div>
       </div>
 
       {commander.description && (
-        <div className={`commander-description ${isExpanded ? 'expanded' : 'collapsed'} ${isCollapsing ? 'collapsing' : ''}`}>
+        <div className={`commander-description ${isExpanded ? 'expanded' : 'collapsed'}`}>
           {commander.description}
         </div>
       )}
