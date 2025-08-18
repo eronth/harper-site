@@ -16,14 +16,7 @@ export default function CommanderSection({
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleToggle = () => {
-    if (isExpanded) {
-      // Allow animation to complete before hiding content
-      setTimeout(() => {
-        setIsExpanded(false);
-      }, 300);
-    } else {
-      setIsExpanded(true);
-    }
+    setIsExpanded(!isExpanded);
   };
 
   const handleLinkClick = (e: React.MouseEvent) => {
