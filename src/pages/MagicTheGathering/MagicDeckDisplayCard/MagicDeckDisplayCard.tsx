@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { MtgColor, MtgDeck } from "../../../types/mtg-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -9,6 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import CommanderSection from './CommanderSection/CommanderSection';
 import './MagicDeckDisplayCard.css';
+import MtgHoveringCard from './MtgHoveringCard/MtgHoveringCard';
 
 // Helper function to convert mana cost string to mana symbols
 const renderManaCost = (manaCost: string) => {
@@ -53,8 +55,31 @@ const getManaSymbol = (color: MtgColor) => {
   return colorMap[color] || 'ms ms-c';
 };
 
+// Function to convert MTG card URL to image path
+const getCardImagePath = (magicardsInfoUrl: string): string | null => {
+  try {
+    // First, strip https://magiccards.info/ or https://scryfall.com from the URL
+    const strippedUrl = magicardsInfoUrl
+      .replace('https://', '')
+      .replace('http://', '')
+      .replace('magiccards.info/', '')
+      .replace('scryfall.com/card/', '');
+    const slashToDashText = strippedUrl.replace(/\//g, '-');
+    
+    // Use public folder path (accessible directly via URL)
+    const imagePath = `/images/mtg-cards/${slashToDashText}.jpg`;
+    
+    return imagePath;
+  } catch (error) {
+    console.warn('Error processing card URL:', magicardsInfoUrl, error);
+    return null;
+  }
+};
+
 
 export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [anchorElement, setAnchorElement] = useState<HTMLElement | null>(null);
   const getDeckTypeClass = (deckType: string): string => {
     return deckType === 'Commander' ? 'deck-type-commander' : 'deck-type-60card';
   };
@@ -63,12 +88,12 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
     return owner === 'Nic' ? 'owner-nic' : 'owner-leslie';
   };
 
-  const getStatusClass = (status: string): string => {
-    return `status-${status.toLowerCase().replace(' ', '-')}`;
-  };
+  // const getStatusClass = (status: string): string => {
+  //   return `status-${status.toLowerCase().replace(' ', '-')}`;
+  // };
 
   return (<>
-    <div key={deck.id} className="deck-card colorful">
+    <div key={deck.id} className={`deck-card colorful ${hoveredCard ? 'has-tooltip' : ''}`}>
       <div className="deck-header">
         <h3 className="deck-title">
           <span className="deck-colors">
@@ -113,9 +138,31 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
                   <div className="key-card-content">
                     <div className="key-card-name-line">
                       {card.magicardsInfoUrl ? (
-                        <a href={card.magicardsInfoUrl} target="_blank" rel="noopener noreferrer">
-                          {card.name}
-                        </a>
+                        <div className="card-link-container">
+                          <a 
+                            href={card.magicardsInfoUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            onMouseEnter={(e) => {
+                              setHoveredCard(card.magicardsInfoUrl || null);
+                              setAnchorElement(e.currentTarget);
+                            }}
+                            onMouseLeave={() => {
+                              setHoveredCard(null);
+                              setAnchorElement(null);
+                            }}
+                          >
+                            {card.name}
+                          </a>
+                          {hoveredCard === card.magicardsInfoUrl && card.magicardsInfoUrl 
+                            && getCardImagePath(card.magicardsInfoUrl) && (
+                            <MtgHoveringCard 
+                              card={card} 
+                              imgPath={getCardImagePath(card.magicardsInfoUrl)} 
+                              anchorElement={anchorElement}
+                            />
+                          )}
+                        </div>
                       ) : (
                         <span className="card-name">{card.name}</span>
                       )}
@@ -164,18 +211,23 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
             </div>
           </div>
 
-          <div className="meta-item status-item">
-            <div className="meta-icon status-icon">
+          <div className="meta-item status-item"
+            title={deck.status}
+          >
+            <div 
+              className="meta-icon status-icon"
+              aria-label={`Deck status: ${deck.status}`}
+            >
               {deck.status === 'Great' && <FontAwesomeIcon icon={faStar} />}
               {deck.status === 'Good' && <FontAwesomeIcon icon={faCheck} />}
               {deck.status === 'Needs Improvement' && <FontAwesomeIcon icon={faExclamationTriangle} />}
               {deck.status === 'Incomplete' && <FontAwesomeIcon icon={faWrench} />}
             </div>
-            <div className="meta-content">
+            {/* <div className="meta-content">
               <span className={`meta-value status ${getStatusClass(deck.status)}`}>
                 {deck.status}
               </span>
-            </div>
+            </div> */}
           </div>
         
         </div>

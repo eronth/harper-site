@@ -3,7 +3,6 @@ import { mtgCard } from "../../mtgHelperFunctions";
 
 const caseName = "Speed Demon Winter Case";
 
-
 const winterCase: MtgDeck[] = [
   { /* Shadow Ninjutsu */
     id: 'shadow-ninjutsu',
