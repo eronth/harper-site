@@ -144,7 +144,7 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
 
       {isExpanded && (
         <div className="filter-content">
-          
+
           {/* Owner Filter */}
           <div className="filter-group">
             <h3>Owner</h3>

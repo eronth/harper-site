@@ -147,12 +147,12 @@
         }
 
         a {
-          color: var(--brand-navy-light);
+          color: hsl(205, 100%, 70%);
           text-decoration: none;
           transition: color 0.2s ease;
 
           &:hover {
-            color: #66BFFF;
+            color: hsl(205, 100%, 80%);
             text-decoration: underline;
           }
         }

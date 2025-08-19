@@ -1,3 +1,5 @@
+import type React from "react";
+
 export type MtgColor = 'W' | 'U' | 'B' | 'R' | 'G' | 'C'; // White, Blue, Black, Red, Green, Colorless
 
 export type DeckType = 'Commander' | '60-Card';
@@ -18,7 +20,7 @@ export interface MtgDeck {
   name: string;
   colors: MtgColor[];
   shortDescription: string;
-  longDescription: string;
+  longDescription: React.ReactNode;
   deckType: DeckType;
   commander?: MtgCard;
   keyCards?: MtgCard[];
@@ -28,5 +30,4 @@ export interface MtgDeck {
     deckbox: string;
   };
   status: DeckStatus;
-  lastUpdated: string; // ISO date string
 }

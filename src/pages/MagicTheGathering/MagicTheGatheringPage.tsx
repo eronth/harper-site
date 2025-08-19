@@ -1,31 +1,38 @@
-import { useState } from 'react';
-import mtgDecks from './mtg-deck-data';
+import { useMemo, useState } from 'react';
+import MtgDeckFilter from './MtgDeckFilter/MtgDeckFilter';
 import MagicDeckDisplayCard from './MagicDeckDisplayCard/MagicDeckDisplayCard';
+import mtgDecks from './MTG Data/mtg-deck-data';
 import type { MtgDeck } from '../../types/mtg-types';
 import './MagicTheGatheringPage.css';
 import './ManaColors.css';
-import MtgDeckFilter from './MtgDeckFilter/MtgDeckFilter';
 
 export default function MagicTheGatheringPage() {
   const [filteredDecks, setFilteredDecks] = useState<MtgDeck[]>(mtgDecks);
   const titleIconChoice = ('rarity');
-  
+
+  const deckComponent = useMemo(() => {
+    return filteredDecks.map((deck) => (
+      <MagicDeckDisplayCard key={deck.id} deck={deck} />
+    ));
+  }, [filteredDecks]);
+
   return (
     <div className="mtg-page">
       <div className="mtg-header">
         <h1>
-          <i className={`ms ms-${titleIconChoice}`}></i>
+          <i className={`ms ms-${titleIconChoice}`} />
           Magic: The Gathering Collection
-          <i className={`ms ms-${titleIconChoice}`}></i>
+          <i className={`ms ms-${titleIconChoice}`} />
         </h1>
+        <div>
+          <i className="ms ms-g" />
+          <i className="ms ms-r" />
+          <i className="ms ms-w" />
+          <i className="ms ms-u" />
+          <i className="ms ms-b" />
+          <i className="ms ms-c" />
+        </div>
         <p className='colorful'>
-          <i className="ms ms-g"></i>
-          <i className="ms ms-r"></i>
-          <i className="ms ms-w"></i>
-          <i className="ms ms-u"></i>
-          <i className="ms ms-b"></i>
-          <i className="ms ms-c"></i>
-          <br />
           Our collection of Magic: The Gathering decks, from casual Commander builds to competitive 60-card constructions.
         </p>
       </div>
@@ -36,9 +43,11 @@ export default function MagicTheGatheringPage() {
       />
 
       <div className="deck-grid">
-        {filteredDecks.map((deck) => (
-          <MagicDeckDisplayCard key={deck.id} deck={deck} />
-        ))}
+        {deckComponent.length > 0 ? (
+          deckComponent
+        ) : (
+          <p className="no-decks">No decks match the current filters.</p>
+        )}
       </div>
     </div>
   );
