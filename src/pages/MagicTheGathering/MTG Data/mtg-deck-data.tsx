@@ -1,8 +1,12 @@
-import type { MtgDeck } from '../../types/mtg-types';
+import type { MtgDeck } from '../../../types/mtg-types';
+import mahaCaseDecks from './Maha Case/mtg-deck-maha-data';
 
 // Sample deck data - you can replace this with your actual decks
-const winterCase = "";
+// const winterCase = "Speed Demon Winter Case";
+// const mahaCase = "Maha Case";
+// const duskmournCase = "Duskmourn Case";
 const mtgDecks: MtgDeck[] = [
+  ...mahaCaseDecks,
   {
     id: 'edgar-markov-vampires',
     name: 'Edgar Markov Vampire Tribal',
@@ -38,8 +42,7 @@ const mtgDecks: MtgDeck[] = [
       case: 'Large Black Case',
       deckbox: 'Red Ultra Pro',
     },
-    status: 'Good',
-    lastUpdated: '2024-12-15'
+    status: 'Good'
   },
   {
     id: 'azorius-control',
@@ -67,8 +70,7 @@ const mtgDecks: MtgDeck[] = [
       case: 'Small White Case',
       deckbox: 'Blue BCW',
     },
-    status: 'Needs Improvement',
-    lastUpdated: '2024-11-20'
+    status: 'Needs Improvement'
   },
   {
     id: 'mono-green-stompy',
@@ -96,8 +98,7 @@ const mtgDecks: MtgDeck[] = [
       case: 'Large Black Case',
       deckbox: 'Green Dragon Shield',
     },
-    status: 'Great',
-    lastUpdated: '2025-01-10'
+    status: 'Great'
   }
 ];
 
