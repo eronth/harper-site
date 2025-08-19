@@ -11,6 +11,7 @@ import {
 import CommanderSection from './CommanderSection/CommanderSection';
 import './MagicDeckDisplayCard.css';
 import MtgHoveringCard from './MtgHoveringCard/MtgHoveringCard';
+import { mtgCardImages } from '../../../assets/mtg-cards';
 
 // Helper function to convert mana cost string to mana symbols
 const renderManaCost = (manaCost: string) => {
@@ -66,10 +67,11 @@ const getCardImagePath = (magicardsInfoUrl: string): string | null => {
       .replace('scryfall.com/card/', '');
     const slashToDashText = strippedUrl.replace(/\//g, '-');
     
-    // Use public folder path (accessible directly via URL)
-    const imagePath = `/images/mtg-cards/${slashToDashText}.jpg`;
+    // Look up the imported image
+    const imageKey = slashToDashText; // Remove .jpg extension for lookup
+    const imagePath = mtgCardImages[imageKey];
     
-    return imagePath;
+    return imagePath || null;
   } catch (error) {
     console.warn('Error processing card URL:', magicardsInfoUrl, error);
     return null;
@@ -131,7 +133,7 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
 
         {deck.keyCards && deck.keyCards.length > 0 && (
           <div className="key-cards">
-            <h4>Key Cards:</h4>
+            <h4>Iconic Cards:</h4>
             <div className="key-cards-list">
               {deck.keyCards.map((card, index) => (
                 <div key={index} className="key-card">

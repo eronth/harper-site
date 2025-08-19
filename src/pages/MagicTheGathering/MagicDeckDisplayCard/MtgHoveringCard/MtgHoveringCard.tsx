@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { MtgCard } from "../../../../types/mtg-types";
 import './MtgHoveringCard.css';
@@ -11,49 +11,53 @@ type Props = {
 
 export default function MtgHoveringCard({ card, imgPath, anchorElement }: Props) {
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ left: 0, top: 0, transform: 'translateX(-50%)' });
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (!anchorElement || !tooltipRef.current) return;
+    if (!anchorElement) return;
 
-    const updatePosition = () => {
-      if (!tooltipRef.current || !anchorElement) return;
-
+    const calculatePosition = () => {
       const rect = anchorElement.getBoundingClientRect();
-      const tooltip = tooltipRef.current;
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      // Estimate tooltip size (standard card image ratio)
+      const tooltipWidth = 220; // Approximate width including padding
+      const tooltipHeight = 320; // Approximate height including padding
       
       // Calculate ideal position (below the link, centered)
       let left = rect.left + rect.width / 2;
       let top = rect.bottom + 8;
+      let transform = 'translateX(-50%)';
 
-      // Adjust if tooltip would go off screen
-      const tooltipRect = tooltip.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-
-      // Adjust horizontal position
-      if (left + tooltipRect.width / 2 > viewportWidth - 10) {
-        left = viewportWidth - tooltipRect.width - 10;
-      } else if (left - tooltipRect.width / 2 < 10) {
-        left = tooltipRect.width / 2 + 10;
+      // Adjust horizontal position if needed
+      if (left + tooltipWidth / 2 > viewportWidth - 10) {
+        left = viewportWidth - tooltipWidth - 10;
+        transform = 'none';
+      } else if (left - tooltipWidth / 2 < 10) {
+        left = 10;
+        transform = 'none';
       }
 
       // Adjust vertical position if tooltip goes below viewport
-      if (top + tooltipRect.height > viewportHeight - 10) {
-        top = rect.top - tooltipRect.height - 8;
+      if (top + tooltipHeight > viewportHeight - 10) {
+        top = rect.top - tooltipHeight - 8;
       }
 
-      tooltip.style.left = `${left}px`;
-      tooltip.style.top = `${top}px`;
-      tooltip.style.transform = left === rect.left + rect.width / 2 
-        ? 'translateX(-50%)' 
-        : 'none';
+      setPosition({ left, top, transform });
+      
+      // Start animation after position is set
+      setTimeout(() => setIsVisible(true), 10);
     };
 
-    // Initial positioning
-    updatePosition();
+    calculatePosition();
 
     // Update position on scroll/resize
-    const handleUpdate = () => updatePosition();
+    const handleUpdate = () => {
+      calculatePosition();
+    };
+    
     window.addEventListener('scroll', handleUpdate);
     window.addEventListener('resize', handleUpdate);
 
@@ -64,7 +68,15 @@ export default function MtgHoveringCard({ card, imgPath, anchorElement }: Props)
   }, [anchorElement]);
 
   const tooltipContent = (
-    <div ref={tooltipRef} className="card-image-tooltip">
+    <div 
+      ref={tooltipRef} 
+      className={`card-image-tooltip ${isVisible ? 'visible' : ''}`}
+      style={{
+        left: `${position.left}px`,
+        top: `${position.top}px`,
+        transform: position.transform
+      }}
+    >
       <img 
         src={imgPath || undefined} 
         alt={card.name}
