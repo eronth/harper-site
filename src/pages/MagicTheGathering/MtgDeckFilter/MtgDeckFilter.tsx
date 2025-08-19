@@ -125,11 +125,12 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
           Filter Decks
         </>}
         titleRight={
-          hasActiveFilters && (
+          hasActiveFilters 
+          ? (
             <button className="clear-filters" onClick={clearAllFilters}>
               Clear All
             </button>
-          )
+          ) : null
         }
       >
         <div className="filter-content">

@@ -26,7 +26,7 @@ export default function MtgCollapsibleRegion({
           {title}
         </span>
         <span className='title-right'>
-          {titleRight}
+          {titleRight ?? <div className="spacer"></div>}
           <span className={`toggle-icons ${isExpanded ? 'expanded' : ''}`}>
             {/* <FontAwesomeIcon icon={faChevronUp} /> */}
             <i className={`ms ms-tap`} />
