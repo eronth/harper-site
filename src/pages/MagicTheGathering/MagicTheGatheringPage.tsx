@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import MtgDeckFilter from './MtgDeckFilter/MtgDeckFilter';
+import MtgDeckAnalysis from './MtgDeckAnalysis/MtgDeckAnalysis';
 import MagicDeckDisplayCard from './MagicDeckDisplayCard/MagicDeckDisplayCard';
 import mtgDecks from './MTG Data/mtg-deck-data';
 import type { MtgDeck } from '../../types/mtg-types';
@@ -40,6 +41,10 @@ export default function MagicTheGatheringPage() {
       <MtgDeckFilter
         decks={mtgDecks}
         onFilteredDecksChange={setFilteredDecks}
+      />
+
+      <MtgDeckAnalysis
+        decks={filteredDecks}
       />
 
       <div className="deck-grid">

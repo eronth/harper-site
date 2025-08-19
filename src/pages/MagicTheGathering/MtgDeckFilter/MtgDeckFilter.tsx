@@ -1,8 +1,7 @@
 import { useState } from 'react';
+import MtgCollapsibleRegion from '../MtgCollapsibleRegion/MtgCollapsibleRegion';
 import type { MtgColor, DeckType, Owner, DeckStatus, MtgDeck } from '../../../types/mtg-types';
 import './MtgDeckFilter.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 interface FilterState {
   owners: Owner[];
@@ -39,8 +38,6 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
     deckStatuses: [],
     colorMatchMode: 'any'
   });
-
-  const [isExpanded, setIsExpanded] = useState(false);
 
   const applyFilters = (newFilters: FilterState) => {
     let filtered = decks;
@@ -120,29 +117,21 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
     || filters.deckStatuses.length > 0
   );
 
-  return (
-    <div className="mtg-deck-filter">
-      <div className="filter-header"
-        onClick={() => setIsExpanded(!isExpanded)}
-        aria-expanded={isExpanded}
-      >
-        <span className='title'>
-          <i className="ms ms-search"></i>
+  return (<div className='mtg-filters'>
+    
+      <MtgCollapsibleRegion 
+        title={<>
+          <i className="ms ms-ability-collect-evidence" />
           Filter Decks
-        </span>
-        <span>
-          {hasActiveFilters && (
+        </>}
+        titleRight={
+          hasActiveFilters && (
             <button className="clear-filters" onClick={clearAllFilters}>
               Clear All
             </button>
-          )}
-          <span className={`toggle-icon ${isExpanded ? 'expanded' : ''}`}>
-            <FontAwesomeIcon icon={faChevronUp} />
-          </span>
-        </span>
-      </div>
-
-      {isExpanded && (
+          )
+        }
+      >
         <div className="filter-content">
 
           {/* Owner Filter */}
@@ -250,7 +239,6 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
             </div>
           </div>
         </div>
-      )}
-    </div>
-  );
+      </MtgCollapsibleRegion>
+  </div>);
 }

@@ -1,0 +1,86 @@
+.mtg-collapsible-region {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    opacity: 0.7;
+  }
+
+  .collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+    cursor: pointer;
+
+    .title {
+      font-size: 1.2em;
+      i.ms {
+        margin-right: 0.25em;
+      }
+    }
+    .title-right {
+      display: flex;
+    }
+
+    &:hover {
+      color: var(--brand-maroon-light);
+    }
+
+    .toggle-icons {
+      font-size: 0.8rem;
+      margin-left: 1em;
+      position: relative;
+      width: 1.5em;
+      
+      i.ms {
+        position: absolute;
+        right: 0;
+        top: .4em;
+        font-size: 1.4em;
+      }
+      
+      i.ms-tap {
+        opacity: 1;
+      }
+      i.ms-untap {
+        opacity: 0;
+        transform: rotate(180deg);
+      }
+      i.ms,
+      svg {
+        transition: all 0.2s ease;
+      }
+
+      &.expanded {
+        i.ms-tap {
+          opacity: 0;
+          transform: rotate(180deg);
+        }
+        i.ms-untap {
+          opacity: 1;
+          transform: rotate(359deg);
+        }
+        i.ms,
+        svg {
+          transition: all 0.2s ease;
+        }
+      }
+
+    }
+  }
+}

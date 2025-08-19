@@ -1,80 +1,24 @@
-.mtg-deck-filter {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  border: 1px solid var(--border-light);
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-light);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    opacity: 0.7;
-  }
+.mtg-filters {
+  
+  .clear-filters {
+    background: var(--brand-maroon);
 
-  .filter-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--border-light);
-    cursor: pointer;
-
-    .title {
-      font-size: 1.2em;
-    }
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
 
     &:hover {
-      color: var(--brand-maroon-light);
+      background: var(--brand-maroon-light);
+      transform: translateY(-1px);
     }
 
     &:focus {
-      outline: 2px solid var(--brand-maroon);
+      outline: 2px solid var(--brand-maroon-light);
       outline-offset: 2px;
-      border-radius: 4px;
-    }
-
-    .ms {
-      font-size: 1.2rem;
-    }
-
-    .toggle-icon {
-      font-size: 0.8rem;
-      transition: transform 0.2s ease;
-
-      &.expanded {
-        transform: rotate(180deg);
-      }
-    }
-
-    .clear-filters {
-      margin-right: 1em;
-      background: var(--brand-maroon);
-
-      border: none;
-      padding: 0.5em 1em;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-
-      &:hover {
-        background: var(--brand-maroon-light);
-        transform: translateY(-1px);
-      }
-
-      &:focus {
-        outline: 2px solid var(--brand-maroon-light);
-        outline-offset: 2px;
-      }
     }
   }
-
   .filter-content {
     padding: 1.5rem;
     display: grid;

@@ -39,7 +39,7 @@ const mtgDecks: MtgDeck[] = [
         magicardsInfoUrl: 'https://magiccards.info/soi/en/184.html'
       }
     ],
-    owner: 'Nic',
+    owner: 'Leslie',
     location: {
       case: 'Large Black Case',
       deckbox: 'Red Ultra Pro',
