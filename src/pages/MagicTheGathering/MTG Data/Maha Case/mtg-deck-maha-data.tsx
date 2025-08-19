@@ -23,15 +23,15 @@ const mahaCaseDecks: MtgDeck[] = [
     keyCards: [
       mtgCard(
         'Grimoire Thief', 'UU',
-        'https://magiccards.info/card/mor/35/grimoire-thief'
+        'https://scryfall.com/card/mor/35/grimoire-thief'
       ),
       mtgCard(
         'Merrow Commerce', '1U',
-        'https://magiccards.info/card/lrw/72/merrow-commerce'
+        'https://scryfall.com/card/lrw/72/merrow-commerce'
       ),
       mtgCard(
         'Drowner of Secrets', '2U',
-        'https://magiccards.info/card/lrw/58/drowner-of-secrets'
+        'https://scryfall.com/card/lrw/58/drowner-of-secrets'
       )
     ],
     owner: 'Nic',
@@ -276,6 +276,7 @@ const mahaCaseDecks: MtgDeck[] = [
     keyCards: [
       mtgCard(
         'Figure of Destiny', '1(R/W)',
+        ''
       )
     ],
     owner: 'Nic',

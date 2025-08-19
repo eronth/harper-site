@@ -1,5 +1,6 @@
 import type { MtgDeck } from '../../../types/mtg-types';
 import mahaCaseDecks from './Maha Case/mtg-deck-maha-data';
+import zendikarDecks from './Zendikar Box/mtg-deck-zendikar-data';
 
 // Sample deck data - you can replace this with your actual decks
 // const winterCase = "Speed Demon Winter Case";
@@ -7,6 +8,7 @@ import mahaCaseDecks from './Maha Case/mtg-deck-maha-data';
 // const duskmournCase = "Duskmourn Case";
 const mtgDecks: MtgDeck[] = [
   ...mahaCaseDecks,
+  ...zendikarDecks,
   {
     id: 'edgar-markov-vampires',
     name: 'Edgar Markov Vampire Tribal',
@@ -101,5 +103,8 @@ const mtgDecks: MtgDeck[] = [
     status: 'Great'
   }
 ];
+// Sort alphabetically
+const sortedMtgDecks: MtgDeck[] = mtgDecks
+  .sort((a, b) => a.name.localeCompare(b.name))
 
-export default mtgDecks;
+export default sortedMtgDecks;

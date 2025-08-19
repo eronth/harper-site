@@ -27,7 +27,7 @@ export interface MtgDeck {
   owner: Owner;
   location: {
     case?: string;
-    deckbox: string;
+    deckbox?: string;
   };
   status: DeckStatus;
 }
