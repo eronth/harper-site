@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import type { MtgColor, DeckType, Owner, DeckStatus, MtgDeck } from '../../../types/mtg-types';
 import './MtgDeckAnalysis.css';
 import MtgCollapsibleRegion from '../MtgCollapsibleRegion/MtgCollapsibleRegion';
+import OwnerCollectionDataCard from './OwnerCollectionDataCard/OwnerCollectionDataCard';
 
 interface MtgDeckAnalysisProps {
   decks: MtgDeck[];
@@ -11,7 +12,7 @@ interface ColorStats {
   [key: string]: number;
 }
 
-interface OwnerStats {
+export type OwnerStats = {
   owner: Owner;
   totalDecks: number;
   commanderDecks: number;
@@ -152,65 +153,32 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
         
         {/* Collection Overview */}
         <div className="analysis-section overview">
-        <h3>Collection Overview</h3>
-        <div className="stat-grid">
-          <div className="stat-item">
-            <span className="stat-value">{analysisData.totalDecks}</span>
-            <span className="stat-label">Total Decks</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-value">{analysisData.averageColorsPerDeck.toFixed(1)}</span>
-            <span className="stat-label">Avg Colors/Deck</span>
-          </div>
-          <div className="stat-item popular-combo">
-            <div className="stat-value">
-              {analysisData.mostPopularColorCombination.colors.map(color => (
-                <i key={color} className={`ms ms-${color.toLowerCase()}`}></i>
-              ))}
+          <h3>Collection Overview</h3>
+          <div className="stat-grid">
+            <div className="stat-item">
+              <span className="stat-value">{analysisData.totalDecks}</span>
+              <span className="stat-label">Total Decks</span>
             </div>
-            <span className="stat-label">
-              Most Popular ({analysisData.mostPopularColorCombination.count} decks)
-            </span>
+            <div className="stat-item">
+              <span className="stat-value">{analysisData.averageColorsPerDeck.toFixed(1)}</span>
+              <span className="stat-label">Avg Colors/Deck</span>
+            </div>
+            <div className="stat-item popular-combo">
+              <div className="stat-value">
+                {analysisData.mostPopularColorCombination.colors.map(color => (
+                  <i key={color} className={`ms ms-${color.toLowerCase()}`}></i>
+                ))}
+              </div>
+              <span className="stat-label">
+                Most Popular ({analysisData.mostPopularColorCombination.count} decks)
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
       {/* Owner Breakdown */}
       {analysisData.ownerStats.map(ownerStat => (
-        <div key={ownerStat.owner} className="analysis-section owner-stats">
-          <h3>{ownerStat.owner}'s Collection</h3>
-          <div className="owner-content">
-            <div className="deck-counts">
-              <div className="count-item">
-                <span className="count-value">{ownerStat.totalDecks}</span>
-                <span className="count-label">Total Decks</span>
-              </div>
-              <div className="count-item">
-                <span className="count-value">{ownerStat.commanderDecks}</span>
-                <span className="count-label">Commander</span>
-              </div>
-              <div className="count-item">
-                <span className="count-value">{ownerStat.sixtyCardDecks}</span>
-                <span className="count-label">60-Card</span>
-              </div>
-            </div>
-            
-            <div className="color-breakdown">
-              <h4>Color Usage</h4>
-              <div className="color-stats">
-                {Object.entries(ownerStat.colorDistribution)
-                  .filter(([, count]) => count > 0)
-                  .sort(([, a], [, b]) => b - a)
-                  .map(([color, count]) => (
-                  <div key={color} className="color-stat">
-                    <i className={`ms ms-${color.toLowerCase()}`}></i>
-                    <span className="color-count">{count}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        <OwnerCollectionDataCard key={ownerStat.owner} ownerStat={ownerStat} />
       ))}
 
       {/* Collection Distribution */}
