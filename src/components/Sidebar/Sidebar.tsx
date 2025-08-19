@@ -1,16 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUmbrellaBeach,
-  faUtensils,
-  faCocktail,
-  faHouseChimney,
-  faStar,
-  faTimes,
-  faMagic
-} from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
+import type { Clickable } from '../../pages/Home/clickables-data';
+import clickables from '../../pages/Home/clickables-data';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -18,15 +12,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
-  const menuItems = [
-    { id: 'vacations', label: 'Vacations and Staycations', path: '/vacations', icon: faUmbrellaBeach},
-    { id: 'food-recipes', label: 'Food Recipes', path: '/food-recipes', icon: faUtensils},
-    { id: 'drink-recipes', label: 'Drink Recipes', path: '/drink-recipes', icon: faCocktail},
-    { id: 'projects', label: 'Projects & Crafts', path: '/projects', icon: faStar},
-    { id: 'winter-village', label: 'Winter Village', path: '/winter-village', icon: faHouseChimney},
-    { id: 'magic-the-gathering', label: 'Magic: The Gathering', path: '/magic-the-gathering', icon: faMagic},
-  ];
-
+  const menuItems: Clickable[] = clickables;
   return (
     <>
       {/* Overlay */}
@@ -52,7 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                   className="nav-item"
                   onClick={onClose}
                 >
-                  <FontAwesomeIcon icon={item.icon} /> {item.label}
+                  {item.icon} {item.title.sidebar || item.title.full}
                 </Link>
               </li>
             ))}

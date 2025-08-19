@@ -1,36 +1,10 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUmbrellaBeach,
-  faUtensils,
-  faCocktail,
-  faHouseChimney,
-  faPaintBrush,
-  faStar
-} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
+import type { Clickable } from './clickables-data';
+import clickables from './clickables-data';
 
 export default function Home() {
-  const featureItems = [
-    { id: 'vacations', title: 'Vacations and Staycations', icon: faUmbrellaBeach,
-      text: 'Our adventures and fun experiences together'
-    },
-    { id: 'food-recipes', title: 'Food Recipes', icon: faUtensils,
-      text: 'Delicious meals and culinary experiments'
-    },
-    { id: 'drink-recipes', title: 'Drink Recipes', icon: faCocktail,
-      text: 'Cocktails, coffee, and special beverages'
-    },
-    { id: 'projects', title: 'Projects & Crafts', icon: faPaintBrush,
-      text: 'Our creative endeavors and DIY projects'
-    },
-    { id: 'passions', title: 'Passions & Hobbies', icon: faStar,
-      text: 'Exploring our interests and hobbies together'
-    },
-    { id: 'winter-village', title: 'Winter Village', icon: faHouseChimney,
-      text: 'Our holiday traditions and winter displays'
-    },
-  ];
+  const featureItems: Clickable[] = clickables;
 
   return (
     <main className="page-content">
@@ -42,8 +16,8 @@ export default function Home() {
             {featureItems.map((item) => (
               <Link key={item.id} to={`/${item.id}`} className="feature-card">
                 <h3>
-                  <FontAwesomeIcon icon={item.icon} />
-                  {item.title}
+                  {item.icon}
+                  {item.title.full}
                 </h3>
                 <p>{item.text}</p>
               </Link>
