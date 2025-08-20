@@ -1,13 +1,20 @@
 import type { MtgDeck } from '../../../types/mtg-types';
+import duskmournCaseDecks from './Duskmourn Case/mtg-deck-duskmourn-data';
 import mahaCaseDecks from './Maha Case/mtg-deck-maha-data';
+import nicolBolasSunflowerDecks from './Nicol Bolas Sunflower Box/mtg-deck-nicolbolassunflower-data';
+import winterCaseDecks from './mtg-deck-template-data';
 import zendikarDecks from './Zendikar Box/mtg-deck-zendikar-data';
+
 
 // Sample deck data - you can replace this with your actual decks
 // const winterCase = "Speed Demon Winter Case";
 // const mahaCase = "Maha Case";
 // const duskmournCase = "Duskmourn Case";
 const mtgDecks: MtgDeck[] = [
+  ...duskmournCaseDecks,
   ...mahaCaseDecks,
+  ...nicolBolasSunflowerDecks,
+  ...winterCaseDecks,
   ...zendikarDecks,
   {
     id: 'edgar-markov-vampires',

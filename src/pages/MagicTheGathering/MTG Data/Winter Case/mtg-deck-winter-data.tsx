@@ -3,7 +3,7 @@ import { mtgCard } from "../../mtgHelperFunctions";
 
 const caseName = "Speed Demon Winter Case";
 
-const winterCase: MtgDeck[] = [
+const winterCaseDecks: MtgDeck[] = [
   { /* Shadow Ninjutsu */
     id: 'shadow-ninjutsu',
     name: 'Shadow Ninjutsu',
@@ -47,7 +47,99 @@ const winterCase: MtgDeck[] = [
       deckbox: 'Spectrum Prism Box'
     },
     status: 'Needs Improvement',
+  },
+  { /* +1/+1 Growth Counters */
+    name: '+1/+1 Growth Counters',
+    id: 'growth-counters',
+    colors: ['G', 'W'],
+    shortDescription: 'Deck focused on +1/+1 counters',
+    longDescription: <>
+      This deck leverages creatures and spells that place +1/+1 counters.
+      The big get bigger.
+    </>,
+    deckType: 'Commander',
+    commander: mtgCard(
+      'Leinore, Autumn Sovereign', '2GW',
+      'https://scryfall.com/card/mic/1/leinore-autumn-sovereign',
+      'Grow creatures and Coven — draw.'
+    ),
+    keyCards: [
+      mtgCard(
+        'Mossborn Hydra', '2G',
+        'https://scryfall.com/card/fdn/107/mossborn-hydra'
+      ),
+      mtgCard(
+        'Predator Ooze', 'GGG',
+        'https://scryfall.com/card/fdn/642/predator-ooze'
+      ),
+      mtgCard(
+        'Gnarlid Colony', '1G',
+        'https://scryfall.com/card/fdn/224/gnarlid-colony'
+      ),
+      mtgCard(
+        'Forced Adaptation', 'G',
+        'https://scryfall.com/card/rvr/140/forced-adaptation'
+      )
+    ],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Planet Adagia Large Deckbox'
+    },
+    status: 'Needs Improvement',
+  },
+  { /* Miracle Worker */
+    name: 'Miracle Worker',
+    id: 'miracle-worker',
+    colors: ['W', 'U', 'B'],
+    shortDescription: 'Let\'s make some miracles.',
+    longDescription: <>
+      Use scry and surveil to set up your deck to cast some miracle cards. Powerful
+      enchantments with cheaper miracle prices. Perfect to ramp up your board state.
+    </>,
+    deckType: 'Commander',
+    commander: mtgCard(
+      'Aminatou, Veil Piercer', '1WUB',
+      'https://scryfall.com/card/dsc/1/aminatou-veil-piercer',
+      'Set up your deck to miracle on demand.'
+    ),
+    keyCards: [
+      mtgCard(
+        'Shark Typhoon', '5U',
+        'https://scryfall.com/card/dsc/127/shark-typhoon'
+      )
+    ],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Miracle Worker Box'
+    },
+    status: 'Great',
+  },
+  { /* Counter Intelligence */
+    name: 'Counter Intelligence',
+    id: 'counter-intelligence',
+    colors: ['W', 'U', 'B'],
+    shortDescription: 'Create unreasonable numbers of counters.',
+    longDescription: <>
+      Using a variety of artifacts and creatures, create and manipulate 
+      outrageous numbers of +1/+1  and charge counters. Use those counters
+      to buff yourself up and constantly threaten your opponents.
+    </>,
+    deckType: 'Commander',
+    commander: mtgCard(
+      'Inspirit, Flagship Vessel', 'URW',
+      'https://scryfall.com/card/eoc/2/inspirit-flagship-vessel',
+      'Spacecraft that creates +1/+1 or charge counters, and at 8+ charge protects your other artifacts.'
+    ),
+    keyCards: [],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Counter Intelligence Box'
+    },
+    status: 'Great',
   }
 ];
 
-export default winterCase;
+export default winterCaseDecks;
