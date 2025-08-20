@@ -23,6 +23,7 @@ export interface MtgDeck {
   longDescription: React.ReactNode;
   deckType: DeckType;
   commander?: MtgCard;
+  alternateCommander?: MtgCard;
   keyCards?: MtgCard[];
   owner: Owner;
   location: {
