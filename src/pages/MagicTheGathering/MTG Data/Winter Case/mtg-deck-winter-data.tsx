@@ -139,6 +139,57 @@ const winterCaseDecks: MtgDeck[] = [
       deckbox: 'Counter Intelligence Box'
     },
     status: 'Great',
+  },
+  { /* Survivors */
+    name: 'Survivors',
+    id: 'survivors',
+    colors: ['W', 'G'],
+    shortDescription: 'Have heroes survive the combat phase and grow for it.',
+    longDescription: <>
+      This deck focuses on methods of getting my Survivors to make it through combat phase
+      tapped, thus gaining various bonuses.
+    </>,
+    deckType: '60-Card',
+    keyCards: [
+      mtgCard(
+        'Veteran Survivor', 'W',
+        'https://scryfall.com/card/dsk/40/veteran-survivor'
+      ),
+      mtgCard(
+        'Reluctant Role Model', '1W',
+        'https://scryfall.com/card/dsk/26/reluctant-role-model'
+      )
+    ],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Eventide Ashlyn Box'
+    },
+    status: 'Needs Improvement',
+  },
+  { /* Glimmer of Hope */
+    name: 'Glimmer of Hope',
+    id: 'glimmer-of-hope',
+    colors: ['W', 'U'],
+    shortDescription: 'Create glimmers and small guys to hold the line.',
+    longDescription: <>
+      This deck focuses on creating a steady stream of small creatures and "glimmer" tokens
+      to establish a defensive front. It leverages various artifacts and enchantments to
+      enhance these creatures, making it difficult for opponents to break through.
+    </>,
+    deckType: '60-Card',
+    keyCards: [
+      mtgCard(
+        'Inquisitive Glimmer', 'WU',
+        'https://scryfall.com/card/dsk/217/inquisitive-glimmer'
+      )
+    ],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Eventide Ashlyn Box'
+    },
+    status: 'Needs Improvement',
   }
 ];
 

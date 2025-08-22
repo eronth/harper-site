@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "generate-mtg-index": "node scripts/generate-mtg-index.js",
+    "watch-mtg-cards": "node scripts/watch-mtg-cards.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
