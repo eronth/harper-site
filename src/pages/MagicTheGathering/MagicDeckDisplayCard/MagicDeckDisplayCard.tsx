@@ -90,9 +90,9 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
     return owner === 'Nic' ? 'owner-nic' : 'owner-leslie';
   };
 
-  // const getStatusClass = (status: string): string => {
-  //   return `status-${status.toLowerCase().replace(' ', '-')}`;
-  // };
+  const getStatusClass = (status: string): string => {
+    return `status-${status.toLowerCase().replace(' ', '-')}`;
+  };
 
   return (<>
     <div key={deck.id} className={`deck-card colorful ${hoveredCard ? 'has-tooltip' : ''}`}>
@@ -225,11 +225,11 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
               {deck.status === 'Needs Improvement' && <FontAwesomeIcon icon={faExclamationTriangle} />}
               {deck.status === 'Incomplete' && <FontAwesomeIcon icon={faWrench} />}
             </div>
-            {/* <div className="meta-content">
+            <div className="meta-content">
               <span className={`meta-value status ${getStatusClass(deck.status)}`}>
                 {deck.status}
               </span>
-            </div> */}
+            </div>
           </div>
         
         </div>
