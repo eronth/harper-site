@@ -17,6 +17,27 @@ const mtgDecks: MtgDeck[] = [
   ...winterCaseDecks,
   ...zendikarDecks,
   {
+    id: 'aaaaa',
+    name: 'AAAAAAA',
+    colors: ['R', 'G', 'B'],
+    shortDescription: 'This is a test deck',
+    longDescription: 'A test deck for development purposes.',
+    deckType: 'Commander',
+    commander: {
+      name: 'EDDELMEDDEL',
+      manaCost: '11(R/W)(W/R)XXRY(P/U)(U/P)GG(P/G)OG1B13',
+      magicardsInfoUrl: '',
+      description: ''
+    },
+    keyCards: [],
+    owner: 'Leslie',
+    location: {
+      case: 'Unknown',
+      deckbox: 'Unknown',
+    },
+    status: 'Good'
+  },
+  {
     id: 'edgar-markov-vampires',
     name: 'Edgar Markov Vampire Tribal',
     colors: ['W', 'B', 'R'],

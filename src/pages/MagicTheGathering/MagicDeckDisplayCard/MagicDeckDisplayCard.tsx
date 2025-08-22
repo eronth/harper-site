@@ -9,38 +9,10 @@ import {
   faBox 
 } from '@fortawesome/free-solid-svg-icons';
 import CommanderSection from './CommanderSection/CommanderSection';
-import './MagicDeckDisplayCard.css';
 import MtgHoveringCard from './MtgHoveringCard/MtgHoveringCard';
 import { mtgCardImages } from '../../../assets/mtg-cards';
-
-// Helper function to convert mana cost string to mana symbols
-const renderManaCost = (manaCost: string) => {
-  if (!manaCost) return null;
-  
-  // Parse mana cost string like "3RWB" or "{3}{R}{W}{B}"
-  const symbols = manaCost
-    .replace(/[{}]/g, '') // Remove braces if present
-    .split('')
-    .map((symbol, index) => {
-      const lowerSymbol = symbol.toLowerCase();
-      let className = '';
-      
-      // Handle different mana symbols
-      if (/\d/.test(symbol)) {
-        className = `ms ms-${symbol}`;
-      } else if (['w', 'u', 'b', 'r', 'g', 'c'].includes(lowerSymbol)) {
-        className = `ms ms-${lowerSymbol}`;
-      } else if (symbol === 'X' || symbol === 'x') {
-        className = 'ms ms-x';
-      } else {
-        return symbol; // Return as text if not recognized
-      }
-      
-      return <i key={index} className={className}></i>;
-    });
-  
-  return <span className="mana-cost">{symbols}</span>;
-};
+import { renderManaCost } from './MtgHelpers';
+import './MagicDeckDisplayCard.css';
 
 // Helper function to get mana symbol for color
 const getManaSymbol = (color: MtgColor) => {

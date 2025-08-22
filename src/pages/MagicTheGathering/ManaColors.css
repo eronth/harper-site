@@ -17,4 +17,35 @@
   .ms-c {
     color: var(--ms-mana-c);
   }
+  .ms-h {
+    border-radius: 100%;
+    &.hw {
+      background-color: var(--ms-mana-g);
+    }
+    &.hu {
+      background-color: var(--ms-mana-u);
+    }
+    &.hr {
+      background-color: var(--ms-mana-r);
+    }
+    &.hg {
+      background-color: var(--ms-mana-g);
+    }
+    &.hb {
+      background-color: var(--ms-mana-b);
+    }
+    &.hc {
+      background-color: var(--ms-mana-c);
+    }
+  }
+  .num {
+    text-align: center;
+    align-items: center;
+    font-size: .9em;
+    height: 1.2em;
+    width: 1.2em; 
+    color: black;
+    background-color: var(--ms-mana-c);
+    border-radius: 100%;
+  }
 }
