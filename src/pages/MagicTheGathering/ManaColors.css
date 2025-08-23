@@ -38,14 +38,15 @@
       background-color: var(--ms-mana-c);
     }
   }
+  .var,
   .num {
-    text-align: center;
-    align-items: center;
     font-size: .9em;
+    /* text-align: center;
+    align-items: center;
     height: 1.2em;
     width: 1.2em; 
     color: black;
     background-color: var(--ms-mana-c);
-    border-radius: 100%;
+    border-radius: 100%; */
   }
 }

@@ -91,23 +91,15 @@ const renderManaCost = (manaCost: string) => {
       className = `ms ms-${lowerContent}`;
     } else if (['x', 'y', 'z'].includes(lowerContent)) {
       // X, Y, Z costs
-      className = `ms ms-${lowerContent}`;
+      className = `ms var ms-${lowerContent}`;
     } else if (content.includes('/')) {
-      if (lowerContent.includes('p')) {
-        const splitColors = content.toLowerCase().replace(/[()]/g, '').split('/');
+      const splitColors = content.toLowerCase().replace(/[()]/g, '').split('/');
+      if (splitColors[0] === 'p') {
+        // Phyrexian (pay 2 life or...) mana.
         className = `ms ms-ci ms-h h${splitColors[1]}`;
       } else {
         // Split mana cost like "R/W", "U/B", etc.
-        const splitColors = content.toLowerCase().replace(/[()]/g, '').split('/');
-        
         className = `ms ms-ci ms-ci-${splitColors[0]}${splitColors[1]}`;
-        // if (splitColors.length === 2 && 
-        //     splitColors.every(color => ['w', 'u', 'b', 'r', 'g', 'c'].includes(color))) {
-        //   // Create hybrid mana symbol class
-        //   className = `ms ms-${splitColors.join('')}`;
-        // } else {
-        //   return content; // Return as text if not recognized
-        // }
       }
     } else {
       return content; // Return as text if not recognized
