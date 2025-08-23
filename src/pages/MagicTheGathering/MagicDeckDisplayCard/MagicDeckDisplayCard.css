@@ -67,8 +67,10 @@
   }
 
   .deck-type-commander {
-    background: linear-gradient(135deg, var(--brand-maroon) 0%, 
-      color-mix(in srgb, var(--brand-maroon) 80%, white 10%) 100%);
+    /* background: linear-gradient(135deg, var(--brand-maroon) 0%, 
+      color-mix(in srgb, var(--brand-maroon) 80%, white 10%) 100%); */
+    /* box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3); */
+      background: var(--brand-maroon);
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
@@ -76,12 +78,13 @@
     font-weight: bold;
     display: inline-block;
     margin-bottom: 0.75rem;
-    box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3);
   }
 
   .deck-type-60card {
-    background: linear-gradient(135deg, var(--brand-navy) 0%,
-      color-mix(in srgb, var(--brand-navy) 80%, white 10%) 100%);
+    /* background: linear-gradient(135deg, var(--brand-navy) 0%,
+      color-mix(in srgb, var(--brand-navy) 80%, white 10%) 100%); */
+    /* box-shadow: 0 2px 8px rgba(30, 58, 95, 0.3); */
+    background: var(--brand-navy);
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
@@ -89,7 +92,6 @@
     font-weight: bold;
     display: inline-block;
     margin-bottom: 0.75rem;
-    box-shadow: 0 2px 8px rgba(30, 58, 95, 0.3);
   }
 
 }
