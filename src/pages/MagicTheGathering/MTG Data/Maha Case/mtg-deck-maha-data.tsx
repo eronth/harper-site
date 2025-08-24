@@ -285,7 +285,158 @@ const mahaCaseDecks: MtgDeck[] = [
       deckbox: dragonhawk
     },
     status: 'Needs Improvement',
-  }
+  },
+  { /* Izzet Otters */
+    id: 'izzet-otters',
+    name: 'This Otter Be Fun',
+    colors: ['U','R'],
+    shortDescription: 'Noncreature Spell Engine.',
+    longDescription: <>
+      "Castin' lines or castin' spells, ain't no one better than this deck."
+    </>,
+    deckType: '60-Card',
+        keyCards: [ 
+      mtgCard(
+        'Tempest Angler', '1U/RU/R',
+        'https://scryfall.com/card/blb/235/tempest-angler'
+      ),
+      mtgCard(
+        'Coruscation Mage', '1R',
+        'https://scryfall.com/card/blb/131/coruscation-mage'
+      )
+    ],
+    
+    owner: 'Leslie',
+    location: {
+      case: caseName, // Automatically filled out, don't change.
+      deckbox: 'Rottenmouth Viper Box' // Rename this to the actual deckbox name
+    },
+    // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
+    // We can add or change options as we see fit.
+    status: 'Needs Improvement', 
+  },
+  { /* Monoblack Rottenmouth */
+    id: 'monoblack-rottenmouth',
+    name: 'Monoblack Rottenmouth',
+    colors: ['B'],
+    shortDescription: 'First deck, because i am an edgelord.',
+    longDescription: <>
+      IDK, bully the field until Rottenmouth can appear i guess.
+    </>,
+    deckType: '60-Card',
+        keyCards: [ 
+      mtgCard(
+        'Rottenmouth Viper', '5B',
+        'https://scryfall.com/card/blb/290/rottenmouth-viper'
+      ),
+      mtgCard(
+        'Fell', '1B',
+        'https://scryfall.com/card/blb/383/fell'
+      )
+    ],
+    
+    owner: 'Leslie',
+    location: {
+      case: caseName, // Automatically filled out, don't change.
+      deckbox: 'Rottenmouth Viper Box' // Rename this to the actual deckbox name
+    },
+    // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
+    // We can add or change options as we see fit.
+    status: 'Needs Improvement', 
+  },
+  { /* Vren, The Relentless */
+    id: 'vren-the-relentless',
+    name: 'Vren, The Relentless',
+    colors: ['U', 'B'],
+    shortDescription: 'Rats, rats, we are the rats.',
+    longDescription: <>
+      Kill creatures and generate more and more rats. Rats get stronger as more of their kin enter the field.
+    </>,
+    deckType: 'Commander',
+    commander: mtgCard(
+      'Vren, The Relentless', '2UB',
+      'https://scryfall.com/card/blb/239/vren-the-relentless',
+      'If a creature an opponent controls would die, exile it instead. Create X 1/1 rat tokens with +1/+1 for every other rat controlled.'
+    ),
+    keyCards: [
+      mtgCard(
+        'Revenge of the Rats', '2BB',
+        'https://scryfall.com/card/fdn/67/revenge-of-the-rats'
+      ),
+    
+    ],
+    owner: 'Leslie',
+    location: {
+      case: caseName, // Automatically filled out, don't change.
+      deckbox: 'Maha, Its Feathers Night Box' // Rename this to the actual deckbox name
+    },
+    // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
+    // We can add or change options as we see fit.
+    status: 'Needs Improvement', 
+  },
+  { /* Gev, Scaled Scorch */
+    id: 'gev-scaled-scorch',
+    name: 'Gev, Scaled Scorch',
+    colors: ['B', 'R'],
+    shortDescription: 'Poking with fire.',
+    longDescription: <>
+      +1/+1 counters, lizard-heavy, utilize second main phase.
+    </>,
+    deckType: 'Commander',
+    commander: mtgCard(
+      'Gev, Scaled Scorch', 'BR',
+      'https://scryfall.com/card/blb/214/gev-scaled-scorch',
+      'Ward - Pay 2 life. Deal 1 damage whenever a Lizard spell is cast. Creatures enter with +1/+1 for each opponent who lost life.'
+    ),
+        keyCards: [ 
+      mtgCard(
+        'Hearthborn Battler', '2R',
+        'https://scryfall.com/card/blb/139/hearthborn-battler'
+      ),
+      mtgCard(
+        'Sinister Monolith', '3B',
+        'https://scryfall.com/card/blb/113/sinister-monolith'
+      )
+    ],
+    
+    owner: 'Leslie',
+    location: {
+      case: caseName, // Automatically filled out, don't change.
+      deckbox: 'Sunspine Lynx Box' // Rename this to the actual deckbox name
+    },
+    // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
+    // We can add or change options as we see fit.
+    status: 'Needs Improvement', 
+  },
+  { /* Golgari Squirrels */
+    id: 'golgari-squirrels',
+    name: 'Golgari Squirrels',
+    colors: ['B', 'R'],
+    shortDescription: 'Food, Menace, and Squirrels Galore',
+    longDescription: <>
+      Lotsa squirrels, lotsa food tokens, lotsa exiling and foraging.
+    </>,
+    deckType: '60-Card',
+        keyCards: [ 
+      mtgCard(
+        'Camellia, the Seedmiser', '1BG',
+        'https://scryfall.com/card/blb/207/camellia-the-seedmiser'
+      ),
+      mtgCard(
+        'Chatterfang, Squirrel General', '2G',
+        'https://scryfall.com/card/mh2/151/chatterfang-squirrel-general'
+      )
+    ],
+    
+    owner: 'Leslie',
+    location: {
+      case: caseName, // Automatically filled out, don't change.
+      deckbox: 'Ygra Box' // Rename this to the actual deckbox name
+    },
+    // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
+    // We can add or change options as we see fit.
+    status: 'Needs Improvement', 
+  },
 ];
 
 export default mahaCaseDecks;
