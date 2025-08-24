@@ -2,16 +2,19 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import type { MtgCard } from '../../../../types/mtg-types';
+import MtgCardHoverLink from '../MtgCardHoverLink/MtgCardHoverLink';
 import './CommanderSection.css';
 
 interface Props {
   commander: MtgCard;
   renderManaCost: (manaCost: string) => React.ReactNode;
+  hoveredCardReactState: [string | null, React.Dispatch<React.SetStateAction<string | null>>];
 }
 
 export default function CommanderSection({ 
   commander,
-  renderManaCost
+  renderManaCost,
+  hoveredCardReactState
 }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -19,26 +22,15 @@ export default function CommanderSection({
     setIsExpanded(!isExpanded);
   };
 
-  const handleLinkClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
   return (
     <div className="commander-section" onClick={handleToggle}>
       <div className="commander-header">
         <div className="commander-name">
           {commander.magicardsInfoUrl ? (
-            <a
-              href={commander.magicardsInfoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleLinkClick}
-            >
-              <span className="commander-label">
-                <i className={'ms ms-commander'}></i>
-              </span>
-              {commander.name}
-            </a>
+            <MtgCardHoverLink
+              card={commander}
+              hoveredCardReactState={hoveredCardReactState}
+            />
           ) : (
             <span className="commander-name-text">{commander.name}</span>
           )}

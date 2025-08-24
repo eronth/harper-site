@@ -313,7 +313,7 @@ const mahaCaseDecks: MtgDeck[] = [
     },
     // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
     // We can add or change options as we see fit.
-    status: 'Needs Improvement', 
+    status: 'Good', 
   },
   { /* Monoblack Rottenmouth */
     id: 'monoblack-rottenmouth',
@@ -411,7 +411,7 @@ const mahaCaseDecks: MtgDeck[] = [
   { /* Golgari Squirrels */
     id: 'golgari-squirrels',
     name: 'Golgari Squirrels',
-    colors: ['B', 'R'],
+    colors: ['B', 'G'],
     shortDescription: 'Food, Menace, and Squirrels Galore',
     longDescription: <>
       Lotsa squirrels, lotsa food tokens, lotsa exiling and foraging.
@@ -435,7 +435,7 @@ const mahaCaseDecks: MtgDeck[] = [
     },
     // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
     // We can add or change options as we see fit.
-    status: 'Needs Improvement', 
+    status: 'Great', 
   },
 ];
 

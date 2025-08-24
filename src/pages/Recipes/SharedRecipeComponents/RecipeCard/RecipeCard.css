@@ -318,6 +318,7 @@ ol.steps-list {
     max-width: none;
     width: 100%;
     padding: 0.875rem;
+    font-size: 17px;
 
     .season-icons-row {
       flex-direction: column;
@@ -340,6 +341,7 @@ ol.steps-list {
 @media (max-width: 480px) {
   .recipe-card {
     padding: 0.75rem;
+    font-size: 17px;
 
     .recipe-title-region h2 {
       font-size: 1.25rem;

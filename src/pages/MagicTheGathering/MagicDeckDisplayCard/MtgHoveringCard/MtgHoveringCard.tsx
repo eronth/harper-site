@@ -29,7 +29,7 @@ export default function MtgHoveringCard({ card, imgPath, anchorElement }: Props)
       // Calculate ideal position (below the link, centered)
       let left = rect.left + rect.width / 2;
       let top = rect.bottom + 8;
-      let transform = 'translateX(-50%) translateY(-130px)';
+      let transform = 'translateX(-50%)';
 
       // Adjust horizontal position if needed
       if (left + tooltipWidth / 2 > viewportWidth - 10) {

@@ -9,9 +9,8 @@ import {
   faBox 
 } from '@fortawesome/free-solid-svg-icons';
 import CommanderSection from './CommanderSection/CommanderSection';
-import MtgHoveringCard from './MtgHoveringCard/MtgHoveringCard';
-import { mtgCardImages } from '../../../assets/mtg-cards';
 import { renderManaCost } from './MtgHelpers';
+import MtgCardHoverLink from './MtgCardHoverLink/MtgCardHoverLink';
 import './MagicDeckDisplayCard.css';
 
 // Helper function to get mana symbol for color
@@ -28,32 +27,9 @@ const getManaSymbol = (color: MtgColor) => {
   return colorMap[color] || 'ms ms-c';
 };
 
-// Function to convert MTG card URL to image path
-const getCardImagePath = (magicardsInfoUrl: string): string | null => {
-  try {
-    // First, strip https://magiccards.info/ or https://scryfall.com from the URL
-    const strippedUrl = magicardsInfoUrl
-      .replace('https://', '')
-      .replace('http://', '')
-      .replace('magiccards.info/', '')
-      .replace('scryfall.com/card/', '');
-    const slashToDashText = strippedUrl.replace(/\//g, '-');
-    
-    // Look up the imported image
-    const imageKey = slashToDashText; // Remove .jpg extension for lookup
-    const imagePath = mtgCardImages[imageKey];
-    
-    return imagePath || null;
-  } catch (error) {
-    console.warn('Error processing card URL:', magicardsInfoUrl, error);
-    return null;
-  }
-};
-
-
 export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [anchorElement, setAnchorElement] = useState<HTMLElement | null>(null);
+  
   const getDeckTypeClass = (deckType: string): string => {
     return deckType === 'Commander' ? 'deck-type-commander' : 'deck-type-60card';
   };
@@ -94,8 +70,9 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
         
         {deck.commander && (
           <CommanderSection 
-            commander={deck.commander} 
+            commander={deck.commander}
             renderManaCost={renderManaCost}
+            hoveredCardReactState={[hoveredCard, setHoveredCard]}
           />
         )}
 
@@ -113,29 +90,10 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
                     <div className="key-card-name-line">
                       {card.magicardsInfoUrl ? (
                         <div className="card-link-container">
-                          <a 
-                            href={card.magicardsInfoUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            onMouseEnter={(e) => {
-                              setHoveredCard(card.magicardsInfoUrl || null);
-                              setAnchorElement(e.currentTarget);
-                            }}
-                            onMouseLeave={() => {
-                              setHoveredCard(null);
-                              setAnchorElement(null);
-                            }}
-                          >
-                            {card.name}
-                          </a>
-                          {hoveredCard === card.magicardsInfoUrl && card.magicardsInfoUrl 
-                            && getCardImagePath(card.magicardsInfoUrl) && (
-                            <MtgHoveringCard 
-                              card={card} 
-                              imgPath={getCardImagePath(card.magicardsInfoUrl)} 
-                              anchorElement={anchorElement}
-                            />
-                          )}
+                          <MtgCardHoverLink
+                            card={card}
+                            hoveredCardReactState={[hoveredCard, setHoveredCard]}
+                          />
                         </div>
                       ) : (
                         <span className="card-name">{card.name}</span>
