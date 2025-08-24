@@ -335,61 +335,7 @@
   }
 }
 
-/* Card image tooltip styles */
-.card-link-container {
-  position: relative;
-  display: inline-block;
-}
-
-.card-image-tooltip {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.95);
-  border-radius: 8px;
-  padding: 8px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 8px;
-  animation: fadeIn 0.2s ease-in-out;
-  pointer-events: none; /* Prevent tooltip from interfering with mouse events */
-}
-
-.card-preview-image {
-  max-width: 200px;
-  max-height: 280px;
-  width: auto;
-  height: auto;
-  border-radius: 4px;
-  display: block;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-/* Responsive adjustments for tooltip */
-@media (max-width: 768px) {
-  .card-image-tooltip {
-    left: 0;
-    transform: none;
-    margin-left: 0;
-  }
-  
-  .card-preview-image {
-    max-width: 150px;
-    max-height: 210px;
-  }
-}
+/* Tooltip styles are now handled in MtgHoveringCard.css */
 
 /* Ensure parent containers don't clip the tooltip */
 .key-cards {

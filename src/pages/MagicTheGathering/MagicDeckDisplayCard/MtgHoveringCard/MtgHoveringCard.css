@@ -16,9 +16,8 @@
   
   /* Start invisible and ready for animation */
   opacity: 0;
-  /* transform: translateY(-10px);
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+  transform: translateY(-10px);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-preview-image {
@@ -34,16 +33,9 @@
 
 .card-image-tooltip.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 @media (max-width: 768px) {
-  .card-image-tooltip {
-    left: 0;
-    transform: none;
-    margin-left: 0;
-  }
-  
   .card-preview-image {
     --m-width: 150px;
   }
