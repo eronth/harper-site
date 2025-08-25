@@ -15,6 +15,13 @@ export interface MtgCard {
   description?: string; // Short description of what the card does
 }
 
+type DeckPlayedDate = {
+  date: Date;
+  playCount?: number; // how many times did the deck get played on this date
+  location?: string;
+  notes?: string;
+}
+
 export interface MtgDeck {
   id: string;
   name: string;
@@ -29,6 +36,9 @@ export interface MtgDeck {
   location: {
     case?: string;
     deckbox?: string;
+    sleeves?: string;
+    sleevesMaker?: string;
   };
   status: DeckStatus;
+  datesPlayed?: DeckPlayedDate[]; // Optional field to track when the deck was played
 }

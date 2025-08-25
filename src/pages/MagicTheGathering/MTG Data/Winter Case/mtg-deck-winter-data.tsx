@@ -112,7 +112,8 @@ const winterCaseDecks: MtgDeck[] = [
     owner: 'Nic',
     location: {
       case: caseName,
-      deckbox: 'Miracle Worker Box'
+      deckbox: 'Miracle Worker Box',
+      sleeves: 'Planeswalker Lotus'
     },
     status: 'Great',
   },
@@ -136,7 +137,9 @@ const winterCaseDecks: MtgDeck[] = [
     owner: 'Nic',
     location: {
       case: caseName,
-      deckbox: 'Counter Intelligence Box'
+      deckbox: 'Counter Intelligence Box',
+      sleeves: 'Exploration Ship',
+      sleevesMaker: 'Katomula'
     },
     status: 'Great',
   },

@@ -2,6 +2,7 @@ import type { MtgDeck } from "../../../../types/mtg-types";
 import { mtgCard } from "../../mtgHelperFunctions";
 
 const caseName = "Zendikar Box";
+const dragonShield = "Dragon Shield";
 
 const mahaCaseDecks: MtgDeck[] = [
   { /* Robo Racers */
@@ -51,7 +52,9 @@ const mahaCaseDecks: MtgDeck[] = [
     ],
     owner: 'Nic',
     location: {
-      case: caseName
+      case: caseName,
+      sleeves: 'Mint Matte',
+      sleevesMaker: dragonShield
     },
     status: 'Good',
   },
@@ -95,7 +98,9 @@ const mahaCaseDecks: MtgDeck[] = [
     ],
     owner: 'Nic',
     location: {
-      case: caseName
+      case: caseName,
+      sleeves: 'Blood Red',
+      sleevesMaker: dragonShield
     },
     status: 'Needs Improvement',
   },
@@ -134,7 +139,8 @@ const mahaCaseDecks: MtgDeck[] = [
     ],
     owner: 'Nic',
     location: {
-      case: caseName
+      case: caseName,
+      sleeves: 'Green'
     },
     status: 'Great',
   }

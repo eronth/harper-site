@@ -60,7 +60,9 @@ const templateCase: MtgDeck[] = [
     owner: 'Leslie',
     location: {
       case: caseName, // Automatically filled out, don't change.
-      deckbox: 'Planet Adagia Large Deckbox' // Rename this to the actual deckbox name
+      deckbox: 'Planet Adagia Large Deckbox', // Rename this to the actual deckbox name
+      sleeves: 'Red Swirls', // Optional field
+      sleevesMaker: 'Dragon Shield' // Optional field. Honesly only put if you LIKE the sleeves, I think?
     },
     // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
     // We can add or change options as we see fit.

@@ -79,7 +79,8 @@ const mahaCaseDecks: MtgDeck[] = [
     owner: 'Nic',
     location: {
       case: caseName,
-      deckbox: eluge
+      deckbox: eluge,
+      sleeves: 'Lotus Water Lillies'
     },
     status: 'Great',
   },

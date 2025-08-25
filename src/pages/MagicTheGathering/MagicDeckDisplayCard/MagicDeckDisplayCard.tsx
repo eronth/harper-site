@@ -139,6 +139,10 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
                   <span className="separator"> → </span>
                 )}
                 <span className="deckbox-name">{deck.location.deckbox}</span>
+                {(deck.location.case || deck.location.deckbox) && deck.location.sleeves && (
+                  <span className="separator">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+                )}
+                <span className="sleeves-name">{deck.location.sleeves}</span>
               </span>
             </div>
           </div>
