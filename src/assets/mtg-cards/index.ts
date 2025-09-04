@@ -67,6 +67,7 @@ import one318GlissaSunslayerImg from './one-318-glissa-sunslayer.jpg';
 import rvr140ForcedAdaptationImg from './rvr-140-forced-adaptation.jpg';
 import sld1623VorinclexVoiceOfHungerImg from './sld-1623-vorinclex-voice-of-hunger.jpg';
 import sld76AthreosGodOfPassageImg from './sld-76-athreos-god-of-passage.jpg';
+import snc204MrOrfeoTheBoulderImg from './snc-204-mr-orfeo-the-boulder.jpg';
 import snc301CormelaGlamourThiefImg from './snc-301-cormela-glamour-thief.jpg';
 import snc357WaterfrontDistrictImg from './snc-357-waterfront-district.jpg';
 import tsr262AkromaSMemorialImg from './tsr-262-akroma-s-memorial.jpg';
@@ -141,6 +142,7 @@ export const mtgCardImages: { [key: string]: string } = {
   'rvr-140-forced-adaptation': rvr140ForcedAdaptationImg,
   'sld-1623-vorinclex-voice-of-hunger': sld1623VorinclexVoiceOfHungerImg,
   'sld-76-athreos-god-of-passage': sld76AthreosGodOfPassageImg,
+  'snc-204-mr-orfeo-the-boulder': snc204MrOrfeoTheBoulderImg,
   'snc-301-cormela-glamour-thief': snc301CormelaGlamourThiefImg,
   'snc-357-waterfront-district': snc357WaterfrontDistrictImg,
   'tsr-262-akroma-s-memorial': tsr262AkromaSMemorialImg,
