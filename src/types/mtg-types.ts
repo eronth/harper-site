@@ -25,6 +25,7 @@ type DeckPlayedDate = {
 export interface MtgDeck {
   id: string;
   name: string;
+  keyterms?: string[];
   colors: MtgColor[];
   shortDescription: string;
   longDescription: React.ReactNode;

@@ -231,9 +231,10 @@ const mahaCaseDecks: MtgDeck[] = [
     },
     status: 'Needs Improvement',
   },
-  { /* Kor Armory*/
-    id: 'kor-armory',
-    name: 'Kor Armory',
+  { /* Armoured Kor */
+    id: 'armoured-kor',
+    name: 'Armoured Kor',
+    keyterms: ['Armoury', 'Armory', 'Armored', 'Equipment'],
     colors: ['W'],
     shortDescription:
       'A zendikar Kor equipment oriented deck.',

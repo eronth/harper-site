@@ -9,6 +9,7 @@ interface FilterState {
   colors: MtgColor[];
   deckStatuses: DeckStatus[];
   colorMatchMode: 'any' | 'exact' | 'contains';
+  searchTerm: string;
 }
 
 interface MtgDeckFilterProps {
@@ -36,11 +37,28 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
     deckTypes: [],
     colors: [],
     deckStatuses: [],
-    colorMatchMode: 'any'
+    colorMatchMode: 'any',
+    searchTerm: ''
   });
 
   const applyFilters = (newFilters: FilterState) => {
     let filtered = decks;
+
+    // Filter by search term (names and keyterms)
+    if (newFilters.searchTerm.trim()) {
+      const searchLower = newFilters.searchTerm.toLowerCase().trim();
+      filtered = filtered.filter(deck => {
+        // Check deck name
+        const nameMatch = deck.name.toLowerCase().includes(searchLower);
+        
+        // Check keyterms
+        const keytermsMatch = deck.keyterms?.some(keyterm => 
+          keyterm.toLowerCase().includes(searchLower)
+        ) || false;
+        
+        return nameMatch || keytermsMatch;
+      });
+    }
 
     // Filter by owners
     if (newFilters.owners.length > 0) {
@@ -104,7 +122,8 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
       deckTypes: [],
       colors: [],
       deckStatuses: [],
-      colorMatchMode: 'any'
+      colorMatchMode: 'any',
+      searchTerm: ''
     };
     setFilters(clearedFilters);
     applyFilters(clearedFilters);
@@ -115,6 +134,7 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
     || filters.deckTypes.length > 0
     || filters.colors.length > 0
     || filters.deckStatuses.length > 0
+    || filters.searchTerm.trim().length > 0
   );
 
   return (<div className='mtg-filters'>
@@ -134,6 +154,29 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
         }
       >
         <div className="filter-content">
+
+          {/* Search Filter */}
+          <div className="filter-group">
+            <h3>Search</h3>
+            <div className="search-input-container">
+              <input
+                type="text"
+                placeholder="Search deck names and keyterms..."
+                value={filters.searchTerm}
+                onChange={(e) => updateFilter('searchTerm', e.target.value)}
+                className="search-input"
+              />
+              {filters.searchTerm && (
+                <button
+                  className="clear-search"
+                  onClick={() => updateFilter('searchTerm', '')}
+                  title="Clear search"
+                >
+                  ×
+                </button>
+              )}
+            </div>
+          </div>
 
           {/* Owner Filter */}
           <div className="filter-group">
