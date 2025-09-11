@@ -159,7 +159,7 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
               {deck.status === 'Needs Improvement' && <FontAwesomeIcon icon={faExclamationTriangle} />}
               {deck.status === 'Incomplete' && <FontAwesomeIcon icon={faWrench} />}
             </div>
-            <div className="meta-content">
+            <div className="meta-content status">
               <span className={`meta-value status ${getStatusClass(deck.status)}`}>
                 {deck.status}
               </span>

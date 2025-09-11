@@ -208,7 +208,7 @@
 
   .deck-meta {
     display: grid;
-    grid-template-columns: 1fr 3fr 90px;
+    grid-template-columns: 1fr 3fr 45px;
     gap: 1rem;
 
     .meta-item {
@@ -220,6 +220,11 @@
       border-radius: 8px;
       border: 1px solid var(--border-light);
       transition: all 0.2s ease;
+
+      &.status-item {
+        justify-content: center;
+        gap: 0;
+      }
 
       &:hover {
         background: rgba(255, 255, 255, 0.06);
@@ -286,7 +291,6 @@
           }
 
           &.status {
-            visibility: hidden;
             &.status-incomplete { 
               color: #e74c3c; 
             }
@@ -304,7 +308,7 @@
         }
 
         &.status {
-          visibility: hidden;
+          visibility: collapse;
         }
       }
     }
