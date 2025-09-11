@@ -7,7 +7,8 @@ const autumn: Season = 'Autumn';
 const fall: Season = 'Autumn'; // Alias for Autumn
 const winter: Season = 'Winter';
 const yearround: Season[] = [spring, summer, autumn, winter];
-
+const allSeasons: Season[] = yearround;
+const anySeason: Season[] = yearround;
 
 const ing = (
   quantity: number | [number, number],
@@ -20,6 +21,8 @@ const ing = (
   unit,
   adjustments
 });
+
+const saltAndPepper = ing(0, null, 'salt & pepper');
 
 const g: QuantityUnit = 'g';
 //const ml: QuantityUnit = 'ml';
@@ -40,6 +43,7 @@ const bunch: QuantityUnit = 'bunch';
 const dash: QuantityUnit = 'dash';
 const splash: QuantityUnit = 'splash';
 const clove: QuantityUnit = 'clove';
+const slices: QuantityUnit = 'slices';
 
 //const breakfast: RecipeCategory = 'Breakfast';
 const lunch: RecipeCategory = 'Lunch';
@@ -903,6 +907,31 @@ const recipes: Recipe[] = [
       ]
     })
   },
+  { // WIP Nic's Custom Beef Ramen
+    ...simpleRecipe({
+      title: 'WIP Nic\'s Custom Beef Ramen',
+      category: dinner,
+      seasons: [fall, winter],
+      ingredients: [
+        ing(1/2, null, 'box noodles'),
+        ing(1, null, 'beef broth'),
+        ing(2, null, 'beef cut boys'),
+        ing(2, null, 'eggs')
+      ],
+      steps: [
+        'Salt and pepper beef',
+        'Sear beef in pan',
+
+        'Put noodles in beef broth and bring to a boil',
+
+        'Eggies into water. Boil until medium-boiled eggs.',
+
+        'When noodles are nearing done, slice up the beef and put in with noodles.',
+
+        'Green onion atop'
+      ]
+    })
+  },
   { // No Bake Peanut Butter Bars
     ...simpleRecipe({
       title: 'No Bake Peanut Butter Bars',
@@ -923,6 +952,146 @@ const recipes: Recipe[] = [
         'Melt chocolate in microwave.',
         'Pour chocolate over chilled peanut butter mix.',
         'Chill in fridge for an hour.',
+      ]
+    })
+  },
+  { // Snack Sandwich
+    ...simpleRecipe({
+      title: 'Snack Sandwich',
+      category: snack,
+      seasons: [],
+      ingredients: [
+        ing(1, null, 'egg'),
+        ing(3, 'slices', 'white bread'),
+        ing([2, 4], slices, 'american cheese'),
+        ing([2, 4], slices, 'ham'),
+        ing(0, null, 'dijon mustard'),
+        ing(0, null, 'raspberry jam')
+      ],
+      steps: [
+        'White bread',
+        'Layer american cheese and ham',
+        'White bread with rasp jam',
+        'Layer american cheese and ham',
+        'Remove crust, square up sandwich.',
+        'Whisk egg into bowl.',
+        'Completely coat sandwich in egg.',
+        'Pan fry on all sides until egg is done.'
+      ]
+    })
+  },
+  { // Warming Gnocchi
+    ...simpleRecipe({
+      title: 'Warming Gnocchi',
+      subtitle: 'with Spinach and Chicken',
+      category: dinner,
+      seasons: [winter],
+      ingredients: [
+        ing(1, 'package (16 oz)', 'potato gnocchi'),
+        ing(2, tbsp, 'olive oil'),
+        ing(1, 'package (12 oz)', '(12 oz) fully cooked italian chicken sausage links, halved and sliced.'),
+        ing(2, null, 'shallots finely chopped'),
+        ing(2, null, 'garlic cloves, minced'),
+        ing(1, cup, 'white wine or chicken broth'),
+        ing(1, tbsp, 'cornstarch'),
+        ing(1/2, cup, 'chicken broth'),
+        ing(3, cups, 'fresh baby spinach'),
+        ing(1/4, cup, 'shredded parmesan cheese'),
+      ],
+      steps: [
+        'Cook gnocchi according to package directions.',
+        'In large skillet, heat oil over med-high.',
+        'Cook sausage/shallots until sausage is browned.',
+        'Add garlic, cook 1 min longer.',
+        'Stir in wine, bring to boil. Cook until liquid reduced by half, 3-4 mins.',
+        'In small bowl, mix cornstarch and broth until smooth. Stir into sausage mixture.',
+        'Return to boil, stirring constantly until thickened. About 1-2 min.',
+        'Add spinach + cheese (and a dab of cream?), cook until spinach wilts.',
+        'Drain gnocchi, add to pan and heat through.',
+        'Serve!'
+        ]
+    })
+  },
+  { // Honey Butter Chicken
+    ...simpleRecipe({
+      title: 'Honey Butter Chicken',
+      category: dinner,
+      seasons: [fall, winter],
+      ingredients: [
+        ing(0, null, 'boneless skinless chicken thighs'),
+        ing(1, tsp, 'olive oil'),
+        ing(2, tbsp, 'butter'),
+        ing(2.5, tbsp, 'honey'),
+        ing(1.5, tbsp, 'cider vinegar'),
+        ing(1, null, 'garlic clove'),
+        saltAndPepper,
+      ],
+      steps: [
+        'Oil and half butter into pan on high heat.',
+        'Cube chicken. Into drying pan.',
+        'Add garlic.',
+        'Cook chicken through.',
+        'Add the rest.',
+        'Add some spice as desired. (celery salt)'
+      ]
+    })
+  },
+  { // Korea Beef-a Bowl
+    ...simpleRecipe({
+      title: 'Korea Beef-a Bowl',
+      category: dinner,
+      seasons: [...allSeasons],
+      ingredients: [
+        ing(1, lb, 'ground beef', '90% lean'),
+        saltAndPepper,
+        ing(3, null, 'garlic cloves, minced'),
+        ing(1/4, cup, 'brown sugar'),
+        ing(1/4, cup, 'soy sauce'),
+        ing(2, tsp, 'sesame oil'),
+        ing(1/4, tsp, 'ground ginger'),
+        ing(1/4, tsp, 'crushed red pepper flakes'),
+        ing(0, null, 'green onions'),
+        ing(0, null, 'sesame seeds'),
+      ],
+      steps: [
+        'Crumble beef into skillet.',
+        'Add a tiny bit salt.',
+        'Mix brown sugar, soy, ginger, sesame oil, red pepper, pepper in bowl.',
+        'Cook beef until browned.',
+        'Poor mix over beef.',
+        'Simmer 1-2 minutes.',
+        'Slice green onions.',
+        'Serve on top of rice in GODDAMN BOWL.',
+        'Garnish with green onion.',
+        'Garnish with sesame seeds.'
+      ]
+    })
+  },
+  { // No-Fork Burrito
+    ...simpleRecipe({
+      title: 'No-Fork Burrito',
+      category: lunch,
+      seasons: [],
+      ingredients: [
+        ing(1, lb, 'sausage'),
+        ing(1/2, cup, 'green onions'),
+        ing(1/2, null, 'red bell pepper', 'diced'),
+        ing(1/2, null, 'poblano chili'),
+        ing(4, oz, 'cream cheese'),
+        ing(8, oz, 'Monterey Jack & Sharp Cheddar'),
+        ing(0, null, 'Southwest sweet and smoky'),
+        ing(0, null, 'Paprika'),
+        ing(0, null, 'Ground Mustard'),
+      ],
+      steps: [
+        'Brown meat.',
+        'Mix in veggies until softened.',
+        'Put cheeses in bowl with meat.',
+        'Mix until cheese is thoroughly melted and integrated.',
+        'Back into pan for more cooking.',
+        'Add spices to taste.',
+        'Put under broiler for 3 mins.',
+        'Scoop into tortilla, wrap.'
       ]
     })
   }
