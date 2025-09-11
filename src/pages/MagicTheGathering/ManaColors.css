@@ -1,4 +1,4 @@
-.colorful { 
+.colorful {
   .ms-w {
     color: var(--ms-mana-w);
   }
@@ -40,14 +40,16 @@
   }
   .var,
   .num {
-    font-size: .85em;
+    --ms-size: 0.85em;
     text-align: center;
     align-content: center;
     align-self: center;
-    height: 1.3em;
-    width: 1.3em; 
+    --diameter: 1.3em;
+    height: var(--diameter);
+    width: var(--diameter);
     color: black;
     background-color: var(--ms-mana-c);
     border-radius: 100%;
+    padding-left: 1px;
   }
 }

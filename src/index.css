@@ -1,3 +1,5 @@
+@import 'mana-font/css/mana.css';
+
 :root {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -89,6 +91,11 @@ button {
     outline: 2px solid var(--brand-maroon);
     outline-offset: 2px;
   }
+}
+
+.ms {
+  --ms-size: 0.em;
+  font-size: var(--ms-size);
 }
 
 /* Mobile responsive improvements */

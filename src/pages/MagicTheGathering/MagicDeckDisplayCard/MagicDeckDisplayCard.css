@@ -1,4 +1,3 @@
-@import 'mana-font/css/mana.css';
 
 .deck-card {
   background: rgba(255, 255, 255, 0.05);
@@ -102,7 +101,6 @@
   align-items: center;
 
   .ms {
-    font-size: 1rem;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   }
 }
@@ -185,10 +183,6 @@
               font-size: 0.75rem;
               opacity: 0.9;
               flex-shrink: 0;
-
-              .ms {
-                font-size: 0.8rem;
-              }
             }
           }
 
@@ -214,7 +208,7 @@
 
   .deck-meta {
     display: grid;
-    grid-template-columns: 1fr 3fr 45px;
+    grid-template-columns: 1fr 3fr 90px;
     gap: 1rem;
 
     .meta-item {
@@ -307,6 +301,10 @@
               text-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
             }
           }
+        }
+
+        &.status {
+          visibility: hidden;
         }
       }
     }

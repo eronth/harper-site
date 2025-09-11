@@ -79,6 +79,14 @@
       }
     }
 
+    .commander-cost {
+      .ms {
+        &.num {
+          --ms-size: .8em;
+        }
+      }
+    }
+
     .commander-cost-desktop {
       color: var(--text-secondary);
       font-size: 0.9rem;
