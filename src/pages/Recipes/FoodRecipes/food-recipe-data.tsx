@@ -8,7 +8,7 @@ const fall: Season = 'Autumn'; // Alias for Autumn
 const winter: Season = 'Winter';
 const yearround: Season[] = [spring, summer, autumn, winter];
 const allSeasons: Season[] = yearround;
-const anySeason: Season[] = yearround;
+//const anySeason: Season[] = yearround;
 
 const ing = (
   quantity: number | [number, number],
@@ -987,8 +987,12 @@ const recipes: Recipe[] = [
       category: dinner,
       seasons: [winter],
       ingredients: [
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         ing(1, 'package (16 oz)', 'potato gnocchi'),
         ing(2, tbsp, 'olive oil'),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         ing(1, 'package (12 oz)', '(12 oz) fully cooked italian chicken sausage links, halved and sliced.'),
         ing(2, null, 'shallots finely chopped'),
         ing(2, null, 'garlic cloves, minced'),

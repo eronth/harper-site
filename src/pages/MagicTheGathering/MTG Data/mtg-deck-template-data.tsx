@@ -64,7 +64,7 @@ const templateCase: MtgDeck[] = [
       sleeves: 'Red Swirls', // Optional field
       sleevesMaker: 'Dragon Shield' // Optional field. Honesly only put if you LIKE the sleeves, I think?
     },
-    // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
+    // Status Options: 'Incomplete', 'Testing', 'Needs Improvement', 'Good', 'Great'
     // We can add or change options as we see fit.
     status: 'Needs Improvement',
   }

@@ -1,5 +1,6 @@
 import type { MtgDeck } from "../../../../types/mtg-types";
 import { mtgCard } from "../../mtgHelperFunctions";
+import { dragonShield, prismaticDefender, ultraPro } from "../sleeve-maker-data";
 
 const caseName = "Maha Case";
 const eluge = "'Eluge the Flood Gar' Box";
@@ -291,10 +292,10 @@ const mahaCaseDecks: MtgDeck[] = [
   { /* Izzet Otters */
     id: 'izzet-otters',
     name: 'This Otter Be Fun',
-    colors: ['U','R'],
+    colors: ['U', 'R'],
     shortDescription: 'Noncreature Spell Engine.',
     longDescription: <>
-      "Castin' lines or castin' spells, ain't no one better than this deck."
+      ""Castin' lines or castin' spells, ain't no one better than this deck.""
     </>,
     deckType: '60-Card',
         keyCards: [ 
@@ -307,11 +308,12 @@ const mahaCaseDecks: MtgDeck[] = [
         'https://scryfall.com/card/blb/131/coruscation-mage'
       )
     ],
-    
     owner: 'Leslie',
     location: {
       case: caseName, // Automatically filled out, don't change.
-      deckbox: 'Rottenmouth Viper Box' // Rename this to the actual deckbox name
+      deckbox: 'Rottenmouth Viper Box', // Rename this to the actual deckbox name
+      sleeves: 'Oracle/Nova Holographic',
+      sleevesMaker: prismaticDefender
     },
     // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
     // We can add or change options as we see fit.
@@ -340,7 +342,9 @@ const mahaCaseDecks: MtgDeck[] = [
     owner: 'Leslie',
     location: {
       case: caseName, // Automatically filled out, don't change.
-      deckbox: 'Rottenmouth Viper Box' // Rename this to the actual deckbox name
+      deckbox: 'Rottenmouth Viper Box', // Rename this to the actual deckbox name
+      sleeves: 'Pink Diamond',
+      sleevesMaker: dragonShield
     },
     // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
     // We can add or change options as we see fit.
@@ -370,7 +374,9 @@ const mahaCaseDecks: MtgDeck[] = [
     owner: 'Leslie',
     location: {
       case: caseName, // Automatically filled out, don't change.
-      deckbox: 'Maha, Its Feathers Night Box' // Rename this to the actual deckbox name
+      deckbox: 'Maha, Its Feathers Night Box', // Rename this to the actual deckbox name
+      sleeves: 'Matte Blue',
+      sleevesMaker: ultraPro
     },
     // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
     // We can add or change options as we see fit.
@@ -404,16 +410,18 @@ const mahaCaseDecks: MtgDeck[] = [
     owner: 'Leslie',
     location: {
       case: caseName, // Automatically filled out, don't change.
-      deckbox: 'Sunspine Lynx Box' // Rename this to the actual deckbox name
+      deckbox: 'Sunspine Lynx Box', // Rename this to the actual deckbox name
+      sleeves: 'Blood Red Matte',
+      sleevesMaker: dragonShield
     },
     // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
     // We can add or change options as we see fit.
     status: 'Needs Improvement', 
   },
   { /* Golgari Squirrels */
-    id: 'golgari-squirrels',
+    id: 'Golgari Squirrels',
     name: 'Golgari Squirrels',
-    colors: ['B', 'G'],
+    colors: ['B', 'R'],
     shortDescription: 'Food, Menace, and Squirrels Galore',
     longDescription: <>
       Lotsa squirrels, lotsa food tokens, lotsa exiling and foraging.
@@ -433,12 +441,42 @@ const mahaCaseDecks: MtgDeck[] = [
     owner: 'Leslie',
     location: {
       case: caseName, // Automatically filled out, don't change.
-      deckbox: 'Ygra Box' // Rename this to the actual deckbox name
+      deckbox: 'Ygra Box', // Rename this to the actual deckbox name
+      sleeves: 'Three Tree',
+      sleevesMaker: ultraPro
     },
     // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
     // We can add or change options as we see fit.
     status: 'Great', 
   },
+  { /* Example Deck */
+    name: 'Dargons!',
+    id: 'dragons',
+    colors: ['R'],
+    shortDescription: 'Dragon Time!',
+    longDescription: <>
+      It's dragons, treasures, goblins, and dragons. Oh, and dragons. Builds quick and bites hard.
+    </>,
+    deckType: '60-Card', // Options: '60-Card', 'Commander'
+    keyCards: [ 
+      mtgCard(
+        'Dragonlords Servant', '1R',
+        'https://scryfall.com/card/j25/538/dragonlords-servant'
+      ),
+      mtgCard(
+        'Twinflame Tyrant', '3RR',
+        'https://scryfall.com/card/fdn/97/twinflame-tyrant'
+      )
+    ],
+    owner: 'Leslie',
+    location: {
+      case: caseName, // Automatically filled out, don't change.
+      deckbox: 'Ygra, Eater of All' // Rename this to the actual deckbox name
+    },
+    // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
+    // We can add or change options as we see fit.
+    status: 'Great',
+  }
 ];
 
 export default mahaCaseDecks;

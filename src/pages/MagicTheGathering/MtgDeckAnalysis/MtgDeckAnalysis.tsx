@@ -77,10 +77,11 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
     
     // Status distribution
     const statusCounts: Record<DeckStatus, number> = { 
-      'Incomplete': 0, 
-      'Needs Improvement': 0, 
-      'Good': 0, 
-      'Great': 0 
+      'Incomplete': 0,
+      'Testing': 0,
+      'Needs Improvement': 0,
+      'Good': 0,
+      'Great': 0
     };
     decks.forEach(deck => {
       statusCounts[deck.status]++;
@@ -103,6 +104,7 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
       
       const statusBreakdown: Record<DeckStatus, number> = {
         'Incomplete': 0,
+        'Testing': 0,
         'Needs Improvement': 0,
         'Good': 0,
         'Great': 0

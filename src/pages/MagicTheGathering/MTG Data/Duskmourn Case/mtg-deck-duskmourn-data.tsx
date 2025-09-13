@@ -1,5 +1,6 @@
 import type { MtgDeck } from "../../../../types/mtg-types";
 import { mtgCard } from "../../mtgHelperFunctions";
+import { ultraPro } from "../sleeve-maker-data";
 
 const caseName = "Duskmourn Case";
 const beasties = 'Beastie Box';
@@ -202,6 +203,95 @@ const duskmournCaseDecks: MtgDeck[] = [
       case: caseName,
       deckbox: beasties
     },
+    status: 'Needs Improvement',
+  },
+  { /* Cabaretti Cats & Canines */
+    id: 'cabaretti-cats-and-canines',
+    name: 'Cabaretti Cats & Canines',
+    colors: ['R', 'G', 'W'],
+    shortDescription: 'Kitties!! and Puppies!!',
+    longDescription: <>
+      Make tokens, then make MORE tokens, and have them all attack at once.
+    </>,
+    deckType: 'Commander', // Options: '60-Card', 'Commander'
+    commander: mtgCard(
+      'Jinnie Fay, Jetmirs Second', 'R/GGG/W',
+      'https://scryfall.com/card/snc/313/jinnie-fay-jetmirs-second',
+      'If you would create tokens, you may instead create that many 2/2 green Cats with haste or that many 3/1 green Dogs with vigilance.'
+    ),
+    keyCards: [
+      mtgCard(
+        'Doubling Season', '4G',
+        'https://scryfall.com/card/fdn/216/doubling-season'
+      ),
+      mtgCard(
+        'Rabble Rousing', '4W',
+        'https://scryfall.com/card/snc/24/rabble-rousing'
+      ),
+      mtgCard (
+        'Titanic Ultimatum', 'RRGGGWW',
+        'https://scryfall.com/card/ddh/31/titanic-ultimatum'
+      )
+    ],
+    owner: 'Leslie',
+    location: {
+      case: caseName, // Automatically filled out, don't change.
+      deckbox: 'Niko Box' // Rename this to the actual deckbox name
+    },
+    // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
+    // We can add or change options as we see fit.
+    status: 'Great', 
+  },
+  { /* Soul Steeper */
+    name: 'Soul Steeper',
+    id: 'soul-steeper',
+    colors: ['B', 'G'],
+    shortDescription: 'Leslie as a Commander',
+    longDescription: <>
+      Green-black deck with a witch drinking tea. Slowly drain with life gain, then attack with a biggie.
+    </>,
+    deckType: 'Commander', // Options: '60-Card', 'Commander'
+    commander: mtgCard(
+      'Dina, Soul Steeper', 'BG',
+      'https://scryfall.com/card/mul/37/dina-soul-steeper',
+      'When you gain life, opponent loses 1 life. 1 Sac: Dina gets +X/+0 until end of turn, where X is the sacrificed creatures power'
+    ),
+    keyCards: [ 
+     
+    ],
+    owner: 'Leslie',
+    location: {
+      case: caseName, // Automatically filled out, don't change.
+      deckbox: 'Niko Box' // Rename this to the actual deckbox name
+    },
+    // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
+    // We can add or change options as we see fit.
+    status: 'Testing',
+  },
+  { /* Cloudspire Racing */
+    name: 'Cloudspire Racing',
+    id: 'cloudspire-racing',
+    colors: ['R', 'W'],
+    shortDescription: 'Deck to be an example.',
+    longDescription: <>
+      This is a placeholder deck used as an example in the codebase.
+    </>,
+    deckType: 'Commander', // Options: '60-Card', 'Commander'
+    commander: mtgCard(
+      'Kolodin, Triumph Caster', 'RW',
+      'https://scryfall.com/card/dft/210/kolodin-triumph-caster',
+      'Mounts and Vehicles you control have haste, and they become saddled or artifact creatures til end of turn.'
+    ),
+    keyCards: [],
+    owner: 'Leslie',
+    location: {
+      case: caseName, // Automatically filled out, don't change.
+      deckbox: 'The Wanderer Box', // Rename this to the actual deckbox name
+      sleeves: 'Bright Blue',
+      sleevesMaker: ultraPro
+    },
+    // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
+    // We can add or change options as we see fit.
     status: 'Needs Improvement',
   }
 ];

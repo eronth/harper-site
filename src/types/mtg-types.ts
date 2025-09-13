@@ -6,7 +6,12 @@ export type DeckType = 'Commander' | '60-Card';
 
 export type Owner = 'Nic' | 'Leslie';
 
-export type DeckStatus = 'Incomplete' | 'Needs Improvement' | 'Good' | 'Great';
+export type DeckStatus
+  = 'Incomplete' 
+  | 'Testing' 
+  | 'Needs Improvement' 
+  | 'Good' 
+  | 'Great';
 
 export interface MtgCard {
   name: string;
