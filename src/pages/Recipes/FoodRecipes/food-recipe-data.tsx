@@ -1098,7 +1098,168 @@ const recipes: Recipe[] = [
         'Scoop into tortilla, wrap.'
       ]
     })
+  },
+  // { // Super hardy beef and root vegetable stew
+  //   title: "Super Hardy Beef and Root Vegetable Stew",
+  //   category: dinner,
+  //   seasons: [winter],
+  //   description: "A rich and hearty stew perfect for cold days, packed with tender beef and a medley of root vegetables.",
+  //   ingredientsLists: [
+  //     {
+  //       title: "For the beef",
+  //       ingredients: [
+  //         ing(2, lbs, 'beef chuck, cut into 1.5-inch cubes'),
+  //         ing(2, tbsp, "all-purpose flour"),
+  //         ing(1, tsp, "salt"),
+  //         ing(1/2, tsp, "black pepper"),
+  //         ing(2, tbsp, "olive oil or vegetable oil"),
+  //       ]
+  //     },
+  //     {
+  //       title: "For the stew",
+  //       ingredients: [
+  //         ing(1, null, "large onion, diced"),
+  //         ing(3, null, "garlic cloves, minced"),
+  //         ing(2, tbsp, "tomato paste"),
+  //         ing(1, cup, "dry red wine (optional; substitute with more broth if preferred)"),
+  //         ing(4, cups, "beef broth"),
+  //         ing(1, tbsp, "Worcestershire sauce"),
+  //         ing(1, tsp, "smoked paprika (optional but recommended for depth)"),
+  //         ing(2, null, "bay leaves"),
+  //         ing(1, tsp, "dried thyme (or 2-3 sprigs fresh thyme)"),
+  //         ing(1, tsp, "dried rosemary (or 1 sprig fresh rosemary"),
+  //       ]
+  //     },
+  //     {
+  //       title: "Vegetables",
+  //       ingredients: [
+  //         ing(3, null, "large carrots, peeled and cut into 1-inch chunks"),
+  //         ing(2, null, "large potatoes, peeled and cut into 1-inch chunks"),
+  //         ing(2, null, "parsnips or turnips, peeled and cut into 1-inch chunks"),
+  //         ing(1, cup, "frozen peas", "added at the end for sweetness"),
+  //       ]
+  //     }
+  //   ],
+  //   stepsLists: [
+  //     {
+  //       title: "Prepare the beef",
+  //       steps: [
+  //         "In a large bowl, toss the beef cubes with flour, salt, and pepper until evenly coated.",
+  //         "Heat the oil in a large heavy-bottomed pot or Dutch oven over medium-high heat.",
+  //         "Sear the beef in batches (don’t overcrowd the pan) until browned on all sides, about 2-3 minutes per batch. Remove and set aside.",
+  //       ]
+  //     },
+  //     {
+  //       title: "Build the base",
+  //       steps: [
+  //         "Lower the heat to medium. Add a little more oil if needed, then sauté the onions for 4-5 minutes, until softened.",
+  //         "Stir in the garlic and tomato paste, cooking for another minute until fragrant.",
+  //         "Deglaze the pot with red wine (if using), scraping up the browned bits on the bottom. Let the wine simmer for 2 minutes to reduce slightly.",
+  //         "Simmer the stew:",
+  //         "Return the beef to the pot, along with the beef broth, Worcestershire sauce, smoked paprika, bay leaves, thyme, and rosemary.",
+  //         "Bring to a gentle boil, then reduce the heat to low. Cover and simmer for 1 hour, stirring occasionally.",
+  //       ]
+  //     },
+  //     {
+  //       title: "Add the vegetables",
+  //       steps: [
+  //         "Add the carrots, potatoes, and parsnips/turnips to the pot. Stir to combine, then cover and simmer for another 45 minutes, or until the beef and vegetables are tender.",
+  //         "Finish and serve:",
+  //         "Stir in the frozen peas and cook for another 5 minutes.",
+  //         "Remove the bay leaves and herb sprigs. Taste and adjust seasoning with salt and pepper.",
+  //         "Serve hot with crusty bread or over buttery mashed potatoes for an extra-hearty meal.",
+  //       ]
+  //     },
+  //     {
+  //       title: "Tips and Variations",
+  //       steps: [
+  //         "For extra richness: Stir in 1-2 tbsp of butter or a splash of heavy cream at the end.",
+  //         "Make it even heartier: Add mushrooms, pearl onions, or chunks of celery.",
+  //         "For a thicker stew: Remove 1 cup of the broth, blend with some of the vegetables, and stir back into the pot. Alternatively, make a quick cornstarch slurry (1 tbsp cornstarch + 2 tbsp water) and stir it in during the last 5 minutes of cooking.",
+  //         "This stew is hearty, comforting, and packed with deep, rich flavors to warm you up on a cold winter day. Enjoy! 🥣",
+  //       ]
+  //     }
+  //   ]
+  // },
+  { // Korean-Inspired Beef Stew
+    ...simpleRecipe({
+      title: 'Korean-Inspired Beef Stew',
+      category: dinner,
+      seasons: [winter],
+      ingredients: [
+        ing(1.5, lbs, 'beef stew meat'),
+        ing(1, null, 'medium onion, sliced'),
+        ing(3, cups, 'beef broth'),
+        ing(2, null, 'medium Yukon Gold potatoes, cubed'),
+        ing([1, 2], null, 'medium carrots, sliced'),
+        ing([3, 4], null, 'cloves garlic, minced'),
+        ing([2, 3], tbsp, 'soy sauce'),
+        ing(1, tbsp, 'sesame oil'),
+        ing([1, 2], tbsp, 'sriracha (adjust for heat preference)'),
+        ing(1, tbsp, 'sugar or honey'),
+        ing(1, tsp, 'grated ginger (optional)'),
+        ing(1, tbsp, 'cornstarch mixed with 2 tbsp water', 'optional, for thickening'),
+        ing([1, 2], null, 'green onions, chopped', 'for garnish'),
+        ing(0, null, "Sesame seeds", "for garnish")
+      ],
+      steps: [
+        'Heat sesame oil in a large pot over medium-high heat. Add beef and brown on all sides.',
+        'Add garlic and onion, cooking until fragrant (about 2 minutes). Stir in sriracha, soy sauce, and sugar/honey.',
+        'Add beef broth, potatoes, and carrots. Bring to a boil, then lower to a simmer and cover. Cook for 1.5-2 hours, until beef is tender.',
+        'Stir in the cornstarch slurry during the last 10 minutes if a thicker stew is desired.',
+        'Top with green onions and sesame seeds. Optional: serve over steamed rice',
+      ]
+    })
+  },
+  { // Boar Hock Stew
+    ...simpleRecipe({
+      title: 'Boar Hock Stew',
+      category: dinner,
+      seasons: [winter],
+      ingredients: [
+        ing(2, lbs, 'pork butt'),
+        ing(0, null, 'salt'),
+        ing(2, tsp, 'extra-virgin olive oil'),
+        ing(3, null, 'large carrots, peeled and chopped'),
+        ing(2, null, 'medium yellow onions, chopped'),
+        ing(2, null, 'large bay leaves'),
+        ing(1, tbsp, 'minced fresh thyme'),
+        ing(2, tsp, 'ground fennel'),
+        ing(1, tbsp, 'pressed or grated garlic'),
+        ing(6, cups, 'low-sodium chicken broth'),
+        ing(1.5, lbs, 'yukon gold or all purpose potatoes', 'peeled and chopped into 3/4-inch pieces'),
+        ing(1.5, cups, 'cooked, peeled chestnuts', 'coarsly chopped'),
+        ing(1.5, tsp, 'sherry vinegar'),
+        ing(1/2, cup, 'chopped fresh parsley')
+      ],
+      steps: [
+        'Without cutting it up, sprinkle pork with salt and pepper.',
+      'In large pot over medium heat, warm olive oil.',
+        'Add pork in single layer and cook, undisturbed, until brown on bottom. 4 min.',
+        'Turn pork, cook another 4 minutes. Transfer to large bowl.',
+        'Once cool, cut pork into 3/4-inch pieces.',
+      'Turn pot to medium-high.',
+        'Add carrots, onions, bay leaves, thyme, fennel, and salt.',
+        'Cook, scraping the bottom of the pan with wooden spoon until vegetables soften, about 5 mins.',
+      'Adjust to medium-low.',
+        'Cover, stir occasionally. 6 min.',
+        'Scrape bottom of pot again,',
+      'Adjust to medium high, add garlic.',
+        'Cook, stirring, until fragrant, about 40 sec.',
+        'Add chicken broth and reserved pork and any accumulated juices.',
+      'Bring to a simmer, reduce to medium-low, cover, let simmer for 40 mins.',
+        'And back to medium-high.',
+        'Get to strong simmer, add potatoes, leeks, and 1 1/4 cups of chestnuts. Season with salt and pepper.',
+        'Would you believe it\'s time for medium-low? Replace lid, simmer for 20 mins.',
+        'Remove from heat and let it sit for 30 minutes. Remove bay leaves.',
+        'Transfer about 3/4 cup of stew (including potato cubes) to blender, blend smooth (30 sec.).',
+        'Scrape smooth mixture and add the vinegar, stir to incorporate.',
+        'If needed, re-heat stew before serving.',
+        'This shit is delicious on day 2 as well.'
+      ]
+    })
   }
+  
 ].sort((a, b) => a.title.localeCompare(b.title));
 
 export default recipes;
