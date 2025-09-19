@@ -1258,8 +1258,35 @@ const recipes: Recipe[] = [
         'This shit is delicious on day 2 as well.'
       ]
     })
+  },
+  { // Stir Fry Japanese BBQ Ramen Noodles
+    ...simpleRecipe({
+      title: 'Stir Fry Japanese BBQ Ramen Noodles',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(3, null, 'packages Ramen noodles'),
+        ing(3, tbsp, 'tablespoons olive oil (or cooking oil of choice)'),
+        ing(1, lbs, 'pound boneless, skinless chicken thighs (optional)'),
+        ing(1, null, 'onion diced'),
+        {...saltAndPepper},
+        ing([6, 7], null, 'cloves garlic minced'),
+        ing(1/3, cup, 'Bachan\'s Japanese BBQ sauce (or you can use hoisin sauce)'),
+        ing(2, tbsp, 'soy sauce'),
+        ing([1, 2], tbsp, 'sriracha'),
+        ing(4, tbsp, 'tablespoons butter'),
+        ing(1, null, 'bunch green onions'),
+        ing(0, null, 'Optional: sesame seeds, more Japanese BBQ sauce, yum yum sauce')
+      ],
+      steps: [
+        'Boil the noodles according to package directions (do not use flavor packet), drain and rinse very well with cold water so they don\'t overcook.',
+        'Set a large skillet or wok over medium high heat. Once hot add the olive oil along with the chicken (if using), onion, kosher salt, and pepper. Cook 3 to 4 minutes.',
+        'Add the garlic and the cooked noodles, Japanese BBQ sauce (or hoisin sauce), soy sauce, sriracha, and butter.',
+        'Cook for 5 to 7 minutes, stirring and pressing the noodles so they become slightly crisp. Add the green onions and cook another 1 to 2 minutes.',
+        'Serve with sesame seeds and add more Japanese BBQ sauce and/or yum yum sauce if desired.',
+      ]
+    })
   }
-  
 ].sort((a, b) => a.title.localeCompare(b.title));
 
 export default recipes;
