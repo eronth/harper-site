@@ -638,6 +638,26 @@ const recipes: Recipe[] = [
     })
 
   },
+  { // Smoky Garden Sip
+    ...drink({
+      title: 'Smoky Garden Sip',
+      seasons: [spring, summer],
+      description: 'A refreshing and smoky cocktail with herbal notes.',
+      ingredients: [
+        add(.5, 'mezcal'),
+        add(1, 'st. germain'),
+        add(.5, 'lime juice'),
+        add(.25, 'honey or simple syrup'),
+        add(0, 'splash of campaigne'),
+      ],
+      steps: [
+        'Add mezcal, st. germain, lime juice, and honey/simple syrup to shaker with ice',
+        'Shake until well chilled',
+        'Strain into rocks glass with ice',
+        'Top with a splash of champagne',
+      ],
+    })
+  },
   { // Color Changer
     ...drink({
       title: 'Color Changer',
@@ -659,6 +679,25 @@ const recipes: Recipe[] = [
         'Before drinking, add the citric acid solution to the glass and watch the color change!',
       ]
     })
+  },
+  { // Smoky Garden Sip (Non-Alcoholic)
+    ...drink({
+      title: 'Smoky Garden Sip',
+      seasons: [],
+      ingredients: [
+        add(.5, 'mezcal'),
+        add(1, 'st. germain with muddled mint'),
+        add(.5, 'lime juice'),
+        add(.25, 'honey or simple syrup'),
+        add(0, 'splash of champagne')
+      ],
+      steps: [
+        'Add all ingredients to shaker with ice',
+        'Shake until well chilled',
+        'Strain into rocks glass with ice',
+        'Garnish with more mint if you\'re feeling fancy',
+      ]
+    }),
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
