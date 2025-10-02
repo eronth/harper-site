@@ -913,10 +913,13 @@ const recipes: Recipe[] = [
       category: dinner,
       seasons: [fall, winter],
       ingredients: [
+        ing(2, null, 'beef cut boys'),
         ing(1/2, null, 'box noodles'),
         ing(1, null, 'beef broth'),
-        ing(2, null, 'beef cut boys'),
-        ing(2, null, 'eggs')
+        ing(2, null, 'eggs'),
+        ing(0, null, 'celery', 'sliced thin'),
+        ing(0, null, 'carrots', 'sliced thin'),
+        ing(0, null, 'green onion'),
       ],
       steps: [
         'Salt and pepper beef',
