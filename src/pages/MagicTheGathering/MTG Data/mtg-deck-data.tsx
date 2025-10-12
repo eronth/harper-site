@@ -5,6 +5,8 @@ import nicolBolasSunflowerDecks from './Nicol Bolas Sunflower Box/mtg-deck-nicol
 import winterCaseDecks from './Winter Case/mtg-deck-winter-data';
 import zendikarDecks from './Zendikar Box/mtg-deck-zendikar-data';
 
+import justKindaOut from './Just Kinda Out/mtg-deck-out-data';
+
 
 // Sample deck data - you can replace this with your actual decks
 // const winterCase = "Speed Demon Winter Case";
@@ -16,6 +18,7 @@ const mtgDecks: MtgDeck[] = [
   ...nicolBolasSunflowerDecks,
   ...winterCaseDecks,
   ...zendikarDecks,
+  ...justKindaOut,
   // {
   //   id: 'aaaaa',
   //   name: 'AAAAAAA',

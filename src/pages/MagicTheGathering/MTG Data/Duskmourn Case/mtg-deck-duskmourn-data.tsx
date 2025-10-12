@@ -100,7 +100,7 @@ const duskmournCaseDecks: MtgDeck[] = [
   { /* Arabella's Toybox */
     id: 'arabella-toybox',
     name: 'Arabella\'s Toybox',
-    colors: ['W', 'G'],
+    colors: ['W', 'R'],
     shortDescription: 'Numerous small creatures with fighting spirit.',
     longDescription: <>
       This deck leverages small creatures to amp up Arabella's burn ability.
