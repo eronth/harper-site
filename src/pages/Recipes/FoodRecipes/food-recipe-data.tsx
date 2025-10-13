@@ -27,7 +27,6 @@ const saltAndPepper = ing(0, null, 'salt & pepper');
 const g: QuantityUnit = 'g';
 //const ml: QuantityUnit = 'ml';
 const cup: QuantityUnit = 'cup';
-const cups: QuantityUnit = 'cup'; // Alias for cup
 const quart: QuantityUnit = 'quart';
 const gal: QuantityUnit = 'gal';
 const gtbsp: QuantityUnit = 'generous tbsp';
@@ -35,7 +34,6 @@ const tbsp: QuantityUnit = 'tbsp';
 const tsp: QuantityUnit = 'tsp';
 const oz: QuantityUnit = 'oz';
 const lb: QuantityUnit = 'lb';
-const lbs: QuantityUnit = 'lb'; // Alias for lb
 //const piece: QuantityUnit = 'piece';
 const spoonful: QuantityUnit = 'spoonful';
 const pinch: QuantityUnit = 'pinch';
@@ -51,8 +49,13 @@ const dinner: RecipeCategory = 'Dinner';
 const snack: RecipeCategory = 'Dessert'; // Using Dessert as Snack category
 const dessert: RecipeCategory = 'Dessert';
 
+// Aliases
+const cups: QuantityUnit = cup; // Alias for cup
+const lbs: QuantityUnit = lb; // Alias for lb
+const teaspoon: QuantityUnit = tsp; // Alias for tsp
+const tablespoons: QuantityUnit = tbsp; // Alias for tbsp
 // type SimplifiedRecipe = {
-//   title: string;
+  //   title: string;
 //   seasons: Season[];
 //   ingredients: Ingredient[];
 //   steps: string[];
@@ -1289,6 +1292,210 @@ const recipes: Recipe[] = [
         'Serve with sesame seeds and add more Japanese BBQ sauce and/or yum yum sauce if desired.',
       ]
     })
+  },
+  { // Baby Ruth Cookies
+    ...simpleRecipe({
+      title: 'Babe Ruth Cookies',
+      category: dessert,
+      seasons: [fall],
+      ingredients: [
+        ing(1/2, cup, 'butter or shortening, softened', 'about 115g'),
+        ing(3/4, cup, 'granulated sugar', 'about 150g'),
+        ing(1, null, 'large egg'),
+        ing(1 + 1/3, cups, 'all purpose flour', 'about 160 g'),
+        ing(1/2, tsp, 'baking soda'),
+        ing(1/2, tsp, 'salt'),
+        ing(1/2, tsp, 'vanilla'),
+        ing(2 + 1/2, null, 'regular size Baby Ruth candy bars (about 140 g) cut into small pieces'),
+      ],
+      steps: [
+        'Cream the butter and sugar together until it’s nice and smooth.',
+        'Beat in the egg until combined.',
+        'Add the flour, baking soda, salt, and vanilla and stir until the dough starts to come together.',
+        'Add the Baby Ruth pieces and stir until they’re evenly dispersed and the dough is completely mixed.',
+        'Cover and chill the dough in the refrigerator for at least a few hours or as long as a couple of days.',
+        'Preheat the oven to 375°F (190°C) and line baking sheets with parchment paper.',
+        'If you want to stick to how the original recipe was written, roll half-teaspoon pieces of dough (about 8 grams) into balls and set them an inch (3 cm) apart on the prepared baking sheet. For ones that are closer to the size of the cookies in drawings from the time, divide the dough into 18 equal portions and place on the cookie sheets 2 inches (5 cm) apart.',
+        'Bake the cookies for 10 to 12 minutes or until they’re golden brown on top. Let them cool before serving them forth.',
+      ]
+    })
+  },
+  { // Super hardy beef and root vegetable stew
+    title: "Super Hardy Beef and Root Vegetable Stew",
+    category: dinner,
+    seasons: [winter],
+    description: "A rich and hearty stew perfect for cold days, packed with tender beef and a medley of root vegetables.",
+    ingredientsLists: [
+      {
+        title: "For the beef",
+        ingredients: [
+          ing(2, lbs, 'beef chuck, cut into 1.5-inch cubes'),
+          ing(2, tbsp, "all-purpose flour"),
+          ing(1, tsp, "salt"),
+          ing(1/2, tsp, "black pepper"),
+          ing(2, tbsp, "olive oil or vegetable oil"),
+        ]
+      },
+      {
+        title: "For the stew",
+        ingredients: [
+          ing(1, null, "large onion, diced"),
+          ing(3, null, "garlic cloves, minced"),
+          ing(2, tbsp, "tomato paste"),
+          ing(1, cup, "dry red wine (optional; substitute with more broth if preferred)"),
+          ing(4, cups, "beef broth"),
+          ing(1, tbsp, "Worcestershire sauce"),
+          ing(1, tsp, "smoked paprika (optional but recommended for depth)"),
+          ing(2, null, "bay leaves"),
+          ing(1, tsp, "dried thyme (or 2-3 sprigs fresh thyme)"),
+          ing(1, tsp, "dried rosemary (or 1 sprig fresh rosemary"),
+        ]
+      },
+      {
+        title: "Vegetables",
+        ingredients: [
+          ing(3, null, "large carrots, peeled and cut into 1-inch chunks"),
+          ing(2, null, "large potatoes, peeled and cut into 1-inch chunks"),
+          ing(2, null, "parsnips or turnips, peeled and cut into 1-inch chunks"),
+          ing(1, cup, "frozen peas", "added at the end for sweetness"),
+        ]
+      }
+    ],
+    stepsLists: [
+      {
+        title: "Prepare the beef",
+        steps: [
+          "In a large bowl, toss the beef cubes with flour, salt, and pepper until evenly coated.",
+          "Heat the oil in a large heavy-bottomed pot or Dutch oven over medium-high heat.",
+          "Sear the beef in batches (don’t overcrowd the pan) until browned on all sides, about 2-3 minutes per batch. Remove and set aside.",
+        ]
+      },
+      {
+        title: "Build the base",
+        steps: [
+          "Lower the heat to medium. Add a little more oil if needed, then sauté the onions for 4-5 minutes, until softened.",
+          "Stir in the garlic and tomato paste, cooking for another minute until fragrant.",
+          "Deglaze the pot with red wine (if using), scraping up the browned bits on the bottom. Let the wine simmer for 2 minutes to reduce slightly.",
+          "Simmer the stew:",
+          "Return the beef to the pot, along with the beef broth, Worcestershire sauce, smoked paprika, bay leaves, thyme, and rosemary.",
+          "Bring to a gentle boil, then reduce the heat to low. Cover and simmer for 1 hour, stirring occasionally.",
+        ]
+      },
+      {
+        title: "Add the vegetables",
+        steps: [
+          "Add the carrots, potatoes, and parsnips/turnips to the pot. Stir to combine, then cover and simmer for another 45 minutes, or until the beef and vegetables are tender.",
+          "Finish and serve:",
+          "Stir in the frozen peas and cook for another 5 minutes.",
+          "Remove the bay leaves and herb sprigs. Taste and adjust seasoning with salt and pepper.",
+          "Serve hot with crusty bread or over buttery mashed potatoes for an extra-hearty meal.",
+        ]
+      },
+      {
+        title: "Tips and Variations",
+        steps: [
+          "For extra richness: Stir in 1-2 tbsp of butter or a splash of heavy cream at the end.",
+          "Make it even heartier: Add mushrooms, pearl onions, or chunks of celery.",
+          "For a thicker stew: Remove 1 cup of the broth, blend with some of the vegetables, and stir back into the pot. Alternatively, make a quick cornstarch slurry (1 tbsp cornstarch + 2 tbsp water) and stir it in during the last 5 minutes of cooking.",
+          "This stew is hearty, comforting, and packed with deep, rich flavors to warm you up on a cold winter day. Enjoy! 🥣",
+        ]
+      }
+    ]
+  },
+  { // Pumpkin Spice Cookies
+    title: 'Pumpkin Spice Cookies',
+    description: 'Soft, chewy pumpkin spice cookies perfect for fall, topped with optional icing for extra sweetness.',
+    category: dessert,
+    seasons: [fall],
+    ingredientsLists: [
+      {
+        title: "Cookies",
+        ingredients: [
+          ing(1/2, cup, 'shortening'),
+          ing(3/4, cup, 'sugar'),
+          ing(1/2, cup, 'canned pumpkin pie mix'),
+          ing(1/4, cup, 'molasses'),
+          ing(3, cups, 'all-purpose flour'),
+          ing(1, teaspoon, 'baking soda'),
+          ing(1, teaspoon, 'ground ginger'),
+          ing(1, teaspoon, 'ground cinnamon'),
+          ing(1/2, teaspoon, 'baking powder'),
+          ing(1/2, teaspoon, 'salt'),
+        ]
+      },
+      {
+        title: "Icing (If you want to make it)",
+        ingredients: [
+          ing(4, cups, "confectioners' sugar"),
+          ing(1/3, cup, "butter, softened"),
+          ing([3, 4], tablespoons, "2% milk"),
+          ing(0, null, "Food coloring", "optional"),
+        ]
+      }
+    ],
+    stepsLists: [
+      {
+        title: "Bake the Cookies",
+        steps: [
+          'Cream shortening and sugar until light and fluffy.',
+          'Beat in pumpkin pie mix and molasses. In another bowl, whisk next 6 ingredients; gradually beat into creamed mixture. ',
+          'Refrigerate several hours, until firm.',
+          'Preheat oven to 375° F.',
+          'On a lightly floured surface, roll each portion of dough to 1/4-in. thickness.',
+          'Cut with floured 2-1/2-in. pumpkin-shaped cookie cutters. ',
+          'Bake until edges are firm, 8-10 minutes.',
+          'Remove from pans to wire racks to cool.',
+        ]
+      },
+      {
+        title: "Icing",
+        steps: [
+          'Beat confectioners\' sugar, butter and enough milk to reach spreading consistency.',
+          'If desired, tint with food coloring.',
+          'Decorate cookies as desired.'
+        ]
+      }
+    ]
+  },
+  { // Glazed Maple Shortbread Cookies
+    title: 'Glazed Maple Shortbread Cookies',
+    description: 'Buttery shortbread cookies with a sweet maple glaze, perfect for falltime flavors.',
+    category: dessert,
+    seasons: [fall],
+    ingredientsLists: [
+      {
+        title: "Cookies",
+        ingredients: [
+          ing(1, cup, 'softened butter'),
+          ing(3/4, cup, 'sugar'),
+          ing(3, tbsp, 'cornstarch'),
+          ing(1, tsp, 'maple flavoring'),
+          ing(1+(3/4), cups, 'all-purpose flour'),
+        ]
+      },
+      {
+        title: "Glaze",
+        ingredients: [
+          ing(3/4, cup, 'confectioners sugar', '+ 1 tbsp'),
+          ing(1/3, cup, 'maple syrup'),
+        ]
+      }
+    ],
+    stepsLists: [
+      {
+        title: "Bake the Cookies",
+        steps: [
+          'beat butter, sugar, and cornstarch.',
+          'Beat in flavoring.',
+          'Gradually beat in flour.',
+          'Flatten dough, fridge for 45 min',
+          'Oven to 325° F.',
+          'Roll dough about .25 in thick, cookie cut into shapes.',
+          'Bake for 20-25 mins.',
+          'Mix glaze, cover cookies. Let set.',
+        ]
+      },
+    ]
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
