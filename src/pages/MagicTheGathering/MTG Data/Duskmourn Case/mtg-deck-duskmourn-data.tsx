@@ -293,6 +293,43 @@ const duskmournCaseDecks: MtgDeck[] = [
     // Status Options: 'Incomplete', 'Needs Improvement', 'Good', 'Great'
     // We can add or change options as we see fit.
     status: 'Needs Improvement',
+  },
+  { /* Space Captain Tannuk, Worlds Traveler */
+    name: 'Space Captain Tannuk, Worlds Traveler',
+    id: 'space-captain-tannuk',
+    colors: ['G', 'R'],
+    shortDescription: 'A fun, adventurous deck.',
+    longDescription: <>
+      A fun, adventurous deck with landfall.
+    </>,
+    deckType: 'Commander', // Options: '60-Card', 'Commander'
+    commander: mtgCard(
+      'Tannuk, Memorial Ensign', '1RG',
+      'https://scryfall.com/card/snc/314/tannuk-the-explorer',
+      'Landfall - Deal 1 damage to each opponent. On second Landfall, also draw.'
+    ),
+    keyCards: [
+      mtgCard(
+        'Lumbra, Bellow of the Woods', '4GG',
+        'https://scryfall.com/card/blb/183/lumra-bellow-of-the-woods'
+      ),
+      mtgCard(
+        'Biotech Specialist', 'RG',
+        'https://scryfall.com/card/eoe/214/biotech-specialist'
+      ),
+      mtgCard(
+        'Fungal Colossus', '6G',
+        'https://scryfall.com/card/eoe/184/fungal-colossus'
+      )
+    ],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Kaito Box',
+      sleeves: 'World Forge',
+
+    },
+    status: 'Needs Improvement'
   }
 ];
 

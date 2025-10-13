@@ -57,7 +57,6 @@ const justKindaOut: MtgDeck[] = [
         'Witness Protection', 'U',
         'https://scryfall.com/card/fdn/168/witness-protection'
       ),
-
     ],
     owner: 'Nic',
     location: {
