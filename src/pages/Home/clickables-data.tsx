@@ -10,25 +10,16 @@ import {
 
 export type Clickable = {
   id: string;
+  icon: React.ReactNode;
   title: {
     full: string;
     sidebar?: string;
   };
-  icon: React.ReactNode;
   text: string;
   path: string;
 };
 
 const clickables: Clickable[] = [
-  { 
-    id: 'vacations',
-    icon: <FontAwesomeIcon icon={faUmbrellaBeach} />,
-    title: {
-      full: 'Vacations and Staycations',
-    },
-    text: 'Our adventures and fun experiences together',
-    path: '/vacations'
-  },
   { id: 'food-recipes',
     icon: <FontAwesomeIcon icon={faUtensils} />,
     title: {
@@ -44,6 +35,16 @@ const clickables: Clickable[] = [
     },
     text: 'Cocktails, coffee, and special beverages',
     path: '/drink-recipes'
+  },
+  { 
+    id: 'vacations',
+    icon: <FontAwesomeIcon icon={faUmbrellaBeach} />,
+    title: {
+      full: 'Vacations and Staycations',
+      sidebar: 'Vacations',
+    },
+    text: 'Our adventures and fun experiences together',
+    path: '/vacations'
   },
   { id: 'projects',
     icon: <FontAwesomeIcon icon={faPaintBrush} />,
