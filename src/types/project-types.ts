@@ -4,6 +4,7 @@ export type ProjectStatus = 'Planning' | 'In Progress' | 'Completed' | 'On Hold'
 
 export type ProjectCategory = 
   | 'Electronics'
+  | 'Theory'
   | 'Crafts'
   | 'Home Assistant'
   | 'Woodworking'
