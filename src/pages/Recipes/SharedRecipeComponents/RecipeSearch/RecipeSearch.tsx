@@ -7,9 +7,10 @@ type Props = {
   recipes: Recipe[];
   onFilterChange: (filtered: Recipe[]) => void;
   filterCategories: RecipeCategory[];
+  initialSeason?: Season | null; // Optional prop to set initial season filter
 };
 
-export default function RecipeSearch({ recipes, onFilterChange, filterCategories }: Props) {
+export default function RecipeSearch({ recipes, onFilterChange, filterCategories, initialSeason }: Props) {
   type SeasonFilterType = Season | 'None'; // 'None' for recipes without a season
   const minFilterCharacters = 3;
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,7 +28,22 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
   };
   const currentSeason = getCurrentSeason();
 
-  const [selectedSeasons, setSelectedSeasons] = useState<SeasonFilterType[]>(currentSeason ? [currentSeason] : []);
+  // Use initialSeason if provided, otherwise use current season, or empty array if null is explicitly passed
+  const getInitialSeasons = (): SeasonFilterType[] => {
+    if (initialSeason !== undefined) { return initialSeason ? [initialSeason] : []; }
+    return currentSeason ? [currentSeason] : [];
+  };
+
+  const [selectedSeasons, setSelectedSeasons] = useState<SeasonFilterType[]>(getInitialSeasons());
+
+  // Update selected seasons when initialSeason prop changes
+  useEffect(() => {
+    if (initialSeason !== undefined) {
+      setSelectedSeasons(initialSeason ? [initialSeason] : []);
+    } else {
+      setSelectedSeasons(currentSeason ? [currentSeason] : []);
+    }
+  }, [initialSeason, currentSeason]);
 
   const [selectedCategories, setSelectedCategories] = useState<RecipeCategory[]>([]);
 
