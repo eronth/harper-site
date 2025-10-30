@@ -87,11 +87,11 @@ const project: Project = {
         <MSuper base={<MVar>β</MVar>} super={<MNum>2</MNum>} />
         <MOp>=</MOp>
         <MNum>1</MNum>
-      </Math>, 
-      where <MSuper base={<MVar>α</MVar>} super={<MNum>2</MNum>} /> represents 
+      </Math>,
+      where <Math><MSuper base={<MVar>α</MVar>} super={<MNum>2</MNum>} /></Math> represents
       the probability of measuring the state as 0 (spin down),
-      and <MSuper base={<MVar>β</MVar>} super={<MNum>2</MNum>} /> represents the probability
-      of measuring the state as 1 (spin up). So 
+      and <Math><MSuper base={<MVar>β</MVar>} super={<MNum>2</MNum>} /></Math> represents the probability
+      of measuring the state as 1 (spin up). So
       if <Math>
         <MSuper base={<MVar>α</MVar>} super={<MNum>2</MNum>} />
         <MOp>=</MOp>
@@ -156,7 +156,16 @@ const project: Project = {
       same order so we know which qbits correspond to each other.
     </p> */}
     <p>
-      Ok, so what can we do with this?
+      Ok, so what can we do with this? Turn our measurment alignment on the Q-Send to be 45/2 degres OR 45/2 + 45 degrees.
+      This makes it so that the measurement probabilitiies are shifted, shifting the state using the ORIGINAL
+      measurement tool to be either slightly more likely to be 0 or slightly more likely to be 1 depending on choice.
+      The Q-Receiver, then, is measured using the original measurement tool (0/90 degrees). By collecting statistics
+      on a large number of entangled pairs, the Q-Receiver can determine whether the Q-Sender measured at 45/2 degrees
+      or 45/2 + 45 degrees based on the slight bias in the results. This allows the Q-Sender to send a binary message
+      (0 or 1) to the Q-Receiver faster than light.
+    </p>
+    <p>
+      Clocks and shit.
     </p>
   </>,
   summary: {
