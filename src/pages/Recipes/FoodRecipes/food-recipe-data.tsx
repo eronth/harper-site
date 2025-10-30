@@ -11,13 +11,13 @@ const allSeasons: Season[] = yearround;
 //const anySeason: Season[] = yearround;
 
 const ing = (
-  quantity: number | [number, number],
+  quantity: number | [number, number] | null,
   unit: QuantityUnit | null,
   name: string,
   adjustments?: string
 ): Ingredient => ({
   name,
-  quantity,
+  quantity: quantity ?? 0,
   unit,
   adjustments
 });
@@ -1268,6 +1268,7 @@ const recipes: Recipe[] = [
   { // Stir Fry Japanese BBQ Ramen Noodles
     ...simpleRecipe({
       title: 'Stir Fry Japanese BBQ Ramen Noodles',
+      searchTerms: ['stir fry', 'streetfood', 'street food'],
       category: dinner,
       seasons: [],
       ingredients: [
@@ -1496,6 +1497,230 @@ const recipes: Recipe[] = [
         ]
       },
     ]
+  },
+  { // Toasted Pumpkin Seeds
+    ...simpleRecipe({
+      title: 'Toasted Pumpkin Seeds',
+      category: snack,
+      seasons: [autumn],
+      ingredients: [
+        ing(1, null, 'pumpkin of raw pumpkin seeds'),
+      ],
+      steps: [
+        'Boil the seeds in salted water for 10 minutes.',
+        'Drain and pat dry.',
+        'Toss with olive oil and salt (and any other seasonings you like).',
+        'Spread in single layer on baking sheet.',
+        'Bake at 300°F for about 20-40 minutes, stirring occasionally, until golden brown.',
+        'Let cool before eating.'
+      ]
+    })
+  },
+  { // Garlic Hawaiian Rolls
+    ...simpleRecipe({
+      title: 'Garlic Hawaiian Rolls',
+      category: snack,
+      seasons: [summer],
+      ingredients: [
+        ing(12, null, 'Hawaiian rolls'),
+      ],
+      steps: [
+        'Preheat oven to 350°F (175°C).',
+        'Slice the Hawaiian rolls in half horizontally, keeping them connected at the back.',
+        'Place the bottom half of the rolls in a baking dish.',
+        'Spread a generous layer of garlic butter over the bottom half of the rolls.',
+        'Place the top half of the rolls back on top.',
+        'Cover the baking dish with aluminum foil.',
+        'Bake for 15-20 minutes, until the rolls are warm and the butter has melted into them.',
+        'Remove from oven, let cool slightly, then slice and serve.'
+      ]
+    })
+  },
+  { // Turkish Chicken Kebabs
+    ...simpleRecipe({
+      title: 'Turkish Chicken Kebabs',
+      category: dinner,
+      seasons: [spring, summer],
+      ingredients: [
+        ing(2, lbs, 'chicken thighs'),
+        ing(1, cup, 'whole-milk Greek yogurt'),
+        ing(2, tbsp, 'lemon juice'),
+        ing(2, tbsp, 'olive oil'),
+        ing(2, tbsp, 'ketchup'),
+        ing(6, null, 'cloves garlic, minced'),
+        ing(1, tbsp, 'red pepper flakes'),
+        ing(1, tbsp, 'kosher salt'),
+        ing(1.5, tsp, 'cumin'),
+        ing(1, tsp, 'ground pepper'),
+        ing(1, tsp, 'paprika'),
+        ing(1/8, tsp, 'ground cinnamon'),
+        ing(0, null, 'skewers')
+      ],
+      steps: [
+        'Probably do more cinnamon, less red pepper flakes, and salt on chicken, not in mix…',
+        'Mix everything in a bowl.',
+        'Slice up chicken, drop in bowl.',
+        'Cover, fridge for 2+ hours for marinate.',
+        'Put chicken slabs onto skewers.',
+        'Grill!',
+      ]
+    })
+  },
+  { // Honey-Garlic Shrimp
+    ...simpleRecipe({
+      title: 'Honey-Garlic Shrimp',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(1, lb, ' large raw shrimp (16-20 count)'),
+        ing(1, tbsp, 'minced fresh garlic'),
+        ing(2, tbsp, 'honey'),
+        ing(1/2, tsp, 'fresh grated ginger'),
+        ing(1, tbsp, 'soy sauce'),
+        ing(1, tsp, 'Asian fish sauce'),
+        ing(2, tsp, 'vegetable oil'),
+        ing(1, cup, 'thin sliced green onion'),
+      ],
+      steps: [
+        'Thaw the shrimp.',
+        'Wisk everything except onion, oil, and shrimp.',
+        'Add shrimp, toss thoroughly. Cover.',
+        'Shrimp in fridge for 30-60 min.',
+        'Oil on pan, get that guy shimmering.',
+        'Shrimp into pan and let that bad boy start searing. 2 minutes.',
+        'Add extra marinade, flip shrimp, sear 1 min.',
+        'Serve on top of rice noodles or something.',
+      ]
+    })
+  },
+  { // Bourbon Chicken
+    ...simpleRecipe({
+      title: 'Bourbon Chicken',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(2, lbs, 'chicken breasts'),
+        ing(3, tbsp, 'cornstarch divided'),
+        ing(0.5, tsp, 'salt'),
+        ing(0.25, tsp, 'black pepper'),
+        ing(4, tbsp, 'canola oil'),
+        ing(2, null, 'cloves garlic minced'),
+        ing(1, cup, 'water'),
+        ing(0.5, cup, 'apple juice'),
+        ing(0.25, cup, 'bourbon'),
+        ing(0.5, cup, 'chicken broth'),
+        ing(2/3, cup, 'soy sauce'),
+        ing(1/3, cup, 'ketchup'),
+        ing(2, tbsp, 'apple cider vinegar'),
+        ing(1, cup, 'packed light brown sugar'),
+        ing(0.5, tsp, 'onion powder'),
+        ing(0.5, tsp, 'ground ginger'),
+        ing(0.5, tsp, 'crushed red pepper flakes')
+      ],
+      steps: [
+        'Cut chicken into 1 inch pieces and toss with 2 tbsp of cornstarch, salt, pepper.',
+        'Add 2 tbsp canola oil to skillet on medium heat, let heat until adding chicken would sizzle.',
+        'Add about half the chicken, let it cook 3 min without stirring. Flip, cook another 3 mins.',
+        'Remove chicken onto plate. Add remaining oil. Cook rest of chicken the same way.',
+        'Remove chicken to plate, add garlic and cook until you smell it. 20 sec',
+        'Add water, apple juice, bourbon, broth, soy, ketchup, apple cider vinegar, brown sugar, onion powder, ground ginger, and red pepper flakes.',
+        'Bring to boil, add chicken back.',
+        'Cook until sauce is reduced by approx. half.',
+        'Mix 1 tbsp cornstarch with tbsp water and stir.',
+        'Add cornstarch thickener to sauce and stir.',
+        'Cook briefly until thickening thickens.',
+      ]
+    })
+  },
+  { // Marry Me Chicken
+    ...simpleRecipe({
+      title: 'Marry Me Chicken',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(1, tbsp, 'extra virgin olive oil'),
+        ing(6, null, 'bone-in, skin-on chicken thighs'),
+        ing(2, null, 'cloves garlic, minced'),
+        ing(1, tbsp, 'thyme'),
+        ing(3/4, cup, 'low sodium chicken broth'),
+        ing(1/2, cup, 'heavy cream'),
+        ing(1/2, cup, 'chopped sun-dried tomatoes'),
+        ing(1/4, cup, 'freshly grated parmesan'),
+        ing(0, null, 'not-so-fresh basil'),
+      ],
+      steps: [
+        'Preheat oven to 375° F.',
+        'In skillet on med-high, heat oil, season chicken, and sear until golden (4-5 mn per side).',
+        'Transfer chicken to plate, pour off half of the fat from skillet.',
+        'Skillet to medium heath. Add garlic, thyme, red pepper flakes, and fragrate 1 minute.',
+        'Add heavy cream, sun-dried tomatoes, and parmesan. Season with more salt. ',
+        'Bring to simmer. Readd chicken.',
+        'Put in oven and bake 17-20 mins.',
+        'Gornish with bisil and servo.',
+      ]
+    })
+  },
+  { // Korean Bulgogi Beef BBQ
+    ...simpleRecipe({
+      title: 'Korean Bulgogi Beef BBQ',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(1+(1/4), lbs, 'boneless beef short rib, 1/8 in. thick'),
+        ing(4, null, 'finely crushed garlic cloves'),
+        ing(1, tbsp, 'freshly grated ginger'),
+        ing(1/3, cup, 'grated Asian pear (non-substitutable)'),
+        ing(0.25, cup, 'grated yellow onion'),
+        ing(0.25, cup, 'soy sauce'),
+        ing(1, tbsp, 'toasted sesame oil'),
+        ing([1, 2], tbsp, 'brown sugar'),
+        ing(1, tbsp, 'Korean chili flakes (Gochugaru)'),
+        ing(0.5, tsp, 'kosher salt'),
+        ing(1, tbsp, 'vegetable oil'),
+        ing(null, null, 'sliced green onions'),
+        ing(null, null, 'steamed rice'),
+      ],
+      steps: [
+        'Mix garlic, onion, ginger, sesame oil, brown sugar, soy, chili flakes, and Asian pear in a bowl.',
+        'Stir stir! Put meat in to marinade for 1-8 hours.',
+        'Season with slight salt. Slight vegetable oil.',
+        'Cook on smoking hot skillet. Single layer.',
+        'Cook 2-3 minutes per side, highest heat.',
+        'Serve on rice. Top with green onions.',
+      ]
+    })
+  },
+  { // Honey Mustard Chicken & Veggies
+    ...simpleRecipe({
+      title: 'Honey Mustard Chicken & Veggies',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(.5, cup, 'Dijon mustard'),
+        ing(.5, cup, 'honey'),
+        ing(1.5, tsp, 'sea salt, divided'),
+        ing(1, tbsp, 'apple cider vinegar'),
+        ing(1, tsp, 'paprika'),
+        ing(.5, tsp, 'pepper'),
+        ing(3, tbsp, 'extra-virgin olive oil'),
+        ing(2, null, 'large shallots, roughly chopped'),
+        ing(1, lb, 'fingerling potatoes (or Yukon golds)'),
+        ing(2, null, 'sprits rosemary, stems removed, leaves chopped'),
+        ing(.5, lb, 'green beans'),
+        ing(2, lbs, 'boneless, skinless, chicken breasts'),
+      ],
+      steps: [
+        'Preheat oven to 375° F.',
+        'Honey mustard: Combine Dijon, honey, ½ tsp salt, apple cider vinegar, paprika. Stir to smooth.',
+        'Season chicken breasts with salt and pepper.',
+        'Heat 1tbsp olive oil in skillet. Sear chicken until gold brown (~3 min/side). Move chicken to plate.',
+        'Add shallots and potatoes and remaining oil.',
+        'Toss to combine. Sprinkle rosemary on.',
+        'In oven uncovered for 15 mins.',
+        'Add chicken (and chicken juices), and green beans into skillet. Cook 15 more mins.',
+        'Add sauce to skillet, cook another 10-15 mins until chicken is 165° F.',
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
