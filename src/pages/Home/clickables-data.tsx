@@ -25,7 +25,7 @@ const clickables: Clickable[] = [
     title: {
       full: 'Food Recipes',
     },
-    text: 'Delicious meals and culinary experiments',
+    text: 'Delicious culinary meals',
     path: '/food-recipes'
   },
   { id: 'drink-recipes',
@@ -33,7 +33,7 @@ const clickables: Clickable[] = [
     title: {
       full: 'Drink Recipes',
     },
-    text: 'Cocktails, coffee, and special beverages',
+    text: 'Cocktails, coffee, and beverages',
     path: '/drink-recipes'
   },
   { 
