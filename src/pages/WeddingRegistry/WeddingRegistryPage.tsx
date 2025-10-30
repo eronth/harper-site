@@ -22,12 +22,13 @@ const WeddingRegistry: React.FC = () => {
     const nextCounter = currentCounter + 20;
 
     // Create 20 confetti pieces with random values
+    // Biased toward up and right for the popper angle
     const newConfetti = Array.from({ length: 20 }, (_, i) => ({
       id: currentCounter + i,
       x: clickX,
       y: clickY,
-      randomX: Math.random(),
-      randomY: Math.random(),
+      randomX: 0.5 + Math.random() * 0.5, // 0.5 to 1.0 (biased right)
+      randomY: -0.3 + Math.random() * 0.8, // -0.3 to 0.5 (biased up)
       duration: 1.1 + Math.random() * 0.5,
       color: i % 6,
     }));
@@ -64,7 +65,13 @@ const WeddingRegistry: React.FC = () => {
           <div className="bottom-section">
             <div className="heart-icon">❤️</div>
             <p className="fine-print">
-              (Seriously though, no pressure. We mean it. Just come have fun with us! 🎉)
+              (Seriously though, no pressure. We mean it. Just come have fun with us! <span 
+                className="clickable-party-emoji"
+                onClick={handlePopperClick}
+                title="Click me!"
+              >
+                🎉
+              </span>)
             </p>
           </div>
         </div>
