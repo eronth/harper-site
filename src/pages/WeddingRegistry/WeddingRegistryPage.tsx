@@ -14,6 +14,20 @@ const WeddingRegistry: React.FC = () => {
   const [confettiCounter, setConfettiCounter] = useState(0);
 
   const handlePopperClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    sendConfetti(e, { xAngle: 0.4, yAngle: 0.7, xStrength: 0.5, yStrength: 0.8 });
+  };
+
+  const handlePartyClick = (e: React.MouseEvent<HTMLSpanElement>) => {
+    sendConfetti(e, { xAngle: 0.5, yAngle: -0.45, xStrength: 0.3, yStrength: 0.4 });
+  };
+
+  type ConfettiOptions = {
+    xAngle: number;
+    xStrength: number;
+    yAngle: number;
+    yStrength: number;
+  };
+  const sendConfetti = (e: React.MouseEvent<HTMLSpanElement>, options?: ConfettiOptions) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const clickX = rect.left + rect.width / 2;
     const clickY = rect.top + rect.height / 2;
@@ -22,13 +36,13 @@ const WeddingRegistry: React.FC = () => {
     const nextCounter = currentCounter + 20;
 
     // Create 20 confetti pieces with random values
-    // Biased toward up and right for the popper angle
+    // Regular spread for the party emoji
     const newConfetti = Array.from({ length: 20 }, (_, i) => ({
       id: currentCounter + i,
       x: clickX,
       y: clickY,
-      randomX: 0.5 + Math.random() * 0.5, // 0.5 to 1.0 (biased right)
-      randomY: -0.3 + Math.random() * 0.8, // -0.3 to 0.5 (biased up)
+      randomX: (options?.xAngle ?? 0) + Math.random() * (options?.xStrength ?? 1),
+      randomY: (options?.yAngle ?? 0) + Math.random() * (options?.yStrength ?? 1),
       duration: 1.1 + Math.random() * 0.5,
       color: i % 6,
     }));
@@ -40,7 +54,7 @@ const WeddingRegistry: React.FC = () => {
     setTimeout(() => {
       setConfettiPieces(prev => prev.filter(piece => piece.id < currentCounter || piece.id >= nextCounter));
     }, 1600);
-  };
+  }
 
   return (
     <div className="page-content">
@@ -67,7 +81,7 @@ const WeddingRegistry: React.FC = () => {
             <p className="fine-print">
               (Seriously though, no pressure. We mean it. Just come have fun with us! <span 
                 className="clickable-party-emoji"
-                onClick={handlePopperClick}
+                onClick={handlePartyClick}
                 title="Click me!"
               >
                 🎉
