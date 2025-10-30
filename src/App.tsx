@@ -9,6 +9,7 @@ import IndividualFoodRecipePage from './pages/Recipes/FoodRecipes/IndividualFood
 import DrinkRecipes from './pages/Recipes/DrinkRecipes/DrinkRecipesPage'
 import IndividualDrinkRecipePage from './pages/Recipes/DrinkRecipes/IndividualDrinkRecipePage'
 import WinterVillage from './pages/WinterVillage/WinterVillagePage'
+import WeddingRegistry from './pages/WeddingRegistry/WeddingRegistryPage'
 import ProjectsAndCrafts from './pages/ProjectsAndCrafts/ProjectsAndCrafts'
 import IndividualProjectPage from './pages/ProjectsAndCrafts/IndividualProjectPage/IndividualProjectPage'
 import MagicTheGathering from './pages/MagicTheGathering/MagicTheGatheringPage'
@@ -43,6 +44,7 @@ function App() {
           <Route path="/projects" element={<ProjectsAndCrafts />} />
           <Route path="/projects/project/:projectId" element={<IndividualProjectPage />} />
           <Route path="/winter-village" element={<WinterVillage />} />
+          <Route path="/wedding-registry" element={<WeddingRegistry />} />
           <Route path="/magic-the-gathering" element={<MagicTheGathering />} />
         </Routes>
       </main>

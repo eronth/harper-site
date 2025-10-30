@@ -5,7 +5,8 @@ import {
   faCocktail,
   faHouseChimney,
   faPaintBrush,
-  faStar
+  faStar,
+  faGift
 } from "@fortawesome/free-solid-svg-icons";
 
 export type Clickable = {
@@ -69,6 +70,16 @@ const clickables: Clickable[] = [
     },
     text: 'Our holiday traditions and winter displays',
     path: '/winter-village'
+  },
+  { 
+    id: 'wedding-registry',
+    icon: <FontAwesomeIcon icon={faGift} />,
+    title: {
+      full: 'Wedding Registry',
+      sidebar: 'Registry',
+    },
+    text: 'Our wedding registry and gift information',
+    path: '/wedding-registry'
   },
   { 
     id: 'magic-the-gathering',
