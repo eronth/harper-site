@@ -680,7 +680,7 @@ const recipes: Recipe[] = [
       ]
     })
   },
-  { // Smoky Garden Sip (Non-Alcoholic)
+  { // Smoky Garden Sip
     ...drink({
       title: 'Smoky Garden Sip',
       seasons: [],
@@ -698,7 +698,26 @@ const recipes: Recipe[] = [
         'Garnish with more mint if you\'re feeling fancy',
       ]
     }),
-  }
+  },
+  { // The Wiggle
+    ...drink({
+      title: 'The Wiggle',
+      seasons: [],
+      description: 'A fun and colorful cocktail garnished with gummy worms.',
+      ingredients: [
+        add(1.5, 'peach liquor'),
+        add(1.5, 'sour apple liquor'),
+        add(.75, 'Midori'),
+        add(.75, 'banana rum'),
+        add([2, 4], 'pineapple juice', { adjustments: 'to taste' }),
+        add(0, 'gummy worms', { adjustments: 'for garnish' }),
+      ],
+      steps: [
+        'Shake with ice',
+        'Garnish with one or two gummy worms',
+      ],
+    })
+  },
 ].sort((a, b) => a.title.localeCompare(b.title));
 
 export default recipes;
