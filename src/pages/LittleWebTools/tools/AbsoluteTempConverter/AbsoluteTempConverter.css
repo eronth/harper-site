@@ -1,0 +1,146 @@
+.absolute-temp-converter {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.temp-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --input-height: 2em;
+
+  .temp-input {
+    font-size: 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-family: 'Courier New', monospace;
+    height: var(--input-height);
+    width: 5.5em;
+    text-align: right;
+    transition: border-color 0.2s ease;
+    &:focus {
+      outline: none;
+      border-color: rgba(100, 150, 255, 0.6);
+    }
+  }
+  
+  .unit-select {
+    font-size: 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    height: var(--input-height);
+    transition: border-color 0.2s ease;
+    min-width: 1em;
+  
+    &:hover {
+      border-color: rgba(100, 150, 255, 0.4);
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: rgba(100, 150, 255, 0.6);
+    }
+  }
+}
+
+
+
+
+.conversion-result {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  
+  .conversion-grid {
+    display: grid;
+    gap: 1rem;
+    font-size: 1.1rem;
+    
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    
+      label {
+        font-weight: 600;
+        min-width: 120px;
+      }
+    
+      .value {
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+      
+        .original-indicator {
+          margin-right: 0.5rem;
+          font-size: 0.9rem;
+          opacity: 0.7;
+          font-style: italic;
+        }
+      }
+    }
+  }
+}
+
+
+
+.conversion-result-placeholder {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  opacity: 0.6;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.common-temps {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.common-temps strong {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.absolute-info {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(100, 150, 255, 0.1);
+  border-left: 4px solid rgba(100, 150, 255, 0.5);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .temp-input-container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .temp-input,
+  .unit-select {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .conversion-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
