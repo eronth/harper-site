@@ -125,7 +125,7 @@ export default function AbsoluteTempConverter() {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)} 
           onKeyDown={handleKeypress}
-          placeholder="Enter temp"
+          placeholder="Temp"
         />
         <select
           className="unit-select"
@@ -145,7 +145,7 @@ export default function AbsoluteTempConverter() {
             <div className="row">
               <label>Absolute:</label>
               {selectedUnit === 'A' && <span className="original-indicator">(original)</span>}
-              <span className="value">{conversions.absolute.toExponential(6)} °A</span>
+              <span className="value">{conversions.absolute.toExponential(5)} °A</span>
             </div>
             <div className="row">
               <label>Fahrenheit:</label>
@@ -177,13 +177,39 @@ export default function AbsoluteTempConverter() {
       )}
     
       <div className="common-temps">
-        <strong>Common temperatures:</strong>
-        Freezing 32°F: {convertToAbsolute(32, 'F').toExponential(4)} °A <br />
-        Cold 50°F: {convertToAbsolute(50, 'F').toExponential(4)} °A <br />
-        Room temp 70°F: {convertToAbsolute(70, 'F').toExponential(4)} °A <br />
-        Hot 90°F: {convertToAbsolute(90, 'F').toExponential(4)} °A <br />
-        Human body 98.6°F: {convertToAbsolute(98.6, 'F').toExponential(4)} °A <br />
-        Boiling 212°F: {convertToAbsolute(212, 'F').toExponential(4)} °A <br />
+        <h4>Common Temperatures:</h4>
+        <div className="common-temps-grid">
+          <div className="temp-row">
+            <span className="temp-name">Freezing</span>
+            <span className="temp-original">32°F</span>
+            <span className="temp-value">{convertToAbsolute(32, 'F').toExponential(4)} °A</span>
+          </div>
+          <div className="temp-row">
+            <span className="temp-name">Cold Day</span>
+            <span className="temp-original">40°F</span>
+            <span className="temp-value">{convertToAbsolute(50, 'F').toExponential(4)} °A</span>
+          </div>
+          <div className="temp-row">
+            <span className="temp-name">Room Temp</span>
+            <span className="temp-original">70°F</span>
+            <span className="temp-value">{convertToAbsolute(70, 'F').toExponential(4)} °A</span>
+          </div>
+          <div className="temp-row">
+            <span className="temp-name">Hot Day</span>
+            <span className="temp-original">90°F</span>
+            <span className="temp-value">{convertToAbsolute(90, 'F').toExponential(4)} °A</span>
+          </div>
+          <div className="temp-row">
+            <span className="temp-name">Human Body</span>
+            <span className="temp-original">98.6°F</span>
+            <span className="temp-value">{convertToAbsolute(98.6, 'F').toExponential(4)} °A</span>
+          </div>
+          <div className="temp-row">
+            <span className="temp-name">Boiling Water</span>
+            <span className="temp-original">212°F</span>
+            <span className="temp-value">{convertToAbsolute(212, 'F').toExponential(4)} °A</span>
+          </div>
+        </div>
       </div>
       
       <div className="absolute-info">
