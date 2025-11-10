@@ -6,7 +6,8 @@ import {
   faHouseChimney,
   faPaintBrush,
   faStar,
-  faGift
+  faGift,
+  faWrench
 } from "@fortawesome/free-solid-svg-icons";
 
 export type Clickable = {
@@ -89,6 +90,16 @@ const clickables: Clickable[] = [
     },
     text: 'Our collection of MtG decks, with basic overviews.',
     path: '/magic-the-gathering',
+  },
+  {
+    id: 'little-web-tools',
+    icon: <FontAwesomeIcon icon={faWrench} />,
+    title: {
+      full: 'Little Web Tools',
+      sidebar: 'Web Tools',
+    },
+    text: 'Handy utilities for web development tasks',
+    path: '/little-web-tools',
   },
 ];
 

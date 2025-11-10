@@ -13,6 +13,7 @@ import WeddingRegistry from './pages/WeddingRegistry/WeddingRegistryPage'
 import ProjectsAndCrafts from './pages/ProjectsAndCrafts/ProjectsAndCrafts'
 import IndividualProjectPage from './pages/ProjectsAndCrafts/IndividualProjectPage/IndividualProjectPage'
 import MagicTheGathering from './pages/MagicTheGathering/MagicTheGatheringPage'
+import LittleWebTools from './pages/LittleWebTools/LittleWebTools'
 import './App.css'
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           <Route path="/winter-village" element={<WinterVillage />} />
           <Route path="/wedding-registry" element={<WeddingRegistry />} />
           <Route path="/magic-the-gathering" element={<MagicTheGathering />} />
+          <Route path="/little-web-tools/:toolId?" element={<LittleWebTools />} />
         </Routes>
       </main>
     </div>
