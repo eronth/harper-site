@@ -4,32 +4,61 @@ export default function AbsoluteTempConverter() {
   const [inputValue, setInputValue] = useState('');
   const [selectedUnit, setSelectedUnit] = useState('F');
 
-  function convertFromFahrenheitToCelcius(degrees: number) {
-    return (degrees - 32) * 5 / 9;
+  // Conversion helpers
+  function fahrenheitToCelsius(f: number) {
+    return (f - 32) * 5 / 9;
   }
 
-  function convertFromCelciusToKelvin(degrees: number) {
-    return degrees + 273.15;
+  function celsiusToFahrenheit(c: number) {
+    return c * 9 / 5 + 32;
   }
 
-  function convertFromKelvinToAbsolute(degrees: number) {
+  function celsiusToKelvin(c: number) {
+    return c + 273.15;
+  }
+
+  function kelvinToCelsius(k: number) {
+    return k - 273.15;
+  }
+
+  function kelvinToAbsolute(k: number) {
     const maxAbsolute = 1;
-    const maxKelvin = 1.416808 * Math.pow(10, 32)
-    return maxAbsolute * degrees / maxKelvin;
+    const maxKelvin = 1.416808 * Math.pow(10, 32);
+    return maxAbsolute * k / maxKelvin;
+  }
+
+  // Convert any temperature to all scales
+  function convertToAllScales(degrees: number, fromScale: string) {
+    let celsius: number;
+    
+    // First convert to Celsius as our common base
+    if (fromScale === 'F') {
+      celsius = fahrenheitToCelsius(degrees);
+    } else if (fromScale === 'K') {
+      celsius = kelvinToCelsius(degrees);
+    } else {
+      celsius = degrees; // Already in Celsius
+    }
+    
+    const fahrenheit = celsiusToFahrenheit(celsius);
+    const kelvin = celsiusToKelvin(celsius);
+    const absolute = kelvinToAbsolute(kelvin);
+    
+    return {
+      fahrenheit,
+      celsius,
+      kelvin,
+      absolute
+    };
   }
 
   function convertToAbsolute(degrees: number, scale: string) {
-    let num = degrees;
-    
-    if (scale === 'F') {
-      num = convertFromFahrenheitToCelcius(num);
-    }
-    if (scale !== 'K') {
-      num = convertFromCelciusToKelvin(num);
-    }
-    num = convertFromKelvinToAbsolute(num);
-
-    return num;
+    const kelvin = scale === 'F' 
+      ? celsiusToKelvin(fahrenheitToCelsius(degrees))
+      : scale === 'C'
+      ? celsiusToKelvin(degrees)
+      : degrees;
+    return kelvinToAbsolute(kelvin);
   }
 
   function absoluteToValuesText() {
@@ -63,21 +92,30 @@ export default function AbsoluteTempConverter() {
     }
   }
 
-  function getResultText(): string {
+  function getAllConversions() {
     if (inputValue === '') {
-      return 'type a number to convert';
+      return null;
     }
     const num = parseFloat(inputValue);
     if (isNaN(num)) {
-      return 'Not a number';
+      return null;
     }
-    const result = convertToAbsolute(num, selectedUnit);
-    return `${result} °A`;
+    return convertToAllScales(num, selectedUnit);
   }
+
+  const conversions = getAllConversions();
 
   return (<>
     <div>
-      <input 
+      <h3>Absolute Temperature Converter</h3>
+      <p>
+        The Absolute Temperature Scale (°A) is a hypothetical temperature scale where  
+        absolute zero is 0 °A and the highest possible temperature is 1 °A. It is 
+        based on the concept of a Planck Temperature.
+        This scale is not used in practical applications
+        but really serves as a comical display of the "absolute" range of temperatures.
+      </p>
+      <input
         type="number" 
         className="absolute-input" 
         step="0.5" 
@@ -93,19 +131,45 @@ export default function AbsoluteTempConverter() {
         <option value="F">°F</option>
         <option value="C">°C</option>
         <option value="K">K</option>
+        {/* <option value="A">°A</option> */}
       </select>
-      
-      &nbsp;&nbsp;&nbsp;
-      <span className="absolute-result">{getResultText()}</span>
     </div>
-    <div>
-      Common temperatures - <br />
-      Freezing 32°F: {convertToAbsolute(32, 'F')} °A; <br />
-      Cold 50°F: {convertToAbsolute(50, 'F')} °A; <br />
-      Room temp 70°F: {convertToAbsolute(70, 'F')} °A; <br />
-      Hot 90°F: {convertToAbsolute(90, 'F')} °A; <br />
-      Human body 98.6°F: {convertToAbsolute(98.6, 'F')} °A; <br />
-      Boiling 212°F: {convertToAbsolute(212, 'F')} °A; <br />
+    
+    {conversions ? (
+      <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '6px' }}>
+        <h4 style={{ marginTop: 0 }}>Converted Temperatures:</h4>
+        <div style={{ display: 'grid', gap: '0.5rem', fontSize: '1rem' }}>
+          <div>
+            <strong>Fahrenheit:</strong> {conversions.fahrenheit.toFixed(2)} °F
+            {selectedUnit === 'F' && ' (original)'}
+          </div>
+          <div>
+            <strong>Celsius:</strong> {conversions.celsius.toFixed(2)} °C
+            {selectedUnit === 'C' && ' (original)'}
+          </div>
+          <div>
+            <strong>Kelvin:</strong> {conversions.kelvin.toFixed(2)} K
+            {selectedUnit === 'K' && ' (original)'}
+          </div>
+          <div>
+            <strong>Absolute:</strong> {conversions.absolute.toExponential(6)} °A
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '6px', opacity: 0.6 }}>
+        Type a number to see all temperature conversions
+      </div>
+    )}
+    
+    <div style={{ marginTop: '1.5rem' }}>
+      <strong>Common temperatures:</strong> <br />
+      Freezing 32°F: {convertToAbsolute(32, 'F').toExponential(4)} °A; <br />
+      Cold 50°F: {convertToAbsolute(50, 'F').toExponential(4)} °A; <br />
+      Room temp 70°F: {convertToAbsolute(70, 'F').toExponential(4)} °A; <br />
+      Hot 90°F: {convertToAbsolute(90, 'F').toExponential(4)} °A; <br />
+      Human body 98.6°F: {convertToAbsolute(98.6, 'F').toExponential(4)} °A; <br />
+      Boiling 212°F: {convertToAbsolute(212, 'F').toExponential(4)} °A; <br />
     </div>
     <div>{absoluteToValuesText()}</div>
   </>);
