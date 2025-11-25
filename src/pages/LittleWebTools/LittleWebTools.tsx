@@ -3,11 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import './LittleWebTools.css';
 
 // Tool modules
-import Base64Tool from './tools/Base64Tool.tsx';
-import JsonFormatterTool from './tools/JsonFormatterTool.tsx';
 import ColorConverterTool from './tools/ColorConverterTool.tsx';
-import LoremIpsumTool from './tools/LoremIpsumTool.tsx';
-import UuidGeneratorTool from './tools/UuidGeneratorTool.tsx';
 import TimestampConverterTool from './tools/TimestampConverterTool/TimestampConverterTool.tsx';
 import AbsoluteTempConverter from './tools/AbsoluteTempConverter/AbsoluteTempConverter.tsx';
 import WordCharCount from './tools/WordCharCount/WordCharCount.tsx';
@@ -53,42 +49,6 @@ const tools: Tool[] = [
     description: 'Build and validate Chron expressions for scheduling tasks',
     component: CronExpressionBuilder,
   }
-  // {
-  //   id: 'base64',
-  //   name: 'Base64 Encoder/Decoder',
-  //   description: 'Encode or decode Base64 strings',
-  //   component: Base64Tool,
-  // },
-  // {
-  //   id: 'json-formatter',
-  //   name: 'JSON Formatter',
-  //   description: 'Format and validate JSON data',
-  //   component: JsonFormatterTool,
-  // },
-  // {
-  //   id: 'color-converter',
-  //   name: 'Color Converter',
-  //   description: 'Convert between HEX, RGB, and HSL color formats',
-  //   component: ColorConverterTool,
-  // },
-  // {
-  //   id: 'lorem-ipsum',
-  //   name: 'Lorem Ipsum Generator',
-  //   description: 'Generate placeholder text for designs',
-  //   component: LoremIpsumTool,
-  // },
-  // {
-  //   id: 'uuid-generator',
-  //   name: 'UUID Generator',
-  //   description: 'Generate random UUIDs',
-  //   component: UuidGeneratorTool,
-  // },
-  // {
-  //   id: 'timestamp-converter',
-  //   name: 'Timestamp Converter',
-  //   description: 'Convert between Unix timestamps and human-readable dates',
-  //   component: TimestampConverterTool,
-  // },
 ];
 
 export default function LittleWebTools() {
