@@ -150,8 +150,18 @@
 }
 
 /* Common tool styles */
-.tool-content h3 {
-  margin-top: 0;
+.tool-display{
+  .tool-active {
+    .tool-content {
+      h3 {
+        margin-top: 0;
+        text-align: center;
+      }
+      p {
+        text-align: left;
+      }
+    }
+  }
 }
 
 .tool-section {
