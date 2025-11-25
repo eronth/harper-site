@@ -1,0 +1,335 @@
+.regex-tester-tool {
+  .regex-input-section {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .regex-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      transition: border-color 0.2s;
+
+      &:focus-within {
+        border-color: var(--brand-maroon);
+      }
+
+      .regex-delimiter {
+        color: var(--text-muted);
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: var(--text-primary);
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+
+        &::placeholder {
+          color: var(--text-muted);
+        }
+
+        &.invalid {
+          color: var(--danger-red);
+        }
+      }
+
+      .flags-display {
+        color: var(--text-muted);
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        min-width: 3rem;
+        text-align: right;
+      }
+    }
+
+    .error-message {
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      background: rgba(220, 53, 69, 0.1);
+      border: 1px solid var(--danger-red);
+      border-radius: 6px;
+      color: var(--danger-red);
+      font-size: 0.9rem;
+    }
+
+    .flags-section {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      > label {
+        margin: 0;
+        font-weight: 500;
+      }
+
+      .flag-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+
+        .flag-button {
+          padding: 0.4rem 0.75rem;
+          font-family: 'Courier New', monospace;
+          font-weight: bold;
+          background: var(--bg-button);
+          border: 1px solid var(--border-light);
+          transition: all 0.2s;
+
+          &.active {
+            background: var(--brand-maroon);
+            border-color: var(--brand-maroon);
+            color: var(--text-primary);
+          }
+
+          &:hover {
+            border-color: var(--brand-maroon-light);
+          }
+        }
+      }
+    }
+  }
+
+  .test-string-section {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .textarea-container {
+      position: relative;
+
+      textarea {
+        width: 100%;
+        background: var(--bg-card);
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        padding: 0.75rem;
+        color: var(--text-primary);
+        font-family: 'Courier New', monospace;
+        font-size: 0.95rem;
+        resize: vertical;
+        transition: border-color 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: var(--brand-maroon);
+        }
+
+        &::placeholder {
+          color: var(--text-muted);
+        }
+      }
+    }
+  }
+
+  .clear-button {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    background: var(--danger-red);
+    color: var(--text-primary);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    opacity: 0.9;
+
+    &:hover {
+      background: var(--danger-red-hover);
+      opacity: 1;
+    }
+  }
+
+  .results-section {
+    margin-top: 2rem;
+
+    .match-summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      h4 {
+        margin: 0;
+        color: var(--text-primary);
+      }
+
+      .match-status {
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: 500;
+
+        &.success {
+          background: rgba(76, 175, 80, 0.1);
+          border: 1px solid #4caf50;
+          color: #4caf50;
+        }
+
+        &.no-match {
+          background: rgba(255, 152, 0, 0.1);
+          border: 1px solid #ff9800;
+          color: #ff9800;
+        }
+      }
+    }
+
+    h5 {
+      margin: 1.5rem 0 0.75rem;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .highlighted-text {
+      .highlight-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        padding: 1rem;
+        font-family: 'Courier New', monospace;
+        white-space: pre-wrap;
+        word-break: break-word;
+        color: var(--text-primary);
+        line-height: 1.6;
+
+        .highlight {
+          background: rgba(74, 158, 255, 0.3);
+          border-bottom: 2px solid var(--accent-blue);
+          padding: 0.1rem 0.2rem;
+          border-radius: 3px;
+        }
+      }
+    }
+
+    .matches-list {
+      .match-item {
+        background: var(--bg-card);
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+
+        .match-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.5rem;
+          padding-bottom: 0.5rem;
+          border-bottom: 1px solid var(--border-light);
+
+          .match-index {
+            font-weight: 600;
+            color: var(--accent-blue);
+          }
+
+          .match-position {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: 'Courier New', monospace;
+          }
+        }
+
+        .match-text {
+          margin-bottom: 0.5rem;
+          color: var(--text-primary);
+
+          strong {
+            color: var(--text-secondary);
+            margin-right: 0.5rem;
+          }
+        }
+
+        .match-groups {
+          margin-top: 0.75rem;
+          color: var(--text-primary);
+
+          strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+          }
+
+          ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            color: var(--text-primary);
+
+            li {
+              margin-bottom: 0.25rem;
+              font-family: 'Courier New', monospace;
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .regex-tester-tool {
+    .regex-input-section {
+      .regex-input-wrapper {
+        padding: 0.6rem 0.8rem;
+
+        input {
+          font-size: 0.9rem;
+        }
+      }
+
+      .flags-section {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .flag-buttons {
+          width: 100%;
+        }
+      }
+    }
+
+    .results-section {
+      .match-summary {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+
+        .match-status {
+          align-self: stretch;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .regex-tester-tool {
+    .regex-input-section {
+      .flags-section {
+        .flag-buttons {
+          .flag-button {
+            flex: 1;
+            min-width: 44px;
+          }
+        }
+      }
+    }
+  }
+}

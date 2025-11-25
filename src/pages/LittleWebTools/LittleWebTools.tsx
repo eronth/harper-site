@@ -10,66 +10,78 @@ import LoremIpsumTool from './tools/LoremIpsumTool.tsx';
 import UuidGeneratorTool from './tools/UuidGeneratorTool.tsx';
 import TimestampConverterTool from './tools/TimestampConverterTool/TimestampConverterTool.tsx';
 import AbsoluteTempConverter from './tools/AbsoluteTempConverter/AbsoluteTempConverter.tsx';
+import WordCharCount from './tools/WordCharCount/WordCharCount.tsx';
+import Page from '../Page.tsx';
+import RegexTester from './tools/aa programmer tools/RegexTester.tsx';
 
-type ToolId = 
-  'base64' 
-  | 'json-formatter' 
-  | 'color-converter' 
-  | 'lorem-ipsum' 
-  | 'uuid-generator' 
-  | 'timestamp-converter'
-  | 'absolute-temp-converter';
 
+const toolIds = {
+  absoluteTempConverter: 'absolute-temp-converter',
+  wordCharCount: 'word-char-count',
+};
+type ToolId = typeof toolIds[keyof typeof toolIds];
 interface Tool {
   id: ToolId;
   name: string;
   description: string;
   component: React.ComponentType<unknown>;
-}
+};
 
 const tools: Tool[] = [
   {
-    id: 'absolute-temp-converter',
+    id: toolIds.absoluteTempConverter,
     name: 'Absolute Temperature Converter',
-    description: 'Convert from temps to my new absolute temp scale',
+    description: 'Convert from temps to my new absolute temp (°A) scale',
     component: AbsoluteTempConverter,
   },
   {
-    id: 'base64',
-    name: 'Base64 Encoder/Decoder',
-    description: 'Encode or decode Base64 strings',
-    component: Base64Tool,
+    id: toolIds.wordCharCount,
+    name: 'Word & Character Counter',
+    description: 'Count words and characters in your text',
+    component: WordCharCount,
   },
   {
-    id: 'json-formatter',
-    name: 'JSON Formatter',
-    description: 'Format and validate JSON data',
-    component: JsonFormatterTool,
-  },
-  {
-    id: 'color-converter',
-    name: 'Color Converter',
-    description: 'Convert between HEX, RGB, and HSL color formats',
-    component: ColorConverterTool,
-  },
-  {
-    id: 'lorem-ipsum',
-    name: 'Lorem Ipsum Generator',
-    description: 'Generate placeholder text for designs',
-    component: LoremIpsumTool,
-  },
-  {
-    id: 'uuid-generator',
-    name: 'UUID Generator',
-    description: 'Generate random UUIDs',
-    component: UuidGeneratorTool,
-  },
-  {
-    id: 'timestamp-converter',
-    name: 'Timestamp Converter',
-    description: 'Convert between Unix timestamps and human-readable dates',
-    component: TimestampConverterTool,
-  },
+    id: 'regex-tester',
+    name: 'Regex Tester',
+    description: 'Test and debug regular expressions with live highlighting and match details',
+    component: RegexTester,
+  }
+  // {
+  //   id: 'base64',
+  //   name: 'Base64 Encoder/Decoder',
+  //   description: 'Encode or decode Base64 strings',
+  //   component: Base64Tool,
+  // },
+  // {
+  //   id: 'json-formatter',
+  //   name: 'JSON Formatter',
+  //   description: 'Format and validate JSON data',
+  //   component: JsonFormatterTool,
+  // },
+  // {
+  //   id: 'color-converter',
+  //   name: 'Color Converter',
+  //   description: 'Convert between HEX, RGB, and HSL color formats',
+  //   component: ColorConverterTool,
+  // },
+  // {
+  //   id: 'lorem-ipsum',
+  //   name: 'Lorem Ipsum Generator',
+  //   description: 'Generate placeholder text for designs',
+  //   component: LoremIpsumTool,
+  // },
+  // {
+  //   id: 'uuid-generator',
+  //   name: 'UUID Generator',
+  //   description: 'Generate random UUIDs',
+  //   component: UuidGeneratorTool,
+  // },
+  // {
+  //   id: 'timestamp-converter',
+  //   name: 'Timestamp Converter',
+  //   description: 'Convert between Unix timestamps and human-readable dates',
+  //   component: TimestampConverterTool,
+  // },
 ];
 
 export default function LittleWebTools() {
@@ -93,7 +105,7 @@ export default function LittleWebTools() {
   const ToolComponent = selectedTool ? tools.find((t) => t.id === selectedTool)?.component : null;
 
   return (
-    <main className="page-content">
+    <Page>
       <div className="content-section">
         <nav className="breadcrumbs" aria-label="Breadcrumb">
           <Link to="/">Home</Link>
@@ -112,21 +124,21 @@ export default function LittleWebTools() {
         
         <div className="tools-container">
           {/* Tool Navigation */}
-              <aside className="tools-sidebar">
+          {/* <aside className="tools-sidebar">
             <h3>Available Tools</h3>
             <nav className="tools-nav">
               {tools.map((tool) => (
                 <button
                   key={tool.id}
-                  className={`tool-nav-button ${selectedTool === tool.id ? 'active' : ''}`}
+                  className={`${selectedTool === tool.id ? 'active' : ''}`}
                   onClick={() => navigate(`/little-web-tools/${tool.id}`)}
                 >
-                  <span className="tool-nav-name">{tool.name}</span>
+                  <label className="name">{tool.name}</label>
                   <span className="tool-nav-description">{tool.description}</span>
                 </button>
               ))}
             </nav>
-          </aside>
+          </aside> */}
 
           {/* Tool Display Area */}
           <section className="tool-display">
@@ -160,6 +172,6 @@ export default function LittleWebTools() {
           </section>
         </div>
       </div>
-    </main>
+    </Page>
   );
 }

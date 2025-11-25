@@ -37,106 +37,104 @@
     margin-bottom: 1rem;
     font-size: 1.2rem;
   }
-}
 
-
-.tools-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.tool-nav-button {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid transparent;
-  border-radius: 6px;
-  padding: 1rem;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  color: inherit;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-  }
+  .tools-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   
-  &.active {
-    background: rgba(100, 150, 255, 0.2);
-    border-color: rgba(100, 150, 255, 0.5);
+    button {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid transparent;
+      border-radius: 6px;
+      padding: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: inherit;
+    
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      
+      &.active {
+        background: rgba(100, 150, 255, 0.2);
+        border-color: rgba(100, 150, 255, 0.5);
+      }
+    }
+
+    label.name {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .tool-nav-description {
+      display: block;
+      font-size: 0.875rem;
+      opacity: 0.7;
+    }
   }
 }
 
 
-.tool-nav-name {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.tool-nav-description {
-  display: block;
-  font-size: 0.875rem;
-  opacity: 0.7;
-}
-
-.tool-display {
+section.tool-display {
   flex: 1;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   padding: 2rem;
   min-height: 400px;
-}
 
-.tool-welcome {
-  text-align: center;
-  padding: 2rem;
-
-  h3 {
-    margin-top: 0;
-  }
-}
-
-
-.tool-grid-preview {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.tool-preview-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 1.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: left;
-  color: inherit;
+  .tool-welcome {
+    text-align: center;
+    padding: 2rem;
   
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(100, 150, 255, 0.5);
-    transform: translateY(-2px);
+    h3 {
+      margin-top: 0;
+    }
   }
-  
-  h4 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1rem;
+
+  .tool-active {
+    animation: fadeIn 0.3s ease;
   }
+
+  .tool-grid-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
   
-  p {
-    margin: 0;
-    font-size: 0.875rem;
-    opacity: 0.7;
+    .tool-preview-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      color: inherit;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(100, 150, 255, 0.5);
+        transform: translateY(-2px);
+      }
+      
+      h4 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1rem;
+      }
+      
+      p {
+        margin: 0;
+        font-size: 0.875rem;
+        opacity: 0.7;
+      }
+    }
   }
 }
 
-
-.tool-active {
-  animation: fadeIn 0.3s ease;
-}
 
 @keyframes fadeIn {
   from {
@@ -153,6 +151,7 @@
 .tool-display{
   .tool-active {
     .tool-content {
+
       h3 {
         margin-top: 0;
         text-align: center;
@@ -160,68 +159,70 @@
       p {
         text-align: left;
       }
+      
+      .tool-section {
+        margin-bottom: 2rem;
+      
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        label.tool-label {
+          display: block;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      select,
+      input,
+      textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.2);
+        color: inherit;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        transition: border-color 0.2s ease;
+
+        &:focus {
+          outline: none;
+          border-color: rgba(100, 150, 255, 0.5);
+        }
+      }
+      
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+      
+      .tool-button {
+        background: rgba(100, 150, 255, 0.3);
+        border: 2px solid rgba(100, 150, 255, 0.5);
+        border-radius: 6px;
+        padding: 0.75rem 1.5rem;
+        cursor: pointer;
+        color: inherit;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        margin-right: 0.5rem;
+      
+        &:hover {
+          background: rgba(100, 150, 255, 0.4);
+          border-color: rgba(100, 150, 255, 0.7);
+        }
+        
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+
+
     }
   }
-}
-
-.tool-section {
-  margin-bottom: 2rem;
-}
-
-.tool-section:last-child {
-  margin-bottom: 0;
-}
-
-.tool-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.tool-input,
-.tool-textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.2);
-  color: inherit;
-  font-family: 'Courier New', monospace;
-  font-size: 0.9rem;
-  transition: border-color 0.2s ease;
-}
-
-.tool-textarea {
-  min-height: 150px;
-  resize: vertical;
-}
-
-.tool-input:focus,
-.tool-textarea:focus {
-  outline: none;
-  border-color: rgba(100, 150, 255, 0.5);
-}
-
-.tool-button {
-  background: rgba(100, 150, 255, 0.3);
-  border: 2px solid rgba(100, 150, 255, 0.5);
-  border-radius: 6px;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  color: inherit;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  margin-right: 0.5rem;
-}
-
-.tool-button:hover {
-  background: rgba(100, 150, 255, 0.4);
-  border-color: rgba(100, 150, 255, 0.7);
-}
-
-.tool-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .tool-buttons {
