@@ -1,0 +1,52 @@
+.word-char-count-tool {
+  .textarea-container {
+    position: relative;
+    
+    textarea {
+      width: 100%;
+    }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: .25rem;
+    margin-bottom: 1.5rem;
+    
+    .stat-card {
+      background: var(--bg-card);
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      
+      .stat-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--accent-blue);
+        margin-bottom: 0.5rem;
+      }
+      
+      label {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+    }
+  }
+
+  .clear-button {
+    position: absolute;
+    bottom: 0.6rem;
+    right: 0.1rem;
+    background: var(--danger-red);
+    color: var(--text-primary);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    opacity: 0.9;
+    
+    &:hover {
+      background: var(--danger-red-hover);
+      opacity: 1;
+    }
+  }
+}

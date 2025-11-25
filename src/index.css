@@ -43,6 +43,12 @@
   
   --overlay-light: rgba(0, 0, 0, 0.7);
   --accent-bg: rgba(139, 21, 56, 0.15);
+  
+  --accent-blue: #4a9eff;
+  --accent-blue-hover: #3d8de6;
+  
+  --danger-red: #dc3545;
+  --danger-red-hover: #c82333;
 
   --breakfast: hsl(30, 40%, 40%);
   --lunch: hsl(60, 40%, 40%);
