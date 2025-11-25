@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import WebTool from '../../WebTool';
 import './AbsoluteTempConverter.css';
 
 export default function AbsoluteTempConverter() {
@@ -104,7 +105,7 @@ export default function AbsoluteTempConverter() {
   const conversions = getAllConversions();
 
   return (
-    <div className="absolute-temp-converter">
+    <WebTool css="absolute-temp-converter">
       <div>
         <h3>Absolute Temperature Converter</h3>
         <p>
@@ -215,6 +216,6 @@ export default function AbsoluteTempConverter() {
       <div className="absolute-info">
         {absoluteToValuesText()}
       </div>
-    </div>
+    </WebTool>
   );
 }
