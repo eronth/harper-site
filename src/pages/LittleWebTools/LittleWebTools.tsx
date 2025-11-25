@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import Page from '../Page.tsx';
 import './LittleWebTools.css';
 
 // Tool modules
@@ -7,9 +8,9 @@ import ColorConverterTool from './tools/ColorConverterTool.tsx';
 import TimestampConverterTool from './tools/TimestampConverterTool/TimestampConverterTool.tsx';
 import AbsoluteTempConverter from './tools/AbsoluteTempConverter/AbsoluteTempConverter.tsx';
 import WordCharCount from './tools/WordCharCount/WordCharCount.tsx';
-import Page from '../Page.tsx';
 import RegexTester from './tools/aa programmer tools/RegexTester.tsx';
 import CronExpressionBuilder from './tools/aa programmer tools/CronExpressionBuilder.tsx';
+import ColorBlindVisualizer from './tools/ColorBlindVisualizer/ColorBlindVisualizer.tsx';
 
 
 const toolIds = {
@@ -48,6 +49,12 @@ const tools: Tool[] = [
     name: 'Chron Expression Builder',
     description: 'Build and validate Chron expressions for scheduling tasks',
     component: CronExpressionBuilder,
+  },
+  {
+    id: 'color-blindness-visualizer',
+    name: 'Color Blindness Visualizer',
+    description: 'Simulate how images appear to people with different types of color blindness',
+    component: ColorBlindVisualizer,
   }
 ];
 
