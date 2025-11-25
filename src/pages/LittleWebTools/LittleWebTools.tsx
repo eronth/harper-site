@@ -13,6 +13,7 @@ import AbsoluteTempConverter from './tools/AbsoluteTempConverter/AbsoluteTempCon
 import WordCharCount from './tools/WordCharCount/WordCharCount.tsx';
 import Page from '../Page.tsx';
 import RegexTester from './tools/aa programmer tools/RegexTester.tsx';
+import CronExpressionBuilder from './tools/aa programmer tools/CronExpressionBuilder.tsx';
 
 
 const toolIds = {
@@ -45,6 +46,12 @@ const tools: Tool[] = [
     name: 'Regex Tester',
     description: 'Test and debug regular expressions with live highlighting and match details',
     component: RegexTester,
+  },
+  {
+    id: 'chron-expression-builder',
+    name: 'Chron Expression Builder',
+    description: 'Build and validate Chron expressions for scheduling tasks',
+    component: CronExpressionBuilder,
   }
   // {
   //   id: 'base64',
