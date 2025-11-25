@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import Page from '../../../Page';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import type { Recipe } from '../recipe-types';
 import './IndividualRecipePage.css';
@@ -29,7 +30,7 @@ export default function IndividualRecipePage({ recipes, backPath, backLabel, unn
   
   if (!recipe) {
     return (
-      <div className="page-content">
+      <Page>
         <div className="individual-recipe-page">
           <button 
             className="back-button"
@@ -43,12 +44,12 @@ export default function IndividualRecipePage({ recipes, backPath, backLabel, unn
             <p>The recipe you're looking for doesn't exist.</p>
           </div>
         </div>
-      </div>
+      </Page>
     );
   }
   
   return (
-    <div className="page-content">
+    <Page>
       <div className="individual-recipe-page">
         <button 
           className="back-button"
@@ -62,6 +63,6 @@ export default function IndividualRecipePage({ recipes, backPath, backLabel, unn
           <RecipeCard recipe={recipe} interactive unnumbered={unnumbered} />
         </div>
       </div>
-    </div>
+    </Page>
   );
 }

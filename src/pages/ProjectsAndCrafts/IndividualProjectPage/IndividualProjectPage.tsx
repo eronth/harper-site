@@ -12,9 +12,10 @@ import {
   faArrowRight,
   faExternalLinkAlt
 } from '@fortawesome/free-solid-svg-icons';
-import projects from '../ProjectData/project-data';
 import { createSlug, formatDate, getStatusColor, getStatusIcon, getWorkerIcon } from '../ProjectHelperFunctions';
 import { useMemo } from 'react';
+import Page from '../../Page';
+import projects from '../ProjectData/project-data';
 import './IndividualProjectPage.css';
 
 export default function IndividualProjectPage() {
@@ -27,7 +28,7 @@ export default function IndividualProjectPage() {
   [projectId]);
 
   const notFoundMessage = useMemo(() =>
-    <div className="page-content">
+    <Page>
       <div className="individual-project-page">
         <button 
           className="back-button"
@@ -41,14 +42,14 @@ export default function IndividualProjectPage() {
           <p>The project you're looking for doesn't exist.</p>
         </div>
       </div>
-    </div>,
+    </Page>,
     [navigate]);
 
   const content = useMemo(() => {
     return ((!project)
     ? (notFoundMessage)
     : <>
-      <div className="page-content">
+      <Page>
         <div className="individual-project-page">
           <button 
             className="back-button"
@@ -253,7 +254,7 @@ export default function IndividualProjectPage() {
             </div>
           </div>
         </div>
-      </div>
+      </Page>
     </>
     )},
   [navigate, notFoundMessage, project]);

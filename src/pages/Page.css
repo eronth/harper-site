@@ -1,0 +1,34 @@
+main.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Add the same animation as the home page */
+  animation: fadeIn 0.3s ease-in-out;
+  
+  h1 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .page-content {
+    padding: 0;
+  }
+  
+  .page-content h1 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content h1 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,11 +1,12 @@
 import React from 'react';
+import Page from '../Page';
 
 const WinterVillage: React.FC = () => {
   return (
-    <div className="page-content">
+    <Page>
       <h1>Winter Village</h1>
       <p>Our winter village collection and holiday memories.</p>
-    </div>
+    </Page>
   );
 };
 

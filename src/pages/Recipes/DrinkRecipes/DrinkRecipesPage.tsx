@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 // Components
+import Page from '../../Page';
 import RecipeCard from '../SharedRecipeComponents/RecipeCard/RecipeCard';
 import RecipeSearch from '../SharedRecipeComponents/RecipeSearch/RecipeSearch';
 // Types
@@ -22,7 +23,7 @@ const DrinkRecipes: React.FC = () => {
   }, []);
   
   return (
-    <div className="page-content">
+    <Page>
       <h1>Drink Recipes</h1>
       <p>Our favorite cocktails and beverages.</p>
       
@@ -42,7 +43,7 @@ const DrinkRecipes: React.FC = () => {
           <RecipeCard key={index} recipe={recipe} unnumbered />
         ))}
       </div>
-    </div>
+    </Page>
   );
 };
 

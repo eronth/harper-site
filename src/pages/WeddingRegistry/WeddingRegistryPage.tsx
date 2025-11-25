@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Page from '../Page';
 import './WeddingRegistryPage.css';
 
 const WeddingRegistry: React.FC = () => {
@@ -57,7 +58,7 @@ const WeddingRegistry: React.FC = () => {
   }
 
   return (
-    <div className="page-content">
+    <Page>
       <div className="registry-container">
         <h1 className="sparkle-title">
           <span className="sparkle">✨</span>
@@ -119,7 +120,7 @@ const WeddingRegistry: React.FC = () => {
           />
         ))}
       </div>
-    </div>
+    </Page>
   );
 };
 

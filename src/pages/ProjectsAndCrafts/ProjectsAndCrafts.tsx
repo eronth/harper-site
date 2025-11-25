@@ -1,6 +1,7 @@
 
 import { useMemo, useState } from 'react';
 // Componenets
+import Page from '../Page';
 import ProjectPageFilters from './ProjectPageFilters/ProjectPageFilters';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLightbulb } from '@fortawesome/free-solid-svg-icons';
@@ -65,7 +66,7 @@ export default function ProjectsAndCrafts() {
   []);
 
   return (
-    <div className="page-content">
+    <Page>
       <div className="projects-header">
         <h1>Projects & Crafts</h1>
         <p>Our creative projects, repairs, and experiments - where curiosity meets craftsmanship!</p>
@@ -81,6 +82,6 @@ export default function ProjectsAndCrafts() {
       {projectsGrid}
 
       {sortedProjects.length === 0 && (noProjects)}
-    </div>
+    </Page>
   );
 };
