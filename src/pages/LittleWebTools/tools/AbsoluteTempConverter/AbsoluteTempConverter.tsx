@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import WebTool from '../../WebTool';
 import './AbsoluteTempConverter.css';
+import MMath from '../../../../components/Math/MMath';
+import MOp from '../../../../components/Math/MOp';
+import MNum from '../../../../components/Math/MNum';
+import MSuper from '../../../../components/Math/MSuper';
 
 export default function AbsoluteTempConverter() {
   const [inputValue, setInputValue] = useState('');
@@ -104,14 +108,23 @@ export default function AbsoluteTempConverter() {
 
   const conversions = getAllConversions();
 
+  const plankTemp = <span style={{ whiteSpace: 'nowrap' }}>
+    <MMath noWrap>
+      <MNum>1.416</MNum>
+      <MOp>×</MOp>
+      <MSuper base={<MNum>10</MNum>} super={<MNum>32</MNum>} />
+    </MMath>
+    &nbsp;Kelvin
+  </span>
+
   return (
     <WebTool css="absolute-temp-converter">
       <div>
         <h3>Absolute Temperature Converter</h3>
         <p>
           The Absolute Temperature Scale (°A) is a hypothetical temperature scale where  
-          absolute zero is 0 °A and the highest possible temperature is normalized to 1 °A. It is 
-          based on the concept of a Planck Temperature (1.416 x 10^32 Kelvin), a temperature
+          absolute zero is 0&nbsp;°A and the highest possible temperature is normalized to 1&nbsp;°A. It is 
+          based on the concept of a Planck Temperature ({plankTemp}), a temperature
           beyond which the laws of physics as we know them cease to be useful.
           This scale is not used in practical applications
           but really serves as a comical display of the "absolute" range of temperatures.

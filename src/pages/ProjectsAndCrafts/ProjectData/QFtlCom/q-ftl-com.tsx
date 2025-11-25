@@ -1,4 +1,4 @@
-import Math from "../../../../components/Math/Math";
+import MMath from "../../../../components/Math/MMath";
 import MSuper from "../../../../components/Math/MSuper";
 import Ket from "../../../../components/Math/Ket";
 import MVar from "../../../../components/Math/MVar";
@@ -76,32 +76,32 @@ const project: Project = {
     </p>
     <p>
       For example, you may 
-      use <Math>
+      use <MMath>
         <MVar>α</MVar><Ket>0</Ket>
         <MOp>+</MOp>
         <MVar>β</MVar><Ket>1</Ket>
-      </Math>,
-      where <Math>
+      </MMath>,
+      where <MMath>
         <MSuper base={<MVar>α</MVar>} super={<MNum>2</MNum>} />
         <MOp>+</MOp>
         <MSuper base={<MVar>β</MVar>} super={<MNum>2</MNum>} />
         <MOp>=</MOp>
         <MNum>1</MNum>
-      </Math>,
-      where <Math><MSuper base={<MVar>α</MVar>} super={<MNum>2</MNum>} /></Math> represents
+      </MMath>,
+      where <MMath><MSuper base={<MVar>α</MVar>} super={<MNum>2</MNum>} /></MMath> represents
       the probability of measuring the state as 0 (spin down),
-      and <Math><MSuper base={<MVar>β</MVar>} super={<MNum>2</MNum>} /></Math> represents the probability
+      and <MMath><MSuper base={<MVar>β</MVar>} super={<MNum>2</MNum>} /></MMath> represents the probability
       of measuring the state as 1 (spin up). So
-      if <Math>
+      if <MMath>
         <MSuper base={<MVar>α</MVar>} super={<MNum>2</MNum>} />
         <MOp>=</MOp>
         <MNum>0.75</MNum>
-      </Math>,
-      then <Math>
+      </MMath>,
+      then <MMath>
         <MSuper base={<MVar>β</MVar>} super={<MNum>2</MNum>} />
         <MOp>=</MOp>
         <MNum>0.25</MNum>
-      </Math>, meaning when you measure the state, there's a 75% chance you'll find it spin down (0)
+      </MMath>, meaning when you measure the state, there's a 75% chance you'll find it spin down (0)
       and a 25% chance you'll find it spin up (1). At this point you can sort of think of the states as
       binary 0 and 1, and ignore the spin up/down aspect. This is called a qbit (quantum-bit), due to the
       similarity to classical binary bits.
@@ -112,18 +112,18 @@ const project: Project = {
     <p>
       An important aspect of this superposition is that, once you measure the state, it "locks in" to whatever measurement
       you got. So
-      a <Math>
+      a <MMath>
         <MSqRt><MNum>0.5</MNum></MSqRt>
         <Ket>0</Ket>
-      </Math> state has a 50/50 chance of resolving to a 0 or 1 when measured. If you measure and get a 1,
+      </MMath> state has a 50/50 chance of resolving to a 0 or 1 when measured. If you measure and get a 1,
       you will now <i>always</i> measure a 1 until you do something to put the state back into superposition.
-      It's effectively been set to <Math>
+      It's effectively been set to <MMath>
         <MSqRt><MNum>0</MNum></MSqRt>
         <Ket>0</Ket>
-      </Math> or <Math>
+      </MMath> or <MMath>
         <MSqRt><MNum>1</MNum></MSqRt>
         <Ket>1</Ket>
-      </Math>.
+      </MMath>.
     </p>
     <p>
       In cases where we have sets of states, we can't make such simplifications. For example, knowing the
@@ -135,15 +135,15 @@ const project: Project = {
       their states become linked such that the state of one qbit directly affects the state of the other(s),
       no matter the distance between them. For example, if we have an entangled pair of qbits, and one
       is in the
-      state <Math>
+      state <MMath>
         <MSqRt><MVar>x</MVar></MSqRt>
         <Ket>0</Ket>
-      </Math>,
+      </MMath>,
       then the other qbit can be thought of as in the
-      state <Math>
+      state <MMath>
         <MSqRt><MVar>x</MVar></MSqRt>
         <Ket>1</Ket>
-      </Math> (noting the change from 0 ket to 1 ket).
+      </MMath> (noting the change from 0 ket to 1 ket).
 
 
     </p>
