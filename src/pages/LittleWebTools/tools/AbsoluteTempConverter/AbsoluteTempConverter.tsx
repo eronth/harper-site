@@ -5,6 +5,8 @@ import MMath from '../../../../components/Math/MMath';
 import MOp from '../../../../components/Math/MOp';
 import MNum from '../../../../components/Math/MNum';
 import MSuper from '../../../../components/Math/MSuper';
+import CommonTempsConvertGrid from './CommonTempsConvertGrid/CommonTempsConvertGrid';
+import TempConversionResult from './TempConversionResult/TempConversionResult';
 
 export default function AbsoluteTempConverter() {
   const [inputValue, setInputValue] = useState('');
@@ -131,7 +133,7 @@ export default function AbsoluteTempConverter() {
         </p>
       </div>
       
-      <div className="temp-input-container">
+      <div className="temperature-input-container">
         <input
           type="number" 
           className="temp-input value-input" 
@@ -152,79 +154,14 @@ export default function AbsoluteTempConverter() {
         </select>
       </div>
     
-      {conversions ? (
-        <div className="conversion-result">
-          <h4>Converted Temperatures:</h4>
-          <div className="conversion-grid">
-            <div className="row">
-              <label>Absolute:</label>
-              {selectedUnit === 'A' && <span className="original-indicator">(original)</span>}
-              <span className="value">{conversions.absolute.toExponential(5)} °A</span>
-            </div>
-            <div className="row">
-              <label>Fahrenheit:</label>
-              <span>
-                {selectedUnit === 'F' && <span className="original-indicator">(original)</span>}
-                <span className="value">{conversions.fahrenheit.toFixed(2)} °F</span>
-              </span>
-            </div>
-            <div className="row">
-              <label>Celsius:</label>
-              <span>
-                {selectedUnit === 'C' && <span className="original-indicator">(original)</span>}
-                <span className="value">{conversions.celsius.toFixed(2)} °C</span>
-              </span>
-            </div>
-            <div className="row">
-              <label>Kelvin:</label>
-              <span>
-                {selectedUnit === 'K' && <span className="original-indicator">(original)</span>}
-                <span className="value">{conversions.kelvin.toFixed(2)} K</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="conversion-result-placeholder">
-          Type a number to see all temperature conversions
-        </div>
-      )}
+      <TempConversionResult
+        conversions={conversions}
+        selectedUnit={selectedUnit}
+      />
     
-      <div className="common-temps">
-        <h4>Common Temperatures:</h4>
-        <div className="common-temps-grid">
-          <div className="temp-row">
-            <span className="temp-name">Freezing</span>
-            <span className="temp-original">32°F</span>
-            <span className="temp-value">{convertToAbsolute(32, 'F').toExponential(4)} °A</span>
-          </div>
-          <div className="temp-row">
-            <span className="temp-name">Cold Day</span>
-            <span className="temp-original">40°F</span>
-            <span className="temp-value">{convertToAbsolute(50, 'F').toExponential(4)} °A</span>
-          </div>
-          <div className="temp-row">
-            <span className="temp-name">Room Temp</span>
-            <span className="temp-original">70°F</span>
-            <span className="temp-value">{convertToAbsolute(70, 'F').toExponential(4)} °A</span>
-          </div>
-          <div className="temp-row">
-            <span className="temp-name">Hot Day</span>
-            <span className="temp-original">90°F</span>
-            <span className="temp-value">{convertToAbsolute(90, 'F').toExponential(4)} °A</span>
-          </div>
-          <div className="temp-row">
-            <span className="temp-name">Human Body</span>
-            <span className="temp-original">98.6°F</span>
-            <span className="temp-value">{convertToAbsolute(98.6, 'F').toExponential(4)} °A</span>
-          </div>
-          <div className="temp-row">
-            <span className="temp-name">Boiling Water</span>
-            <span className="temp-original">212°F</span>
-            <span className="temp-value">{convertToAbsolute(212, 'F').toExponential(4)} °A</span>
-          </div>
-        </div>
-      </div>
+      <CommonTempsConvertGrid
+        convertToAbsolute={convertToAbsolute}
+      />
       
       <div className="absolute-info">
         {absoluteToValuesText()}
