@@ -8,35 +8,40 @@
   justify-content: center;
   align-items: center;
   --input-height: 2em;
+  --border-thickness: 2px;
+  --border: var(--border-thickness) solid rgba(255, 255, 255, 0.2);
 
   .temp-input {
     font-size: 1.5rem;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: var(--border);
     font-family: 'Courier New', monospace;
     height: var(--input-height);
     width: 5.5em;
     text-align: right;
     transition: border-color 0.2s ease;
-    &:focus {
-      outline: none;
-      border-color: rgba(100, 150, 255, 0.6);
-    }
+    margin-right: calc(-1 * var(--border-thickness));
+    z-index: 1;
   }
   
   .unit-select {
     font-size: 1.5rem;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: var(--border);
     height: var(--input-height);
     transition: border-color 0.2s ease;
     min-width: 1em;
-  
+    z-index: 1;
+  }
+
+  .value-input {
     &:hover {
       border-color: rgba(100, 150, 255, 0.4);
+      z-index: 2;
     }
     
     &:focus {
       outline: none;
       border-color: rgba(100, 150, 255, 0.6);
+      z-index: 3;
     }
   }
 }

@@ -120,7 +120,7 @@ export default function AbsoluteTempConverter() {
       <div className="temp-input-container">
         <input
           type="number" 
-          className="temp-input" 
+          className="temp-input value-input" 
           step="0.5" 
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)} 
@@ -128,7 +128,7 @@ export default function AbsoluteTempConverter() {
           placeholder="Temp"
         />
         <select
-          className="unit-select"
+          className="unit-select value-input"
           value={selectedUnit}
           onChange={(e) => setSelectedUnit(e.target.value)}
         >
