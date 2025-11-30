@@ -1,7 +1,7 @@
 import type { Season } from "../../../types/recipe-types";
 import type { Ingredient, Recipe, QuantityUnit } from "../SharedRecipeComponents/recipe-types";
 
-type DrinkRecipe = {
+export type DrinkRecipe = {
   title: string;
   subtitle?: string;
   seasons: Season[];

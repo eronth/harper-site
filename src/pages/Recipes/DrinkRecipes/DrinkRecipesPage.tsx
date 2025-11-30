@@ -8,10 +8,11 @@ import RecipeSearch from '../SharedRecipeComponents/RecipeSearch/RecipeSearch';
 import type { RecipeCategory, Season } from '../../../types/recipe-types';
 // Data
 import recipes from './drink-recipe-data';
+import hotChocolateRecipes from './hot-chocolate-recipe-data';
 
 const DrinkRecipes: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
+  const [filteredRecipes, setFilteredRecipes] = useState([...recipes, ...hotChocolateRecipes]);
   const filterCats: RecipeCategory[] = ['Cocktail', 'Smoothie', 'Coffee', 'Tea', 'Other'];
   
   // Get initial season from URL params if present
