@@ -32,11 +32,13 @@ const baseHotChocolateIngredients: Ingredient[] = [
 ];
 const baseHotChocolateSteps: string[] = [
   'Prep all the ingredients ahead of time.',
-  'Chop the chocolate into small pieces so it melts evenly.',
-  'Heat the milk until it\'s hot, or even slightly steaming.',
-  'Lower heat, add chocolate and other ingredients.',
-  'Whisk continuously until everything is melted and smooth.',
-  'Pour into mugs and add toppings as desired.'
+  'Cut chocolate to small bits so it melts evenly.\nIf I\'m lazy, I break it by hand.',
+  'Heat the milk until hot or slightly steaming.',
+  'Lower heat',
+  'Add chocolate and other ingredients.',
+  'Whisk until everything is melted and smooth.',
+  'Pour into mugs',
+  'Add toppings as desired.'
 ];
 
 const hotChocolate = (r: HotChocolateRecipe): Recipe => ({
