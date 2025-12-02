@@ -9,6 +9,7 @@ import WordCharCount from './tools/WordCharCount/WordCharCount.tsx';
 import RegexTester from './tools/aa programmer tools/RegexTester.tsx';
 import CronExpressionBuilder from './tools/aa programmer tools/CronExpressionBuilder.tsx';
 import ColorBlindVisualizer from './tools/ColorBlindVisualizer/ColorBlindVisualizer.tsx';
+import TimestampConverterTool from './tools/TimestampConverterTool/TimestampConverterTool.tsx';
 
 
 const toolIds = {
@@ -53,6 +54,12 @@ const tools: Tool[] = [
     name: 'Color Blindness Visualizer',
     description: 'Simulate how images appear to people with different types of color blindness',
     component: ColorBlindVisualizer,
+  },
+  {
+    id: 'timestamp-converter',
+    name: 'Timestamp Converter',
+    description: 'Convert between different timestamp formats and time zones',
+    component: TimestampConverterTool,
   }
 ];
 
