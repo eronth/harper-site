@@ -1721,6 +1721,98 @@ const recipes: Recipe[] = [
         'Add sauce to skillet, cook another 10-15 mins until chicken is 165° F.',
       ]
     })
+  },
+  { // Spicy Caramelized Pork
+    ...simpleRecipe({
+      title: 'Spicy Caramelized Pork',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        saltAndPepper,
+        ing(1.5, lbs, 'pork'),
+        ing(0.5, cup, 'brown sugar'),
+        ing(0.5, tsp, 'cayenne'),
+        ing(0.5, tsp, 'ground ginger'),
+        ing(0.5, null, 'yellow onion'),
+      ],
+      steps: [
+        'Mix all but pork and onion.',
+        'Coat pork in mix.',
+        'Pan fry until browned.',
+        '375° oven for20 mins.',
+        'Bring back to stove.',
+        'Remove pork, add diced onion.',
+        'Cook shortly until gold.',
+        'Add pork and remaining mix.',
+        'Sear until mix barely bubbles.',
+      ]
+    })
+  },
+  { // Pan-Roasted 5-Spice Pork
+    title: 'Pan-Roasted 5-Spice Pork',
+    category: dinner,
+    seasons: [],
+    ingredientsLists: [
+      {
+        title: 'Starring',
+        ingredients: [
+          ing(2, lb, 'Boneless pork loin'),
+        ]
+      },
+      {
+        title: 'Marinade',
+        ingredients: [
+          saltAndPepper,
+          ing(1/4, cup, 'rice vinegar'),
+          ing(2, tbsp, 'fish sauce'),
+          ing(1, tbsp, 'soy sauce'),
+          ing(1, tsp, 'Chinese 5-spice'),
+          ing(1, tsp, 'garlic')
+        ]
+      }
+    ],
+    stepsLists: [{
+      steps: [
+        'Cut and score pork loin',
+        'Mix marinade together.',
+        'Dip both sides pork in marinade.',
+        'Pan fry on medium.',
+      ]
+    }]
+  },
+  { // Chicken Fettuccini Alfredo
+    ...simpleRecipe({
+      title: 'Chicken Fettuccini Alfredo',
+      category: dinner,
+      seasons: [spring, summer],
+      ingredients: [
+        ing(12, oz, 'Chicken breasts'),
+        saltAndPepper,
+        ing(12, oz, 'Fettuccine'),
+        ing(3, tbsp, 'butter'),
+        ing(2, cup, 'heavy cream'),
+        ing(1.5, cup, 'shredded parmesan'),
+        ing(2, dash, 'Nutmeg'),
+        ing(null, null, 'Chipotle')
+      ],
+      steps: [
+        'Boil pasta',
+        'Slice chicken into ¼ in. strips.',
+        'Season with salt and pepper.',
+        'Melt 1 tbl spoon butter in skillet',
+        'Brown chicken 1 layer at a time.',
+        'Transfer chicken out of skillet.',
+        'Add remaining butter.',
+        'Let butter melt.',
+        'Whisk in cream and nutmeg.',
+        'Simmer for 2 minutes.',
+        'Lower heat, whisk in cheese.',
+        'Drain water from pasta.',
+        'Combine parts in pasta pan.',
+        'Serve on plate.',
+        'Top with chipotle to taste.',
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
