@@ -237,8 +237,8 @@ const recipes: Recipe[] = [
       steps: [
         'Melt lard and butter. Let it cool a bit.',
         'In separate (non-mixer) bowl, mix flour and baking powder, set aside.',
-        'In blender mixing bowl on medium speed, blend lard-butter mix, sugar, vanilla, and eggs until light and fluffy.',
-        'Add flour-mix on low speed until combined.',
+        'In blender mixing bowl on medium speed, blend lard-butter mix, sugar, vanilla, and eggs until light and fluffy. ish.',
+        'Add flour-mix bit-by-bit on low speed until combined.',
         'Refrigerate for 1 hour (or overnight) before rolling out.',
         'Decorate with sprinkles (NOT ICING!)',
         'Bake at 375° for 4 mins (more likely 8 mins) until edges just barely brown.'
