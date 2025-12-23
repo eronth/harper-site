@@ -85,8 +85,8 @@ const simpleRecipe = (r: SimplifiedRecipe): Recipe => ({
 //   [{ ingredients: i }]
 // );
 
-const simpleSteps = (s: string[]): Steps[] => (
-  [{ steps: s }]
+const simpleSteps = (s: string[], s0?: string): Steps[] => (
+  [{ step0: s0, steps: s }]
 );
 
 const recipes: Recipe[] = [
@@ -246,6 +246,72 @@ const recipes: Recipe[] = [
         'Do NOT eat yet! These should be fully cooled, probably overnight, before eating. They are optimized for the season.',
       ]
     })
+  },
+  { // Leslie's Thumbprint Cookies
+    ...simpleRecipe({
+      title: 'Leslie\'s Thumbprint Cookies',
+      category: dessert,
+      seasons: [winter],
+      ingredients: [
+        ing(1, cup, 'unsalted butter', 'room temperature'),
+        ing(0.5, cup, 'granulated sugar'),
+        ing(1, tsp, 'vanilla extract'),
+        ing(1/4, tsp, 'salt'),
+        ing(2, cup, 'all-purpose flour'),
+        ing(1, cup, 'finely chopped nuts', 'optional; almonds, walnuts, pecans, or even pistachios work well'),
+        ing(3/4, cup, 'jam', 'I typically do raspberry or apricot'),
+      ],
+      steps: [
+        'Beat the butter and sugar on high speed with a mixer for about three minutes, until it is well combined.',
+        'Separate the eggs. Add the yolks and vanilla extract to the butter mixture. Set aside the egg whites in a separate shallow bowl.',
+        'Add the flour and salt to the mixing bowl, and mix until just combined.',
+        'Place the dough in the fridge and chill for at least 30 minutes.',
+        'Preheat the oven to 350 degrees.',
+        'Roll dough into balls about 1 inch wide. Place on a cookie sheet a few inches apart.',
+        '6a. If using nuts, whisk the reserved egg whites until frothy. Dip the dough balls into the egg whites and roll in the nuts until covered. Arrange them on the baking sheet as usual.',
+        'Press down on each ball of dough with your thumb to make a small well in the center of the cookie. Don’t press too hard or the dough will crack. Fill each well with about ½ teaspoon of jam (or whatever looks right).',
+        'Bake for 12 to 15 minutes or until slightly firm.',
+      ]
+    })
+  },
+  { // Grandma Fern's Snickerdoodles
+    title: 'Grandma Fern\'s Snickerdoodles',
+    category: dessert,
+    seasons: [winter],
+    ingredientsLists: [
+      {
+        ingredients: [
+          ing(1 + 1/2, cup, 'sugar'),
+          ing(1, cup, 'butter', 'very soft but not liquid'),
+          ing(2, null, 'eggs'),
+          ing(2 + 3/4, cup, 'flour', '375g'),
+          ing(1, tsp, 'baking soda'),
+          ing(1/4, tsp, 'salt'),
+          ing(2, tsp, 'cream of tartar'),
+        ]
+      },
+      { // For rolling
+        title: 'Cinnamon sugar, For Rolling',
+        ingredients: [
+          ing(3, tbsp, 'sugar'),
+          ing(3, tsp, 'cinnamon'),
+        ]
+      }
+    ],
+    stepsLists: simpleSteps(
+      [
+        'Cream together sugar and butter',
+        'Add eggs and mix well',
+        'In separate bowl, mix dry ingredients (flour, baking soda, salt, cream of tartar)',
+        'Add dry ingredients to wet, in two or three additions',
+        'Chill dough for at least 30 min',
+        'Roll dough into balls approx 1.5”',
+        'Roll balls in cinnamon/sugar mixture',
+        'Bake on ungreased cookie sheet at 400° for 9 minutes',
+        'Let cool on rack and enjoy ❤️',
+      ],
+      'This makes a pretty stiff dough so is best done with an electric mixer.',
+    )
   },
   { // Hot Dog Chili
     ...simpleRecipe({
@@ -1795,6 +1861,7 @@ const recipes: Recipe[] = [
         ing(2, dash, 'Nutmeg'),
         ing(null, null, 'Chipotle')
       ],
+      // SNOW?
       steps: [
         'Boil pasta',
         'Slice chicken into ¼ in. strips.',
