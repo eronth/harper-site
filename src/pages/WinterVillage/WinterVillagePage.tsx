@@ -5,7 +5,7 @@ const WinterVillage: React.FC = () => {
   return (
     <Page>
       <h1>Winter Village</h1>
-      <p>Our winter village collection and holiday memories.</p>
+      <p>Our winter village collection and other holiday joys.</p>
     </Page>
   );
 };

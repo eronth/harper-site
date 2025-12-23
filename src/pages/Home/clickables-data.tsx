@@ -64,13 +64,13 @@ const clickables: Clickable[] = [
     text: 'Exploring our interests and hobbies together',
     path: '/passions'
   },
-  { id: 'winter-village',
+  { id: 'winter-cheering',
     icon: <FontAwesomeIcon icon={faHouseChimney} />,
     title: {
-      full: 'Winter Village',
+      full: 'Winter Cheer',
     },
     text: 'Our holiday traditions and winter displays',
-    path: '/winter-village'
+    path: '/winter-cheering'
   },
   { 
     id: 'wedding-registry',
