@@ -21,7 +21,7 @@ const cheerSections: CheerSection[] = [
   },
   {
     id: 'ornaments',
-    title: 'Little Gay Bird',
+    title: 'Little Gay Birds',
     description: 'A delightful collection of ornaments featuring our favorite feathered friends.',
     route: '/winter-cheering/ornaments',
     imageUrl: undefined,
