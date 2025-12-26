@@ -3,13 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import Page from '../Page';
 import './WinterCheerPage.css';
 
+import titleBird from '../../assets/gaybirds/title.webp';
+
 interface CheerSection {
   id: string;
   title: string;
   description: string;
   route: string;
   imageUrl?: string;
-}
+};
+
 
 const cheerSections: CheerSection[] = [
   {
@@ -24,7 +27,7 @@ const cheerSections: CheerSection[] = [
     title: 'Little Gay Birds',
     description: 'A delightful collection of ornaments featuring our favorite feathered friends.',
     route: '/winter-cheering/ornaments',
-    imageUrl: undefined,
+    imageUrl: titleBird,
   },
   {
     id: 'pipe-tree-forest',
