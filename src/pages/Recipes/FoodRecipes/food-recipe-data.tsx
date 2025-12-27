@@ -1880,6 +1880,33 @@ const recipes: Recipe[] = [
         'Top with chipotle to taste.',
       ]
     })
+  },
+  { // Honey Glaze Holiday Ham
+    ...simpleRecipe({
+      title: 'Honey Glaze Holiday Ham',
+      category: dinner,
+      seasons: [winter],
+      ingredients: [
+        ing(3/4, cup, 'water'),
+        ing( 2, null, 'whole star anise'),
+        ing( 12, null, 'cloves'),
+        ing( 1, null, 'ham', '7 lbs'),
+        ing( 1, cup, 'brown sugar'),
+        ing( 1/4, cup, 'honey'),
+        ing( 2, tbsp, 'Dijon'),
+        ing( 2, tbsp, 'rice vinegar'),
+        ing( 1+1/2, tsp, 'black pepper'),
+        ing( 1/2, tsp, 'Worcestershire sauce'),
+        ing( 1, pinch, 'cayenne'),
+      ],
+      steps: [
+        'Oven to 325F.',
+        'Put water, clove, and anise in pan.',
+        'Put rack in pan and ham on rack, ',
+        'Whisk brown sugar, honey, mustard, vinegar, pepper, and sauce together in bowl and brush over ham.',
+        'Put ham in oven, brush more every 20-30 minutes for about 1.5 to 2.5 hours'
+      ]
+    }),
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
