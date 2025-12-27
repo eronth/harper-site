@@ -48,7 +48,7 @@ const OrnamentsPage: React.FC = () => {
         </button>
 
         <header className="ornaments-header">
-          <h1>The Lil Gay Birdy Troop (LGBT)</h1>
+          <h1>The Lil Gay Birdy Troupe (LGBT)</h1>
           <p>A delightful collection of ornaments featuring our favorite feathered friends.</p>
         </header>
 
