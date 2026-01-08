@@ -42,6 +42,7 @@ const dash: QuantityUnit = 'dash';
 const splash: QuantityUnit = 'splash';
 const clove: QuantityUnit = 'clove';
 const slices: QuantityUnit = 'slices';
+const handfull: QuantityUnit = 'handfull';
 
 //const breakfast: RecipeCategory = 'Breakfast';
 const lunch: RecipeCategory = 'Lunch';
@@ -1907,6 +1908,92 @@ const recipes: Recipe[] = [
         'Put ham in oven, brush more every 20-30 minutes for about 1.5 to 2.5 hours'
       ]
     }),
+  },
+  { // Sausage Tortellini Alfredo
+    ...simpleRecipe({
+      title: 'Sausage Tortellini Alfredo',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(9, oz, 'tortellini'),
+        ing(10, lb, 'brats or sausage'),
+        ing(2, tbsp, 'butter'),
+        ing(3, clove, 'garlic'),
+        ing(1/4, tsp, 'crushed red pepper flakes'),
+        ing(1, handfull, 'spinach', 'optional'),
+        ing(1, cup, 'milk'),
+        ing(2, tbsp, 'flour'),
+        ing(1/2, cup, 'heavy whipping cream'),
+        ing(2, oz, 'cubed cream cheese'),
+        ing(1/4, cup, 'grated parmesan cheese'),
+        saltAndPepper
+      ],
+      steps: [
+        'Boil tortellini per instructions.',
+        'Slice brats. Cook brats in pan.',
+        'Remove brats and set aside.',
+        'Butter into the same pan brats were cooked in, let melt.',
+        'Add garlic, red pepper, and spinach. Saute for 1 min.',
+        'Add Flour, then and whisk until browned.',
+        'Add milk and heavy whipping cream, whisk constantly until thickened. 2 min',
+        'Add in cheese, stir until melted.',
+        'Re-add sausage and add pasta. Bammo!',
+      ]
+    })
+  },
+  { // Madame Cristo
+    ...simpleRecipe({
+      title: 'Madame Cristo',
+      category: lunch,
+      seasons: [],
+      ingredients: [
+        ing(2, slices, 'bread'),
+        ing(2, null, 'eggs'),
+        ing(2, slices, 'cheese', 'or more'),
+        ing(2, slices, 'honey ham', 'or more'),
+        ing(2.5, tbsp, 'heavy cream or milk'),
+        ing(1/2, tsp, 'salt'),
+        ing(0, pinch, 'nutmeg'),
+        ing(0, pinch, 'cayenne'),
+      ],
+      steps: [
+        'Egg + cream/milk + salt + cayenne + nutmeg into bowl. Mix!',
+        'Toast the bread.',
+        'Place bread then cheese then ham.',
+        'Do the same on both halves.',
+        'Connect halves. Dip (soak) in mix.',
+        'Butter in pan.',
+        'Put in hot pan and let sizzle!',
+        'Poach an egg in boiling water.',
+        ' Plate, poached egg, cayenne, and chives!',
+      ]
+    })
+  },
+  { // Chicken and Scallion Yakitori
+    ...simpleRecipe({
+      title: 'Chicken and Scallion Yakitori',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(2, null, 'Chicken breasts'),
+        ing(1/8, cup, 'chicken broth'),
+        ing(1/4, cup, 'mirin'),
+        ing(1/4, cup, 'soy'),
+        ing(1/8, cup, 'sake'),
+        ing(1/8, cup, 'water'),
+        ing(1, tbsp, 'brown sugar'),
+        ing(6, null, 'white/light green scallions'),
+      ],
+      steps: [
+        'Combine stock, mirin, soy, sake, sugar, water into pot.',
+        'Bring to boil then simmer for 15 mins.',
+        'Thinly slice chicken and place on skewer.',
+        'Place cut scallions on separate skewers.',
+        'Season both with salt.',
+        'Brush both with sauce.',
+        'Place on medium-hot grill. Occasionally turn/brush with more sauce until done.',
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
