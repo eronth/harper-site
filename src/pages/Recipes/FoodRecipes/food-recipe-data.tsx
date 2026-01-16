@@ -1295,6 +1295,7 @@ const recipes: Recipe[] = [
         ing(2, tsp, 'extra-virgin olive oil'),
         ing(3, null, 'large carrots, peeled and chopped'),
         ing(2, null, 'medium yellow onions, chopped'),
+        ing(1, null, 'leek'),
         ing(2, null, 'large bay leaves'),
         ing(1, tbsp, 'minced fresh thyme'),
         ing(2, tsp, 'ground fennel'),
