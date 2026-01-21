@@ -10,6 +10,7 @@ import RegexTester from './tools/aa programmer tools/RegexTester.tsx';
 import CronExpressionBuilder from './tools/aa programmer tools/CronExpressionBuilder.tsx';
 import ColorBlindVisualizer from './tools/ColorBlindVisualizer/ColorBlindVisualizer.tsx';
 import TimestampConverterTool from './tools/TimestampConverterTool/TimestampConverterTool.tsx';
+import Sudoku from './tools/Sudoku/Sudoku.tsx';
 
 
 const toolIds = {
@@ -60,6 +61,12 @@ const tools: Tool[] = [
     name: 'Timestamp Converter',
     description: 'Convert between different timestamp formats and time zones',
     component: TimestampConverterTool,
+  },
+  {
+    id: 'sudoku',
+    name: 'Sudoku',
+    description: 'Play Sudoku or create your own puzzles with an interactive grid',
+    component: Sudoku,
   }
 ];
 
