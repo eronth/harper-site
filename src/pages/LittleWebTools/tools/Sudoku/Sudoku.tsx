@@ -1,12 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import WebTool from '../../WebTool';
+import { isBoardFull, isBoardSolvable, isBoardValid } from './SudokuBoardStateChecks';
 import './Sudoku.css';
 
-type SudokuCell = {
+export type SudokuCell = {
   value: number | null;
   validOptions: number[];
 }
-type SudokuGrid = SudokuCell[][];
+export type SudokuGrid = SudokuCell[][];
 
 interface SelectedCell {
   row: number;
@@ -14,30 +15,19 @@ interface SelectedCell {
 }
 
 export default function Sudoku() {
-  const [boardIsvalid, setBoardIsValid] = useState(true);
-  const allNums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const allNums = useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9], []);
+
+  /// -- Initializing board state on load. --
+  const [solveableStatus, setSolveableStatus] = useState<'yes' | 'no' | 'checking'>('yes');
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
-  const [grid, setGrid] = useState<SudokuGrid>(createEmptyGrid());
   const [selectedCell, setSelectedCell] = useState<SelectedCell | null>(null);
 
-  
-
-  function createEmptyGrid(): SudokuGrid {
-    const sudoGrid =  Array(9).fill(null).map(() => Array(9).fill(null).map(() => ({ value: null, validOptions: [...allNums] })));
-    return sudoGrid;
-  }
-
-  function handleCellClick(row: number, col: number) {
-    setSelectedCell({ row, col });
-  }
-
-  function handleNumberSelect(num: number | null) {
-    if (isPlayerTurn && selectedCell) {
-      updateCellWithValue(selectedCell.row, selectedCell.col, num);
-    }
-  }
-
-  const updateCellWithValue = useCallback((row: number, col: number, num: number | null) => {
+  type UpdateValuesParams = {
+    row: number;
+    col: number;
+    num: number | null;
+  };
+  const updateGridCellWithValue = useCallback((grid: SudokuGrid, {row, col, num}: UpdateValuesParams) => {
     const newGrid = grid.map((r, rowIdx) =>
       r.map((cell, colIdx) =>
         rowIdx === row && colIdx === col ? { value: num, validOptions: [] } : cell
@@ -64,16 +54,86 @@ export default function Sudoku() {
         }
       }
     }
-    setGrid(newGrid);
-    setSelectedCell(null);
-    setIsPlayerTurn(false);
-  }, [grid]);
+    return newGrid;
+  }, []);
+  const updateGridWithValues = useCallback((grid: SudokuGrid, updates: UpdateValuesParams[]): SudokuGrid => {
+    for (const update of updates) {
+      grid = updateGridCellWithValue(grid, update);
+    }
+    return grid;
+  }, [updateGridCellWithValue]);
+  const createStartingGrid = useCallback((): SudokuGrid => {
+    // First create a blank grid.
+    const blankGrid =  Array(9).fill(null).map(() => Array(9).fill(null).map(() => ({ value: null, validOptions: [...allNums] })));
+    const sudoGrid = updateGridWithValues(blankGrid, [
+      { row: 0, col: 0, num: 1 },
+      { row: 1, col: 1, num: 2 },
+      { row: 2, col: 2, num: 3 },
+      { row: 3, col: 3, num: 4 },
+      { row: 4, col: 4, num: 5 },
+      { row: 5, col: 5, num: 6 },
+      { row: 6, col: 6, num: 7 },
+      { row: 7, col: 7, num: 8 },
+      { row: 8, col: 8, num: 9 },
+    ]);
+    return sudoGrid;
+  }, [allNums, updateGridWithValues]);
+  const [grid, setGrid] = useState<SudokuGrid>(createStartingGrid());
 
-  function handleClear() {
-    setGrid(createEmptyGrid());
+
+  // TODO replace this with smart CSS
+  function getBorderClass(row: number, col: number): string {
+    const classes: string[] = [];
+    
+    // Right border for 3x3 boxes
+    if (col === 2 || col === 5) {
+      classes.push('border-right-thick');
+    }
+    
+    // Bottom border for 3x3 boxes
+    if (row === 2 || row === 5) {
+      classes.push('border-bottom-thick');
+    }
+    
+    return classes.join(' ');
+  }
+
+  
+  /// --- Game State Updates ---
+  const updateGameCellWithValue = useCallback((row: number, col: number, num: number | null) => {
+    setGrid((prevGrid) => updateGridCellWithValue(prevGrid, { row, col, num }));
+  }, [updateGridCellWithValue]);
+
+  function onTurnEnd() {
+    //setIsPlayerTurn((prev) => !prev);
+    checkIfBoardIsSolvable();
     setSelectedCell(null);
   }
 
+  function handleResetGame() {
+    setGrid(createStartingGrid());
+    setIsPlayerTurn(true);
+    setSelectedCell(null);
+    setSolveableStatus('yes');
+  }
+
+
+  /// --- Handle Player Actions ---
+  function handleCellClick(row: number, col: number) {
+    if (!isPlayerTurn) { return; }
+    setSelectedCell({ row, col });
+  }
+
+  function handlePlayerNumberSelect(num: number | null) {
+    if (isPlayerTurn && selectedCell) {
+      updateGameCellWithValue(selectedCell.row, selectedCell.col, num);
+      onTurnEnd();
+    }
+  }
+
+  
+
+  /// --- Bot Actions ---
   const botTurn = useCallback(() => {
     // Simple bot that fills a random empty cell with a valid option
     const emptyCells: { row: number; col: number; validOptions: number[] }[] = [];
@@ -88,27 +148,25 @@ export default function Sudoku() {
     if (emptyCells.length > 0) {
       const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
       const randomOption = randomCell.validOptions[Math.floor(Math.random() * randomCell.validOptions.length)];
-      updateCellWithValue(randomCell.row, randomCell.col, randomOption);
+      updateGameCellWithValue(randomCell.row, randomCell.col, randomOption);
     }
-  }, [grid, updateCellWithValue]);
+  }, [grid, updateGameCellWithValue]);
 
-  function isBoardFull(): boolean {
-    for (let row of grid) {
-      for (let cell of row) {
-        if (cell.value === null) {
-          return false;
-        }
-      }
+
+
+
+  /// --- Board State Checks ---
+  const checkIfBoardIsSolvable = () => { setSolveableStatus('checking'); };
+
+  // Triggers when we need to check solveability.
+  useEffect(() => {
+    if (solveableStatus === 'checking') {
+      // Simulate checking solveability
+      const solvable = isBoardSolvable(grid);
+      setSolveableStatus(solvable ? 'yes' : 'no');
+      //setCheckingSolvability(false);
     }
-    return true;
-  }
-
-  function isBoardSolvable(): boolean {
-    // Try to solve board and see if it works.
-    
-    return true;
-  }
-
+  }, [solveableStatus, grid]);
 
   // Triggers whenever the player turn ends to let the bot act.
   useEffect(() => {
@@ -129,11 +187,26 @@ export default function Sudoku() {
         and solvable to win!
       </p>
 
-      <div>
-        isPlayerTurn? {isPlayerTurn.toString()} -
-        - isBoardFull? {isBoardFull().toString()} -
-        - boardIsvalid? {boardIsvalid.toString()} -
-        - isBoardSolvable? {isBoardSolvable().toString()}
+      <div className='board-state-dump'>
+        <span className={isPlayerTurn ? 'green' : 'red'}>
+          isPlayerTurn? {isPlayerTurn.toString()}
+        </span>
+        <span className='split'>--</span>
+        <span className={isBoardFull(grid) ? 'green' : 'red'}>
+          isBoardFull? {isBoardFull(grid).toString()}
+        </span>
+        <span className='split'>--</span>
+        <span className={isBoardValid(grid) ? 'green' : 'red'}>
+          isBoardValid? {isBoardValid(grid).toString()}
+        </span>
+        <span className='split'>--</span>
+        <span className={solveableStatus === 'checking' ? 'yellow' : (solveableStatus === 'yes' ? 'green' : 'red')}>
+          isBoardSolvable? {solveableStatus === 'checking' ? 'Checking...' : solveableStatus}
+        </span>
+        {/* <span className='split'>--</span>
+        <span className={isBoardSolvable(grid) ? 'green' : 'red'}>
+          isBoardSolvable? {isBoardSolvable(grid).toString()}
+        </span> */}
       </div>
 
       <div className="sudoku-container">
@@ -182,7 +255,7 @@ export default function Sudoku() {
                   <button
                     key={num}
                     className="number-button"
-                    onClick={() => handleNumberSelect(num)}
+                    onClick={() => handlePlayerNumberSelect(num)}
                   >
                     {num}
                   </button>
@@ -201,26 +274,10 @@ export default function Sudoku() {
       </div>
 
       <div className="sudoku-controls">
-        <button className="tool-button" onClick={handleClear}>
-          Clear Grid
+        <button className="tool-button" onClick={handleResetGame}>
+          Reset Game
         </button>
       </div>
     </WebTool>
   );
-}
-
-function getBorderClass(row: number, col: number): string {
-  const classes: string[] = [];
-  
-  // Right border for 3x3 boxes
-  if (col === 2 || col === 5) {
-    classes.push('border-right-thick');
-  }
-  
-  // Bottom border for 3x3 boxes
-  if (row === 2 || row === 5) {
-    classes.push('border-bottom-thick');
-  }
-  
-  return classes.join(' ');
 }

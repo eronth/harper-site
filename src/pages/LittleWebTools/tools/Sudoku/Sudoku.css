@@ -152,6 +152,24 @@
   }
 }
 
+.board-state-dump {
+  text-align: center;
+  .split {
+    margin-inline: 0.5rem;
+  }
+  span {
+    &.green {
+      background-color: oklch(86% 0.15 144);
+    }
+    &.red {
+      background-color: oklch(86% 0.15 21);
+    }
+    &.yellow {
+      background-color: oklch(86% 0.15 107);
+    }
+  }
+}
+
 
 
 /* Animations */
