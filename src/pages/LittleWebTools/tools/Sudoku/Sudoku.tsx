@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import WebTool from '../../WebTool';
-import { isBoardFull, isBoardSolvable, isBoardValid } from './SudokuBoardStateChecks';
+import { deepCopyGrid, isBoardFull, isBoardSolvable, isBoardValid, isGameOver } from './SudokuBoardStateChecks';
 import './Sudoku.css';
+import type { SudokuGridType } from './SudokuGrid/SudokuGrid';
+import SudokuGrid from './SudokuGrid/SudokuGrid';
 
-export type SudokuCell = {
-  value: number | null;
-  validOptions: number[];
-}
-export type SudokuGrid = SudokuCell[][];
+
+
 
 type fff = {
   index: number;
@@ -17,6 +16,12 @@ type f2 = {
   boxRow: number;
   boxCol: number;
   missingValues: number[];
+};
+
+export type SudokuMove = {
+  row: number;
+  col: number;
+  num: number;
 };
 
 export type SudokuValidityFailures = {
@@ -38,8 +43,8 @@ export default function Sudoku() {
   const [solveableStatus, setSolveableStatus] = useState<'yes' | 'no' | 'checking'>('yes');
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   const [selectedCell, setSelectedCell] = useState<SelectedCell | null>(null);
-  const [lastBotMove, setLastBotMove] = useState<{ row: number; col: number; num: number } | null>(null);
-  const [lastPlayerMove, setLastPlayerMove] = useState<{ row: number; col: number; num: number } | null>(null);
+  const [lastBotMove, setLastBotMove] = useState<SudokuMove | null>(null);
+  const [lastPlayerMove, setLastPlayerMove] = useState<SudokuMove | null>(null);
   const [validityFailures, setValidityFailures] = useState<SudokuValidityFailures | null>(null);
 
   type UpdateValuesParams = {
@@ -47,7 +52,7 @@ export default function Sudoku() {
     col: number;
     num: number | null;
   };
-  const updateGridCellWithValue = useCallback((grid: SudokuGrid, {row, col, num}: UpdateValuesParams) => {
+  const updateGridCellWithValue = useCallback((grid: SudokuGridType, {row, col, num}: UpdateValuesParams) => {
     const newGrid = grid.map((r, rowIdx) =>
       r.map((cell, colIdx) =>
         rowIdx === row && colIdx === col ? { value: num, validOptions: [] } : cell
@@ -76,13 +81,13 @@ export default function Sudoku() {
     }
     return newGrid;
   }, []);
-  const updateGridWithValues = useCallback((grid: SudokuGrid, updates: UpdateValuesParams[]): SudokuGrid => {
+  const updateGridWithValues = useCallback((grid: SudokuGridType, updates: UpdateValuesParams[]): SudokuGridType => {
     for (const update of updates) {
       grid = updateGridCellWithValue(grid, update);
     }
     return grid;
   }, [updateGridCellWithValue]);
-  const createStartingGrid = useCallback((): SudokuGrid => {
+  const createStartingGrid = useCallback((): SudokuGridType => {
     // First create a blank grid.
     const blankGrid =  Array(9).fill(null).map(() => Array(9).fill(null).map(() => ({ value: null, validOptions: [...allNums] })));
     const sudoGrid = updateGridWithValues(blankGrid, [
@@ -98,25 +103,7 @@ export default function Sudoku() {
     ]);
     return sudoGrid;
   }, [allNums, updateGridWithValues]);
-  const [grid, setGrid] = useState<SudokuGrid>(createStartingGrid());
-
-
-  // TODO replace this with smart CSS
-  function getBorderClass(row: number, col: number): string {
-    const classes: string[] = [];
-    
-    // Right border for 3x3 boxes
-    if (col === 2 || col === 5) {
-      classes.push('border-right-thick');
-    }
-    
-    // Bottom border for 3x3 boxes
-    if (row === 2 || row === 5) {
-      classes.push('border-bottom-thick');
-    }
-    
-    return classes.join(' ');
-  }
+  const [grid, setGrid] = useState<SudokuGridType>(createStartingGrid());  
 
   
   /// --- Game State Updates ---
@@ -124,11 +111,11 @@ export default function Sudoku() {
     setGrid((prevGrid) => updateGridCellWithValue(prevGrid, { row, col, num }));
   }, [updateGridCellWithValue]);
 
-  function onTurnEnd() {
+  const onTurnEnd = useCallback(() => {
     //setIsPlayerTurn((prev) => !prev);
     checkIfBoardIsSolvable();
     setSelectedCell(null);
-  }
+  }, []);
 
   function handleResetGame() {
     setGrid(createStartingGrid());
@@ -157,26 +144,96 @@ export default function Sudoku() {
   
 
   /// --- Bot Actions ---
-  const botTurn = useCallback(() => {
-    // Simple bot that fills a random empty cell with a valid option
-    const emptyCells: { row: number; col: number; validOptions: number[] }[] = [];
-    grid.forEach((row, rowIdx) => {
+  type EmptyCell = {
+    row: number;
+    col: number;
+    validOptions: number[];
+  };
+  const getEmptyCells = useCallback((testGrid: SudokuGridType): EmptyCell[] => {
+    const emptyCells: EmptyCell[] = [];
+    testGrid.forEach((row, rowIdx) => {
       row.forEach((cell, colIdx) => {
         if (cell.value === null && cell.validOptions.length > 0) {
           emptyCells.push({ row: rowIdx, col: colIdx, validOptions: cell.validOptions });
         }
       });
     });
+    return emptyCells;
+  }, []);
+
+  type TryBotOptionsParams = {
+    testGrid: SudokuGridType;
+    emptyCells: EmptyCell[];
+  };
+  type TryBotChoice = {
+    chosenCell: EmptyCell, chosenValue: number
+  };
+  const tryBotOptions = useCallback(({
+    testGrid,
+    emptyCells,
+  }: TryBotOptionsParams): TryBotChoice | null => {
+    while (emptyCells.length > 0) {
+      const randomCellIndex = Math.floor(Math.random() * emptyCells.length);
+      const randomCell: EmptyCell = emptyCells[randomCellIndex];
+      const randomOptionIndex = Math.floor(Math.random() * randomCell.validOptions.length);
+      const randomOption: number = randomCell.validOptions[randomOptionIndex];
+
+      console.log(`Can still try ${emptyCells.length} cells:`, emptyCells);
+      console.log(`The bot is trying the move: ${randomCell} with ${randomOption}`);
+
+      // Test the random option on the testGrid.
+      updateGridCellWithValue(testGrid, { row: randomCell.row, col: randomCell.col, num: randomOption });
+      const isSolveable = isBoardSolvable(testGrid, () => { });
+
+      if (isSolveable) {
+        // If solveable, commit the move.
+        console.log('The bot found a valid move:', randomCell, randomOption);
+        return { chosenCell: randomCell, chosenValue: randomOption };
+
+      } else {
+        console.log('The bot move was invalid, trying again.');
+        // Remove this option from validOptions and try again
+        randomCell.validOptions = randomCell.validOptions.filter(n => n !== randomOption);
+        if (randomCell.validOptions.length === 0) {
+          // If we run out of options to try, remove this cell from consideration
+          emptyCells.splice(randomCellIndex, 1);
+        }
+        // Reset testGrid
+        testGrid = deepCopyGrid(grid);
+      }
+    };
+    return null;
+  }, [grid, updateGridCellWithValue]);
+
+  const commitBotChoice = useCallback((chosenCell: EmptyCell, value: number) => {
+    updateGameCellWithValue(chosenCell.row, chosenCell.col, value);
+    setLastBotMove({ row: chosenCell.row, col: chosenCell.col, num: value });
+  }, [updateGameCellWithValue]);
+
+  const [botChoice, setBotChoice] = useState<TryBotChoice | null>(null);
+
+  const botTurn = useCallback((targetGrid: SudokuGridType) => {
+    console.log('Bot turn starting...');
+    const testGrid = deepCopyGrid(targetGrid);
+    console.log('Bot test grid:', testGrid);
+    const emptyCells: EmptyCell[] = getEmptyCells(testGrid);
+    console.log('Bot found empty cells:', emptyCells);
     
     if (emptyCells.length > 0) {
-      const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-      const randomOption = randomCell.validOptions[Math.floor(Math.random() * randomCell.validOptions.length)];
-      updateGameCellWithValue(randomCell.row, randomCell.col, randomOption);
-      setLastBotMove({ row: randomCell.row, col: randomCell.col, num: randomOption });
+      const choice = tryBotOptions({ testGrid, emptyCells });
+      if (choice) {
+        setBotChoice(choice);
+      } else {
+        // No valid moves found
+        console.log('Bot could not find any valid moves.');
+      }
+    } else {
+      // No valid moves left for bot
+      console.log('Bot has no valid moves left.');
     }
 
     onTurnEnd();
-  }, [grid, updateGameCellWithValue]);
+  }, [getEmptyCells, onTurnEnd, tryBotOptions]);
 
 
 
@@ -195,13 +252,13 @@ export default function Sudoku() {
   }, [solveableStatus, grid]);
 
   // Triggers whenever the player turn ends to let the bot act.
-  useEffect(() => {
-    if (!isPlayerTurn) {
-      // After player turn, let bot play
-      //setTimeout(() => { botTurn(); }, 100);
-      //setIsPlayerTurn(true);
-    }
-  }, [botTurn, isPlayerTurn]);
+  // useEffect(() => {
+  //   if (!isPlayerTurn) {
+  //     // After player turn, let bot play
+  //     botTurn();
+  //     //setIsPlayerTurn(true);
+  //   }
+  // }, [botTurn, isPlayerTurn]);
 
 
 
@@ -281,6 +338,10 @@ export default function Sudoku() {
         </span>
       </div>
 
+      <div>
+        Game {isGameOver(grid) ? 'Over!' : 'On!'}
+      </div>
+
 
       <div className="validity-failures">
         <h4>Board State Failures:</h4>
@@ -299,54 +360,14 @@ export default function Sudoku() {
 
 
       <div className="sudoku-container">
-        <div className="sudoku-grid">
-          {grid.map((row, rowIdx) => (
-            <div key={rowIdx} className="row">
-              {row.map((cell, colIdx) => {
-                const isFailedRow = validityFailures?.rows.some(r => r.index === rowIdx);
-                const isFailedCol = validityFailures?.cols.some(c => c.index === colIdx);
-                const boxRow = Math.floor(rowIdx / 3);
-                const boxCol = Math.floor(colIdx / 3);
-                const isFailedBox = validityFailures?.boxes.some(b => b.boxRow === boxRow && b.boxCol === boxCol);
-                const isFailedCell = isFailedRow || isFailedCol || isFailedBox;
-
-                const failedCss = isFailedCell ? 'failed' : '';
-                const turnCss = (lastBotMove?.row === rowIdx && lastBotMove?.col === colIdx)
-                  ? 'bot-move'
-                  : (lastPlayerMove?.row === rowIdx && lastPlayerMove?.col === colIdx)
-                    ? 'player-move'
-                    : '';
-                const selectedCss = (selectedCell?.row === rowIdx && selectedCell?.col === colIdx)
-                  ? 'selected'
-                  : '';
-                return (
-                <button
-                  key={`${rowIdx}-${colIdx}`}
-                  className={`cell ${turnCss} ${selectedCss} ${failedCss} ${getBorderClass(rowIdx, colIdx)}`}
-                  onClick={() => handleCellClick(rowIdx, colIdx)}
-                  disabled={cell.value !== null}
-                >
-                  {cell.value ? (
-                    <span>{cell.value}</span>
-                  ) : (
-                    <div className="valid-options-grid">
-                      {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-                        <span
-                          key={num}
-                          className={`option-number ${
-                            cell.validOptions.includes(num) ? 'visible' : 'hidden'
-                          }`}
-                        >
-                          {num}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </button>)
-              })}
-            </div>
-          ))}
-        </div>
+        <SudokuGrid
+          grid={grid}
+          validityFailures={validityFailures}
+          lastBotMove={lastBotMove}
+          lastPlayerMove={lastPlayerMove}
+          selectedCell={selectedCell}
+          handleCellClick={handleCellClick}
+        />
 
         {selectedCell && (
           <div className="number-selector-overlay" onClick={() => setSelectedCell(null)}>
@@ -376,6 +397,20 @@ export default function Sudoku() {
       </div>
 
       <div className="sudoku-controls">
+        <button onClick={() => {
+          setIsPlayerTurn(false);
+          botTurn(grid);
+        }}>
+          Make Bot Go
+        </button>
+        <button className="tool-button" onClick={() => {
+          if (botChoice) {
+            commitBotChoice(botChoice.chosenCell, botChoice.chosenValue);
+            setBotChoice(null);
+          }
+        }}>
+          Commit Bot Choice: {botChoice ? ` Cell(${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}` : 'No Choice Yet'}
+        </button>
         <button className="tool-button" onClick={handleResetGame}>
           Reset Game
         </button>

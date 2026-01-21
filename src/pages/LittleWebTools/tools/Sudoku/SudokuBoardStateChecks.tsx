@@ -1,7 +1,8 @@
-import type { SudokuCell, SudokuGrid, SudokuValidityFailures } from "./Sudoku";
+import type { SudokuValidityFailures } from "./Sudoku";
+import type { SudokuCell, SudokuGridType } from "./SudokuGrid/SudokuGrid";
 
 // Various board state checks
-export function isBoardFull(grid: SudokuGrid): boolean {
+export function isBoardFull(grid: SudokuGridType): boolean {
   for (const row of grid) {
     for (const cell of row) {
       if (cell.value === null) {
@@ -12,7 +13,7 @@ export function isBoardFull(grid: SudokuGrid): boolean {
   return true;
 }
 
-export function isBoardValid(grid: SudokuGrid): boolean {
+export function isBoardValid(grid: SudokuGridType): boolean {
   // Check rows and columns
   for (let i = 0; i < 9; i++) {
     const rowValues = new Set<number>();
@@ -56,7 +57,7 @@ export function isBoardValid(grid: SudokuGrid): boolean {
   return true;
 }
 
-function boardFillCount (grid: SudokuGrid): number {
+function boardFillCount (grid: SudokuGridType): number {
   let count = 0;
   for (const row of grid) {
     for (const cell of row) {
@@ -68,7 +69,7 @@ function boardFillCount (grid: SudokuGrid): number {
   return count;
 }
 
-function deepCopyGrid(grid: SudokuGrid): SudokuGrid {
+export function deepCopyGrid(grid: SudokuGridType): SudokuGridType {
   return grid.map(row => row.map(cell => ({ value: cell.value, validOptions: [...cell.validOptions] })));
 }
 
@@ -76,7 +77,7 @@ type TrySolveResult = {
   solvable: boolean;
   failures: SudokuValidityFailures;
 };
-function trySolveBoard(gridToCheck: SudokuGrid): TrySolveResult {
+function trySolveBoard(gridToCheck: SudokuGridType): TrySolveResult {
 
   const trySolveResult: TrySolveResult = {
     solvable: true,
@@ -129,7 +130,7 @@ type PossibilityResult = {
   possible: boolean;
   missingValues: number[];
 };
-function flashCheckRowIsPossible(grid: SudokuGrid, row: number): PossibilityResult {
+function flashCheckRowIsPossible(grid: SudokuGridType, row: number): PossibilityResult {
   const seen = new Set<number>();
   for (let col = 0; col < 9; col++) {
     const cell = grid[row][col];
@@ -143,7 +144,7 @@ function flashCheckRowIsPossible(grid: SudokuGrid, row: number): PossibilityResu
   }
 }
 
-function flashCheckColIsPossible(grid: SudokuGrid, col: number): PossibilityResult {
+function flashCheckColIsPossible(grid: SudokuGridType, col: number): PossibilityResult {
   const seen = new Set<number>();
   for (let row = 0; row < 9; row++) {
     const cell = grid[row][col];
@@ -157,7 +158,7 @@ function flashCheckColIsPossible(grid: SudokuGrid, col: number): PossibilityResu
   }
 }
 
-function flashCheckBoxIsPossible(grid: SudokuGrid, boxRow: number, boxCol: number): PossibilityResult {
+function flashCheckBoxIsPossible(grid: SudokuGridType, boxRow: number, boxCol: number): PossibilityResult {
   const seen = new Set<number>();
   const boxStartRow = boxRow * 3;
   const boxStartCol = boxCol * 3;
@@ -196,7 +197,7 @@ function missingNumbers(seen: Set<number>): number[] {
   return missing;
 }
 
-function trySolveBoardFull(grid: SudokuGrid): boolean {
+function trySolveBoardFull(grid: SudokuGridType): boolean {
   // Backtracking solver
   for (let row = 0; row < 9; row++) {
     for (let col = 0; col < 9; col++) {
@@ -239,7 +240,7 @@ function trySolveBoardFull(grid: SudokuGrid): boolean {
 }
 
 export function isBoardSolvable(
-  grid: SudokuGrid,
+  grid: SudokuGridType,
   setFailures: React.Dispatch<React.SetStateAction<SudokuValidityFailures | null>>
 ): boolean {
   if (!isBoardValid(grid)) { return false; }
@@ -248,9 +249,17 @@ export function isBoardSolvable(
   // Try to solve board and see if it works.
   const solveResult = trySolveBoard(grid);
   if (!solveResult.solvable) {
-    setFailures(solveResult.failures);
+    setFailures?.(solveResult.failures);
     return false;
   }
 
   return true;
+}
+
+export function isGameOver(grid: SudokuGridType): boolean {
+  return (
+    isBoardFull(grid)
+    || !isBoardValid(grid)
+    || !isBoardSolvable(grid, () => {})
+  );
 }
