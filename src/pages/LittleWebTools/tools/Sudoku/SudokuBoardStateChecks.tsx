@@ -1,4 +1,4 @@
-import type { SudokuCell, SudokuGrid } from "./Sudoku";
+import type { SudokuCell, SudokuGrid, SudokuValidityFailures } from "./Sudoku";
 
 // Various board state checks
 export function isBoardFull(grid: SudokuGrid): boolean {
@@ -72,61 +72,92 @@ function deepCopyGrid(grid: SudokuGrid): SudokuGrid {
   return grid.map(row => row.map(cell => ({ value: cell.value, validOptions: [...cell.validOptions] })));
 }
 
-function trySolveBoard(gridToCheck: SudokuGrid): boolean {
+type TrySolveResult = {
+  solvable: boolean;
+  failures: SudokuValidityFailures;
+};
+function trySolveBoard(gridToCheck: SudokuGrid): TrySolveResult {
+
+  const trySolveResult: TrySolveResult = {
+    solvable: true,
+    failures: { rows: [], cols: [], boxes: [], other: [] },
+  };
+
   const grid = deepCopyGrid(gridToCheck);
 
   // Check all rows
   for (let row = 0; row < 9; row++) {
-    const possible = flashCheckRowIsPossible(grid, row);
-    if (!possible) { return false; }
+    const { possible, missingValues } = flashCheckRowIsPossible(grid, row);
+    if (!possible) {
+      trySolveResult.solvable = false;
+      trySolveResult.failures.rows.push({index: row, missingValues: missingValues});
+    }
   }
 
   // Check all columns
   for (let col = 0; col < 9; col++) {
-    const possible = flashCheckColIsPossible(grid, col);
-    if (!possible) { return false; }
+    const { possible, missingValues } = flashCheckColIsPossible(grid, col);
+    if (!possible) {
+      trySolveResult.solvable = false;
+      trySolveResult.failures.cols.push({index: col, missingValues: missingValues});
+    }
   }
 
   // Check all boxes
   for (let boxRow = 0; boxRow < 3; boxRow++) {
     for (let boxCol = 0; boxCol < 3; boxCol++) {
-      const possible = flashCheckBoxIsPossible(grid, boxRow, boxCol);
-      if (!possible) { return false; }
+      const { possible, missingValues } = flashCheckBoxIsPossible(grid, boxRow, boxCol);
+      if (!possible) {
+        trySolveResult.solvable = false;
+        trySolveResult.failures.boxes.push({ boxRow, boxCol, missingValues: missingValues });
+      }
     }
   }
 
-  return trySolveBoardFull(grid);
+  if (!trySolveResult.solvable) { return trySolveResult; }
+
+  const fullCanSolve = trySolveBoardFull(grid);
+  if (!fullCanSolve) {
+    trySolveResult.solvable = false;
+    trySolveResult.failures.other.push('Full board solve failed');
+  }
+
+  return trySolveResult;
 }
 
-function flashCheckRowIsPossible(grid: SudokuGrid, row: number): boolean {
+type PossibilityResult = {
+  possible: boolean;
+  missingValues: number[];
+};
+function flashCheckRowIsPossible(grid: SudokuGrid, row: number): PossibilityResult {
   const seen = new Set<number>();
   for (let col = 0; col < 9; col++) {
     const cell = grid[row][col];
     seenCheck(seen, cell);
   }
   if (seen.size === 9) {
-    return true;
+    return { possible: true, missingValues: [] };
   } else {
-    console.log('Row', row, 'is NOT possible with seen:', seen); 
-    return false;
+    console.log('Row', row, 'is NOT possible with seen:', seen);
+    return { possible: false, missingValues: missingNumbers(seen) };
   }
 }
 
-function flashCheckColIsPossible(grid: SudokuGrid, col: number): boolean {
+function flashCheckColIsPossible(grid: SudokuGrid, col: number): PossibilityResult {
   const seen = new Set<number>();
   for (let row = 0; row < 9; row++) {
     const cell = grid[row][col];
     seenCheck(seen, cell);
   }
   if (seen.size === 9) {
-    return true;
+    return { possible: true, missingValues: [] };
   } else {
     console.log('Col', col, 'is NOT possible with seen:', seen); 
-    return false;
+    return { possible: false, missingValues: missingNumbers(seen) };
   }
 }
 
-function flashCheckBoxIsPossible(grid: SudokuGrid, boxRow: number, boxCol: number): boolean {
+function flashCheckBoxIsPossible(grid: SudokuGrid, boxRow: number, boxCol: number): PossibilityResult {
   const seen = new Set<number>();
   const boxStartRow = boxRow * 3;
   const boxStartCol = boxCol * 3;
@@ -137,11 +168,32 @@ function flashCheckBoxIsPossible(grid: SudokuGrid, boxRow: number, boxCol: numbe
     }
   }
   if (seen.size === 9) {
-    return true;
+    return { possible: true, missingValues: [] };
   } else {
-    console.log('Box', boxRow, boxCol, 'is NOT possible with seen:', seen); 
-    return false;
+    console.log('Box', boxRow, boxCol, 'is NOT possible with seen:', seen);
+    return { possible: false, missingValues: missingNumbers(seen) };
   }
+}
+
+function seenCheck(seen: Set<number>, cell: SudokuCell) {
+  const val = cell.value;
+  if (val !== null) {
+    seen.add(val);
+  }
+  const options = cell.validOptions;
+  for (const option of options) {
+    seen.add(option);
+  }
+}
+
+function missingNumbers(seen: Set<number>): number[] {
+  const missing: number[] = [];
+  for (let num = 1; num <= 9; num++) {
+    if (!seen.has(num)) {
+      missing.push(num);
+    }
+  }
+  return missing;
 }
 
 function trySolveBoardFull(grid: SudokuGrid): boolean {
@@ -173,7 +225,7 @@ function trySolveBoardFull(grid: SudokuGrid): boolean {
           }
           if (canPlace) {
             grid[row][col].value = num;
-            if (trySolveBoard(grid)) {
+            if (trySolveBoardFull(grid)) {
               return true;
             }
             grid[row][col].value = null; // Backtrack
@@ -186,23 +238,19 @@ function trySolveBoardFull(grid: SudokuGrid): boolean {
   return true; // Solved
 }
 
-function seenCheck(seen: Set<number>, cell: SudokuCell) {
-  const val = cell.value;
-  if (val !== null) {
-    seen.add(val);
-  }
-  const options = cell.validOptions;
-  for (const option of options) {
-    seen.add(option);
-  }
-}
-
-export function isBoardSolvable(grid: SudokuGrid): boolean {
+export function isBoardSolvable(
+  grid: SudokuGrid,
+  setFailures: React.Dispatch<React.SetStateAction<SudokuValidityFailures | null>>
+): boolean {
   if (!isBoardValid(grid)) { return false; }
   if (isBoardFull(grid)) { return true; }
   if (boardFillCount(grid) <= 4) { return true; }
   // Try to solve board and see if it works.
-  if (trySolveBoard(grid)) { return true; }
+  const solveResult = trySolveBoard(grid);
+  if (!solveResult.solvable) {
+    setFailures(solveResult.failures);
+    return false;
+  }
 
-  return false;
+  return true;
 }

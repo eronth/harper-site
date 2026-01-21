@@ -9,6 +9,23 @@ export type SudokuCell = {
 }
 export type SudokuGrid = SudokuCell[][];
 
+type fff = {
+  index: number;
+  missingValues: number[];
+};
+type f2 = {
+  boxRow: number;
+  boxCol: number;
+  missingValues: number[];
+};
+
+export type SudokuValidityFailures = {
+  rows: fff[];
+  cols: fff[];
+  boxes: f2[];
+  other: string[];
+};
+
 interface SelectedCell {
   row: number;
   col: number;
@@ -23,6 +40,7 @@ export default function Sudoku() {
   const [selectedCell, setSelectedCell] = useState<SelectedCell | null>(null);
   const [lastBotMove, setLastBotMove] = useState<{ row: number; col: number; num: number } | null>(null);
   const [lastPlayerMove, setLastPlayerMove] = useState<{ row: number; col: number; num: number } | null>(null);
+  const [validityFailures, setValidityFailures] = useState<SudokuValidityFailures | null>(null);
 
   type UpdateValuesParams = {
     row: number;
@@ -170,7 +188,7 @@ export default function Sudoku() {
   useEffect(() => {
     if (solveableStatus === 'checking') {
       // Simulate checking solveability
-      const solvable = isBoardSolvable(grid);
+      const solvable = isBoardSolvable(grid, setValidityFailures);
       setSolveableStatus(solvable ? 'yes' : 'no');
       //setCheckingSolvability(false);
     }
@@ -184,6 +202,56 @@ export default function Sudoku() {
       //setIsPlayerTurn(true);
     }
   }, [botTurn, isPlayerTurn]);
+
+
+
+  type RenderParams1 = {
+    type: 'cols' | 'rows';
+    fails: fff[];
+  };
+  const noLongerUseHtml1 = ({type, fails}: RenderParams1) => {
+    return (<>
+      {(fails).map((fail, index) => (
+        <div key={index}>
+          You can no longer play the
+          number {fail.missingValues.length !== 1 ? 's' : ''} <b>
+            {fail.missingValues.join(', ')}
+          </b> in <b>{dispText({type, fail})}</b>.
+        </div>
+        ))}
+    </>);
+  }
+  type RenderParams2 = {
+    type: 'boxes';
+    fails: f2[];
+  };
+  const noLongerUseHtml2 = ({type, fails}: RenderParams2) => {
+    return (<>
+      {(fails).map((fail, index) => (
+        <div key={index}>
+          You can no longer play the
+          number {fail.missingValues.length !== 1 ? 's' : ''} <b>
+            {fail.missingValues.join(', ')}
+          </b> in <b>{dispText({type, fail})}</b>.
+        </div>
+        ))}
+    </>);
+  }
+  type RendTextParams = {
+    type: 'cols' | 'rows';
+    fail: fff;
+  } | {
+    type: 'boxes';
+    fail: f2;
+  };
+  const dispText = ({type, fail}: RendTextParams) => {
+    switch(type) {
+      case 'rows': return `Row ${fail.index+1}`;
+      case 'cols': return `Column ${fail.index+1}`;
+      case 'boxes': return `Box (Row: ${fail.boxRow+1}, Column: ${fail.boxCol+1})`;
+    };
+    return 'SOMETHING WRONG';
+  };
 
   return (
     <WebTool css="sudoku-tool">
@@ -213,11 +281,36 @@ export default function Sudoku() {
         </span>
       </div>
 
+
+      <div className="validity-failures">
+        <h4>Board State Failures:</h4>
+        {(validityFailures?.rows.length ?? 0) > 0 && (<>
+          {noLongerUseHtml1({type: 'rows', fails: validityFailures?.rows??[]})}
+        </>)}
+
+        {(validityFailures?.cols.length ?? 0) > 0 && (<>
+          {noLongerUseHtml1({type: 'cols', fails: validityFailures?.cols??[]})}
+        </>)}
+
+        {(validityFailures?.boxes.length ?? 0) > 0 && (<>
+          {noLongerUseHtml2({type: 'boxes', fails: validityFailures?.boxes??[]})}
+        </>)}
+      </div>
+
+
       <div className="sudoku-container">
         <div className="sudoku-grid">
           {grid.map((row, rowIdx) => (
             <div key={rowIdx} className="row">
               {row.map((cell, colIdx) => {
+                const isFailedRow = validityFailures?.rows.some(r => r.index === rowIdx);
+                const isFailedCol = validityFailures?.cols.some(c => c.index === colIdx);
+                const boxRow = Math.floor(rowIdx / 3);
+                const boxCol = Math.floor(colIdx / 3);
+                const isFailedBox = validityFailures?.boxes.some(b => b.boxRow === boxRow && b.boxCol === boxCol);
+                const isFailedCell = isFailedRow || isFailedCol || isFailedBox;
+
+                const failedCss = isFailedCell ? 'failed' : '';
                 const turnCss = (lastBotMove?.row === rowIdx && lastBotMove?.col === colIdx)
                   ? 'bot-move'
                   : (lastPlayerMove?.row === rowIdx && lastPlayerMove?.col === colIdx)
@@ -229,7 +322,7 @@ export default function Sudoku() {
                 return (
                 <button
                   key={`${rowIdx}-${colIdx}`}
-                  className={`cell ${turnCss} ${selectedCss} ${getBorderClass(rowIdx, colIdx)}`}
+                  className={`cell ${turnCss} ${selectedCss} ${failedCss} ${getBorderClass(rowIdx, colIdx)}`}
                   onClick={() => handleCellClick(rowIdx, colIdx)}
                   disabled={cell.value !== null}
                 >
