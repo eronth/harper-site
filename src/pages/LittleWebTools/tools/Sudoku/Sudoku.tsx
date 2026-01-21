@@ -21,6 +21,8 @@ export default function Sudoku() {
   const [solveableStatus, setSolveableStatus] = useState<'yes' | 'no' | 'checking'>('yes');
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   const [selectedCell, setSelectedCell] = useState<SelectedCell | null>(null);
+  const [lastBotMove, setLastBotMove] = useState<{ row: number; col: number; num: number } | null>(null);
+  const [lastPlayerMove, setLastPlayerMove] = useState<{ row: number; col: number; num: number } | null>(null);
 
   type UpdateValuesParams = {
     row: number;
@@ -115,6 +117,8 @@ export default function Sudoku() {
     setIsPlayerTurn(true);
     setSelectedCell(null);
     setSolveableStatus('yes');
+    setLastBotMove(null);
+    setLastPlayerMove(null);
   }
 
 
@@ -123,10 +127,11 @@ export default function Sudoku() {
     if (!isPlayerTurn) { return; }
     setSelectedCell({ row, col });
   }
-
+  
   function handlePlayerNumberSelect(num: number | null) {
     if (isPlayerTurn && selectedCell) {
       updateGameCellWithValue(selectedCell.row, selectedCell.col, num);
+      setLastPlayerMove({ row: selectedCell.row, col: selectedCell.col, num: num as number });
       onTurnEnd();
     }
   }
@@ -149,7 +154,10 @@ export default function Sudoku() {
       const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
       const randomOption = randomCell.validOptions[Math.floor(Math.random() * randomCell.validOptions.length)];
       updateGameCellWithValue(randomCell.row, randomCell.col, randomOption);
+      setLastBotMove({ row: randomCell.row, col: randomCell.col, num: randomOption });
     }
+
+    onTurnEnd();
   }, [grid, updateGameCellWithValue]);
 
 
@@ -203,24 +211,25 @@ export default function Sudoku() {
         <span className={solveableStatus === 'checking' ? 'yellow' : (solveableStatus === 'yes' ? 'green' : 'red')}>
           isBoardSolvable? {solveableStatus === 'checking' ? 'Checking...' : solveableStatus}
         </span>
-        {/* <span className='split'>--</span>
-        <span className={isBoardSolvable(grid) ? 'green' : 'red'}>
-          isBoardSolvable? {isBoardSolvable(grid).toString()}
-        </span> */}
       </div>
 
       <div className="sudoku-container">
         <div className="sudoku-grid">
           {grid.map((row, rowIdx) => (
             <div key={rowIdx} className="row">
-              {row.map((cell, colIdx) => (
+              {row.map((cell, colIdx) => {
+                const turnCss = (lastBotMove?.row === rowIdx && lastBotMove?.col === colIdx)
+                  ? 'bot-move'
+                  : (lastPlayerMove?.row === rowIdx && lastPlayerMove?.col === colIdx)
+                    ? 'player-move'
+                    : '';
+                const selectedCss = (selectedCell?.row === rowIdx && selectedCell?.col === colIdx)
+                  ? 'selected'
+                  : '';
+                return (
                 <button
                   key={`${rowIdx}-${colIdx}`}
-                  className={`cell ${
-                    selectedCell?.row === rowIdx && selectedCell?.col === colIdx
-                      ? 'selected'
-                      : ''
-                  } ${getBorderClass(rowIdx, colIdx)}`}
+                  className={`cell ${turnCss} ${selectedCss} ${getBorderClass(rowIdx, colIdx)}`}
                   onClick={() => handleCellClick(rowIdx, colIdx)}
                   disabled={cell.value !== null}
                 >
@@ -240,8 +249,8 @@ export default function Sudoku() {
                       ))}
                     </div>
                   )}
-                </button>
-              ))}
+                </button>)
+              })}
             </div>
           ))}
         </div>

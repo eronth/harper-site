@@ -46,6 +46,27 @@
           margin: 0;
           padding: 0;
           position: relative;
+
+          &.player-move {
+            color: light-dark(
+              oklch(55% 0.15 144),
+              oklch(86% 0.15 144)
+            );
+            background-color: light-dark(
+              oklch(95% 0.15 144),
+              oklch(23% 0.15 144)
+            );
+          }
+          &.bot-move {
+            color: light-dark(
+              oklch(55% 0.15 267),
+              oklch(86% 0.15 267)
+            );
+            background-color: light-dark(
+              oklch(95% 0.15 267),
+              oklch(23% 0.15 267)
+            );
+          }
         
           &:hover {
             background-color: var(--bg-button-hover);
@@ -159,13 +180,22 @@
   }
   span {
     &.green {
-      background-color: oklch(86% 0.15 144);
+      background-color: light-dark(
+        oklch(86% 0.15 144),
+        oklch(43% 0.15 144)
+      );
     }
     &.red {
-      background-color: oklch(86% 0.15 21);
+      background-color: light-dark(
+        oklch(86% 0.15 21),
+        oklch(43% 0.15 21)
+      );
     }
     &.yellow {
-      background-color: oklch(86% 0.15 107);
+      background-color: light-dark(
+        oklch(86% 0.15 107),
+        oklch(43% 0.15 107)
+      );
     }
   }
 }
