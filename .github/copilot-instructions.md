@@ -56,13 +56,14 @@ src/
 - Example approach in `index.css`:
   ```css
   :root {
-    --color-text: #fff;
-    --color-bg: #1a1a1a;
-  }
-  
-  [data-theme="light"] {
-    --color-text: #000;
-    --color-bg: #fff;
+    --color-text: light-dark(
+      #000,
+      #fff
+    );
+    --color-bg: light-dark(
+      #fff,
+      #1a1a1a
+    );
   }
   ```
 
