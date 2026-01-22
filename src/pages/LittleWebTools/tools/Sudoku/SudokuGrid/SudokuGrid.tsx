@@ -20,6 +20,7 @@ type Props = {
   boardValidity: ValidBoardResult | null;
   showHints?: boolean;
   isPlayerTurn: boolean;
+  overlayMessage?: string | null;
 };
 
 export default function SudokuGrid({
@@ -33,6 +34,7 @@ export default function SudokuGrid({
   boardValidity,
   showHints = false,
   isPlayerTurn,
+  overlayMessage = null,
 }: Props) {
 
 
@@ -138,7 +140,8 @@ export default function SudokuGrid({
     return cssPack;
   }
 
-  return <div className="sudoku-grid">
+  return <div className="sudoku-grid-wrapper">
+    <div className="sudoku-grid">
     {grid.map((row, rowIdx) => (
       <div key={rowIdx} className="row">
         {row.map((cell, colIdx) => {
@@ -172,5 +175,12 @@ export default function SudokuGrid({
         })}
       </div>
     ))}
+  </div>
+  
+  {overlayMessage && (
+    <div className={`game-overlay ${overlayMessage === 'Win!' || overlayMessage === 'Fail' ? 'game-end' : ''}`}>
+      <div className="overlay-message">{overlayMessage}</div>
+    </div>
+  )}
   </div>
 }

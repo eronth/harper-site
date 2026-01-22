@@ -38,7 +38,7 @@ interface SelectedCell {
 
 export default function Sudoku() {
   const allNums = useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9], []);
-  const debug = false;
+  const debug = true;
 
   /// -- Initializing board state on load. --
   const [solveableStatus, setSolveableStatus] = useState<'yes' | 'no' | 'checking'>('yes');
@@ -48,6 +48,7 @@ export default function Sudoku() {
   const [lastPlayerMove, setLastPlayerMove] = useState<SudokuMove | null>(null);
   const [validityFailures, setValidityFailures] = useState<SudokuValidityFailures | null>(null);
   const [showHints, setShowHints] = useState<boolean>(false);
+  const [overlayMessage, setOverlayMessage] = useState<string | null>(null);
 
   type UpdateValuesParams = {
     row: number;
@@ -102,6 +103,15 @@ export default function Sudoku() {
       { row: 6, col: 6, num: 7 },
       { row: 7, col: 7, num: 8 },
       { row: 8, col: 8, num: 9 },
+
+      { row: 1, col: 5, num: 1 },
+      { row: 2, col: 6, num: 2 },
+      { row: 3, col: 7, num: 3 },
+
+      { row: 5, col: 1, num: 7 },
+      { row: 6, col: 2, num: 8 },
+      { row: 7, col: 3, num: 9 },
+
     ]);
     return sudoGrid;
   }, [allNums, updateGridWithValues]);
@@ -113,9 +123,11 @@ export default function Sudoku() {
     setGrid((prevGrid) => updateGridCellWithValue(prevGrid, { row, col, num }));
   }, [updateGridCellWithValue]);
 
-  const onTurnEnd = useCallback(() => {
+  const onTurnEnd = useCallback((skipSolveabilityCheck: boolean = false) => {
     setIsPlayerTurn((prev) => !prev);
-    checkIfBoardIsSolvable();
+    if (!skipSolveabilityCheck) {
+      checkIfBoardIsSolvable();
+    }
     setSelectedCell(null);
   }, []);
 
@@ -127,6 +139,7 @@ export default function Sudoku() {
     setLastBotMove(null);
     setLastPlayerMove(null);
     setValidityFailures(null);
+    setOverlayMessage(null);
   }
 
 
@@ -239,7 +252,7 @@ export default function Sudoku() {
       console.log('Bot has no valid moves left.');
     }
 
-    onTurnEnd();
+    onTurnEnd(true); // Skip solveability check since bot already validated before moving
   }, [getEmptyCells, commitBotChoice, onTurnEnd, tryBotOptions]);
 
   // const testBotsDesiredTurn = useCallback(() => {
@@ -279,21 +292,33 @@ export default function Sudoku() {
   // Triggers when we need to check solveability.
   useEffect(() => {
     if (solveableStatus === 'checking') {
+      setOverlayMessage('Validating...');
       const solvable = isBoardSolvable(grid, setValidityFailures);
       setSolveableStatus(solvable ? 'yes' : 'no');
+      setOverlayMessage(null);
     }
   }, [solveableStatus, grid]);
 
   // Automatically trigger bot turn when it's the bot's turn
   useEffect(() => {
     if (!isPlayerTurn && !isGameOver(grid)) {
+      setOverlayMessage('Thinking...');
       const timeoutId = setTimeout(() => {
         botTurn(grid);
-      }, 500); // Small delay so user can see their move before bot goes
+        setOverlayMessage(null);
+      }, 700); // Small delay so user can see their move before bot goes
       
       return () => clearTimeout(timeoutId);
     }
   }, [isPlayerTurn, grid, botTurn]);
+
+  // Check for game end and show win/fail overlay
+  useEffect(() => {
+    if (isGameOver(grid)) {
+      const winner = isBoardValid(grid) && isBoardFull(grid);
+      setOverlayMessage(winner ? 'Win!' : 'Fail');
+    }
+  }, [grid]);
 
 
 
@@ -479,6 +504,7 @@ export default function Sudoku() {
           boardValidity={getBoardValidity(grid)}
           showHints={showHints}
           isPlayerTurn={isPlayerTurn}
+          overlayMessage={overlayMessage}
         />
 
         {selectedCell && (

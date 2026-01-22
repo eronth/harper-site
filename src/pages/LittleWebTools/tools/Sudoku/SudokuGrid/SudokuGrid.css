@@ -1,8 +1,43 @@
+.sudoku-grid-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0 0 0 / 0.7);
+    z-index: 500;
+    animation: fadeIn 0.3s ease-in;
+    pointer-events: none;
+
+    &.game-end {
+      pointer-events: auto;
+      background-color: rgb(0 0 0 / 0.45);
+    }
+
+    .overlay-message {
+      font-size: 3rem;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 2px 4px rgb(0 0 0 / 0.5);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+  }
+}
+
 .sudoku-grid {
   display: inline-block;
   border: 3px solid var(--text-primary);
   background-color: var(--text-primary);
   padding: 0;
+  
 
   .row {
     display: flex;

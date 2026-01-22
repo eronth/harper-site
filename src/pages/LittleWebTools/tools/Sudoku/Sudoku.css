@@ -27,7 +27,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
   }
+  
   
   /* Number selector popup */
   .number-selector-overlay {
