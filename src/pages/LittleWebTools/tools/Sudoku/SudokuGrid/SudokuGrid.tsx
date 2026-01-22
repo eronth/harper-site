@@ -18,6 +18,7 @@ type Props = {
   selectedCell: { row: number; col: number } | null;
   handleCellClick: (row: number, col: number) => void;
   boardValidity: ValidBoardResult | null;
+  showHints?: boolean;
 };
 
 export default function SudokuGrid({
@@ -29,6 +30,7 @@ export default function SudokuGrid({
   selectedCell,
   handleCellClick,
   boardValidity,
+  showHints = false,
 }: Props) {
 
 
@@ -153,7 +155,9 @@ export default function SudokuGrid({
                   <span
                     key={num}
                     className={`option-number ${
-                      cell.validOptions.includes(num) ? 'visible' : 'hidden'
+                      (showHints && cell.validOptions.includes(num))
+                        ? 'visible'
+                        : 'hidden'
                     }`}
                   >
                     {num}

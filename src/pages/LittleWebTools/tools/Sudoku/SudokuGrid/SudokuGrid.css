@@ -14,18 +14,16 @@
       width: var(--side);
       height: var(--side);
       border: 1px solid var(--border-light);
-      background-color: var(--bg-card);
-      color: var(--text-primary);
       font-size: 1.5rem;
-      font-weight: 600;
-      cursor: pointer;
+      font-weight: bold;
       transition: background-color 0.2s, transform 0.1s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       margin: 0;
       padding: 0;
-      position: relative;
+
+      &:focus {
+        outline-offset: 0px;
+        z-index: 5;
+      }
 
       &.player-move {
         color: light-dark(

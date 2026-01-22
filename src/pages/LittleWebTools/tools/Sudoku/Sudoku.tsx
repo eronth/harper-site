@@ -47,6 +47,7 @@ export default function Sudoku() {
   const [lastBotMove, setLastBotMove] = useState<SudokuMove | null>(null);
   const [lastPlayerMove, setLastPlayerMove] = useState<SudokuMove | null>(null);
   const [validityFailures, setValidityFailures] = useState<SudokuValidityFailures | null>(null);
+  const [showHints, setShowHints] = useState<boolean>(false);
 
   type UpdateValuesParams = {
     row: number;
@@ -272,6 +273,9 @@ export default function Sudoku() {
   /// --- Board State Checks ---
   const checkIfBoardIsSolvable = () => { setSolveableStatus('checking'); };
 
+
+
+
   // Triggers when we need to check solveability.
   useEffect(() => {
     if (solveableStatus === 'checking') {
@@ -292,6 +296,9 @@ export default function Sudoku() {
   // }, [botTurn, isPlayerTurn]);
 
 
+
+
+  /// --- Render Helpers ---
   const boardStateDebuggerView = (show: boolean) => {
     if (!show) return null;
     return (<>
@@ -327,6 +334,20 @@ export default function Sudoku() {
           : 'Play On!'}
       </div>
     );
+  };
+
+  const showHintToggle = () => {
+    return (<div className='show-hint-toggle'>
+      <label htmlFor="show-hints-checkbox">
+        <input
+          id="show-hints-checkbox"
+          type="checkbox"
+          checked={showHints}
+          onChange={() => setShowHints((prev) => !prev)}
+        />
+        Show Hints
+      </label>
+    </div>)
   };
 
   type DupeParams = {
@@ -442,7 +463,7 @@ export default function Sudoku() {
       {boardStateDebuggerView(debug)}
 
       {gameStateHeader()}
-
+      {showHintToggle()}
       {validationStateDisplay()}
 
       <div className="sudoku-container">
@@ -456,6 +477,7 @@ export default function Sudoku() {
           selectedCell={selectedCell}
           handleCellClick={handleCellClick}
           boardValidity={getBoardValidity(grid)}
+          showHints={showHints}
         />
 
         {selectedCell && (
@@ -486,12 +508,12 @@ export default function Sudoku() {
       </div>
 
       <div className="sudoku-controls">
-        <button onClick={() => {
+        {debug ? <button onClick={() => {
           setIsPlayerTurn(false);
           botTurn(grid);
         }}>
           Make Bot Go
-        </button>
+        </button> : null}
         {/* <button className="tool-button" onClick={testBotsDesiredTurn}>
           Test Bot's Desired Turn: {botChoice ? ` Cell (${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}` : 'No Choice Yet'}
         </button>

@@ -19,7 +19,9 @@
     color: var(--text-secondary);
   }
 
-  
+  .show-hint-toggle {
+    text-align: center;
+  }
 
   .sudoku-container {
     display: flex;
