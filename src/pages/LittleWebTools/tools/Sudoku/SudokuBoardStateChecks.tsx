@@ -13,7 +13,33 @@ export function isBoardFull(grid: SudokuGridType): boolean {
   return true;
 }
 
-export function isBoardValid(grid: SudokuGridType): boolean {
+export type ValidBoardResult = {
+  valid: boolean;
+  rowDupes: RowDupesInfo[];
+  colDupes: ColDupesInfo[];
+  boxDupes: BoxDupesInfo[];
+  dupes: {
+    number: number;
+    indexes: { row: number; col: number }[];
+  }[];
+};
+type RowDupesInfo = {
+  number: number;
+  row: number;
+};
+type ColDupesInfo = {
+  number: number;
+  col: number;
+};
+type BoxDupesInfo = {
+  number: number;
+  boxRow: number;
+  boxCol: number;
+};
+export function getBoardValidity(grid: SudokuGridType): ValidBoardResult {
+  const ret: ValidBoardResult = {
+    valid: true, rowDupes: [], colDupes: [], boxDupes: [], dupes: [],
+  };
   // Check rows and columns
   for (let i = 0; i < 9; i++) {
     const rowValues = new Set<number>();
@@ -23,7 +49,8 @@ export function isBoardValid(grid: SudokuGridType): boolean {
       const rowCellValue = grid[i][j].value;
       if (rowCellValue !== null) {
         if (rowValues.has(rowCellValue)) {
-          return false; // Duplicate in row
+          ret.valid = false;
+          ret.rowDupes.push({ number: rowCellValue, row: i });
         }
         rowValues.add(rowCellValue);
       }
@@ -31,7 +58,8 @@ export function isBoardValid(grid: SudokuGridType): boolean {
       const colCellValue = grid[j][i].value;
       if (colCellValue !== null) {
         if (colValues.has(colCellValue)) {
-          return false; // Duplicate in column
+          ret.valid = false;
+          ret.colDupes.push({ number: colCellValue, col: i });
         }
         colValues.add(colCellValue);
       }
@@ -46,7 +74,8 @@ export function isBoardValid(grid: SudokuGridType): boolean {
           const cellValue = grid[boxRow * 3 + i][boxCol * 3 + j].value;
           if (cellValue !== null) {
             if (boxValues.has(cellValue)) {
-              return false; // Duplicate in box
+              ret.valid = false;
+              ret.boxDupes.push({ number: cellValue, boxRow: boxRow, boxCol: boxCol });
             }
             boxValues.add(cellValue);
           }
@@ -54,7 +83,11 @@ export function isBoardValid(grid: SudokuGridType): boolean {
       }
     }
   }
-  return true;
+  return ret;
+}
+
+export function isBoardValid(grid: SudokuGridType): boolean {
+  return getBoardValidity(grid).valid;
 }
 
 function boardFillCount (grid: SudokuGridType): number {

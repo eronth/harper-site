@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import WebTool from '../../WebTool';
-import { deepCopyGrid, isBoardFull, isBoardSolvable, isBoardValid, isGameOver } from './SudokuBoardStateChecks';
+import { deepCopyGrid, getBoardValidity, isBoardFull, isBoardSolvable, isBoardValid, isGameOver } from './SudokuBoardStateChecks';
 import './Sudoku.css';
 import type { SudokuGridType } from './SudokuGrid/SudokuGrid';
 import SudokuGrid from './SudokuGrid/SudokuGrid';
@@ -38,6 +38,7 @@ interface SelectedCell {
 
 export default function Sudoku() {
   const allNums = useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9], []);
+  const debug = false;
 
   /// -- Initializing board state on load. --
   const [solveableStatus, setSolveableStatus] = useState<'yes' | 'no' | 'checking'>('yes');
@@ -291,6 +292,29 @@ export default function Sudoku() {
   // }, [botTurn, isPlayerTurn]);
 
 
+  const boardStateDebuggerView = (show: boolean) => {
+    if (!show) return null;
+    return (<>
+      <div className='board-state-dump'>
+        <span className={isPlayerTurn ? 'green' : 'red'}>
+          isPlayerTurn? {isPlayerTurn.toString()}
+        </span>
+        <span className='split'>--</span>
+        <span className={isBoardFull(grid) ? 'green' : 'red'}>
+          isBoardFull? {isBoardFull(grid).toString()}
+        </span>
+        <span className='split'>--</span>
+        <span className={isBoardValid(grid) ? 'green' : 'red'}>
+          isBoardValid? {isBoardValid(grid).toString()}
+        </span>
+        <span className='split'>--</span>
+        <span className={solveableStatus === 'checking' ? 'yellow' : (solveableStatus === 'yes' ? 'green' : 'red')}>
+          isBoardSolvable? {solveableStatus === 'checking' ? 'Checking...' : solveableStatus}
+        </span>
+      </div>
+    </>)
+  }
+
   const gameStateHeader = () => {
     const winner = (isGameOver(grid)
       && isBoardValid(grid)
@@ -305,7 +329,31 @@ export default function Sudoku() {
     );
   };
 
+  type DupeParams = {
+    type: 'Column' | 'Row' | 'Box';
+    num: number;
+    index: number;
+  }
+  const dupeText = ({type, num, index}: DupeParams) => {
+    return (<>
+      The number <b>{num}</b> appears more than once in <b>{type} {index+1}</b>.
+    </>);
+  };
+
   const validationStateDisplay = () => {
+    const boardvalidity = getBoardValidity(grid);
+    console.log('Board is invalid due to duplicity errors:', boardvalidity);
+    if (!boardvalidity.valid) {
+      return (
+        <div className="validity-failures">
+          <h4>Board State Errors:</h4>
+          {boardvalidity.rowDupes.map(r => dupeText({type: 'Row', num: r.number, index: r.row}))}
+          {boardvalidity.colDupes.map(r => dupeText({type: 'Column', num: r.number, index: r.col}))}
+          {boardvalidity.boxDupes.map(b => dupeText({type: 'Box', num: b.number, index: b.boxRow * 3 + b.boxCol}))}
+        </div>
+      );
+    }
+
     if (!validityFailures) { return null; }
     if (
       (validityFailures.rows.length ?? 0) === 0
@@ -317,7 +365,7 @@ export default function Sudoku() {
 
     return (
       <div className="validity-failures">
-        <h4>Board State Failures:</h4>
+        <h4>Board State Errors:</h4>
         {(validityFailures?.rows.length ?? 0) > 0 && (<>
           {noLongerUseHtml1({type: 'rows', fails: validityFailures?.rows??[]})}
         </>)}
@@ -388,26 +436,10 @@ export default function Sudoku() {
         You and a simple bot take turns filling out the grid using the standard sudoku rules.
         Click a cell to select it, then choose a number from the selector. The bot will automatically
         fill in a random valid number in an empty cell on its turn. Try to keep the board valid
-        and solvable to win!
+        and solvable as you add more numbers. Completely fill the board to win!
       </p>
 
-      <div className='board-state-dump'>
-        <span className={isPlayerTurn ? 'green' : 'red'}>
-          isPlayerTurn? {isPlayerTurn.toString()}
-        </span>
-        <span className='split'>--</span>
-        <span className={isBoardFull(grid) ? 'green' : 'red'}>
-          isBoardFull? {isBoardFull(grid).toString()}
-        </span>
-        <span className='split'>--</span>
-        <span className={isBoardValid(grid) ? 'green' : 'red'}>
-          isBoardValid? {isBoardValid(grid).toString()}
-        </span>
-        <span className='split'>--</span>
-        <span className={solveableStatus === 'checking' ? 'yellow' : (solveableStatus === 'yes' ? 'green' : 'red')}>
-          isBoardSolvable? {solveableStatus === 'checking' ? 'Checking...' : solveableStatus}
-        </span>
-      </div>
+      {boardStateDebuggerView(debug)}
 
       {gameStateHeader()}
 
@@ -423,6 +455,7 @@ export default function Sudoku() {
           botDesiredChoice={null}
           selectedCell={selectedCell}
           handleCellClick={handleCellClick}
+          boardValidity={getBoardValidity(grid)}
         />
 
         {selectedCell && (
