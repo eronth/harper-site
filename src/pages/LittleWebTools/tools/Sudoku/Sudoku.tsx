@@ -38,7 +38,7 @@ interface SelectedCell {
 
 export default function Sudoku() {
   const allNums = useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9], []);
-  const debug = true;
+  const debug = false;
 
   /// -- Initializing board state on load. --
   const [solveableStatus, setSolveableStatus] = useState<'yes' | 'no' | 'checking'>('yes');
@@ -141,9 +141,6 @@ export default function Sudoku() {
       updateGameCellWithValue(selectedCell.row, selectedCell.col, num);
       setLastPlayerMove({ row: selectedCell.row, col: selectedCell.col, num: num as number });
       onTurnEnd();
-      setTimeout(() => {
-        botTurn(grid);
-      }, 300);
     }
   }
 
@@ -282,24 +279,21 @@ export default function Sudoku() {
   // Triggers when we need to check solveability.
   useEffect(() => {
     if (solveableStatus === 'checking') {
-      // Simulate checking solveability
       const solvable = isBoardSolvable(grid, setValidityFailures);
       setSolveableStatus(solvable ? 'yes' : 'no');
-      //setCheckingSolvability(false);
     }
   }, [solveableStatus, grid]);
 
-  // Triggers whenever the player turn ends to let the bot act.
-  // useEffect(() => {
-  //   if (!isPlayerTurn) {
-  //     // After player turn, let bot play
-  //     // Simulate a short delay for bot "thinking"
-  //     setTimeout(() => {
-  //       botTurn(grid);
-  //       //setIsPlayerTurn(true);
-  //     }, 300);
-  //   }
-  // }, [botTurn, grid, isPlayerTurn]);
+  // Automatically trigger bot turn when it's the bot's turn
+  useEffect(() => {
+    if (!isPlayerTurn && !isGameOver(grid)) {
+      const timeoutId = setTimeout(() => {
+        botTurn(grid);
+      }, 500); // Small delay so user can see their move before bot goes
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isPlayerTurn, grid, botTurn]);
 
 
 
@@ -369,14 +363,14 @@ export default function Sudoku() {
 
   const validationStateDisplay = () => {
     const boardvalidity = getBoardValidity(grid);
-    console.log('Board is invalid due to duplicity errors:', boardvalidity);
     if (!boardvalidity.valid) {
+      console.log('Board is invalid due to duplicity errors:', boardvalidity);
       return (
         <div className="validity-failures">
           <h4>Board State Errors:</h4>
-          {boardvalidity.rowDupes.map(r => dupeText({type: 'Row', num: r.number, index: r.row}))}
-          {boardvalidity.colDupes.map(r => dupeText({type: 'Column', num: r.number, index: r.col}))}
-          {boardvalidity.boxDupes.map(b => dupeText({type: 'Box', num: b.number, index: b.boxRow * 3 + b.boxCol}))}
+          {boardvalidity.rowDupes.map((r, i) => <div key={i}>{dupeText({type: 'Row', num: r.number, index: r.row})}</div>)}
+          {boardvalidity.colDupes.map((c, i) => <div key={i}>{dupeText({type: 'Column', num: c.number, index: c.col})}</div>)}
+          {boardvalidity.boxDupes.map((b, i) => <div key={i}>{dupeText({type: 'Box', num: b.number, index: b.boxRow * 3 + b.boxCol})}</div>)}
         </div>
       );
     }
@@ -515,10 +509,7 @@ export default function Sudoku() {
       </div>
 
       <div className="sudoku-controls">
-        {debug ? <button onClick={() => {
-          setIsPlayerTurn(false);
-          botTurn(grid);
-        }}>
+        {debug ? <button onClick={() => { botTurn(grid); }}>
           Make Bot Go
         </button> : null}
         {/* <button className="tool-button" onClick={testBotsDesiredTurn}>
