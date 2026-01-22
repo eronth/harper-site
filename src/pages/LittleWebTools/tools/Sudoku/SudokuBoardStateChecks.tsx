@@ -77,8 +77,7 @@ type TrySolveResult = {
   solvable: boolean;
   failures: SudokuValidityFailures;
 };
-function trySolveBoard(gridToCheck: SudokuGridType): TrySolveResult {
-
+function trySolveBoard(gridToCheck: SudokuGridType, print: boolean = false): TrySolveResult {
   const trySolveResult: TrySolveResult = {
     solvable: true,
     failures: { rows: [], cols: [], boxes: [], other: [] },
@@ -116,8 +115,8 @@ function trySolveBoard(gridToCheck: SudokuGridType): TrySolveResult {
   }
 
   if (!trySolveResult.solvable) { return trySolveResult; }
-
-  const fullCanSolve = trySolveBoardFull(grid);
+  
+  const fullCanSolve = trySolveBoardFull(grid, print);
   if (!fullCanSolve) {
     trySolveResult.solvable = false;
     trySolveResult.failures.other.push('Full board solve failed');
@@ -197,7 +196,7 @@ function missingNumbers(seen: Set<number>): number[] {
   return missing;
 }
 
-function trySolveBoardFull(grid: SudokuGridType): boolean {
+function trySolveBoardFull(grid: SudokuGridType, print: boolean = false): boolean {
   // Backtracking solver
   for (let row = 0; row < 9; row++) {
     for (let col = 0; col < 9; col++) {
@@ -226,7 +225,7 @@ function trySolveBoardFull(grid: SudokuGridType): boolean {
           }
           if (canPlace) {
             grid[row][col].value = num;
-            if (trySolveBoardFull(grid)) {
+            if (trySolveBoardFull(grid, print)) {
               return true;
             }
             grid[row][col].value = null; // Backtrack
@@ -236,18 +235,30 @@ function trySolveBoardFull(grid: SudokuGridType): boolean {
       }
     }
   }
+  // Print grid real quick
+  if (print) {
+    console.log('Solved grid:');
+    console.log(turnGridToSudokuFormat(grid));
+  }
   return true; // Solved
+}
+
+function turnGridToSudokuFormat(grid: SudokuGridType): string {
+  const niceGrid: number[][] = grid.map(row => row.map(cell => cell.value || 0));
+  return niceGrid.map(row => row.join(' ')).join('\n');
 }
 
 export function isBoardSolvable(
   grid: SudokuGridType,
-  setFailures: React.Dispatch<React.SetStateAction<SudokuValidityFailures | null>>
+  setFailures: React.Dispatch<React.SetStateAction<SudokuValidityFailures | null>>,
+  print: boolean = false,
 ): boolean {
   if (!isBoardValid(grid)) { return false; }
   if (isBoardFull(grid)) { return true; }
   if (boardFillCount(grid) <= 4) { return true; }
+
   // Try to solve board and see if it works.
-  const solveResult = trySolveBoard(grid);
+  const solveResult = trySolveBoard(grid, print);
   if (!solveResult.solvable) {
     setFailures?.(solveResult.failures);
     return false;
@@ -260,6 +271,6 @@ export function isGameOver(grid: SudokuGridType): boolean {
   return (
     isBoardFull(grid)
     || !isBoardValid(grid)
-    || !isBoardSolvable(grid, () => {})
+    || !isBoardSolvable(grid, () => {}, false)
   );
 }

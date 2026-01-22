@@ -162,16 +162,17 @@ export default function Sudoku() {
   }, []);
 
   type TryBotOptionsParams = {
-    testGrid: SudokuGridType;
+    targetGrid: SudokuGridType;
     emptyCells: EmptyCell[];
   };
   type TryBotChoice = {
     chosenCell: EmptyCell, chosenValue: number
   };
   const tryBotOptions = useCallback(({
-    testGrid,
+    targetGrid,
     emptyCells,
   }: TryBotOptionsParams): TryBotChoice | null => {
+    let testGrid = deepCopyGrid(targetGrid);
     while (emptyCells.length > 0) {
       const randomCellIndex = Math.floor(Math.random() * emptyCells.length);
       const randomCell: EmptyCell = emptyCells[randomCellIndex];
@@ -179,11 +180,11 @@ export default function Sudoku() {
       const randomOption: number = randomCell.validOptions[randomOptionIndex];
 
       console.log(`Can still try ${emptyCells.length} cells:`, emptyCells);
-      console.log(`The bot is trying the move: ${randomCell} with ${randomOption}`);
+      console.log(`The bot is trying to put ${randomOption} at cell:`, randomCell);
 
       // Test the random option on the testGrid.
-      updateGridCellWithValue(testGrid, { row: randomCell.row, col: randomCell.col, num: randomOption });
-      const isSolveable = isBoardSolvable(testGrid, () => { });
+      const resultGrid = updateGridCellWithValue(testGrid, { row: randomCell.row, col: randomCell.col, num: randomOption });
+      const isSolveable = isBoardSolvable(resultGrid, () => { });
 
       if (isSolveable) {
         // If solveable, commit the move.
@@ -199,11 +200,11 @@ export default function Sudoku() {
           emptyCells.splice(randomCellIndex, 1);
         }
         // Reset testGrid
-        testGrid = deepCopyGrid(grid);
+        testGrid = deepCopyGrid(targetGrid);
       }
     };
     return null;
-  }, [grid, updateGridCellWithValue]);
+  }, [updateGridCellWithValue]);
 
   const commitBotChoice = useCallback((chosenCell: EmptyCell, value: number) => {
     updateGameCellWithValue(chosenCell.row, chosenCell.col, value);
@@ -220,7 +221,7 @@ export default function Sudoku() {
     console.log('Bot found empty cells:', emptyCells);
     
     if (emptyCells.length > 0) {
-      const choice = tryBotOptions({ testGrid, emptyCells });
+      const choice = tryBotOptions({ targetGrid: testGrid, emptyCells });
       if (choice) {
         setBotChoice(choice);
       } else {
@@ -234,6 +235,31 @@ export default function Sudoku() {
 
     onTurnEnd();
   }, [getEmptyCells, onTurnEnd, tryBotOptions]);
+
+  const testBotsDesiredTurn = useCallback(() => {
+    console.log('===================================');
+    if (!botChoice) {
+      console.log('No bot choice to test.');
+      console.log('===================================');
+      return;
+    } else {
+      console.log('Testing bot choice:', botChoice);
+      console.log(`Placing the number ${botChoice.chosenValue} at cell (Row: ${botChoice.chosenCell.row+1}, Column: ${botChoice.chosenCell.col+1})`);
+    }
+    const initialGrid = deepCopyGrid(grid);
+    const solv1 = isBoardSolvable(initialGrid, () => { }, true);
+    const resultGrid = updateGridCellWithValue(initialGrid, {
+      row: botChoice.chosenCell.row,
+      col: botChoice.chosenCell.col,
+      num: botChoice.chosenValue
+    });
+    const solv2 = isBoardSolvable(resultGrid, () => { }, true);
+
+    console.log(`Testing bot's desired turn: Cell(${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}`);
+    console.log(`Board solvability before move: ${solv1}, after move: ${solv2}`);
+    console.log('===================================');
+
+  }, [botChoice, grid, updateGridCellWithValue]);
 
 
 
@@ -365,6 +391,7 @@ export default function Sudoku() {
           validityFailures={validityFailures}
           lastBotMove={lastBotMove}
           lastPlayerMove={lastPlayerMove}
+          botDesiredChoice={botChoice}
           selectedCell={selectedCell}
           handleCellClick={handleCellClick}
         />
@@ -403,13 +430,16 @@ export default function Sudoku() {
         }}>
           Make Bot Go
         </button>
+        <button className="tool-button" onClick={testBotsDesiredTurn}>
+          Test Bot's Desired Turn: {botChoice ? ` Cell (${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}` : 'No Choice Yet'}
+        </button>
         <button className="tool-button" onClick={() => {
           if (botChoice) {
             commitBotChoice(botChoice.chosenCell, botChoice.chosenValue);
             setBotChoice(null);
           }
         }}>
-          Commit Bot Choice: {botChoice ? ` Cell(${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}` : 'No Choice Yet'}
+          Commit Bot Choice: {botChoice ? ` Cell (${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}` : 'No Choice Yet'}
         </button>
         <button className="tool-button" onClick={handleResetGame}>
           Reset Game
