@@ -171,7 +171,6 @@ function flashCheckRowIsPossible(grid: SudokuGridType, row: number): Possibility
   if (seen.size === 9) {
     return { possible: true, missingValues: [] };
   } else {
-    console.log('Row', row, 'is NOT possible with seen:', seen);
     return { possible: false, missingValues: missingNumbers(seen) };
   }
 }
@@ -185,7 +184,6 @@ function flashCheckColIsPossible(grid: SudokuGridType, col: number): Possibility
   if (seen.size === 9) {
     return { possible: true, missingValues: [] };
   } else {
-    console.log('Col', col, 'is NOT possible with seen:', seen); 
     return { possible: false, missingValues: missingNumbers(seen) };
   }
 }
@@ -203,7 +201,6 @@ function flashCheckBoxIsPossible(grid: SudokuGridType, boxRow: number, boxCol: n
   if (seen.size === 9) {
     return { possible: true, missingValues: [] };
   } else {
-    console.log('Box', boxRow, boxCol, 'is NOT possible with seen:', seen);
     return { possible: false, missingValues: missingNumbers(seen) };
   }
 }

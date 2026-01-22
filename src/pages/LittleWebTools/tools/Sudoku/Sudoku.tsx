@@ -8,11 +8,11 @@ import SudokuGrid from './SudokuGrid/SudokuGrid';
 
 
 
-type fff = {
+type RowColumnFailure = {
   index: number;
   missingValues: number[];
 };
-type f2 = {
+type BoxFailure = {
   boxRow: number;
   boxCol: number;
   missingValues: number[];
@@ -25,9 +25,9 @@ export type SudokuMove = {
 };
 
 export type SudokuValidityFailures = {
-  rows: fff[];
-  cols: fff[];
-  boxes: f2[];
+  rows: RowColumnFailure[];
+  cols: RowColumnFailure[];
+  boxes: BoxFailure[];
   other: string[];
 };
 
@@ -36,8 +36,11 @@ interface SelectedCell {
   col: number;
 }
 
+const GRID_SIZE = 9;
+const BOX_SIZE = 3;
+
 export default function Sudoku() {
-  const allNums = useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9], []);
+  const allNums = useMemo(() => Array.from({ length: GRID_SIZE }, (_, i) => i + 1), []);
   const debug = false;
 
   /// -- Initializing board state on load. --
@@ -62,7 +65,7 @@ export default function Sudoku() {
       )
     );
     // update all items in the same row, column, and box to remove this number from validOptions
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < GRID_SIZE; i++) {
       // Row
       if (newGrid[row][i].value === null) {
         newGrid[row][i].validOptions = newGrid[row][i].validOptions.filter(n => n !== num);
@@ -73,10 +76,10 @@ export default function Sudoku() {
       }
     }
     // Box
-    const boxStartRow = Math.floor(row / 3) * 3;
-    const boxStartCol = Math.floor(col / 3) * 3;
-    for (let r = boxStartRow; r < boxStartRow + 3; r++) {
-      for (let c = boxStartCol; c < boxStartCol + 3; c++) {
+    const boxStartRow = Math.floor(row / BOX_SIZE) * BOX_SIZE;
+    const boxStartCol = Math.floor(col / BOX_SIZE) * BOX_SIZE;
+    for (let r = boxStartRow; r < boxStartRow + BOX_SIZE; r++) {
+      for (let c = boxStartCol; c < boxStartCol + BOX_SIZE; c++) {
         if (newGrid[r][c].value === null) {
           newGrid[r][c].validOptions = newGrid[r][c].validOptions.filter(n => n !== num);
         }
@@ -92,7 +95,7 @@ export default function Sudoku() {
   }, [updateGridCellWithValue]);
   const createStartingGrid = useCallback((): SudokuGridType => {
     // First create a blank grid.
-    const blankGrid =  Array(9).fill(null).map(() => Array(9).fill(null).map(() => ({ value: null, validOptions: [...allNums] })));
+    const blankGrid =  Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(null).map(() => ({ value: null, validOptions: [...allNums] })));
     const sudoGrid = updateGridWithValues(blankGrid, [
       { row: 0, col: 0, num: 1 },
       { row: 1, col: 1, num: 2 },
@@ -195,20 +198,15 @@ export default function Sudoku() {
       const randomOptionIndex = Math.floor(Math.random() * randomCell.validOptions.length);
       const randomOption: number = randomCell.validOptions[randomOptionIndex];
 
-      console.log(`Can still try ${emptyCells.length} cells:`, emptyCells);
-      console.log(`The bot is trying to put ${randomOption} at cell:`, randomCell);
-
       // Test the random option on the testGrid.
       const resultGrid = updateGridCellWithValue(testGrid, { row: randomCell.row, col: randomCell.col, num: randomOption });
       const isSolveable = isBoardSolvable(resultGrid, () => { });
 
       if (isSolveable) {
         // If solveable, commit the move.
-        console.log('The bot found a valid move:', randomCell, randomOption);
         return { chosenCell: randomCell, chosenValue: randomOption };
 
       } else {
-        console.log('The bot move was invalid, trying again.');
         // Remove this option from validOptions and try again
         randomCell.validOptions = randomCell.validOptions.filter(n => n !== randomOption);
         if (randomCell.validOptions.length === 0) {
@@ -227,61 +225,21 @@ export default function Sudoku() {
     setLastBotMove({ row: chosenCell.row, col: chosenCell.col, num: value });
   }, [updateGameCellWithValue]);
 
-  // const [botChoice, setBotChoice] = useState<TryBotChoice | null>(null);
-
   const botTurn = useCallback((targetGrid: SudokuGridType) => {
     if (isGameOver(targetGrid)) { return; }
     
-    console.log('Bot turn starting...');
     const testGrid = deepCopyGrid(targetGrid);
-    console.log('Bot test grid:', testGrid);
     const emptyCells: EmptyCell[] = getEmptyCells(testGrid);
-    console.log('Bot found empty cells:', emptyCells);
     
     if (emptyCells.length > 0) {
       const choice = tryBotOptions({ targetGrid: testGrid, emptyCells });
       if (choice) {
         commitBotChoice(choice.chosenCell, choice.chosenValue);
-        //setBotChoice(choice);
-      } else {
-        // No valid moves found
-        console.log('Bot could not find any valid moves.');
       }
-    } else {
-      // No valid moves left for bot
-      console.log('Bot has no valid moves left.');
     }
 
     onTurnEnd(true); // Skip solveability check since bot already validated before moving
   }, [getEmptyCells, commitBotChoice, onTurnEnd, tryBotOptions]);
-
-  // const testBotsDesiredTurn = useCallback(() => {
-  //   console.log('===================================');
-  //   if (!botChoice) {
-  //     console.log('No bot choice to test.');
-  //     console.log('===================================');
-  //     return;
-  //   } else {
-  //     console.log('Testing bot choice:', botChoice);
-  //     console.log(`Placing the number ${botChoice.chosenValue} at cell (Row: ${botChoice.chosenCell.row+1}, Column: ${botChoice.chosenCell.col+1})`);
-  //   }
-  //   const initialGrid = deepCopyGrid(grid);
-  //   const solv1 = isBoardSolvable(initialGrid, () => { }, true);
-  //   const resultGrid = updateGridCellWithValue(initialGrid, {
-  //     row: botChoice.chosenCell.row,
-  //     col: botChoice.chosenCell.col,
-  //     num: botChoice.chosenValue
-  //   });
-  //   const solv2 = isBoardSolvable(resultGrid, () => { }, true);
-
-  //   console.log(`Testing bot's desired turn: Cell(${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}`);
-  //   console.log(`Board solvability before move: ${solv1}, after move: ${solv2}`);
-  //   console.log('===================================');
-
-  // }, [botChoice, grid, updateGridCellWithValue]);
-
-
-
 
   /// --- Board State Checks ---
   const checkIfBoardIsSolvable = () => { setSolveableStatus('checking'); };
@@ -389,7 +347,6 @@ export default function Sudoku() {
   const validationStateDisplay = () => {
     const boardvalidity = getBoardValidity(grid);
     if (!boardvalidity.valid) {
-      console.log('Board is invalid due to duplicity errors:', boardvalidity);
       return (
         <div className="validity-failures">
           <h4>Board State Errors:</h4>
@@ -412,68 +369,39 @@ export default function Sudoku() {
     return (
       <div className="validity-failures">
         <h4>Board State Errors:</h4>
-        {(validityFailures?.rows.length ?? 0) > 0 && (<>
-          {noLongerUseHtml1({type: 'rows', fails: validityFailures?.rows??[]})}
-        </>)}
-
-        {(validityFailures?.cols.length ?? 0) > 0 && (<>
-          {noLongerUseHtml1({type: 'cols', fails: validityFailures?.cols??[]})}
-        </>)}
-
-        {(validityFailures?.boxes.length ?? 0) > 0 && (<>
-          {noLongerUseHtml2({type: 'boxes', fails: validityFailures?.boxes??[]})}
-        </>)}
+        {(validityFailures?.rows.length ?? 0) > 0 && renderFailures('rows', validityFailures.rows)}
+        {(validityFailures?.cols.length ?? 0) > 0 && renderFailures('cols', validityFailures.cols)}
+        {(validityFailures?.boxes.length ?? 0) > 0 && renderFailures('boxes', validityFailures.boxes)}
       </div>
     );
   }
 
-  type RenderParams1 = {
-    type: 'cols' | 'rows';
-    fails: fff[];
-  };
-  const noLongerUseHtml1 = ({type, fails}: RenderParams1) => {
+  const renderFailures = (
+    type: 'cols' | 'rows' | 'boxes',
+    fails: RowColumnFailure[] | BoxFailure[]
+  ) => {
     return (<>
-      {(fails).map((fail, index) => (
-        <div key={index}>
-          You can no longer play the
-          number {fail.missingValues.length !== 1 ? 's' : ''} <b>
-            {fail.missingValues.join(', ')}
-          </b> in <b>{dispText({type, fail})}</b>.
-        </div>
-        ))}
+      {fails.map((fail, index) => {
+        let location = '';
+        if (type === 'rows' || type === 'cols') {
+          const f = fail as RowColumnFailure;
+          location = type === 'rows' ? `Row ${f.index+1}` : `Column ${f.index+1}`;
+        } else {
+          const f = fail as BoxFailure;
+          location = `Box (Row: ${f.boxRow+1}, Column: ${f.boxCol+1})`;
+        }
+        
+        return (
+          <div key={index}>
+            You can no longer play the
+            number{fail.missingValues.length !== 1 ? 's' : ''} <b>
+              {fail.missingValues.join(', ')}
+            </b> in <b>{location}</b>.
+          </div>
+        );
+      })}
     </>);
   }
-  type RenderParams2 = {
-    type: 'boxes';
-    fails: f2[];
-  };
-  const noLongerUseHtml2 = ({type, fails}: RenderParams2) => {
-    return (<>
-      {(fails).map((fail, index) => (
-        <div key={index}>
-          You can no longer play the
-          number {fail.missingValues.length !== 1 ? 's' : ''} <b>
-            {fail.missingValues.join(', ')}
-          </b> in <b>{dispText({type, fail})}</b>.
-        </div>
-        ))}
-    </>);
-  }
-  type RendTextParams = {
-    type: 'cols' | 'rows';
-    fail: fff;
-  } | {
-    type: 'boxes';
-    fail: f2;
-  };
-  const dispText = ({type, fail}: RendTextParams) => {
-    switch(type) {
-      case 'rows': return `Row ${fail.index+1}`;
-      case 'cols': return `Column ${fail.index+1}`;
-      case 'boxes': return `Box (Row: ${fail.boxRow+1}, Column: ${fail.boxCol+1})`;
-    };
-    return 'SOMETHING WRONG';
-  };
 
   return (
     <WebTool css="sudoku-tool">
@@ -500,8 +428,6 @@ export default function Sudoku() {
           validityFailures={validityFailures}
           lastBotMove={lastBotMove}
           lastPlayerMove={lastPlayerMove}
-          // botDesiredChoice={botChoice}
-          botDesiredChoice={null}
           selectedCell={selectedCell}
           handleCellClick={handleCellClick}
           boardValidity={getBoardValidity(grid)}
@@ -515,7 +441,7 @@ export default function Sudoku() {
             <div className="number-selector" onClick={(e) => e.stopPropagation()}>
               <h4>Select Number</h4>
               <div className="number-grid">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+                {allNums.map((num) => (
                   <button
                     key={num}
                     className="number-button"

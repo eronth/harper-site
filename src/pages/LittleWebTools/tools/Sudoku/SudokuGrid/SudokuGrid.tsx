@@ -14,13 +14,16 @@ type Props = {
   validityFailures: SudokuValidityFailures | null;
   lastBotMove: SudokuMove | null;
   lastPlayerMove: SudokuMove | null;
-  botDesiredChoice: { chosenCell: { row: number; col: number }; chosenValue: number } | null;
   selectedCell: { row: number; col: number } | null;
   handleCellClick: (row: number, col: number) => void;
   boardValidity: ValidBoardResult | null;
   showHints?: boolean;
   isPlayerTurn: boolean;
   overlayMessage?: string | null;
+  botDesiredChoice?: {
+    chosenCell: { row: number; col: number };
+    chosenNumber: number;
+  } | null;
 };
 
 export default function SudokuGrid({
@@ -28,27 +31,28 @@ export default function SudokuGrid({
   validityFailures,
   lastBotMove,
   lastPlayerMove,
-  botDesiredChoice,
   selectedCell,
   handleCellClick,
   boardValidity,
   showHints = false,
   isPlayerTurn,
   overlayMessage = null,
+  botDesiredChoice = null,  
 }: Props) {
-
+  const GRID_SIZE = 9;
+  const BOX_SIZE = 3;
 
   // TODO replace this with smart CSS
   function getBorderClass(row: number, col: number): string {
     const classes: string[] = [];
     
     // Right border for 3x3 boxes
-    if (col === 2 || col === 5) {
+    if (col === BOX_SIZE - 1 || col === (BOX_SIZE * 2) - 1) {
       classes.push('border-right-thick');
     }
     
     // Bottom border for 3x3 boxes
-    if (row === 2 || row === 5) {
+    if (row === BOX_SIZE - 1 || row === (BOX_SIZE * 2) - 1) {
       classes.push('border-bottom-thick');
     }
     
@@ -68,24 +72,24 @@ export default function SudokuGrid({
     if (!boardValidity) { return cellsToMark; }
 
     for (const rowDupe of boardValidity.rowDupes) {
-      for (let col = 0; col < 9; col++) {
+      for (let col = 0; col < GRID_SIZE; col++) {
         if (grid[rowDupe.row][col].value === rowDupe.number) {
           cellsToMark.push({ row: rowDupe.row, col });
         }
       }
     }
     for (const colDupe of boardValidity.colDupes) {
-      for (let row = 0; row < 9; row++) {
+      for (let row = 0; row < GRID_SIZE; row++) {
         if (grid[row][colDupe.col].value === colDupe.number) {
           cellsToMark.push({ row, col: colDupe.col });
         }
       }
     }
     for (const boxDupe of boardValidity.boxDupes) {
-      const startRow = boxDupe.boxRow * 3;
-      const startCol = boxDupe.boxCol * 3;
-      for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
+      const startRow = boxDupe.boxRow * BOX_SIZE;
+      const startCol = boxDupe.boxCol * BOX_SIZE;
+      for (let i = 0; i < BOX_SIZE; i++) {
+        for (let j = 0; j < BOX_SIZE; j++) {
           const row = startRow + i;
           const col = startCol + j;
           if (grid[row][col].value === boxDupe.number) {
@@ -108,8 +112,8 @@ export default function SudokuGrid({
 
     const isFailedRow = validityFailures?.rows.some(r => r.index === rowIdx);
     const isFailedCol = validityFailures?.cols.some(c => c.index === colIdx);
-    const boxRow = Math.floor(rowIdx / 3);
-    const boxCol = Math.floor(colIdx / 3);
+    const boxRow = Math.floor(rowIdx / BOX_SIZE);
+    const boxCol = Math.floor(colIdx / BOX_SIZE);
     const isFailedBox = validityFailures?.boxes.some(b => b.boxRow === boxRow && b.boxCol === boxCol);
     const isFailedCell = isFailedRow || isFailedCol || isFailedBox;
     
@@ -157,7 +161,7 @@ export default function SudokuGrid({
               <span>{cell.value}</span>
             ) : (
               <div className="valid-options-grid">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+                {Array.from({ length: GRID_SIZE }, (_, i) => i + 1).map((num) => (
                   <span
                     key={num}
                     className={`option-number ${
