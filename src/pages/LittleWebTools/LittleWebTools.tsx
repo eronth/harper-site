@@ -64,8 +64,8 @@ const tools: Tool[] = [
   },
   {
     id: 'sudoku',
-    name: 'Sudoku',
-    description: 'Play Sudoku or create your own puzzles with an interactive grid',
+    name: 'Pseudosudoku',
+    description: 'Play Pseudosudoku where you and a bot try to fill a board.',
     component: Sudoku,
   }
 ];

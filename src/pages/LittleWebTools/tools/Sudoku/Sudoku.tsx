@@ -38,7 +38,7 @@ interface SelectedCell {
 
 export default function Sudoku() {
   const allNums = useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9], []);
-  const debug = true;
+  const debug = false;
 
   /// -- Initializing board state on load. --
   const [solveableStatus, setSolveableStatus] = useState<'yes' | 'no' | 'checking'>('yes');
@@ -477,12 +477,15 @@ export default function Sudoku() {
 
   return (
     <WebTool css="sudoku-tool">
-      <h3>Sudoku</h3>
+      <h3>Pseudosudoku</h3>
       <p className="description-text">
         You and a simple bot take turns filling out the grid using the standard sudoku rules.
         Click a cell to select it, then choose a number from the selector. The bot will automatically
         fill in a random valid number in an empty cell on its turn. Try to keep the board valid
         and solvable as you add more numbers. Completely fill the board to win!
+      </p>
+      <p>
+        Note: Sometimes this gets really slow and laggy as the bot looks hard for validity.
       </p>
 
       {boardStateDebuggerView(debug)}
