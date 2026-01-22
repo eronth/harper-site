@@ -764,9 +764,9 @@ const recipes: Recipe[] = [
           ing(1/4, cup, 'white sugar'),
           ing(5, tbsp, 'cocoa powder'),
           ing(1, null, 'egg'),
-          ing(1, null, 'graham cracker crumbs'),
-          ing(1, null, 'coconut'),
-          ing(1, null, 'almonds')
+          ing(1.75, cup, 'graham cracker crumbs'),
+          ing(1, cup, 'flaked coconut'),
+          ing(.5, cup, 'chopped almonds', 'optional')
         ]
       }
     ],
