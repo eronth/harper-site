@@ -1,4 +1,5 @@
 import type { SudokuMove, SudokuValidityFailures } from "../Sudoku";
+import { isGameOver } from "../SudokuBoardStateChecks";
 import './SudokuGrid.css';
 
 export type SudokuCell = {
@@ -45,6 +46,13 @@ export default function SudokuGrid({
     return classes.join(' ');
   }
 
+  function disableGridButton(cell: SudokuCell): boolean {
+    if (cell.value !== null) { return true; }
+    if (isGameOver(grid)) { return true; }
+
+    return false;
+  }
+
   return <div className="sudoku-grid">
     {grid.map((row, rowIdx) => (
       <div key={rowIdx} className="row">
@@ -75,7 +83,7 @@ export default function SudokuGrid({
             key={`${rowIdx}-${colIdx}`}
             className={`cell ${turnCss} ${selectedCss} ${failedCss} ${choiceCss} ${getBorderClass(rowIdx, colIdx)}`}
             onClick={() => handleCellClick(rowIdx, colIdx)}
-            disabled={cell.value !== null}
+            disabled={disableGridButton(cell)}
           >
             {cell.value ? (
               <span>{cell.value}</span>

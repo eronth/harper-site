@@ -112,7 +112,7 @@ export default function Sudoku() {
   }, [updateGridCellWithValue]);
 
   const onTurnEnd = useCallback(() => {
-    //setIsPlayerTurn((prev) => !prev);
+    setIsPlayerTurn((prev) => !prev);
     checkIfBoardIsSolvable();
     setSelectedCell(null);
   }, []);
@@ -124,6 +124,7 @@ export default function Sudoku() {
     setSolveableStatus('yes');
     setLastBotMove(null);
     setLastPlayerMove(null);
+    setValidityFailures(null);
   }
 
 
@@ -211,9 +212,11 @@ export default function Sudoku() {
     setLastBotMove({ row: chosenCell.row, col: chosenCell.col, num: value });
   }, [updateGameCellWithValue]);
 
-  const [botChoice, setBotChoice] = useState<TryBotChoice | null>(null);
+  // const [botChoice, setBotChoice] = useState<TryBotChoice | null>(null);
 
   const botTurn = useCallback((targetGrid: SudokuGridType) => {
+    if (isGameOver(targetGrid)) { return; }
+    
     console.log('Bot turn starting...');
     const testGrid = deepCopyGrid(targetGrid);
     console.log('Bot test grid:', testGrid);
@@ -223,7 +226,8 @@ export default function Sudoku() {
     if (emptyCells.length > 0) {
       const choice = tryBotOptions({ targetGrid: testGrid, emptyCells });
       if (choice) {
-        setBotChoice(choice);
+        commitBotChoice(choice.chosenCell, choice.chosenValue);
+        //setBotChoice(choice);
       } else {
         // No valid moves found
         console.log('Bot could not find any valid moves.');
@@ -234,32 +238,32 @@ export default function Sudoku() {
     }
 
     onTurnEnd();
-  }, [getEmptyCells, onTurnEnd, tryBotOptions]);
+  }, [getEmptyCells, commitBotChoice, onTurnEnd, tryBotOptions]);
 
-  const testBotsDesiredTurn = useCallback(() => {
-    console.log('===================================');
-    if (!botChoice) {
-      console.log('No bot choice to test.');
-      console.log('===================================');
-      return;
-    } else {
-      console.log('Testing bot choice:', botChoice);
-      console.log(`Placing the number ${botChoice.chosenValue} at cell (Row: ${botChoice.chosenCell.row+1}, Column: ${botChoice.chosenCell.col+1})`);
-    }
-    const initialGrid = deepCopyGrid(grid);
-    const solv1 = isBoardSolvable(initialGrid, () => { }, true);
-    const resultGrid = updateGridCellWithValue(initialGrid, {
-      row: botChoice.chosenCell.row,
-      col: botChoice.chosenCell.col,
-      num: botChoice.chosenValue
-    });
-    const solv2 = isBoardSolvable(resultGrid, () => { }, true);
+  // const testBotsDesiredTurn = useCallback(() => {
+  //   console.log('===================================');
+  //   if (!botChoice) {
+  //     console.log('No bot choice to test.');
+  //     console.log('===================================');
+  //     return;
+  //   } else {
+  //     console.log('Testing bot choice:', botChoice);
+  //     console.log(`Placing the number ${botChoice.chosenValue} at cell (Row: ${botChoice.chosenCell.row+1}, Column: ${botChoice.chosenCell.col+1})`);
+  //   }
+  //   const initialGrid = deepCopyGrid(grid);
+  //   const solv1 = isBoardSolvable(initialGrid, () => { }, true);
+  //   const resultGrid = updateGridCellWithValue(initialGrid, {
+  //     row: botChoice.chosenCell.row,
+  //     col: botChoice.chosenCell.col,
+  //     num: botChoice.chosenValue
+  //   });
+  //   const solv2 = isBoardSolvable(resultGrid, () => { }, true);
 
-    console.log(`Testing bot's desired turn: Cell(${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}`);
-    console.log(`Board solvability before move: ${solv1}, after move: ${solv2}`);
-    console.log('===================================');
+  //   console.log(`Testing bot's desired turn: Cell(${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}`);
+  //   console.log(`Board solvability before move: ${solv1}, after move: ${solv2}`);
+  //   console.log('===================================');
 
-  }, [botChoice, grid, updateGridCellWithValue]);
+  // }, [botChoice, grid, updateGridCellWithValue]);
 
 
 
@@ -287,6 +291,47 @@ export default function Sudoku() {
   // }, [botTurn, isPlayerTurn]);
 
 
+  const gameStateHeader = () => {
+    const winner = (isGameOver(grid)
+      && isBoardValid(grid)
+      && isBoardFull(grid)
+    );
+    return (
+      <div className="game-state-header">
+        {isGameOver(grid)
+          ? (winner ? 'Success!' : 'Game Over!')
+          : 'Play On!'}
+      </div>
+    );
+  };
+
+  const validationStateDisplay = () => {
+    if (!validityFailures) { return null; }
+    if (
+      (validityFailures.rows.length ?? 0) === 0
+      && (validityFailures.cols.length ?? 0) === 0
+      && (validityFailures.boxes.length ?? 0) === 0
+    ) {
+      return null;
+    }
+
+    return (
+      <div className="validity-failures">
+        <h4>Board State Failures:</h4>
+        {(validityFailures?.rows.length ?? 0) > 0 && (<>
+          {noLongerUseHtml1({type: 'rows', fails: validityFailures?.rows??[]})}
+        </>)}
+
+        {(validityFailures?.cols.length ?? 0) > 0 && (<>
+          {noLongerUseHtml1({type: 'cols', fails: validityFailures?.cols??[]})}
+        </>)}
+
+        {(validityFailures?.boxes.length ?? 0) > 0 && (<>
+          {noLongerUseHtml2({type: 'boxes', fails: validityFailures?.boxes??[]})}
+        </>)}
+      </div>
+    );
+  }
 
   type RenderParams1 = {
     type: 'cols' | 'rows';
@@ -364,26 +409,9 @@ export default function Sudoku() {
         </span>
       </div>
 
-      <div>
-        Game {isGameOver(grid) ? 'Over!' : 'On!'}
-      </div>
+      {gameStateHeader()}
 
-
-      <div className="validity-failures">
-        <h4>Board State Failures:</h4>
-        {(validityFailures?.rows.length ?? 0) > 0 && (<>
-          {noLongerUseHtml1({type: 'rows', fails: validityFailures?.rows??[]})}
-        </>)}
-
-        {(validityFailures?.cols.length ?? 0) > 0 && (<>
-          {noLongerUseHtml1({type: 'cols', fails: validityFailures?.cols??[]})}
-        </>)}
-
-        {(validityFailures?.boxes.length ?? 0) > 0 && (<>
-          {noLongerUseHtml2({type: 'boxes', fails: validityFailures?.boxes??[]})}
-        </>)}
-      </div>
-
+      {validationStateDisplay()}
 
       <div className="sudoku-container">
         <SudokuGrid
@@ -391,7 +419,8 @@ export default function Sudoku() {
           validityFailures={validityFailures}
           lastBotMove={lastBotMove}
           lastPlayerMove={lastPlayerMove}
-          botDesiredChoice={botChoice}
+          // botDesiredChoice={botChoice}
+          botDesiredChoice={null}
           selectedCell={selectedCell}
           handleCellClick={handleCellClick}
         />
@@ -430,7 +459,7 @@ export default function Sudoku() {
         }}>
           Make Bot Go
         </button>
-        <button className="tool-button" onClick={testBotsDesiredTurn}>
+        {/* <button className="tool-button" onClick={testBotsDesiredTurn}>
           Test Bot's Desired Turn: {botChoice ? ` Cell (${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}` : 'No Choice Yet'}
         </button>
         <button className="tool-button" onClick={() => {
@@ -440,7 +469,7 @@ export default function Sudoku() {
           }
         }}>
           Commit Bot Choice: {botChoice ? ` Cell (${botChoice.chosenCell.row+1}, ${botChoice.chosenCell.col+1}) = ${botChoice.chosenValue}` : 'No Choice Yet'}
-        </button>
+        </button> */}
         <button className="tool-button" onClick={handleResetGame}>
           Reset Game
         </button>

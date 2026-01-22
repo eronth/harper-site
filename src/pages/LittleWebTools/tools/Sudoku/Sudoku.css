@@ -1,7 +1,13 @@
 .sudoku-tool {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.5rem;
+
+  .game-state-header {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: bold;
+  }
 
   h3 {
     margin: 0;
@@ -19,9 +25,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-    
-    
   }
   
   /* Number selector popup */
