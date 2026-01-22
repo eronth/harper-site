@@ -16,7 +16,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Color Variables */
-  --bg-card: light-dark(rgba(255, 255, 255, 0.95), rgba(45, 45, 45, 0.95));
+  --bg-card: light-dark(rgb(255 255 255 / 0.95), rgb(45 45 45 / 0.95));
   --bg-button: light-dark(#f0f0f0, #2d2d2d);
   --bg-button-hover: light-dark(#e0e0e0, #3a3a3a);
   
