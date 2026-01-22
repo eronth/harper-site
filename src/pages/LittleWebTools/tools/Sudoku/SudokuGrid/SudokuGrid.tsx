@@ -1,4 +1,5 @@
 import type { SudokuMove, SudokuValidityFailures } from "../Sudoku";
+import './SudokuGrid.css';
 
 export type SudokuCell = {
   value: number | null;
@@ -11,6 +12,7 @@ type Props = {
   validityFailures: SudokuValidityFailures | null;
   lastBotMove: SudokuMove | null;
   lastPlayerMove: SudokuMove | null;
+  botDesiredChoice: { chosenCell: { row: number; col: number }; chosenValue: number } | null;
   selectedCell: { row: number; col: number } | null;
   handleCellClick: (row: number, col: number) => void;
 };
@@ -20,6 +22,7 @@ export default function SudokuGrid({
   validityFailures,
   lastBotMove,
   lastPlayerMove,
+  botDesiredChoice,
   selectedCell,
   handleCellClick,
 }: Props) {
@@ -52,6 +55,10 @@ export default function SudokuGrid({
           const boxCol = Math.floor(colIdx / 3);
           const isFailedBox = validityFailures?.boxes.some(b => b.boxRow === boxRow && b.boxCol === boxCol);
           const isFailedCell = isFailedRow || isFailedCol || isFailedBox;
+          
+          const isDesiredChoice = botDesiredChoice
+            ? (botDesiredChoice.chosenCell.row === rowIdx && botDesiredChoice.chosenCell.col === colIdx)
+            : false;
 
           const failedCss = isFailedCell ? 'failed' : '';
           const turnCss = (lastBotMove?.row === rowIdx && lastBotMove?.col === colIdx)
@@ -62,10 +69,11 @@ export default function SudokuGrid({
           const selectedCss = (selectedCell?.row === rowIdx && selectedCell?.col === colIdx)
             ? 'selected'
             : '';
+          const choiceCss = isDesiredChoice ? 'desired-choice' : 'hm';
           return (
           <button
             key={`${rowIdx}-${colIdx}`}
-            className={`cell ${turnCss} ${selectedCss} ${failedCss} ${getBorderClass(rowIdx, colIdx)}`}
+            className={`cell ${turnCss} ${selectedCss} ${failedCss} ${choiceCss} ${getBorderClass(rowIdx, colIdx)}`}
             onClick={() => handleCellClick(rowIdx, colIdx)}
             disabled={cell.value !== null}
           >
