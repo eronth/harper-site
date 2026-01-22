@@ -38,7 +38,7 @@ interface SelectedCell {
 
 export default function Sudoku() {
   const allNums = useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9], []);
-  const debug = false;
+  const debug = true;
 
   /// -- Initializing board state on load. --
   const [solveableStatus, setSolveableStatus] = useState<'yes' | 'no' | 'checking'>('yes');
@@ -141,6 +141,9 @@ export default function Sudoku() {
       updateGameCellWithValue(selectedCell.row, selectedCell.col, num);
       setLastPlayerMove({ row: selectedCell.row, col: selectedCell.col, num: num as number });
       onTurnEnd();
+      setTimeout(() => {
+        botTurn(grid);
+      }, 300);
     }
   }
 
@@ -290,10 +293,13 @@ export default function Sudoku() {
   // useEffect(() => {
   //   if (!isPlayerTurn) {
   //     // After player turn, let bot play
-  //     botTurn();
-  //     //setIsPlayerTurn(true);
+  //     // Simulate a short delay for bot "thinking"
+  //     setTimeout(() => {
+  //       botTurn(grid);
+  //       //setIsPlayerTurn(true);
+  //     }, 300);
   //   }
-  // }, [botTurn, isPlayerTurn]);
+  // }, [botTurn, grid, isPlayerTurn]);
 
 
 
@@ -478,6 +484,7 @@ export default function Sudoku() {
           handleCellClick={handleCellClick}
           boardValidity={getBoardValidity(grid)}
           showHints={showHints}
+          isPlayerTurn={isPlayerTurn}
         />
 
         {selectedCell && (

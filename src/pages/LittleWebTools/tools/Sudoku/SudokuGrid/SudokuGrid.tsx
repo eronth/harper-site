@@ -19,6 +19,7 @@ type Props = {
   handleCellClick: (row: number, col: number) => void;
   boardValidity: ValidBoardResult | null;
   showHints?: boolean;
+  isPlayerTurn: boolean;
 };
 
 export default function SudokuGrid({
@@ -31,6 +32,7 @@ export default function SudokuGrid({
   handleCellClick,
   boardValidity,
   showHints = false,
+  isPlayerTurn,
 }: Props) {
 
 
@@ -54,6 +56,7 @@ export default function SudokuGrid({
   function disableGridButton(cell: SudokuCell): boolean {
     if (cell.value !== null) { return true; }
     if (isGameOver(grid)) { return true; }
+    if (!isPlayerTurn) { return true; }
 
     return false;
   }
