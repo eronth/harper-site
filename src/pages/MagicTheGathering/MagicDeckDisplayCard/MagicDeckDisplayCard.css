@@ -307,7 +307,7 @@
     }
   }
   
-  @media (min-width: 480px) {
+  @media (min-width: 520px) {
     .status-item {
       justify-content: center;
       gap: 0;
@@ -322,7 +322,7 @@
   }
 
   /* Mobile responsiveness */
-  @media (max-width: 480px) {
+  @media (max-width: 520px) {
     .deck-meta {
       grid-template-columns: 1fr;
       gap: 0.5rem;

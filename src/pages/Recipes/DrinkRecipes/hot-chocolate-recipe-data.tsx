@@ -9,6 +9,8 @@ type HotChocolateRecipe = Omit<DrinkRecipe, 'steps' | 'seasons'> & {
 };
 
 const cup: QuantityUnit = 'cup';
+const tsp: QuantityUnit = 'tsp';
+const tbsp: QuantityUnit = 'tbsp';
 
 const add = (
   quantity: number | [number, number] | null,
@@ -29,6 +31,7 @@ const baseHotChocolateIngredients: Ingredient[] = [
   add(1, cup, 'milk', 'we use 2% or 1%' ),
   add([2, 3], 'tbsp', '60% or 70% dark chocolate', '3 squares for a much thicker experience' ),
   add(1, 'tbsp', 'white chocolate' ),
+  add(1, 'scoop', 'hot chocolate powder', '(optional) we use a truffle powder.')
 ];
 const baseHotChocolateSteps: string[] = [
   'Prep all the ingredients ahead of time.',
@@ -85,7 +88,7 @@ const recipes: Recipe[] = [
         'A lovely and classic hot chocolate, perfect for sipping in'
         +' the winter lodge as snow falls.',
       ingredients: [
-        add(1, 'tbsp', 'maple syrup'),
+        add(1, tbsp, 'maple syrup'),
         add(1, 'splash', 'vanilla extract'),
         add(1, 'pinch', 'salt', 'as teeny as you can get' ),
       ],
@@ -93,6 +96,38 @@ const recipes: Recipe[] = [
         top('mini marshmallows'),
         top('Nutmeg', 'freshly grated'),
         top('Candy Cane', 'or peppermint extract'),
+      ],
+    }),
+  },
+  { // Warming Ginger Hot Chocolate
+    ...hotChocolate({
+      title: 'Warming Ginger Hot Chocolate',
+      description: 'The ginger adds a touch of warmth to the drink,'
+        +' making it perfect for cold winter days.',
+      ingredients: [
+        add(1, tsp, 'brown sugar'),
+        add(1/8, tsp, 'ground ginger'),
+        add(1, 'pinch', 'salt', 'as teeny as you can get' ),
+        add([.5, 1], tbsp, 'dark chocolate', '(optional for thicker drink)'),
+      ],
+      toppings: [
+        top('Cinnamon', 'freshly grated'),
+        top('Marshmallows'),
+      ],
+    }),
+  },
+  { // Mexican Spice
+    ...hotChocolate({
+      title: 'Mexican Spice Hot Chocolate',
+      description: '',
+      ingredients: [
+        add(2, tbsp, 'sugar'),
+        add(1/8, tsp, 'ancho chili powder'),
+        add(.5, tsp, 'ground cinnamon'),
+        add(1, tsp, 'vanilla'),
+      ],
+      toppings: [
+        top('Marshmallows'),
       ],
     }),
   }

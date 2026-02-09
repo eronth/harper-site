@@ -4,7 +4,7 @@ export type QuantityUnit = 'g' | 'kg'
 | 'ml' | 'l' 
 | 'cup' | 'gal' | 'quart'
 | 'tbsp' | 'tsp' | 'generous tbsp'
-| 'oz' | 'lb' 
+| 'oz' | 'lb' | 'scoop'
 | 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash' | 'splash' | 'clove'
 | 'strips' | 'bottle'
 | 'dashes' | 'bar spoon' | 'slices' | 'handfull';
