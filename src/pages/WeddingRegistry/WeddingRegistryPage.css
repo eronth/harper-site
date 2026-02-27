@@ -6,6 +6,22 @@
   position: relative;
   overflow: visible;
 
+  .name-transform {
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: fit-content;
+    margin: 0 auto 2rem;
+    padding: 0.5rem 1rem;
+    background-color: rgb(255 255 255 / 0.05);
+    .m {
+      color: maroon;
+    }
+    .n {
+      color: navy;
+    }
+
+  }
+
   h1 {
     color: var(--text-primary);
     margin-bottom: 2rem;

@@ -60,6 +60,16 @@ const WeddingRegistry: React.FC = () => {
   return (
     <Page>
       <div className="registry-container">
+        <div className='name-transform'>
+          <span className='n'>Leslie</span>
+          <span className='n'>Har</span>
+          <span className='n'>gus</span>
+          <br />
+          <span>and</span>
+          <span className='m'>Nic</span>
+          <span className='m'>Per</span>
+          <span className='m'>eira</span>
+        </div>
         <h1 className="sparkle-title">
           <span className="sparkle">✨</span>
           Wedding Registry
