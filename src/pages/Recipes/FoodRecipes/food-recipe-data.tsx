@@ -1995,7 +1995,227 @@ const recipes: Recipe[] = [
         'Place on medium-hot grill. Occasionally turn/brush with more sauce until done.',
       ]
     })
+  },
+  { // Sweet Hot Mustard Chicken
+    title: 'Sweet Hot Mustard Chicken',
+    category: dinner,
+    seasons: [],
+    ingredientsLists: [{
+      title: 'Base',
+      ingredients: [
+        ing(3, null, 'chicken thighs/breasts'),
+        ing(0, null, 'salt & pepper'),
+        ing(1, null, 'yellow onion'),
+      ]
+    }, {
+      title: 'Marinade',
+      ingredients: [
+        ing(1/2, cup, 'Dijon mustard'),
+        ing(1/4, cup, 'brown sugar'),
+        ing(1/4, cup, 'red wine vinegar'),
+        ing(1/2, tsp, 'ground dry chipotle'),
+        ing(1, tsp, 'mustard powder'),
+        ing(1, dash, 'cayenne'),
+      ]
+    }],
+    stepsLists: simpleSteps([
+      'Score chicken',
+      'Throw into bag',
+      'Craft marinade, whisking.',
+      'Pour into bag.',
+      'Massage thoroughly.',
+      'Shake bag.',
+      'Fridge overnight.',
+      'Pan, aluminum sheet, onion rings.',
+      'Set chicken on top.',
+      '450° oven for 35 min.',
+      'Plate chicken.',
+      'Boil remaining sauce.',
+      'Spoon sauce over chicken.',
+      'Serve.',
+    ])
+  },
+  { // Shrimp Lo Mein Stir Fry
+    title: 'Shrimp Lo Mein Stir Fry',
+    category: dinner,
+    seasons: [],
+    ingredientsLists: [{
+      title: 'Ingredients',
+      ingredients: [ ing(8, oz, 'spaghetti') ]
+    }, {
+      title: 'Sauce',
+      ingredients: [
+        ing(2, tbsp, 'soy sauce'),
+        ing(2, tbsp, 'oyster'),
+        ing(2, tbsp, 'brown sugar'),
+        ing(2, teaspoon, 'fish sauce'),
+        ing(.5, teaspoon, 'garlic powder'),
+        ing(.5, teaspoon, 'ground ginger'),
+      ]
+    }, {
+      title: 'Fry',
+      ingredients: [
+        ing(1, lb, 'shrimp'),
+        ing(1, cup, 'broccoli'),
+        ing(.25, null, 'yellow onion'),
+        ing(2, clove, 'minced garlic'),
+        ing(2, null, 'large eggs'),
+        ing(0, null, 'other veggies if desired'),
+      ]
+    }],
+    stepsLists: simpleSteps([
+      'Boil spaghetti',
+      'Mix soy, oyster, brown sugar, fish sauce, garlic, and ginger into sauce.',
+      'Cook shrimp in skillet. Aprx 2 min.',
+      'Add veggies. Approx 4 mins.',
+      'Add garlic in the veggie mix, then move the mix to one side.',
+      'Scramble eggs in clear area.',
+      'Stir the pan all together.',
+      'Add noodles and sauce. Cook until finished.',
+    ])
+  },
+  { // Shriiimp, UBS JCP Streamline
+    ...simpleRecipe({
+      title: 'Shriiimp, UBS JCP Streamline',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing([1, 1.5], lbs, 'cooked shrimp (40-60ct)'),
+        ing(2, cups, 'heavy cream'),
+        ing(1/4, cup, 'white wine'),
+        ing(1/2, cup, 'Worcestershire sauce'),
+        ing(1/2, null, 'medium yellow onion'),
+        ing(1/4, cup, 'Emeril’s essence creole seasoning'),
+      ],
+      steps: [
+        'Mince onion by cutting and not by grating unless you hate yourself.',
+        'Add to pot on low heat until lucid.',
+        'Thaw shrimp. Set aside.',
+        'Add Worcestershire sauce and wine. Add shrimp shells/tails if you want.',
+        'Bring to boil. Simmer for a few mins.',
+        'Strain onion (and shells/tails) from the sauce.',
+        'Add cream on medium heat. Add seasoning after. Stir well.',
+        'Last, add that precooked shrimp and stir well.',
+      ]
+    })
   }
+
+
+
+// Starring:
+// And also:
+
+// Chicken Parmesan
+// Starring:
+// 4 chicken breast halves
+// salt & pepper
+// ½ cup Italian breadcrumbs
+// 1 egg, beaten
+// 4 tablespoons butter
+// 2 cups spaghetti sauce
+// 4 slices mozzarella cheese
+// 1 tbsp grated parmesan cheese
+
+// And also:
+// 1. Pound chicken to flatten.
+// 2. Season with salt and pepper.
+// 3. Crack egg into bowl.
+// 4. Bread crumbs and spices into separate bowl.
+// 5. Dip chicken in egg; then crumbs.
+// 6. Fry in butter in hot skillet.
+// 7. Remove from skillet and pour in spaghetti sauce.
+// 8. Heat until mild simmer.
+// 9. Add chicken and place slices of mozzarella on top.
+// 10. Sprinkle with parmesan.
+// 11. Cover and cook until cheese is melted.
+
+
+// Maple-Mustard Skillet Chicken
+// Starring:
+// 4 6oz Chicken breasts
+// salt & pepper
+// 1 tbsp olive oil 
+// 2 tbsp unsalted butter 
+// 2 cloves garlic
+// ⅓ cup white wine
+// 3 tbsp real maple syrup
+// 1 tbsp stone ground mustard
+// 1 tbsp Dijon mustard
+// 1 tsp mince rosemary, parsley, or thyme
+
+// And also:
+// 1. Pound chicken to even thickness.
+// 2. Season both sides with salt/pepper.
+// 3. Medium high heat olive oil in skillet.
+// 4. Sear chicken until cooked through.
+// 5. Remove chicken, add butter, reduce to medium heat.
+// 6. After butter melts, add garlic.
+// 7. Sauté until golden brown.
+// 8. Add everything except chicken and final herbs.
+// 9. Let mixture simmer until thickened.
+// 10. Add chicken, spoon over sauce.
+// 11. Plate, add herbs of choice.
+
+// Orange Chicken
+// Starring:
+// Chicken breast
+// 1 cup chicken broth
+// 1 tbsp orange zest
+// ½ cup orange juice
+// ⅓ cup white vinegar
+// ¼ cup soy
+// ⅔ cup sugar
+// ¼ tsp ginger
+// 2 cloves garlic, minced
+// 1 tsp siracha
+// black pepper
+// 1¼ cup + 2 tbsp cornstarch
+// 2 large eggs
+// vegetable oil
+// green onions and/or sesame seeds
+
+// And also:
+// 1. Start rice.
+// 2. Cut chicken into 1 inch pieces, place in gallon resealable bag.
+// 3. In medium saucepan (turned off) combine chicken broth, zest, orange juice, vinegar, soy, sugar, ginger, garlic, Sirach, and pepper. Mix well.
+// 4. Measure ⅔ cup mixture into chicken bag.
+// 5. Seal bag without air. Fridge 30 mins.
+// 6. Bring mixture to medium heat to boil.
+// 7. Add cornstarch-water mix to mixture. (2 tbsp of each)
+// 8. Reduce heat, stir until reduced/thickened.
+// 8. Veggie oil in pot, whisk eggs in bowl, pour corn starch in large bowl.
+// 9. Standard egg-powder-oil pattern.
+// 10. Reheat mixture, toss in chicken, fully coat.
+
+
+// Chicken Roulade
+// Starring:
+// 2 tbl olive oil
+// salt & pepper
+// 4 6-8 oz chicken breasts 1/8 in. thick
+// 4 oz crumbled feta
+// 2 tbl oregano
+// 4 garlic cloves
+// ½ tsp lemon zest
+// ½ cup dry white wine
+// ½ chicken broth
+// 2 tbl lemon juice
+
+// And also:
+// 1. Pound chicken to even thickness.
+// 2. Season both sides with salt/pepper.
+// 3. Brush sides with a bit of olive oil.
+// 4. Brush olive oil onto cooking sheet with waxed paper.
+// 5. Place chicken on sheet.
+// 6. Add feta, oregano, garlic, and zest to middle of chicken.
+// 7. Roll up, tie with twine at 1” intervals.
+// 8. Preheat oven to 450°
+// 9. Remaining oil in skillet on med-high.
+// 10. Cook chicken on all sides until golden brown, not just gross tan.
+// 11. Put in oven for 5-7 mins.
+// 12. Add wine, broth, and lemon juice to skillet until reduced to about ½ cup.
+// 13. Spoon over top, serve with wedges.
+
 ].sort((a, b) => a.title.localeCompare(b.title));
 
 export default recipes;
