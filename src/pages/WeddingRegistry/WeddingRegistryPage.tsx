@@ -57,18 +57,64 @@ const WeddingRegistry: React.FC = () => {
     }, 1600);
   }
 
+  const [nameTransformed, setNameTransformed] = useState(false);
+  const handleNameClick = () => {
+    // if (nameTransformed) {
+    //   setNameTransformed(false);
+    //   return;
+    // }
+
+    // Grab ALL the spans
+    const spans = document.querySelectorAll('.name-transform span') as NodeListOf<HTMLElement>;
+
+    // 1. FIRST — snapshot every span's position
+    const firstPositions = new Map<HTMLElement, DOMRect>();
+    spans.forEach(span => {
+      firstPositions.set(span, span.getBoundingClientRect());
+    });
+
+    // 2. LAST — apply layout change
+    setNameTransformed(!nameTransformed);
+
+    requestAnimationFrame(() => {
+      // 3. INVERT — push every span back to where it was
+      spans.forEach(span => {
+        const first = firstPositions.get(span)!;
+        const last = span.getBoundingClientRect();
+        const dx = first.x - last.x;
+        const dy = first.y - last.y;
+
+        span.style.transition = 'none';
+        span.style.transform = `translate(${dx}px, ${dy}px)`;
+      });
+
+      // 4. PLAY — let them all glide to their final positions
+      requestAnimationFrame(() => {
+        spans.forEach(span => {
+          span.style.transition = 'transform 0.5s ease, opacity 0.5s ease, width 0.5s ease';
+          span.style.transform = '';
+        });
+      });
+    });
+  };
+
   return (
     <Page>
       <div className="registry-container">
-        <div className='name-transform'>
-          <span className='n'>Leslie</span>
-          <span className='n'>Har</span>
-          <span className='n'>gus</span>
-          <br />
-          <span>and</span>
-          <span className='m'>Nic</span>
-          <span className='m'>Per</span>
-          <span className='m'>eira</span>
+        <div
+          className={`name-transform ${nameTransformed ? 'transformed' : ''}`}
+          onClick={handleNameClick}
+        >
+          <span className='o1 g'>Leslie</span>
+          <span className='o4 n'>Har</span>
+          <span className='o6 n fo'>gus</span>
+          {/* {!nameTransformed && <span className="line-break" />} */}
+          <span className='o2 g'>&</span>
+          <span className='o3 g'>Nic</span>
+          <span className='o5 m'>
+            {nameTransformed ? 'p' : 'P'}er
+          </span>
+          <span className='o7 m fo'>eira</span>
         </div>
         <h1 className="sparkle-title">
           <span className="sparkle">✨</span>

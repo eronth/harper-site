@@ -7,19 +7,65 @@
   overflow: visible;
 
   .name-transform {
+    display: flex;
+    flex-wrap: wrap;
+    --transition-speed: 0.5s;
     font-size: 1.5rem;
     font-weight: 600;
     width: fit-content;
+    max-width: 8em;
     margin: 0 auto 2rem;
     padding: 0.5rem 1rem;
-    background-color: rgb(255 255 255 / 0.05);
+    background-color: rgb(255 255 255 / 0.7);
+    border-radius: 1em;
+    transition: all var(--transition-speed) ease;
+    cursor: pointer;
+
+    .line-break {
+      width: 100%;   /* forces everything after it to a new row */
+      height: 0;
+      transition: width 0.5s ease;
+    }
+
+    span {
+      will-change: transform;
+      color: black;
+    }
+
     .m {
       color: maroon;
     }
     .n {
       color: navy;
     }
+    .g {
+      margin-right: 0.25em;
+    }
+    .fo { 
+      opacity: 1;
+      max-width: 10em;
+      overflow: hidden;
+      width: auto;
+      transition: all var(--transition-speed) ease;
+    }
+    &.transformed {
+      max-width: 11em;
+      .fo {
+        opacity: 0;
+        width: 0;
+        max-width: 0;
+        overflow: hidden;
+      }
+      .o1 { order: 1; }
+      .o2 { order: 2; }
+      .o3 { order: 3; }
+      .o4 { order: 4; }
+      .o5 { order: 5; }
+      .o6 { order: 6; }
+      .o7 { order: 7; }
+    }
 
+    
   }
 
   h1 {
