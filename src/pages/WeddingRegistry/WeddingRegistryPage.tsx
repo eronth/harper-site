@@ -57,65 +57,39 @@ const WeddingRegistry: React.FC = () => {
     }, 1600);
   }
 
-  const [nameTransformed, setNameTransformed] = useState(false);
-  const handleNameClick = () => {
-    // if (nameTransformed) {
-    //   setNameTransformed(false);
-    //   return;
-    // }
-
-    // Grab ALL the spans
-    const spans = document.querySelectorAll('.name-transform span') as NodeListOf<HTMLElement>;
-
-    // 1. FIRST — snapshot every span's position
-    const firstPositions = new Map<HTMLElement, DOMRect>();
-    spans.forEach(span => {
-      firstPositions.set(span, span.getBoundingClientRect());
-    });
-
-    // 2. LAST — apply layout change
-    setNameTransformed(!nameTransformed);
-
-    requestAnimationFrame(() => {
-      // 3. INVERT — push every span back to where it was
-      spans.forEach(span => {
-        const first = firstPositions.get(span)!;
-        const last = span.getBoundingClientRect();
-        const dx = first.x - last.x;
-        const dy = first.y - last.y;
-
-        span.style.transition = 'none';
-        span.style.transform = `translate(${dx}px, ${dy}px)`;
-      });
-
-      // 4. PLAY — let them all glide to their final positions
-      requestAnimationFrame(() => {
-        spans.forEach(span => {
-          span.style.transition = 'transform 0.5s ease, opacity 0.5s ease, width 0.5s ease';
-          span.style.transform = '';
-        });
-      });
-    });
-  };
+  // const [nameTransformed, setNameTransformed] = useState(false);
+  // const handleNameClick = () => {
+  //   setNameTransformed(prev => !prev);
+  // };
+  const transformNameComponent = (<></>
+    // <div
+    //   className={`name-transform ${nameTransformed ? 'transformed' : ''}`}
+    //   onClick={handleNameClick}
+    // >
+    //   <div className='initial'>
+    //     <span className='g'>Leslie</span>
+    //     <span className='n'>Har</span>
+    //     <span className='n fo'>gus</span>
+    //     <br />
+    //     <span className='g'>and</span>
+    //     <span className='g'>Nic</span>
+    //     <span className='m'>Per</span>
+    //     <span className='m fo'>eira</span>
+    //   </div>
+    //   <div className='ending'>
+    //     <span className='g'>Leslie</span>
+    //     <span className='g'>&</span>
+    //     <span className='g'>Nic</span>
+    //     <span className='n'>Har</span>
+    //     <span className='m'>per</span>
+    //   </div>
+    // </div>
+  );
 
   return (
     <Page>
       <div className="registry-container">
-        <div
-          className={`name-transform ${nameTransformed ? 'transformed' : ''}`}
-          onClick={handleNameClick}
-        >
-          <span className='o1 g'>Leslie</span>
-          <span className='o4 n'>Har</span>
-          <span className='o6 n fo'>gus</span>
-          {/* {!nameTransformed && <span className="line-break" />} */}
-          <span className='o2 g'>&</span>
-          <span className='o3 g'>Nic</span>
-          <span className='o5 m'>
-            {nameTransformed ? 'p' : 'P'}er
-          </span>
-          <span className='o7 m fo'>eira</span>
-        </div>
+        {transformNameComponent}
         <h1 className="sparkle-title">
           <span className="sparkle">✨</span>
           Wedding Registry

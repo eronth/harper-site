@@ -7,7 +7,8 @@ export type QuantityUnit = 'g' | 'kg'
 | 'oz' | 'lb' | 'scoop'
 | 'piece' | 'spoonful' | 'pinch' | 'bunch' | 'dash' | 'splash' | 'clove'
 | 'strips' | 'bottle'
-| 'dashes' | 'bar spoon' | 'slices' | 'handfull';
+| 'bag' | 'dashes' | 'bar spoon' | 'slices' | 'handfull'
+| 'inches' ;
 
 type StandardRecipeParts = {
   title: string;

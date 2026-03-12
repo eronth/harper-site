@@ -43,6 +43,7 @@ const splash: QuantityUnit = 'splash';
 const clove: QuantityUnit = 'clove';
 const slices: QuantityUnit = 'slices';
 const handfull: QuantityUnit = 'handfull';
+const bag: QuantityUnit = 'bag';
 
 //const breakfast: RecipeCategory = 'Breakfast';
 const lunch: RecipeCategory = 'Lunch';
@@ -2098,124 +2099,272 @@ const recipes: Recipe[] = [
         'Last, add that precooked shrimp and stir well.',
       ]
     })
+  },
+  { // Chicken Parmesan
+    ...simpleRecipe({
+      title: 'Chicken Parmesan',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(4, null, 'chicken breast halves'),
+        saltAndPepper,
+        ing(1/2, cup, 'Italian breadcrumbs'),
+        ing(1, null, 'egg, beaten'),
+        ing(4, tbsp, 'butter'),
+        ing(2, cups, 'spaghetti sauce'),
+        ing(4, slices, 'mozzarella cheese'),
+        ing(1, tbsp, 'grated parmesan cheese'),
+      ],
+      steps: [
+        'Pound chicken to flatten.',
+        'Season with salt and pepper.',
+        'Crack egg into bowl.',
+        'Bread crumbs and spices into separate bowl.',
+        'Dip chicken in egg; then crumbs.',
+        'Fry in butter in hot skillet.',
+        'Remove from skillet and pour in spaghetti sauce.',
+        'Heat until mild simmer.',
+        'Add chicken and place slices of mozzarella on top.',
+        'Sprinkle with parmesan.',
+        'Cover and cook until cheese is melted.',
+      ]
+    })
+  },
+  { // Maple-Mustard Skillet Chicken
+    ...simpleRecipe({
+      title: 'Maple-Mustard Skillet Chicken',
+      category: dinner,
+      seasons: [spring, summer],
+      ingredients: [
+        ing(4, null, 'chicken breasts'),
+        saltAndPepper,
+        ing(1, tbsp, 'olive oil'),
+        ing(2, tbsp, 'unsalted butter'),
+        ing(2, null, 'cloves garlic'),
+        ing(1/3, cup, 'white wine'),
+        ing(3, tbsp, 'real maple syrup'),
+        ing(1, tbsp, 'stone ground mustard'),
+        ing(1, tbsp, 'Dijon mustard'),
+        ing(1, tsp, 'mince rosemary, parsley, or thyme'),
+      ],
+      steps: [
+        'Pound chicken to even thickness.',
+        'Season both sides with salt/pepper.',
+        'Medium high heat olive oil in skillet.',
+        'Sear chicken until cooked through.',
+        'Remove chicken, add butter, reduce to medium heat.',
+        'After butter melts, add garlic.',
+        'Sauté until golden brown.',
+        'Add everything except chicken and final herbs.',
+        'Let mixture simmer until thickened.',
+        'Add chicken, spoon over sauce.',
+        'Plate, add herbs of choice.',
+      ]
+    })
+  },
+  { // Orange Chicken
+    ...simpleRecipe({
+      title: 'Orange Chicken',
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(2, lbs, 'chicken breasts'),
+        ing(1, cup, 'chicken broth'),
+        ing(1, tbsp, 'orange zest'),
+        ing(0.5, cup, 'orange juice'),
+        ing(1/3, cup, 'white vinegar'),
+        ing(0.25, cup, 'soy sauce'),
+        ing(2/3, cup, 'sugar'),
+        ing(0.25, tsp, 'ginger'),
+        ing(2, null, 'cloves garlic, minced'),
+        ing(1, tsp, 'siracha'),
+        saltAndPepper,
+        ing(1.25, cup, 'cornstarch', 'plus 2 tbsp for thickening'),
+        ing(2, null, 'large eggs'),
+        ing(0, null, 'vegetable oil'),
+        ing(0, null, 'green onions and/or sesame seeds for garnish'),
+      ],
+      steps: [
+        'Start rice.',
+        'Cut chicken into 1 inch pieces, place in gallon resealable bag.',
+        'In medium saucepan (turned off) combine chicken broth, zest, orange juice, vinegar, soy, sugar, ginger, garlic, Sirach, and pepper. Mix well.',
+        'Measure ⅔ cup mixture into chicken bag.',
+        'Seal bag without air. Fridge 30 mins.',
+        'Bring mixture to medium heat to boil.',
+        'Add cornstarch-water mix to mixture. (2 tbsp of each)',
+        'Reduce heat, stir until reduced/thickened.',
+        'Veggie oil in pot, whisk eggs in bowl, pour corn starch in large bowl.',
+        'Standard egg-powder-oil pattern.',
+        'Reheat mixture, toss in chicken, fully coat.',
+      ]
+    })
+  },
+  { // Chicken Roulade
+    ...simpleRecipe({
+      title: 'Chicken Roulade',
+      category: dinner,
+      seasons: [spring, summer],
+      ingredients: [
+        ing(2, tbsp, 'olive oil'),
+        saltAndPepper,
+        ing(4, null, '6-8 oz chicken breasts 1/8 in. thick'),
+        ing(4, oz, 'crumbled feta'),
+        ing(2, tbsp, 'oregano'),
+        ing(4, null, 'garlic cloves'),
+        ing(0.5, tsp, 'lemon zest'),
+        ing(0.5, cup, 'dry white wine'),
+        ing(0.5, cup, 'chicken broth'),
+        ing(2, tbsp, 'lemon juice'),
+      ],
+      steps: [
+        'Pound chicken to even thickness.',
+        'Season both sides with salt/pepper.',
+        'Brush sides with a bit of olive oil.',
+        'Brush olive oil onto cooking sheet with waxed paper.',
+        'Place chicken on sheet.',
+        'Add feta, oregano, garlic, and zest to middle of chicken.',
+        'Roll up, tie with twine at 1” intervals.',
+        'Preheat oven to 450°',
+        'Remaining oil in skillet on med-high.',
+        'Cook chicken on all sides until golden brown, not just gross tan.',
+        'Put in oven for 5-7 mins.',
+        'Add wine, broth, and lemon juice to skillet until reduced to about ½ cup.',
+        'Spoon over top, serve with wedges.',
+      ]
+    })
+  },
+  { // Spinach Puffs
+    ...simpleRecipe({
+      title: 'Spinach Puffs',
+      category: snack,
+      seasons: [spring, summer],
+      ingredients: [
+        ing([2, 3], cup, 'chopped spinach'),
+        ing(3, tbsp, 'dill'),
+        ing(1, null, 'shallot, minced'),
+        ing(3, null, 'cloves garlic, crushed'),
+        ing(0, null, 'olive oil'),
+        ing(2, null, 'egg'),
+        ing(4, oz, 'cream cheese'),
+        ing(0.5, cup, 'feta cheese'),
+        ing([2, 4], oz, 'parmesan'),
+        ing([2, 3], 'slices', 'bacon, chopped'),
+        ing(1, null, 'packet pastry'),
+        saltAndPepper
+      ],
+      steps: [
+        'Rinse spinach, remove stems.',
+        'Heat pan with olive oil. Med-high',
+        'Add shallots, cook 2 min.',
+        'Add garlic, 30 sec until fragrant.',
+        'Add spinach and pinch salt.',
+        'Cook until spinach reduces.',
+        'Add dill, sauté, add pepper.',
+        'Remove from heat.',
+        'Combine cream and cheese in bowl.',
+        'Add spinach, bacon, and 1 egg yolk.',
+        'Stir that shit! Oven to 450° F.',
+        'Prepare pastries. (fix seams, cut, etc).',
+        'About 2 tbsp of mix to each puff.',
+        'Beat egg into separate bowl, Use as brush for pastry to help seal and brown.',
+        '80s Power ballads!',
+        'Fridge for 10 min, oven for 20, rotate at 10 mins.',
+      ]
+    })
+  },
+  { // Beef Rendang
+    title: 'Beef Rendang',
+    category: dinner,
+    seasons: [summer, fall],
+    description: '',
+    ingredientsLists: [
+      { title: 'Dry Curry Slurry',
+        ingredients: [
+          ing(4, null, 'sliced shallots'),
+          ing(6, null, 'garlic cloves'),
+          ing(1.5, 'inches', 'ginger, sliced'),
+          ing(1.5, 'inches', 'galangal, sliced (or ginger)'),
+          ing(1, null, 'Fresno red chili pepper'),
+          ing(2, null, 'serrano chili pepper'),
+          ing(1, tbsp, 'salt'),
+          ing([1, 2], tbsp, 'red chili flakes'),
+          ing(1, tsp, 'ground coriander'),
+          ing(0.5, tsp, 'ground turmeric'),
+          ing(0.125, tsp, 'ground cardamom'),
+          ing(0.125, tsp, 'nutmeg')
+        ]
+      },
+      { title: 'And the rest',
+        ingredients: [
+          ing(2, tbsp, 'vegetable oil'),
+          ing(2.5, lbs, 'beef chuck/shank/short rib, cut in 2 in pieces'),
+          ing(0.5, null, 'stalk lemongrass'),
+          ing(1, null, 'can full fat coconut milk'),
+          ing(1, tbsp, 'brown sugar', 'or more'),
+          ing(2, tsp, 'tamarind paste'),
+        ]
+      }
+    ],
+    stepsLists: simpleSteps([
+      'Cut up the beef. Set aside.',
+      'Blend the parts of the slurry until finely ground. Super fine.',
+      'Put into sauté pan with oil on medium heat for 7-8 mins (until moisture evaporates)',
+      'Add beef to pan.',
+      'Add coconut milk, tamarind paste, brown sugar, and a coconut milk can full of water.',
+      'Stir together. Turn to medium high.',
+      'If you have it, add the lemongrass.',
+      'Do the needful for 4 hours.',
+    ])
+  },
+  { // Ice-me Almond Cookies
+    ...simpleRecipe({
+      title: 'Ice-me Almond Cookies',
+      category: dessert,
+      seasons: [winter],
+      ingredients: [
+        ing(170, g, 'unsalted butter, room temp'),
+        ing(150, g, 'granulated sugar'),
+        ing(1, null, 'egg'),
+        ing(2, tsp, 'pure vanilla extract'),
+        ing(1/2, tsp, 'almond extract'),
+        ing(280, g, 'all-purpose flour'),
+        ing(1/2, tsp, 'baking powder'),
+        ing(1/4, tsp, 'salt')
+      ],
+      steps: [
+        'In mixer bowl, beat butter until smooth.',
+        'Add sugar and beat on high (3-4 min).',
+        'Scrape sides add egg, vanilla, almond and beat on high until combined (2 min).',
+        'Wisk flour, baking powder, and salt together. Slowly mix into mixer.',
+        'Divide bow, roll out, chill 1 hour to 2 days.',
+        'Bake 10-12 minutes  at 350° F.',
+      ]
+    })
+  },
+  { // Caramel Apples
+    ...simpleRecipe({
+      title: 'Caramel Apples',
+      category: dessert,
+      seasons: [fall],
+      ingredients: [
+        ing(4, null, 'granny smith apples'),
+        ing(1, bag, 'caramel'),
+        ing(1, bag, 'chocolate'),
+        ing(3, tsp, 'milk'),
+        ing(1, tsp, 'baking powder')
+      ],
+      steps: [
+        'Apples into fridge to cool.',
+        'Add caramel and milk to a bowl.',
+        'Microwave in 30 second increments until very smooth.',
+        'Coat apples in caramel.',
+        'Apples back into fridge to have caramel harden.',
+        'Melt chocolate.',
+        'Cover apples in chocolate.',
+        'Last stint in fridge overnight.',
+      ]
+    })
   }
-
-
-
-// Starring:
-// And also:
-
-// Chicken Parmesan
-// Starring:
-// 4 chicken breast halves
-// salt & pepper
-// ½ cup Italian breadcrumbs
-// 1 egg, beaten
-// 4 tablespoons butter
-// 2 cups spaghetti sauce
-// 4 slices mozzarella cheese
-// 1 tbsp grated parmesan cheese
-
-// And also:
-// 1. Pound chicken to flatten.
-// 2. Season with salt and pepper.
-// 3. Crack egg into bowl.
-// 4. Bread crumbs and spices into separate bowl.
-// 5. Dip chicken in egg; then crumbs.
-// 6. Fry in butter in hot skillet.
-// 7. Remove from skillet and pour in spaghetti sauce.
-// 8. Heat until mild simmer.
-// 9. Add chicken and place slices of mozzarella on top.
-// 10. Sprinkle with parmesan.
-// 11. Cover and cook until cheese is melted.
-
-
-// Maple-Mustard Skillet Chicken
-// Starring:
-// 4 6oz Chicken breasts
-// salt & pepper
-// 1 tbsp olive oil 
-// 2 tbsp unsalted butter 
-// 2 cloves garlic
-// ⅓ cup white wine
-// 3 tbsp real maple syrup
-// 1 tbsp stone ground mustard
-// 1 tbsp Dijon mustard
-// 1 tsp mince rosemary, parsley, or thyme
-
-// And also:
-// 1. Pound chicken to even thickness.
-// 2. Season both sides with salt/pepper.
-// 3. Medium high heat olive oil in skillet.
-// 4. Sear chicken until cooked through.
-// 5. Remove chicken, add butter, reduce to medium heat.
-// 6. After butter melts, add garlic.
-// 7. Sauté until golden brown.
-// 8. Add everything except chicken and final herbs.
-// 9. Let mixture simmer until thickened.
-// 10. Add chicken, spoon over sauce.
-// 11. Plate, add herbs of choice.
-
-// Orange Chicken
-// Starring:
-// Chicken breast
-// 1 cup chicken broth
-// 1 tbsp orange zest
-// ½ cup orange juice
-// ⅓ cup white vinegar
-// ¼ cup soy
-// ⅔ cup sugar
-// ¼ tsp ginger
-// 2 cloves garlic, minced
-// 1 tsp siracha
-// black pepper
-// 1¼ cup + 2 tbsp cornstarch
-// 2 large eggs
-// vegetable oil
-// green onions and/or sesame seeds
-
-// And also:
-// 1. Start rice.
-// 2. Cut chicken into 1 inch pieces, place in gallon resealable bag.
-// 3. In medium saucepan (turned off) combine chicken broth, zest, orange juice, vinegar, soy, sugar, ginger, garlic, Sirach, and pepper. Mix well.
-// 4. Measure ⅔ cup mixture into chicken bag.
-// 5. Seal bag without air. Fridge 30 mins.
-// 6. Bring mixture to medium heat to boil.
-// 7. Add cornstarch-water mix to mixture. (2 tbsp of each)
-// 8. Reduce heat, stir until reduced/thickened.
-// 8. Veggie oil in pot, whisk eggs in bowl, pour corn starch in large bowl.
-// 9. Standard egg-powder-oil pattern.
-// 10. Reheat mixture, toss in chicken, fully coat.
-
-
-// Chicken Roulade
-// Starring:
-// 2 tbl olive oil
-// salt & pepper
-// 4 6-8 oz chicken breasts 1/8 in. thick
-// 4 oz crumbled feta
-// 2 tbl oregano
-// 4 garlic cloves
-// ½ tsp lemon zest
-// ½ cup dry white wine
-// ½ chicken broth
-// 2 tbl lemon juice
-
-// And also:
-// 1. Pound chicken to even thickness.
-// 2. Season both sides with salt/pepper.
-// 3. Brush sides with a bit of olive oil.
-// 4. Brush olive oil onto cooking sheet with waxed paper.
-// 5. Place chicken on sheet.
-// 6. Add feta, oregano, garlic, and zest to middle of chicken.
-// 7. Roll up, tie with twine at 1” intervals.
-// 8. Preheat oven to 450°
-// 9. Remaining oil in skillet on med-high.
-// 10. Cook chicken on all sides until golden brown, not just gross tan.
-// 11. Put in oven for 5-7 mins.
-// 12. Add wine, broth, and lemon juice to skillet until reduced to about ½ cup.
-// 13. Spoon over top, serve with wedges.
-
 ].sort((a, b) => a.title.localeCompare(b.title));
 
 export default recipes;
