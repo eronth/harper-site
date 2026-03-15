@@ -6,43 +6,91 @@ const caseName = "Nicol Bolas Sunflower Box";
 const dragonShield = "Dragon Shield";
 
 const nicolBolasSunflowerDecks: MtgDeck[] = [
-  { /* Leftover Sleeves */
-    id: 'leftover-sleeves',
-    name: 'Leftover Sleeves',
-    colors: ['C'],
-    shortDescription: 'Just some unused sleeves.',
+  { /* Classic Black-White 60-card */
+    name: 'Classic Black-White',
+    id: 'classic-black-white',
+    colors: ['W', 'B'],
+    shortDescription: 'A classic White-Black Eventide-era based deck.',
     longDescription: <>
+      Control and life gain your way to victory with a semi-aggressive
+      White-Black deck based.
     </>,
     deckType: '60-Card',
-    keyCards: [],
+    keyCards: [
+      mtgCard(
+        'Elenda, Saint of Dusk', '2WB',
+        'https://scryfall.com/card/fdn/119/elenda-saint-of-dusk'
+      ),
+      // mtgCard(
+      //   'Divinity of Pride', 'W/BW/BW/BW/BW/B',
+      //   'https://scryfall.com/card/c13/228/divinity-of-pride'
+      // ),
+      mtgCard(
+        'Deathbringer Liege', '2W/BW/BW/B',
+        'https://scryfall.com/card/eve/85/deathbringer-liege'
+      ),
+      mtgCard(
+        'Unmake', 'W/BW/BW/B',
+        'https://scryfall.com/card/ddk/27/unmake'
+      ),
+      mtgCard(
+        'Nightsky Mimic', '1W/B',
+        'https://scryfall.com/card/eve/91/nightsky-mimic'
+      ),
+      mtgCard(
+        'Edge of Divinity', 'W/B',
+        'https://scryfall.com/card/eve/87/edge-of-the-divinity'
+      )
+    ],
     owner: 'Nic',
     location: {
       case: caseName,
-      deckbox: 'Ivory Dragon Shield'
+      deckbox: 'Custom Art Deco Dragon Shield Box',
     },
-    status: 'Good',
+    status: 'Good'
   },
-  { /* Riveting Strike */
-    id: 'riveting-strike',
-    name: 'Riveting Strike',
-    colors: ['B', 'R', 'G'],
-    shortDescription: 'A deck that focuses on high-power creatures, with good first-strike.',
+  { /* Classic Black-White Commander */
+    name: 'Classic Black-White Commander',
+    id: 'classic-black-white-commander',
+    colors: ['W', 'B'],
+    shortDescription: 'A classic White-Black lifegain commander deck.',
     longDescription: <>
-      Get some high power creatures on the field and grant them first strike before using Mr. Orfeo
-      to double their power, making the threat even bigger.
+      Control and life gain your way to victory with a semi-aggressive
+      White-Black deck based around a commander that can gain you life and create tokens.
     </>,
     deckType: 'Commander',
     commander: mtgCard(
-      'Mr. Orfeo, the Boulder', '2BG',
-      'https://scryfall.com/card/snc/204/mr-orfeo-the-boulder'
+      'Elenda, Saint of Dusk', '2WB',
+      'https://scryfall.com/card/fdn/119/elenda-saint-of-dusk'
     ),
-    keyCards: [],
+    keyCards: [
+      mtgCard(
+        'Elenda, Saint of Dusk', '2WB',
+        'https://scryfall.com/card/fdn/119/elenda-saint-of-dusk'
+      ),
+      mtgCard(
+        'Deathbringer Liege', '2W/BW/BW/B',
+        'https://scryfall.com/card/eve/85/deathbringer-liege'
+      ),
+      mtgCard(
+        'Unmake', 'W/BW/BW/B',
+        'https://scryfall.com/card/ddk/27/unmake'
+      ),
+      mtgCard(
+        'Nightsky Mimic', '1W/B',
+        'https://scryfall.com/card/eve/91/nightsky-mimic'
+      ),
+      mtgCard(
+        'Edge of Divinity', 'W/B',
+        'https://scryfall.com/card/eve/87/edge-of-the-divinity'
+      )
+    ],
     owner: 'Nic',
     location: {
       case: caseName,
-      sleeves: 'Forged Planet',
+      deckbox: 'Custom Art Deco Dragon Shield Box',
     },
-    status: 'Good',
+    status: 'Good'
   },
   { /* Lifebats */
     id: 'lifebats',
@@ -94,6 +142,95 @@ const nicolBolasSunflowerDecks: MtgDeck[] = [
       sleevesMaker: dragonShield
     },
     status: 'Needs Improvement',
+  },
+  { /* Leftover Sleeves */
+    id: 'leftover-sleeves',
+    name: 'Leftover Sleeves',
+    colors: ['C'],
+    shortDescription: 'Just some unused sleeves.',
+    longDescription: <>
+    </>,
+    deckType: '60-Card',
+    keyCards: [],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Fantasy Series Spaceship'
+    },
+    status: 'Good',
+  },
+  { /* Deepspace Exploration */
+    id: 'deepspace-exploration',
+    name: 'Deepspace Exploration',
+    colors: ['U', 'B'],
+    shortDescription: 'Run artifact creatures and infiltrators to explore the depths of the opponent\'s personal space.',
+    longDescription: <>
+      Run artifact creatures and infiltrators to explore the depths of the opponent's personal space.
+    </>,
+    deckType: '60-Card',
+    keyCards: [],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Fantasy Series Spaceship'
+    },
+    status: 'Good',
+  },
+  { /* The Growing Army of Sedris */
+    id: 'growing-army-of-sedris',
+    name: 'The Growing Army of Sedris',
+    colors: ['U', 'B', 'R'],
+    shortDescription: 'A Sedris, the Traitor King commander deck that focuses on reanimation and graveyard recursion.',
+    longDescription: <>
+      A Sedris, the Traitor King commander deck that focuses on reanimation and graveyard recursion. Plenty of sacrifice
+      or on-enters effects to get value out of the graveyard and keep the board state changing.
+    </>,
+    deckType: 'Commander',
+    commander: mtgCard(
+      'Sedris, the Traitor King', '2UBR',
+      'https://scryfall.com/card/2x2/274/sedris-the-traitor-king'
+    ),
+    keyCards: [
+      mtgCard(
+        'Shapesharer', '1U',
+        'https://scryfall.com/card/lrw/85/shapesharer'
+      ),
+      mtgCard(
+        'Xu-Ifit, Osteroharmonist', '1BB',
+        'https://scryfall.com/card/eoe/127/xu-ifit-osteoharmonist'
+      ),
+      mtgCard(
+        'Coalstoke Gearhulk', '1BBRR',
+        'https://scryfall.com/card/dft/198/coalstoke-gearhulk'
+      ),
+      mtgCard(
+        'Undead Sprinter', 'BR',
+        'https://scryfall.com/card/dsk/350/undead-sprinter'
+      )
+    ],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Dragon Shield Blood Red'
+    },
+    status: 'Good',
+  },
+  { /* Empty Box */
+    id: 'empty-box',
+    name: 'Empty Turquoise Box',
+    colors: ['C'],
+    shortDescription: 'An empty box for now.',
+    longDescription: <>
+      This box is currently empty, but I have plans to fill it with a deck that I want to build in the future.
+    </>,
+    deckType: '60-Card',
+    keyCards: [],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Dragon Shield Turquoise'
+    },
+    status: 'Good',
   }
 ];
 

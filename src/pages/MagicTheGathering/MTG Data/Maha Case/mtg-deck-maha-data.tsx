@@ -9,6 +9,38 @@ const dragonhawk = "'Dragonhawk the Tempest' Box";
 const beza = "'Beza the Bounding Spring' Box";
 
 const mahaCaseDecks: MtgDeck[] = [
+  { /* Celestial Horrors */
+    id: 'celestial-horrors',
+    name: 'Celestial Horrors',
+    colors: ['U', 'B'],
+    shortDescription: 'A deck focused on the strange and unsettling discoveries of deep space.',
+    longDescription: <></>,
+    deckType: '60-Card',
+    keyCards: [
+      mtgCard(
+        'Sothera, the Supervoid', '2BB',
+        'https://scryfall.com/card/eoe/115/sothera-the-supervoid'
+      ),
+      mtgCard(
+        'Alpharael, Stonechosen', '3BB',
+        'https://scryfall.com/card/eoe/292/alpharael-stonechosen'
+      ),
+      mtgCard(
+        'Archenemy\'s Charm', 'BBB',
+        'https://scryfall.com/card/eoe/307/archenemys-charm'
+      ),
+      mtgCard(
+        'Quantum Riddler', '3UU',
+        'https://scryfall.com/card/eoe/305/quantum-riddler'
+      )
+    ],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Blue Swirls Prism'
+    },
+    status: 'Needs Improvement',
+  },
   { /* Merrow Miller */
     id: 'merrow-miller',
     name: 'Classic Lorwyn Merrow Miller',

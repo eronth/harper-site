@@ -1,7 +1,7 @@
-import type { MtgDeck } from "../../../../types/mtg-types";
-import { mtgCard } from "../../mtgHelperFunctions";
+import type { MtgDeck } from "../../../../../types/mtg-types";
+import { mtgCard } from "../../../mtgHelperFunctions";
 
-const caseName = "Zendikar Box";
+const caseName = "Zendikar Prerelease Box";
 const dragonShield = "Dragon Shield";
 
 const mahaCaseDecks: MtgDeck[] = [
