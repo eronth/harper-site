@@ -66,8 +66,8 @@ const lorwynEclipsedPrereleaseBoxDecks: MtgDeck[] = [
     status: 'Needs Improvement',
   },
   { /* Leftover Sleeves */
-    id: 'leftover-sleeves',
-    name: 'Leftover Sleeves',
+    id: 'leftover-sleeves1',
+    name: 'Leftover Sleeves1',
     colors: ['C'],
     shortDescription: 'Just some unused sleeves.',
     longDescription: <>

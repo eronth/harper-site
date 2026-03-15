@@ -144,8 +144,8 @@ const nicolBolasSunflowerDecks: MtgDeck[] = [
     status: 'Needs Improvement',
   },
   { /* Leftover Sleeves */
-    id: 'leftover-sleeves',
-    name: 'Leftover Sleeves',
+    id: 'leftover-sleeves3',
+    name: 'Leftover Sleeves3',
     colors: ['C'],
     shortDescription: 'Just some unused sleeves.',
     longDescription: <>

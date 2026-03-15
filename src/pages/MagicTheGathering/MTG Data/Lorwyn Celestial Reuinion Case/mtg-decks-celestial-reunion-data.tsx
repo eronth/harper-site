@@ -5,8 +5,8 @@ const caseName = "Lorwyn Celestial Reunion Case";
 
 const lorwynCelestialReunionDecks: MtgDeck[] = [
   { /* Leftover Sleeves */
-    id: 'leftover-sleeves',
-    name: 'Leftover Sleeves',
+    id: 'leftover-sleeves2',
+    name: 'Leftover Sleeves2',
     colors: ['C'],
     shortDescription: 'Just some unused sleeves.',
     longDescription: <>
