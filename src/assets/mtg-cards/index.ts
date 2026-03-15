@@ -8,6 +8,7 @@ import blb113SinisterMonolithImg from './blb-113-sinister-monolith.jpg';
 import blb12EssenceChannelerImg from './blb-12-essence-channeler.jpg';
 import blb131CoruscationMageImg from './blb-131-coruscation-mage.jpg';
 import blb139HearthbornBattlerImg from './blb-139-hearthborn-battler.jpg';
+import blb183LumraBellowOfTheWoodsImg from './blb-183-lumra-bellow-of-the-woods.jpg';
 import blb207CamelliaTheSeedmiserImg from './blb-207-camellia-the-seedmiser.jpg';
 import blb214GevScaledScorchImg from './blb-214-gev-scaled-scorch.jpg';
 import blb223LunarConvocationImg from './blb-223-lunar-convocation.jpg';
@@ -22,9 +23,11 @@ import blb48EddymurkCrabImg from './blb-48-eddymurk-crab.jpg';
 import blb90DarkstarAugurImg from './blb-90-darkstar-augur.jpg';
 import blb98HuskbursterSwarmImg from './blb-98-huskburster-swarm.jpg';
 import c13199MayaelTheAnimaImg from './c13-199-mayael-the-anima.jpg';
+import c13228DivinityOfPrideImg from './c13-228-divinity-of-pride.jpg';
 import c20130CairnWandererImg from './c20-130-cairn-wanderer.jpg';
 import cmm389HauntedCloakImg from './cmm-389-haunted-cloak.jpg';
 import dbl254JackOLanternImg from './dbl-254-jack-o-lantern.jpg';
+import ddk27UnmakeImg from './ddk-27-unmake.jpg';
 import dft213MendicantCoreGuidelightImg from './dft-213-mendicant-core-guidelight.jpg';
 import dsc1AminatouVeilPiercerImg from './dsc-1-aminatou-veil-piercer.jpg';
 import dsc7WinterCynicalOpportunistImg from './dsc-7-winter-cynical-opportunist.jpg';
@@ -39,9 +42,18 @@ import dsk352ValgavothTerrorEaterImg from './dsk-352-valgavoth-terror-eater.jpg'
 import dsk40VeteranSurvivorImg from './dsk-40-veteran-survivor.jpg';
 import dsk6EnduringInnocenceImg from './dsk-6-enduring-innocence.jpg';
 import dsk68OverlordOfTheFloodpitsImg from './dsk-68-overlord-of-the-floodpits.jpg';
+import ecl215DoranBesiegedByTimeImg from './ecl-215-doran-besieged-by-time.jpg';
 import eoc2InspiritFlagshipVesselImg from './eoc-2-inspirit-flagship-vessel.jpg';
+import eoe184FungalColossusImg from './eoe-184-fungal-colossus.jpg';
+import eoe214BiotechSpecialistImg from './eoe-214-biotech-specialist.jpg';
+import eoe239TheDominionBraceletImg from './eoe-239-the-dominion-bracelet.jpg';
 import eve62StigmaLasherImg from './eve-62-stigma-lasher.jpg';
+import eve85DeathbringerLiegeImg from './eve-85-deathbringer-liege.jpg';
+import eve87EdgeOfTheDivinityImg from './eve-87-edge-of-the-divinity.jpg';
+import eve91NightskyMimicImg from './eve-91-nightsky-mimic.jpg';
 import fdn107MossbornHydraImg from './fdn-107-mossborn-hydra.jpg';
+import fdn119ElendaSaintOfDuskImg from './fdn-119-elenda-saint-of-dusk.jpg';
+import fdn168WitnessProtectionImg from './fdn-168-witness-protection.jpg';
 import fdn234VivienReidImg from './fdn-234-vivien-reid.jpg';
 import fdn30ArchmageOfRunesImg from './fdn-30-archmage-of-runes.jpg';
 import fdn307HighFaeTricksterImg from './fdn-307-high-fae-trickster.jpg';
@@ -67,8 +79,13 @@ import one318GlissaSunslayerImg from './one-318-glissa-sunslayer.jpg';
 import rvr140ForcedAdaptationImg from './rvr-140-forced-adaptation.jpg';
 import sld1623VorinclexVoiceOfHungerImg from './sld-1623-vorinclex-voice-of-hunger.jpg';
 import sld76AthreosGodOfPassageImg from './sld-76-athreos-god-of-passage.jpg';
+import snc182DisciplinedDuelistImg from './snc-182-disciplined-duelist.jpg';
 import snc204MrOrfeoTheBoulderImg from './snc-204-mr-orfeo-the-boulder.jpg';
+import snc22MysteriousLimousineImg from './snc-22-mysterious-limousine.jpg';
+import snc223SoulOfEmancipation1Img from './snc-223-soul-of-emancipation-1.jpg';
+import snc223SoulOfEmancipationImg from './snc-223-soul-of-emancipation.jpg';
 import snc301CormelaGlamourThiefImg from './snc-301-cormela-glamour-thief.jpg';
+import snc320MrOrfeoTheBoulderImg from './snc-320-mr-orfeo-the-boulder.jpg';
 import snc357WaterfrontDistrictImg from './snc-357-waterfront-district.jpg';
 import tsr262AkromaSMemorialImg from './tsr-262-akroma-s-memorial.jpg';
 import war217SorinVengefulBloodlordImg from './war-217-sorin-vengeful-bloodlord.jpg';
@@ -83,6 +100,7 @@ export const mtgCardImages: { [key: string]: string } = {
   'blb-12-essence-channeler': blb12EssenceChannelerImg,
   'blb-131-coruscation-mage': blb131CoruscationMageImg,
   'blb-139-hearthborn-battler': blb139HearthbornBattlerImg,
+  'blb-183-lumra-bellow-of-the-woods': blb183LumraBellowOfTheWoodsImg,
   'blb-207-camellia-the-seedmiser': blb207CamelliaTheSeedmiserImg,
   'blb-214-gev-scaled-scorch': blb214GevScaledScorchImg,
   'blb-223-lunar-convocation': blb223LunarConvocationImg,
@@ -97,9 +115,11 @@ export const mtgCardImages: { [key: string]: string } = {
   'blb-90-darkstar-augur': blb90DarkstarAugurImg,
   'blb-98-huskburster-swarm': blb98HuskbursterSwarmImg,
   'c13-199-mayael-the-anima': c13199MayaelTheAnimaImg,
+  'c13-228-divinity-of-pride': c13228DivinityOfPrideImg,
   'c20-130-cairn-wanderer': c20130CairnWandererImg,
   'cmm-389-haunted-cloak': cmm389HauntedCloakImg,
   'dbl-254-jack-o-lantern': dbl254JackOLanternImg,
+  'ddk-27-unmake': ddk27UnmakeImg,
   'dft-213-mendicant-core-guidelight': dft213MendicantCoreGuidelightImg,
   'dsc-1-aminatou-veil-piercer': dsc1AminatouVeilPiercerImg,
   'dsc-7-winter-cynical-opportunist': dsc7WinterCynicalOpportunistImg,
@@ -114,9 +134,18 @@ export const mtgCardImages: { [key: string]: string } = {
   'dsk-40-veteran-survivor': dsk40VeteranSurvivorImg,
   'dsk-6-enduring-innocence': dsk6EnduringInnocenceImg,
   'dsk-68-overlord-of-the-floodpits': dsk68OverlordOfTheFloodpitsImg,
+  'ecl-215-doran-besieged-by-time': ecl215DoranBesiegedByTimeImg,
   'eoc-2-inspirit-flagship-vessel': eoc2InspiritFlagshipVesselImg,
+  'eoe-184-fungal-colossus': eoe184FungalColossusImg,
+  'eoe-214-biotech-specialist': eoe214BiotechSpecialistImg,
+  'eoe-239-the-dominion-bracelet': eoe239TheDominionBraceletImg,
   'eve-62-stigma-lasher': eve62StigmaLasherImg,
+  'eve-85-deathbringer-liege': eve85DeathbringerLiegeImg,
+  'eve-87-edge-of-the-divinity': eve87EdgeOfTheDivinityImg,
+  'eve-91-nightsky-mimic': eve91NightskyMimicImg,
   'fdn-107-mossborn-hydra': fdn107MossbornHydraImg,
+  'fdn-119-elenda-saint-of-dusk': fdn119ElendaSaintOfDuskImg,
+  'fdn-168-witness-protection': fdn168WitnessProtectionImg,
   'fdn-234-vivien-reid': fdn234VivienReidImg,
   'fdn-30-archmage-of-runes': fdn30ArchmageOfRunesImg,
   'fdn-307-high-fae-trickster': fdn307HighFaeTricksterImg,
@@ -142,8 +171,13 @@ export const mtgCardImages: { [key: string]: string } = {
   'rvr-140-forced-adaptation': rvr140ForcedAdaptationImg,
   'sld-1623-vorinclex-voice-of-hunger': sld1623VorinclexVoiceOfHungerImg,
   'sld-76-athreos-god-of-passage': sld76AthreosGodOfPassageImg,
+  'snc-182-disciplined-duelist': snc182DisciplinedDuelistImg,
   'snc-204-mr-orfeo-the-boulder': snc204MrOrfeoTheBoulderImg,
+  'snc-22-mysterious-limousine': snc22MysteriousLimousineImg,
+  'snc-223-soul-of-emancipation-1': snc223SoulOfEmancipation1Img,
+  'snc-223-soul-of-emancipation': snc223SoulOfEmancipationImg,
   'snc-301-cormela-glamour-thief': snc301CormelaGlamourThiefImg,
+  'snc-320-mr-orfeo-the-boulder': snc320MrOrfeoTheBoulderImg,
   'snc-357-waterfront-district': snc357WaterfrontDistrictImg,
   'tsr-262-akroma-s-memorial': tsr262AkromaSMemorialImg,
   'war-217-sorin-vengeful-bloodlord': war217SorinVengefulBloodlordImg,
