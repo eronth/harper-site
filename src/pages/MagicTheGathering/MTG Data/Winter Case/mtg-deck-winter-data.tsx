@@ -149,6 +149,47 @@ const winterCaseDecks: MtgDeck[] = [
       sleevesMaker: 'Katomula'
     },
     status: 'Great',
+  },
+  { /* Blight Curse */
+    name: 'Blight Curse',
+    id: 'blight-curse',
+    colors: ['B', 'R', 'G'],
+    shortDescription: 'A deck the Reaper\'s Curse, as he rebuilds his army from the corpses of his foes.',
+    longDescription: <>
+      The Reaper can curse enemies with -1/-1, and, upon killing them, ressurect them to fight for him. 
+      He shall reclaim his throne. He shall be The Reaper, King Once More.
+    </>,
+    deckType: 'Commander',
+    commander: mtgCard(
+      'The Reaper, King No More', '2/B2/R2/G',
+      'https://scryfall.com/card/ecc/4/the-reaper-king-no-more',
+      'Blight others on enter. Whenever a blighted opponent creature dies, put it under your control.'
+    ),
+    keyCards: [
+      mtgCard(
+        'Auntie Ool, Cursewretch', '1BRG',
+        'https://scryfall.com/card/ecc/2/auntie-ool-cursewretch'
+      ),
+      mtgCard(
+        'Massacre Girl, Known Killer', '2BB',
+        'https://scryfall.com/card/ecc/79/massacre-girl-known-killer'
+      ),
+      mtgCard(
+        'Everlasting Torment', '2B/R',
+        'https://scryfall.com/card/ecc/121/everlasting-torment'
+      ),
+      mtgCard(
+        'Oft-Nabbed Goat', '1B',
+        'https://scryfall.com/card/ecc/11/oft-nabbed-goat'
+      )
+    ],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: 'Blight Curse Box',
+      sleeves: 'Skull Chapel'
+    },
+    status: 'Great'
   }
 ];
 

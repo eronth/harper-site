@@ -3,8 +3,13 @@ import duskmournCaseDecks from './Duskmourn Case/mtg-deck-duskmourn-data';
 import mahaCaseDecks from './Maha Case/mtg-deck-maha-data';
 import nicolBolasSunflowerDecks from './Nicol Bolas Sunflower Box/mtg-deck-nicolbolassunflower-data';
 import winterCaseDecks from './Winter Case/mtg-deck-winter-data';
-import zendikarDecks from './Zendikar Box/mtg-deck-zendikar-data';
-
+import lorwynCelestialReunionDecks from './Lorwyn Celestial Reuinion Case/mtg-decks-celestial-reunion-data';
+// Prerelease Boxes
+import zendikarDecks from './Boxes-Prerelease/Zendikar Box/mtg-deck-zendikar-data';
+import lorwynEclipsedPrereleaseBoxDecks from './Boxes-Prerelease/Lorwyn Eclipsed Box/mtg-prerelease-deck-eclipsed-data';
+// Other
+import chronicleOfVictoryDecks from './Chronicle of Victory Mini-Case/mtg-decks-chronicle-case';
+// Out
 import justKindaOut from './Just Kinda Out/mtg-deck-out-data';
 
 
@@ -17,7 +22,14 @@ const mtgDecks: MtgDeck[] = [
   ...mahaCaseDecks,
   ...nicolBolasSunflowerDecks,
   ...winterCaseDecks,
+  ...lorwynCelestialReunionDecks,
+
+  
   ...zendikarDecks,
+  ...lorwynEclipsedPrereleaseBoxDecks,
+  
+  ...chronicleOfVictoryDecks,
+  
   ...justKindaOut,
   // {
   //   id: 'aaaaa',
