@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 // Components
 import Page from '../../Page';
@@ -11,15 +11,16 @@ import recipes from './drink-recipe-data';
 import hotChocolateRecipes from './hot-chocolate-recipe-data';
 
 const DrinkRecipes: React.FC = () => {
+  const initialRecipes = useMemo(() => [...recipes, ...hotChocolateRecipes], []);
   const [searchParams] = useSearchParams();
-  const [filteredRecipes, setFilteredRecipes] = useState([...recipes, ...hotChocolateRecipes]);
-  const filterCats: DrinkCategory[] = [...drinkCategories];
+  const [filteredRecipes, setFilteredRecipes] = useState([...initialRecipes]);
+  const filterCats: DrinkCategory[] = useMemo(() => [...drinkCategories], []);
   
   // Get initial season from URL params if present
   const seasonParam = searchParams.get('season');
   const initialSeason = seasonParam === 'none' ? null : (seasonParam as Season | null);
   
-  const handleFilterChange = useCallback((newFilteredRecipesList: typeof recipes) => {
+  const handleFilterChange = useCallback((newFilteredRecipesList: typeof initialRecipes) => {
     setFilteredRecipes(newFilteredRecipesList);
   }, []);
   
@@ -29,14 +30,14 @@ const DrinkRecipes: React.FC = () => {
       <p>Our favorite cocktails and beverages.</p>
       
       <RecipeSearch
-        recipes={[...recipes, ...hotChocolateRecipes]}
+        recipes={[...initialRecipes]}
         onFilterChange={handleFilterChange}
         filterCategories={filterCats}
         initialSeason={initialSeason}
       />
 
       <div className="results-info">
-        Showing {filteredRecipes.length} of {recipes.length} recipes
+        Showing {filteredRecipes.length} of {initialRecipes.length} recipes
       </div>
 
       <div className="recipe-grid">
