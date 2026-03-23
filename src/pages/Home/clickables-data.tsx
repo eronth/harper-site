@@ -6,7 +6,8 @@ import {
   faPaintBrush,
   faGift,
   faWrench,
-  faHouseChimney
+  faHouseChimney,
+  faBook
 } from "@fortawesome/free-solid-svg-icons";
 
 export type Clickable = {
@@ -37,8 +38,7 @@ const clickables: Clickable[] = [
     text: 'Cocktails, coffee, and beverages',
     path: '/drink-recipes'
   },
-  { 
-    id: 'vacations',
+  { id: 'vacations',
     icon: <FontAwesomeIcon icon={faUmbrellaBeach} />,
     title: {
       full: 'Vacations and Staycations',
@@ -55,8 +55,7 @@ const clickables: Clickable[] = [
     text: 'Our creative endeavors and DIY projects',
     path: '/projects'
   },
-  { 
-    id: 'wedding-registry',
+  { id: 'wedding-registry',
     icon: <FontAwesomeIcon icon={faGift} />,
     title: {
       full: 'Wedding Registry',
@@ -73,8 +72,7 @@ const clickables: Clickable[] = [
     text: 'Our traditions and displays for every season',
     path: '/seasonal-cheering'
   },
-  {
-    id: 'little-web-tools',
+  { id: 'little-web-tools',
     icon: <FontAwesomeIcon icon={faWrench} />,
     title: {
       full: 'Little Web Tools',
@@ -83,8 +81,7 @@ const clickables: Clickable[] = [
     text: 'Handy utilities for web development tasks',
     path: '/little-web-tools',
   },
-  { 
-    id: 'magic-the-gathering',
+  { id: 'magic-the-gathering',
     icon: <i className={`ms ms-rarity`} />,
     title: {
       full: 'Magic: The Gathering',
@@ -92,6 +89,15 @@ const clickables: Clickable[] = [
     text: 'Our collection of MtG decks, with basic overviews.',
     path: '/magic-the-gathering',
   },
+  { id: 'book-corner',
+    icon: <FontAwesomeIcon icon={faBook} />,
+    title: {
+      full: 'Book Corner',
+      sidebar: 'Books',
+    },
+    text: 'Our favorite books and reading recommendations.',
+    path: '/book-corner',
+  }
   // { id: 'passions',
   //   icon: <FontAwesomeIcon icon={faStar} />,
   //   title: {
