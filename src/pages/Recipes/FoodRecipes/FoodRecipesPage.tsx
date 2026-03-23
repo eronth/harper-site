@@ -5,7 +5,7 @@ import Page from '../../Page';
 import RecipeCard from '../SharedRecipeComponents/RecipeCard/RecipeCard';
 import RecipeSearch from '../SharedRecipeComponents/RecipeSearch/RecipeSearch';
 // Types
-import type { RecipeCategory, Season } from '../../../types/recipe-types';
+import { mealCategories, type MealCategory, type Season } from '../../../types/recipe-types';
 // Data
 import recipes from './food-recipe-data';
 // CSS
@@ -14,7 +14,8 @@ import './FoodRecipesPage.css';
 const FoodRecipes: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
-  const filterCats: RecipeCategory[] = ['Dinner', 'Dessert', 'Desert'];
+  // Only meal categories for this page
+  const filterCats: MealCategory[] = [...mealCategories];
 
   // Get initial season from URL params if present
   const seasonParam = searchParams.get('season');

@@ -1,9 +1,10 @@
-import type { Season } from "../../../types/recipe-types";
+import type { DrinkCategory, Season } from "../../../types/recipe-types";
 import type { Ingredient, Recipe, QuantityUnit } from "../SharedRecipeComponents/recipe-types";
 
 export type DrinkRecipe = {
   title: string;
   subtitle?: string;
+  category: DrinkCategory;
   seasons: Season[];
   searchTerms?: string[];
   description?: string;
@@ -40,7 +41,7 @@ const add = (
 const drink = (r: DrinkRecipe): Recipe => ({
   title: r.title,
   subtitle: r.subtitle,
-  category: 'Drink',
+  category: r.category,
   seasons: r.seasons,
   searchTerms: r.searchTerms,
   description: r.description,
@@ -61,6 +62,7 @@ const recipes: Recipe[] = [
   { // Clover Club
     ...drink({
       title: 'Clover Club',
+      category: 'Cocktail',
       seasons: [spring, summer],
       description: 'A refreshing gin cocktail with raspberry and lemon.',
       ingredients: [
@@ -80,6 +82,7 @@ const recipes: Recipe[] = [
   { // Stillswill
     ...drink({
       title: 'Stillswill',
+      category: 'Cocktail',
       seasons: [autumn],
       description: 'A shadowy cocktail from the Shadowfell.',
       ingredients: [
@@ -101,6 +104,7 @@ const recipes: Recipe[] = [
   { // Zolezzi Cocktail
     ...drink({
       title: 'Zolezzi Cocktail',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(1, 'blue curacao'),
@@ -119,6 +123,7 @@ const recipes: Recipe[] = [
   { // Luscious Leslie
     ...drink({
       title: 'Luscious Leslie',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(1, 'amaretto'),
@@ -138,6 +143,7 @@ const recipes: Recipe[] = [
   { // Smoked Rum Martinez
     ...drink({
       title: 'Smoked Rum Martinez',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(0, 'applewood smoke stick', { adjustments: 'for smoking glass' }),
@@ -160,7 +166,8 @@ const recipes: Recipe[] = [
   { // The Manhatten
     ...drink({
       title: 'The Manhatten',
-      seasons: [],
+      category: 'Cocktail',
+      seasons: [...allSeasons],
       ingredients: [
         add(2, 'rye whiskey'),
         add(1, 'sweet vermouth'),
@@ -176,6 +183,7 @@ const recipes: Recipe[] = [
   { // Great White Cocktail
     ...drink({
       title: 'Great White Cocktail',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(1.5, 'citron'),
@@ -193,6 +201,7 @@ const recipes: Recipe[] = [
   { // Mezcal Negroni
     ...drink({ 
       title: 'Mezcal Negroni',
+      category: 'Cocktail',
       description: 'A sophisticated cocktail with a smoky and bitter flavor.',
       seasons: [],
       ingredients: [
@@ -212,6 +221,7 @@ const recipes: Recipe[] = [
     ...drink({
       title: 'Improved Whiskey Cocktail',
       description: 'A classic and classy cocktail. It\'s existance is why we have something called the "Old Fashioned".',
+      category: 'Cocktail',
       seasons: [...allSeasons],
       ingredients: [
         add(1/4, 'simple syrup'),
@@ -231,6 +241,7 @@ const recipes: Recipe[] = [
   { // White Chocolate Mocha
     ...drink({
       title: 'White Chocolate Mocha',
+      category: 'Cocktail',
       seasons: [...allSeasons],
       description: 'A cozy and indulgent coffee drink. The eventual \'Leslie Hargus\' at the Afterlife Bar.',
       ingredients: [
@@ -249,6 +260,7 @@ const recipes: Recipe[] = [
   { // Cold Brew Old Fashioned
     ...drink({
       title: 'Cold Brew Old Fashioned',
+      category: 'Cocktail',
       seasons: [...allSeasons],
       description: 'A coffee twist on the classic Old Fashioned cocktail.',
       ingredients: [
@@ -267,6 +279,7 @@ const recipes: Recipe[] = [
   { // Sweet Embrace
     ...drink({
       title: 'Sweet Embrace',
+      category: 'Cocktail',
       seasons: [...allSeasons],
       description: 'A sweet and comforting bourbon cocktail. The eventual \'Nic Pereira\' at the Afterlife Bar',
       ingredients: [
@@ -287,6 +300,7 @@ const recipes: Recipe[] = [
   { // King Kong
     ...drink({
       title: 'King Kong',
+      category: 'Cocktail',
       seasons: [summer],
       ingredients: [
         add(2, 'banana rum'),
@@ -304,6 +318,7 @@ const recipes: Recipe[] = [
   { // Boozy Banana
     ...drink({
       title: 'Boozy Banana',
+      category: 'Cocktail',
       seasons: [summer],
       ingredients: [
         add(2, 'banana rum'),
@@ -322,6 +337,7 @@ const recipes: Recipe[] = [
   { // Punkin' Gin Fashioned
     ...drink({
       title: 'Punkin\' Gin Fashioned',
+      category: 'Cocktail',
       seasons: [autumn],
       description: 'A fall twist on the classic Old Fashioned cocktail.',
       ingredients: [
@@ -342,6 +358,7 @@ const recipes: Recipe[] = [
   { // Moscow Mule
     ...drink({
       title: 'Moscow Mule',
+      category: 'Cocktail',
       seasons: [...allSeasons],
       description: 'A refreshing and zesty cocktail with a ginger kick.',
       ingredients: [
@@ -361,6 +378,7 @@ const recipes: Recipe[] = [
   { // Farwell to Arms
     ...drink({
       title: 'Farewell to Arms',
+      category: 'Cocktail',
       seasons: [fall],
       ingredients: [
         add(1, 'bourbon'),
@@ -382,6 +400,7 @@ const recipes: Recipe[] = [
   { // The Alexander
     ...drink({
       title: 'The Alexander',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(1, 'sweet cream'),
@@ -400,6 +419,7 @@ const recipes: Recipe[] = [
   { // Alexander's Sister
     ...drink({
       title: 'Alexander\'s Sister',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(1, 'sweet cream'),
@@ -418,6 +438,7 @@ const recipes: Recipe[] = [
   { // Shamrock Shake
     ...drink({
       title: 'Alexander\'s Sister',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(1, 'sweet cream'),
@@ -437,6 +458,7 @@ const recipes: Recipe[] = [
   { // Kingston Coffee
     ...drink({
       title: 'Kingston Coffee',
+      category: 'Cocktail',
       seasons: [...allSeasons],
       ingredients: [
         add(1.5, 'plantation xaymaca jamaican rum'),
@@ -459,6 +481,7 @@ const recipes: Recipe[] = [
   { // Oatmeal Cookie
     ...drink({
       title: 'Oatmeal Cookie',
+      category: 'Cocktail',
       seasons: [],
       description: 'A dessert cocktail that tastes a bit like an oatmeal cookie.',
       ingredients: [
@@ -479,6 +502,7 @@ const recipes: Recipe[] = [
   { // Blue Hurricane
     ...drink({
       title: 'Blue Hurricane',
+      category: 'Cocktail',
       seasons: [summer],
       ingredients: [
         add(2, 'coconut rum'),
@@ -499,6 +523,7 @@ const recipes: Recipe[] = [
   { // The Winter Warmer
     ...drink({
       title: 'The Winter Warmer',
+      category: 'Cocktail',
       seasons: [winter],
       description: 'A cozy and warming cocktail perfect for cold weather.',
       ingredients: [
@@ -518,6 +543,7 @@ const recipes: Recipe[] = [
   { // Sweet Martini
     ...drink({
       title: 'Sweet Martini',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(1.5, 'gin'),
@@ -536,6 +562,7 @@ const recipes: Recipe[] = [
   { // Agent Orange
     ...drink({
       title: 'Agent Orange',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(2, 'orange juice'),
@@ -551,6 +578,7 @@ const recipes: Recipe[] = [
   { // Gin & It
     ...drink({
       title: 'Gin & It',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(1.5, 'gin'),
@@ -567,6 +595,7 @@ const recipes: Recipe[] = [
   { // Daiquiri
     ...drink({
       title: 'Daiquiri',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(2, 'rum'),
@@ -583,6 +612,7 @@ const recipes: Recipe[] = [
   { // Jungle Bird
     ...drink({
       title: 'Jungle Bird',
+      category: 'Cocktail',
       seasons: [summer],
       description: 'A tropical cocktail with a strong hint of bitterness.',
       ingredients: [
@@ -603,6 +633,7 @@ const recipes: Recipe[] = [
   { // Blue Mountain King
     ...drink({
       title: 'Blue Mountain King',
+      category: 'Cocktail',
       seasons: [summer],
       description: 'A tropical cocktail with a hint of coconut and blue curaçao.',
       ingredients: [
@@ -624,6 +655,7 @@ const recipes: Recipe[] = [
   { // Good News
     ...drink({
       title: 'Good News',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(2, 'bourbon'),
@@ -641,11 +673,12 @@ const recipes: Recipe[] = [
   { // Smoky Garden Sip
     ...drink({
       title: 'Smoky Garden Sip',
+      category: 'Cocktail',
       seasons: [spring, summer],
       description: 'A refreshing and smoky cocktail with herbal notes.',
       ingredients: [
         add(.5, 'mezcal'),
-        add(1, 'st. germain'),
+        add(1, 'st. germain with muddled mint'),
         add(.5, 'lime juice'),
         add(.25, 'honey or simple syrup'),
         add(0, 'splash of campaigne'),
@@ -655,12 +688,14 @@ const recipes: Recipe[] = [
         'Shake until well chilled',
         'Strain into rocks glass with ice',
         'Top with a splash of champagne',
+        'Garnish with more mint if you\'re feeling fancy',
       ],
     })
   },
   { // Color Changer
     ...drink({
       title: 'Color Changer',
+      category: 'Cocktail',
       seasons: [],
       ingredients: [
         add(2, 'navy strength gin'),
@@ -680,28 +715,10 @@ const recipes: Recipe[] = [
       ]
     })
   },
-  { // Smoky Garden Sip
-    ...drink({
-      title: 'Smoky Garden Sip',
-      seasons: [],
-      ingredients: [
-        add(.5, 'mezcal'),
-        add(1, 'st. germain with muddled mint'),
-        add(.5, 'lime juice'),
-        add(.25, 'honey or simple syrup'),
-        add(0, 'splash of champagne')
-      ],
-      steps: [
-        'Add all ingredients to shaker with ice',
-        'Shake until well chilled',
-        'Strain into rocks glass with ice',
-        'Garnish with more mint if you\'re feeling fancy',
-      ]
-    }),
-  },
   { // The Wiggle
     ...drink({
       title: 'The Wiggle',
+      category: 'Cocktail',
       seasons: [],
       description: 'A fun and colorful cocktail garnished with gummy worms.',
       ingredients: [

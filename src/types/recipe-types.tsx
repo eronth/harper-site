@@ -1,14 +1,10 @@
-export type Season = 'Spring' | 'Summer' | 'Autumn' | 'Winter';
+export const seasonCategories = ['Spring', 'Summer', 'Autumn', 'Winter'] as const;
+export type Season = typeof seasonCategories[number];
 
-export type RecipeCategory =
-  MealCategory | DrinkCategory;
+export const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Desert'] as const;
+export type MealCategory = typeof mealCategories[number];
 
-type MealCategory = 
-'Breakfast' | 'Lunch' | 'Dinner' 
-//| 'Appetizer' | 'Side Dish'
-| 'Dessert' | 'Desert'
-| 'Drink';
+export const drinkCategories = ['Cocktail', 'Smoothie', 'Coffee', 'Tea', 'Hot Chocolate','Other'] as const;
+export type DrinkCategory = typeof drinkCategories[number];
 
-type DrinkCategory =
-'Cocktail' | 'Smoothie' | 'Coffee' | 'Tea' | 'Other'
-
+export type RecipeCategory = MealCategory | DrinkCategory;

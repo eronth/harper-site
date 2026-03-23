@@ -2,7 +2,7 @@ import type { Season } from "../../../types/recipe-types";
 import type { Ingredient, QuantityUnit, Recipe } from "../SharedRecipeComponents/recipe-types";
 import type { DrinkRecipe } from "./drink-recipe-data";
 
-type HotChocolateRecipe = Omit<DrinkRecipe, 'steps' | 'seasons'> & {
+type HotChocolateRecipe = Omit<DrinkRecipe, 'category' | 'steps' | 'seasons'> & {
   steps?: string[];
   seasons?: Season[];
   toppings?: Ingredient[];
@@ -47,7 +47,7 @@ const baseHotChocolateSteps: string[] = [
 const hotChocolate = (r: HotChocolateRecipe): Recipe => ({
   title: r.title,
   subtitle: r.subtitle,
-  category: 'Drink',
+  category: 'Hot Chocolate',
   seasons: ['Winter', ...(r.seasons ?? [])],
   searchTerms: [
     'hot chocolate',

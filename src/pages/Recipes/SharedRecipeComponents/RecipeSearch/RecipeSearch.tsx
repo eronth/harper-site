@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import type { RecipeCategory, Season } from "../../../../types/recipe-types";
+import { seasonCategories, type RecipeCategory, type Season } from "../../../../types/recipe-types";
 import type { Recipe } from "../recipe-types";
 import './RecipeSearch.css';
 
@@ -14,7 +14,7 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
   type SeasonFilterType = Season | 'None'; // 'None' for recipes without a season
   const minFilterCharacters = 3;
   const [searchTerm, setSearchTerm] = useState('');
-  const allSeasons: Season[] = ['Spring', 'Summer', 'Autumn', 'Winter'];
+  const allSeasons: Season[] = [...seasonCategories];
   
   // Function to determine current season based on month
   const getCurrentSeason = (): Season | null => {

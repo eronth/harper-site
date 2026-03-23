@@ -5,7 +5,7 @@ import Page from '../../Page';
 import RecipeCard from '../SharedRecipeComponents/RecipeCard/RecipeCard';
 import RecipeSearch from '../SharedRecipeComponents/RecipeSearch/RecipeSearch';
 // Types
-import type { RecipeCategory, Season } from '../../../types/recipe-types';
+import { drinkCategories, type DrinkCategory, type Season } from '../../../types/recipe-types';
 // Data
 import recipes from './drink-recipe-data';
 import hotChocolateRecipes from './hot-chocolate-recipe-data';
@@ -13,7 +13,7 @@ import hotChocolateRecipes from './hot-chocolate-recipe-data';
 const DrinkRecipes: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [filteredRecipes, setFilteredRecipes] = useState([...recipes, ...hotChocolateRecipes]);
-  const filterCats: RecipeCategory[] = ['Cocktail', 'Smoothie', 'Coffee', 'Tea', 'Other'];
+  const filterCats: DrinkCategory[] = [...drinkCategories];
   
   // Get initial season from URL params if present
   const seasonParam = searchParams.get('season');
