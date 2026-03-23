@@ -114,6 +114,38 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
     );
   };
 
+  const getCategoryCheckbox = (category: RecipeCategory) => {
+    const seasonFiltered = recipes.filter(recipe => {
+      // Season filter
+      const matchesSeasons = (
+        selectedSeasons.length === 0
+        || selectedSeasons.some(season => recipe.seasons.includes(season as Season))
+        || (recipe.seasons.length === 0 && selectedSeasons.includes('None'))
+      );
+
+      // Category filter (excluding Desert which is handled above)
+      const matchesCategory = (recipe.category === category);
+
+      return matchesSeasons && matchesCategory;
+    });
+
+    const disabled = seasonFiltered.length === 0;
+    const checked = disabled ? false : selectedCategories.includes(category);
+    
+    return (<label key={category} className="filter-checkbox">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={() => handleCategoryToggle(category)}
+        disabled={disabled} // Disable if no recipes match the season filter
+      />
+        {disabled
+        ? <s>{category}</s>
+        : category}
+      </label>
+    );
+  };
+
   return (
     <div className="recipe-filters">
       <div className="search-box">
@@ -152,16 +184,7 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
 
       <div className="checkbox-filters">
         <span className="filter-label">Filter by category:</span>
-        {filterCategories.map(category => (
-          <label key={category} className="filter-checkbox">
-            <input
-              type="checkbox"
-              checked={selectedCategories.includes(category)}
-              onChange={() => handleCategoryToggle(category)}
-            />
-            {category}
-          </label>
-        ))}
+        {filterCategories.map(category => getCategoryCheckbox(category))}
       </div>
     </div>
   );
