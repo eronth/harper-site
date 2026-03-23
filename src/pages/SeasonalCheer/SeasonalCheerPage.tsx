@@ -59,7 +59,7 @@ const SeasonalCheerPage: React.FC = () => {
           {seasons.map((season) => (
             <div
               key={season.id}
-              className="season-card"
+              className={`season-card season-card--${season.id}`}
               onClick={() => navigate(season.route)}
               role="button"
               tabIndex={0}

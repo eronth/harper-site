@@ -31,8 +31,8 @@
 }
 
 .season-card {
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-border);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
@@ -44,11 +44,11 @@
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-light);
   }
 
   &:focus {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid var(--brand-maroon);
     outline-offset: 2px;
   }
 
@@ -57,12 +57,40 @@
   }
 }
 
+.season-card--spring {
+  --season-grad-a: light-dark(#fce4ec, #2d0d14);
+  --season-grad-b: light-dark(#e8f5e9, #0d2110);
+  background: linear-gradient(135deg, var(--season-grad-a), var(--season-grad-b));
+  border-color: light-dark(rgba(240, 120, 160, 0.35), rgba(180, 60, 90, 0.35));
+}
+
+.season-card--summer {
+  --season-grad-a: light-dark(#fffde7, #252100);
+  --season-grad-b: light-dark(#fff3e0, #251400);
+  background: linear-gradient(135deg, var(--season-grad-a), var(--season-grad-b));
+  border-color: light-dark(rgba(255, 193, 7, 0.4), rgba(180, 130, 0, 0.4));
+}
+
+.season-card--autumn {
+  --season-grad-a: light-dark(#fff3e0, #251400);
+  --season-grad-b: light-dark(#fce4e4, #250d0d);
+  background: linear-gradient(135deg, var(--season-grad-a), var(--season-grad-b));
+  border-color: light-dark(rgba(230, 120, 30, 0.4), rgba(180, 70, 0, 0.4));
+}
+
+.season-card--winter {
+  --season-grad-a: light-dark(#e3f2fd, #0d1f2d);
+  --season-grad-b: light-dark(#f0f4ff, #131929);
+  background: linear-gradient(135deg, var(--season-grad-a), var(--season-grad-b));
+  border-color: light-dark(rgba(30, 130, 220, 0.3), rgba(50, 100, 180, 0.4));
+}
+
 .season-card-emoji {
   flex-shrink: 0;
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: var(--color-bg-secondary);
+  background: light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,13 +113,13 @@
 .season-card-content {
   & h2 {
     margin: 0 0 0.5rem 0;
-    color: var(--color-text);
+    color: var(--text-primary);
     font-size: 1.4rem;
   }
 
   & p {
     margin: 0;
-    color: var(--color-text-secondary);
+    color: var(--text-secondary);
     line-height: 1.5;
   }
 }
