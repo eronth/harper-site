@@ -3,11 +3,10 @@ import {
   faUmbrellaBeach,
   faUtensils,
   faCocktail,
-  faHouseChimney,
   faPaintBrush,
-  faStar,
   faGift,
-  faWrench
+  faWrench,
+  faHouseChimney
 } from "@fortawesome/free-solid-svg-icons";
 
 export type Clickable = {
@@ -56,22 +55,6 @@ const clickables: Clickable[] = [
     text: 'Our creative endeavors and DIY projects',
     path: '/projects'
   },
-  { id: 'passions',
-    icon: <FontAwesomeIcon icon={faStar} />,
-    title: {
-      full: 'Passions & Hobbies',
-    },
-    text: 'Exploring our interests and hobbies together',
-    path: '/passions'
-  },
-  { id: 'winter-cheering',
-    icon: <FontAwesomeIcon icon={faHouseChimney} />,
-    title: {
-      full: 'Winter Cheer',
-    },
-    text: 'Our holiday traditions and winter displays',
-    path: '/winter-cheering'
-  },
   { 
     id: 'wedding-registry',
     icon: <FontAwesomeIcon icon={faGift} />,
@@ -82,14 +65,13 @@ const clickables: Clickable[] = [
     text: 'Our wedding registry and gift information',
     path: '/wedding-registry'
   },
-  { 
-    id: 'magic-the-gathering',
-    icon: <i className={`ms ms-rarity`} />,
+  { id: 'seasonal-cheering',
+    icon: <FontAwesomeIcon icon={faHouseChimney} />,
     title: {
-      full: 'Magic: The Gathering',
+      full: 'Seasonal Cheer',
     },
-    text: 'Our collection of MtG decks, with basic overviews.',
-    path: '/magic-the-gathering',
+    text: 'Our traditions and displays for every season',
+    path: '/seasonal-cheering'
   },
   {
     id: 'little-web-tools',
@@ -101,6 +83,23 @@ const clickables: Clickable[] = [
     text: 'Handy utilities for web development tasks',
     path: '/little-web-tools',
   },
+  { 
+    id: 'magic-the-gathering',
+    icon: <i className={`ms ms-rarity`} />,
+    title: {
+      full: 'Magic: The Gathering',
+    },
+    text: 'Our collection of MtG decks, with basic overviews.',
+    path: '/magic-the-gathering',
+  },
+  // { id: 'passions',
+  //   icon: <FontAwesomeIcon icon={faStar} />,
+  //   title: {
+  //     full: 'Passions & Hobbies',
+  //   },
+  //   text: 'Exploring our interests and hobbies together',
+  //   path: '/passions'
+  // },
 ];
 
 export default clickables;

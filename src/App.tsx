@@ -8,10 +8,16 @@ import FoodRecipes from './pages/Recipes/FoodRecipes/FoodRecipesPage'
 import IndividualFoodRecipePage from './pages/Recipes/FoodRecipes/IndividualFoodRecipePage'
 import DrinkRecipes from './pages/Recipes/DrinkRecipes/DrinkRecipesPage'
 import IndividualDrinkRecipePage from './pages/Recipes/DrinkRecipes/IndividualDrinkRecipePage'
-import WinterCheer from './pages/WinterVillage/WinterCheerPage'
-import HolidayVillagePage from './pages/WinterVillage/HolidayVillage/HolidayVillagePage'
-import OrnamentsPage from './pages/WinterVillage/Ornaments/OrnamentsPage'
-import PipeTreeForestPage from './pages/WinterVillage/PipeTreeForest/PipeTreeForestPage'
+
+import SeasonalCheer from       './pages/SeasonalCheer/SeasonalCheerPage'
+import SpringCheer from         './pages/SeasonalCheer/SpringCheer/SpringCheerPage'
+import SummerCheer from         './pages/SeasonalCheer/SummerCheer/SummerCheerPage'
+import AutumnCheer from         './pages/SeasonalCheer/AutumnCheer/AutumnCheerPage'
+import WinterCheer from         './pages/SeasonalCheer/WinterCheer/WinterCheerPage'
+import HolidayVillagePage from  './pages/SeasonalCheer/WinterCheer/HolidayVillage/HolidayVillagePage'
+import OrnamentsPage from       './pages/SeasonalCheer/WinterCheer/Ornaments/OrnamentsPage'
+import PipeTreeForestPage from  './pages/SeasonalCheer/WinterCheer/PipeTreeForest/PipeTreeForestPage'
+
 import WeddingRegistry from './pages/WeddingRegistry/WeddingRegistryPage'
 import ProjectsAndCrafts from './pages/ProjectsAndCrafts/ProjectsAndCrafts'
 import IndividualProjectPage from './pages/ProjectsAndCrafts/IndividualProjectPage/IndividualProjectPage'
@@ -47,10 +53,14 @@ function App() {
           <Route path="/drink-recipes/recipe/:recipeId" element={<IndividualDrinkRecipePage />} />
           <Route path="/projects" element={<ProjectsAndCrafts />} />
           <Route path="/projects/project/:projectId" element={<IndividualProjectPage />} />
-          <Route path="/winter-cheering" element={<WinterCheer />} />
-          <Route path="/winter-cheering/holiday-village" element={<HolidayVillagePage />} />
-          <Route path="/winter-cheering/ornaments" element={<OrnamentsPage />} />
-          <Route path="/winter-cheering/pipe-tree-forest" element={<PipeTreeForestPage />} />
+          <Route path="/seasonal-cheering" element={<SeasonalCheer />} />
+          <Route path="/seasonal-cheering/spring" element={<SpringCheer />} />
+          <Route path="/seasonal-cheering/summer" element={<SummerCheer />} />
+          <Route path="/seasonal-cheering/autumn" element={<AutumnCheer />} />
+          <Route path="/seasonal-cheering/winter" element={<WinterCheer />} />
+          <Route path="/seasonal-cheering/winter/holiday-village" element={<HolidayVillagePage />} />
+          <Route path="/seasonal-cheering/winter/ornaments" element={<OrnamentsPage />} />
+          <Route path="/seasonal-cheering/winter/pipe-tree-forest" element={<PipeTreeForestPage />} />
           <Route path="/wedding-registry" element={<WeddingRegistry />} />
           <Route path="/magic-the-gathering" element={<MagicTheGathering />} />
           <Route path="/little-web-tools/:toolId?" element={<LittleWebTools />} />

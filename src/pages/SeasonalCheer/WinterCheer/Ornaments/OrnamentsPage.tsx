@@ -1,22 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Page from '../../Page';
+import Page from '../../../Page';
 import './OrnamentsPage.css';
 
 // Import all gaybird images
-import abigail from '../../../assets/gaybirds/Abigail.jpg';
-import cameron from '../../../assets/gaybirds/Cameron.jpg';
-import janey from '../../../assets/gaybirds/Janey.webp';
-import joe from '../../../assets/gaybirds/Jo-e.jpg';
-import jodie from '../../../assets/gaybirds/Jodie.jpg';
-import peter from '../../../assets/gaybirds/Peter.jpg';
-import simon from '../../../assets/gaybirds/Simon.jpg';
-import nameless1 from '../../../assets/gaybirds/1.webp';
-import nameless2 from '../../../assets/gaybirds/2.webp';
-import nameless3 from '../../../assets/gaybirds/3.webp';
-import nameless4 from '../../../assets/gaybirds/4.webp';
-import nameless5 from '../../../assets/gaybirds/5.webp';
-import nameless6 from '../../../assets/gaybirds/6.webp';
+import abigail   from '../../../../assets/gaybirds/Abigail.jpg';
+import cameron   from '../../../../assets/gaybirds/Cameron.jpg';
+import janey     from '../../../../assets/gaybirds/Janey.webp';
+import joe       from '../../../../assets/gaybirds/Jo-e.jpg';
+import jodie     from '../../../../assets/gaybirds/Jodie.jpg';
+import peter     from '../../../../assets/gaybirds/Peter.jpg';
+import simon     from '../../../../assets/gaybirds/Simon.jpg';
+import nameless1 from '../../../../assets/gaybirds/1.webp';
+import nameless2 from '../../../../assets/gaybirds/2.webp';
+import nameless3 from '../../../../assets/gaybirds/3.webp';
+import nameless4 from '../../../../assets/gaybirds/4.webp';
+import nameless5 from '../../../../assets/gaybirds/5.webp';
+import nameless6 from '../../../../assets/gaybirds/6.webp';
 
 const gaybirdImages = [
   { src: abigail, alt: 'Abigail' },

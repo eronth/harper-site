@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Page from '../../Page';
-import './HolidayVillagePage.css';
+import Page from '../../../Page';
+import './PipeTreeForestPage.css';
 
-const HolidayVillagePage: React.FC = () => {
+const PipeTreeForestPage: React.FC = () => {
   const navigate = useNavigate();
 
   return (
     <Page>
-      <div className="holiday-village-container">
+      <div className="pipe-tree-forest-container">
         <button
           className="back-button"
           onClick={() => navigate('/winter-cheering')}
@@ -16,12 +16,12 @@ const HolidayVillagePage: React.FC = () => {
           ← Back to Winter Village
         </button>
 
-        <header className="holiday-village-header">
-          <h1>Lego Holiday Village</h1>
-          <p>Our growing collection of LEGO winter village sets, complete with lights and snowy charm.</p>
+        <header className="pipe-tree-forest-header">
+          <h1>Wondrous Pipe Tree Forest</h1>
+          <p>A whimsical forest of handcrafted pipe cleaner trees bringing festive joy.</p>
         </header>
 
-        <div className="holiday-village-content">
+        <div className="pipe-tree-forest-content">
           {/* Image gallery will go here */}
           <div className="image-gallery-placeholder">
             <p>📸 Images and details coming soon!</p>
@@ -32,4 +32,4 @@ const HolidayVillagePage: React.FC = () => {
   );
 };
 
-export default HolidayVillagePage;
+export default PipeTreeForestPage;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Page from '../Page';
+import Page from '../../Page';
 import './WinterCheerPage.css';
 
-import titleBird from '../../assets/gaybirds/title.webp';
+import titleBird from '../../../assets/gaybirds/title.webp';
 
 interface CheerSection {
   id: string;
@@ -19,21 +19,21 @@ const cheerSections: CheerSection[] = [
     id: 'holiday-village',
     title: 'Lego Holiday Village',
     description: 'Our growing collection of LEGO winter village sets, complete with lights and snowy charm.',
-    route: '/winter-cheering/holiday-village',
+    route: '/winter/holiday-village',
     imageUrl: undefined, // Add image path when available
   },
   {
     id: 'ornaments',
     title: 'Little Gay Birds',
     description: 'A delightful collection of ornaments featuring our favorite feathered friends.',
-    route: '/winter-cheering/ornaments',
+    route: '/winter/ornaments',
     imageUrl: titleBird,
   },
   {
     id: 'pipe-tree-forest',
     title: 'Wondrous Pipe Tree Forest',
     description: 'A whimsical forest of handcrafted pipe cleaner trees bringing festive joy.',
-    route: '/winter-cheering/pipe-tree-forest',
+    route: '/winter/pipe-tree-forest',
     imageUrl: undefined,
   },
 ];
@@ -42,7 +42,7 @@ const WinterCheer: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSectionClick = (route: string) => {
-    navigate(route);
+    navigate('/seasonal-cheering'+route);
   };
 
   return (
