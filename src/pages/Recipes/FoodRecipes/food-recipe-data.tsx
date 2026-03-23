@@ -531,7 +531,7 @@ const recipes: Recipe[] = [
     title: 'Easy Paella',
     subtitle: 'Well, relatively easy',
     category: dinner,
-    seasons: [],
+    seasons: [spring, summer],
     ingredientsLists: [
       {
         title: 'Marinade',
@@ -1010,7 +1010,7 @@ const recipes: Recipe[] = [
     ...simpleRecipe({
       title: 'No Bake Peanut Butter Bars',
       category: dessert,
-      seasons: [],
+      seasons: [summer],
       ingredients: [
         ing(3/4, cup, 'almond flour'),
         ing(4, tbsp, 'butter'),
@@ -1032,8 +1032,8 @@ const recipes: Recipe[] = [
   { // Snack Sandwich
     ...simpleRecipe({
       title: 'Snack Sandwich',
-      category: snack,
-      seasons: [],
+      category: lunch,
+      seasons: [spring],
       ingredients: [
         ing(1, null, 'egg'),
         ing(3, 'slices', 'white bread'),
@@ -1339,7 +1339,7 @@ const recipes: Recipe[] = [
       title: 'Stir Fry Japanese BBQ Ramen Noodles',
       searchTerms: ['stir fry', 'streetfood', 'street food'],
       category: dinner,
-      seasons: [],
+      seasons: [...allSeasons],
       ingredients: [
         ing(3, null, 'packages Ramen noodles'),
         ing(3, tbsp, 'tablespoons olive oil (or cooking oil of choice)'),
@@ -1915,7 +1915,7 @@ const recipes: Recipe[] = [
     ...simpleRecipe({
       title: 'Sausage Tortellini Alfredo',
       category: dinner,
-      seasons: [],
+      seasons: [winter],
       ingredients: [
         ing(9, oz, 'tortellini'),
         ing(10, lb, 'brats or sausage'),
