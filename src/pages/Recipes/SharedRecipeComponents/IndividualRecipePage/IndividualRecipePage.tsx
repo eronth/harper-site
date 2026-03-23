@@ -11,9 +11,10 @@ type Props = {
   backPath: string;
   backLabel: string;
   unnumbered?: boolean;
+  className?: string;
 };
 
-export default function IndividualRecipePage({ recipes, backPath, backLabel, unnumbered }: Props) {
+export default function IndividualRecipePage({ recipes, backPath, backLabel, unnumbered, className }: Props) {
   const { recipeId } = useParams<{ recipeId: string }>();
   const navigate = useNavigate();
   
@@ -60,7 +61,7 @@ export default function IndividualRecipePage({ recipes, backPath, backLabel, unn
         </button>
         
         <div className="individual-recipe-container">
-          <RecipeCard recipe={recipe} interactive unnumbered={unnumbered} />
+          <RecipeCard recipe={recipe} interactive unnumbered={unnumbered} className={className} />
         </div>
       </div>
     </Page>

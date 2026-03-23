@@ -8,6 +8,7 @@ export default function IndividualDrinkRecipePage() {
       recipes={[...recipes, ...hotChocolateRecipes]}
       backPath="/drink-recipes"
       backLabel="Drink Recipes"
+      className="drink"
       unnumbered
     />
   );
