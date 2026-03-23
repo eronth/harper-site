@@ -138,14 +138,16 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
             {season}
           </label>
         ))}
-        <label className="filter-checkbox">
-          <input
-            type="checkbox"
-            checked={selectedSeasons.includes('None')}
-            onChange={() => handleSeasonToggle('None')}
-          />
-          No Seasons (yet)
-        </label>
+        {recipes.some(recipe => recipe.seasons.length === 0) && (
+          <label className="filter-checkbox">
+            <input
+              type="checkbox"
+              checked={selectedSeasons.includes('None')}
+              onChange={() => handleSeasonToggle('None')}
+            />
+            No Seasons (yet)
+          </label>
+        )}
       </div>
 
       <div className="checkbox-filters">
