@@ -3,41 +3,43 @@ import { useNavigate } from 'react-router-dom';
 import Page from '../Page';
 import './SeasonalCheerPage.css';
 
-interface Season {
+type ClickableSeason = {
   id: string;
   title: string;
   description: string;
   route: string;
   emoji: string;
-}
+};
 
-const seasons: Season[] = [
+const routeBase = '/seasonal-cheering';
+
+const seasons: ClickableSeason[] = [
   {
     id: 'spring',
     title: 'Spring Cheer',
     description: 'Celebrating the blooms and renewal of springtime.',
-    route: '/seasonal-cheering/spring',
+    route: `${routeBase}/spring`,
     emoji: '🌸',
   },
   {
     id: 'summer',
     title: 'Summer Cheer',
     description: 'Sunny days, warm nights, and summertime fun.',
-    route: '/seasonal-cheering/summer',
+    route: `${routeBase}/summer`,
     emoji: '☀️',
   },
   {
     id: 'autumn',
     title: 'Autumn Cheer',
     description: 'Cozy fall traditions and the colors of autumn.',
-    route: '/seasonal-cheering/autumn',
+    route: `${routeBase}/autumn`,
     emoji: '🍂',
   },
   {
     id: 'winter',
     title: 'Winter Cheer',
     description: 'Various projects that bring us wintertide cheer.',
-    route: '/seasonal-cheering/winter',
+    route: `${routeBase}/winter`,
     emoji: '❄️',
   },
 ];

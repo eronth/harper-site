@@ -19,31 +19,27 @@ const cheerSections: CheerSection[] = [
     id: 'holiday-village',
     title: 'Lego Holiday Village',
     description: 'Our growing collection of LEGO winter village sets, complete with lights and snowy charm.',
-    route: '/winter/holiday-village',
+    route: '/holiday-village',
     imageUrl: undefined, // Add image path when available
   },
   {
     id: 'ornaments',
     title: 'Little Gay Birds',
     description: 'A delightful collection of ornaments featuring our favorite feathered friends.',
-    route: '/winter/ornaments',
+    route: '/ornaments',
     imageUrl: titleBird,
   },
   {
     id: 'pipe-tree-forest',
     title: 'Wondrous Pipe Tree Forest',
     description: 'A whimsical forest of handcrafted pipe cleaner trees bringing festive joy.',
-    route: '/winter/pipe-tree-forest',
+    route: '/pipe-tree-forest',
     imageUrl: undefined,
   },
 ];
 
 const WinterCheer: React.FC = () => {
   const navigate = useNavigate();
-
-  const handleSectionClick = (route: string) => {
-    navigate('/seasonal-cheering'+route);
-  };
 
   return (
     <Page>
@@ -58,12 +54,12 @@ const WinterCheer: React.FC = () => {
             <div
               key={section.id}
               className="cheer-section-card"
-              onClick={() => handleSectionClick(section.route)}
+              onClick={() => navigate(`/seasonal-cheering/winter${section.route}`)}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                  handleSectionClick(section.route);
+                  navigate(`/seasonal-cheering/winter${section.route}`);
                 }
               }}
             >

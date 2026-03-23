@@ -53,14 +53,20 @@ function App() {
           <Route path="/drink-recipes/recipe/:recipeId" element={<IndividualDrinkRecipePage />} />
           <Route path="/projects" element={<ProjectsAndCrafts />} />
           <Route path="/projects/project/:projectId" element={<IndividualProjectPage />} />
-          <Route path="/seasonal-cheering" element={<SeasonalCheer />} />
-          <Route path="/seasonal-cheering/spring" element={<SpringCheer />} />
-          <Route path="/seasonal-cheering/summer" element={<SummerCheer />} />
-          <Route path="/seasonal-cheering/autumn" element={<AutumnCheer />} />
-          <Route path="/seasonal-cheering/winter" element={<WinterCheer />} />
-          <Route path="/seasonal-cheering/winter/holiday-village" element={<HolidayVillagePage />} />
-          <Route path="/seasonal-cheering/winter/ornaments" element={<OrnamentsPage />} />
-          <Route path="/seasonal-cheering/winter/pipe-tree-forest" element={<PipeTreeForestPage />} />
+
+          <Route path="/seasonal-cheering">
+            <Route index element={<SeasonalCheer />} />
+            <Route path="spring" element={<SpringCheer />} />
+            <Route path="summer" element={<SummerCheer />} />
+            <Route path="autumn" element={<AutumnCheer />} />
+            <Route path="winter">
+              <Route index element={<WinterCheer />} />
+              <Route path="holiday-village" element={<HolidayVillagePage />} />
+              <Route path="ornaments" element={<OrnamentsPage />} />
+              <Route path="pipe-tree-forest" element={<PipeTreeForestPage />} />
+            </Route>
+          </Route>
+
           <Route path="/wedding-registry" element={<WeddingRegistry />} />
           <Route path="/magic-the-gathering" element={<MagicTheGathering />} />
           <Route path="/little-web-tools/:toolId?" element={<LittleWebTools />} />
