@@ -38,7 +38,7 @@ const FoodRecipes: React.FC = () => {
       />
 
       <div className="results-info">
-        Showing {filteredRecipes.length} of {recipes.length - 1} recipes
+        Showing {filteredRecipes.length} of {recipes.length} recipes
       </div>
 
       <div className="recipe-grid">
