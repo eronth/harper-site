@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { seasonCategories, type RecipeCategory, type Season } from "../../../../types/recipe-types";
 import type { Recipe } from "../recipe-types";
 import './RecipeSearch.css';
@@ -17,7 +17,7 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
   const allSeasons: Season[] = [...seasonCategories];
   
   // Function to determine current season based on month
-  const getCurrentSeason = (): Season | null => {
+  const currentSeason = useMemo((): Season | null => {
     const month = new Date().getMonth(); // 0-11 (Jan = 0, Dec = 11)
     
     if (month >= 11 || month <= 1) return 'Winter'; // Dec, Jan, Feb
@@ -25,8 +25,7 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
     if (month >= 5 && month <= 7) return 'Summer'; // Jun, Jul, Aug
     if (month >= 8 && month <= 10) return 'Autumn'; // Sep, Oct, Nov
     return null; // Fallback, should not happen
-  };
-  const currentSeason = getCurrentSeason();
+  }, []);
 
   // Use initialSeason if provided, otherwise use current season, or empty array if null is explicitly passed
   const getInitialSeasons = (): SeasonFilterType[] => {
@@ -114,7 +113,7 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
     );
   };
 
-  const getCategoryCheckbox = (category: RecipeCategory) => {
+  const getCategoryCheckbox = useCallback((category: RecipeCategory) => {
     const seasonFiltered = recipes.filter(recipe => {
       // Season filter
       const matchesSeasons = (
@@ -144,7 +143,7 @@ export default function RecipeSearch({ recipes, onFilterChange, filterCategories
         : category}
       </label>
     );
-  };
+  }, [recipes, selectedSeasons, selectedCategories]);
 
   return (
     <div className="recipe-filters">

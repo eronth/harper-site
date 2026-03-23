@@ -30,7 +30,7 @@ const DrinkRecipes: React.FC = () => {
       <p>Our favorite cocktails and beverages.</p>
       
       <RecipeSearch
-        recipes={[...initialRecipes]}
+        recipes={initialRecipes}
         onFilterChange={handleFilterChange}
         filterCategories={filterCats}
         initialSeason={initialSeason}
