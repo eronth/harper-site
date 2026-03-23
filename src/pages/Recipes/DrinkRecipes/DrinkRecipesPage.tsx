@@ -41,7 +41,12 @@ const DrinkRecipes: React.FC = () => {
 
       <div className="recipe-grid">
         {filteredRecipes.map((recipe, index) => (
-          <RecipeCard key={index} recipe={recipe} unnumbered />
+          <RecipeCard
+            key={index}
+            className="drink" 
+            recipe={recipe}
+            unnumbered
+          />
         ))}
       </div>
     </Page>

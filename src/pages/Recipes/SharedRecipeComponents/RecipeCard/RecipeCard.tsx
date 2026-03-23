@@ -17,8 +17,9 @@ type Props = {
   recipe: Recipe;
   unnumbered?: boolean; // If true, steps will be displayed as an unnumbered list
   interactive?: boolean; // If true, enables checkboxes for tracking progress
+  className?: string; // Optional additional class for styling
 };
-export default function RecipeCard({ recipe, unnumbered, interactive = false }: Props) {
+export default function RecipeCard({ recipe, unnumbered, interactive = false, className }: Props) {
   const location = useLocation();
   const [quantity, setQuantity] = React.useState(1);
   const maxQuantity = 5;
@@ -284,10 +285,10 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false }: 
       </div>
       <div className="recipe-title-region">
         {interactive ? (
-          <h2 className={recipe.category.toLowerCase()}>{recipe.title}</h2>
+          <h2 className={recipe.category.toLowerCase()+' '+(className || '')}>{recipe.title}</h2>
         ) : (
           <Link to={getRecipeLink()} className="recipe-title-link">
-            <h2 className={recipe.category.toLowerCase()}>{recipe.title}</h2>
+            <h2 className={recipe.category.toLowerCase()+' '+(className || '')}>{recipe.title}</h2>
           </Link>
         )}
       </div>
