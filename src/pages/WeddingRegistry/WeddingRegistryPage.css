@@ -180,6 +180,12 @@
   }
 }
 
+@keyframes ring-sparkle {
+  0%   { filter: none; }
+  25%  { filter: drop-shadow(0 0 18px gold) brightness(2); }
+  55%  { filter: drop-shadow(0 0 10px gold) brightness(1.5); }
+  100% { filter: none; }
+}
 
 @keyframes heartbeat {
   0%, 100% {
@@ -293,6 +299,11 @@
     pointer-events: auto;
     cursor: pointer;
     transition: transform 0.2s ease, opacity 0.2s ease;
+
+    top: 20%;
+    right: 8%;
+    animation-delay: 1s;
+    animation-duration: 6s;
     
     &:hover {
       opacity: 0.6;
@@ -303,29 +314,35 @@
       transform: scale(0.9);
     }
   }
-  
-  &.emoji-1 {
+
+  &.ring {
+    pointer-events: auto;
+    cursor: pointer;
+    
     top: 10%;
     left: 5%;
     animation-delay: 0s;
     animation-duration: 5s;
+
+    &:hover {
+      filter: drop-shadow(0 0 8px gold); 
+      opacity: 1;
+    }
+    &.sparkling {
+      animation:
+        float 5s ease-in-out infinite, 
+        ring-sparkle 0.9s ease-out forwards;
+    }
   }
   
-  &.emoji-2 {
-    top: 20%;
-    right: 8%;
-    animation-delay: 1s;
-    animation-duration: 6s;
-  }
-  
-  &.emoji-3 {
+  &.champagne {
     bottom: 15%;
     left: 10%;
     animation-delay: 2s;
     animation-duration: 5.5s;
   }
   
-  &.emoji-4 {
+  &.bouquet {
     bottom: 25%;
     right: 5%;
     animation-delay: 1.5s;

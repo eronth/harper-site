@@ -13,6 +13,7 @@ const WeddingRegistry: React.FC = () => {
     color: number;
   }>>([]);
   const [confettiCounter, setConfettiCounter] = useState(0);
+  const [ringSpinning, setRingSpinning] = useState(false);
 
   const handlePopperClick = (e: React.MouseEvent<HTMLDivElement>) => {
     sendConfetti(e, { xAngle: 0.4, yAngle: 0.7, xStrength: 0.5, yStrength: 0.8 });
@@ -20,6 +21,12 @@ const WeddingRegistry: React.FC = () => {
 
   const handlePartyClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     sendConfetti(e, { xAngle: 0.5, yAngle: -0.45, xStrength: 0.3, yStrength: 0.4 });
+  };
+
+  const handleRingClick = () => {
+    if (ringSpinning) return;
+    setRingSpinning(true);
+    setTimeout(() => setRingSpinning(false), 900);
   };
 
   type ConfettiOptions = {
@@ -125,16 +132,20 @@ const WeddingRegistry: React.FC = () => {
         </div>
         
         {/* Floating decorative elements */}
-        <div className="floating-emoji emoji-1">💍</div>
+        <div
+          className={`floating-emoji ring${ringSpinning ? ' sparkling' : ''}`}
+          onClick={handleRingClick}
+          title="Click me!"
+        >💍</div>
         <div 
-          className="floating-emoji emoji-2 clickable-popper" 
+          className="floating-emoji clickable-popper" 
           onClick={handlePopperClick}
           title="Click me!"
         >
           🎊
         </div>
-        <div className="floating-emoji emoji-3">🥂</div>
-        <div className="floating-emoji emoji-4">💐</div>
+        <div className="floating-emoji champagne">🥂</div>
+        <div className="floating-emoji bouquet">💐</div>
 
         {/* Confetti pieces */}
         {confettiPieces.map((piece) => (
