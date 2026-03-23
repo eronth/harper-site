@@ -88,12 +88,15 @@ const WeddingRegistry: React.FC = () => {
 
   return (
     <Page>
+      <div className="registry-bg" />
       <div className="registry-container">
         {transformNameComponent}
         <h1 className="sparkle-title">
-          <span className="sparkle">✨</span>
-          Wedding Registry
-          <span className="sparkle">✨</span>
+          <span className="sparkle-text">
+            <span className="sparkle">✨</span>
+            Wedding Registry
+            <span className="sparkle">✨</span>
+          </span>
         </h1>
         
         <div className="registry-message">
