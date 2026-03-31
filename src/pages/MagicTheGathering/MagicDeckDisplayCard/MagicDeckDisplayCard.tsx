@@ -152,7 +152,7 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
             title={deck.status}
           >
             <div 
-              className="meta-icon status-icon"
+              className={`meta-icon status-icon ${getStatusClass(deck.status)}`}
               aria-label={`Deck status: ${deck.status}`}
             >
               {deck.status === 'Great' && <FontAwesomeIcon icon={faStar} />}

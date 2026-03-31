@@ -1,6 +1,6 @@
 
 .deck-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(255 255 255 / 0.05);
   border-radius: 16px;
   border: 1px solid var(--border-light);
   padding: 1.5rem;
@@ -27,7 +27,7 @@
   
   &:hover {
     transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.08);
+    background: rgb(255 255 255 / 0.08);
     box-shadow: var(--shadow-strong);
     border-color: var(--border-accent-strong);
 
@@ -101,7 +101,7 @@
   align-items: center;
 
   .ms {
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    text-shadow: 0 0 2px rgb(0 0 0 / 0.6);
   }
 }
 
@@ -138,7 +138,7 @@
       gap: 0.5rem;
 
       .key-card {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgb(255 255 255 / 0.08);
         padding: 0.25rem 0.5rem;
         border-radius: 6px;
         font-size: 0.8rem;
@@ -147,17 +147,17 @@
         transition: all 0.2s ease;
 
         &:hover {
-          background: rgba(255, 255, 255, 0.12);
+          background: rgb(255 255 255 / 0.12);
           border-color: var(--border-accent);
         }
 
         a {
-          color: hsl(205, 100%, 70%);
+          color: hsl(205 100% 70%);
           text-decoration: none;
           transition: color 0.2s ease;
 
           &:hover {
-            color: hsl(205, 100%, 80%);
+            color: hsl(205 100% 80%);
             text-decoration: underline;
           }
         }
@@ -216,13 +216,19 @@
       align-items: center;
       gap: 0.75rem;
       padding: 0.5rem 0.75rem;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgb(255 255 255 / 0.03);
       border-radius: 8px;
       border: 1px solid var(--border-light);
       transition: all 0.2s ease;
 
+      .status-great             { --deckStatusColor: hsl(145 63% 49%); }
+      .status-good              { --deckStatusColor: hsl(145 63% 42%); }
+      .status-needs-improvement { --deckStatusColor: hsl( 37 90% 51%); }
+      .status-incomplete        { --deckStatusColor: hsl(  6 78% 57%); }
+      .status-retired           { --deckStatusColor: hsl( 44 64% 48%); }
+
       &:hover {
-        background: rgba(255, 255, 255, 0.06);
+        background: rgb(255 255 255 / 0.06);
         border-color: var(--border-accent);
       }
 
@@ -239,22 +245,7 @@
         }
 
         &.status-icon {
-          /* Status-specific colors */
-          svg[data-icon="star"] {
-            color: #2ecc71;
-          }
-          svg[data-icon="check"] {
-            color: #27ae60;
-          }
-          svg[data-icon="triangle-exclamation"] {
-            color: #f39c12;
-          }
-          svg[data-icon="wrench"] {
-            color: #e74c3c;
-          }
-          svg[data-icon="box-archive"] {
-            color: #c79e2c;
-          }
+          color: var(--deckStatusColor);
         }
       }
 
@@ -289,21 +280,9 @@
           }
 
           &.status {
-            &.status-incomplete { 
-              color: #e74c3c; 
-            }
-            &.status-needs-improvement { 
-              color: #f39c12; 
-            }
-            &.status-good { 
-              color: #27ae60; 
-            }
+            color: var(--deckStatusColor);
             &.status-great { 
-              color: #2ecc71; 
-              text-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
-            }
-            &.status-retired {
-              color: #c79e2c;
+              text-shadow: 0 0 8px rgb(46 204 113 / 0.3);
             }
           }
         }
@@ -364,4 +343,3 @@
 .key-card {
   position: relative;
 }
-
