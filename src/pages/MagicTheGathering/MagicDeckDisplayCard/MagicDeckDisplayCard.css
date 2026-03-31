@@ -221,11 +221,11 @@
       border: 1px solid var(--border-light);
       transition: all 0.2s ease;
 
-      .status-great             { --deckStatusColor: hsl(145 63% 49%); }
-      .status-good              { --deckStatusColor: hsl(145 63% 42%); }
-      .status-needs-improvement { --deckStatusColor: hsl( 37 90% 51%); }
-      .status-incomplete        { --deckStatusColor: hsl(  6 78% 57%); }
-      .status-retired           { --deckStatusColor: hsl( 44 64% 48%); }
+      .status-great             { --deckStatusColor: oklch(75% 0.18 152.1); }
+      .status-good              { --deckStatusColor: oklch(75% 0.17 144.6); }
+      .status-needs-improvement { --deckStatusColor: oklch(75% 0.18  63.1); }
+      .status-incomplete        { --deckStatusColor: oklch(75% 0.19  29.7); }
+      .status-retired           { --deckStatusColor: oklch(75% 0.13  87.3); }
 
       &:hover {
         background: rgb(255 255 255 / 0.06);
