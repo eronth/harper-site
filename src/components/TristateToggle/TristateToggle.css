@@ -1,0 +1,70 @@
+
+
+.tristate-toggle-container {
+  --toggleColor: #1976d2;
+  --toggleTextColor: white;
+  --toggleSize: 18px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  color: var(--toggleColor);
+  border-radius: 100px;
+  background-color: transparent;
+  z-index: 0;
+}
+.header .tristate-toggle-container {
+  --toggleColor: #14191e;
+}
+.disabled.tristate-toggle-container {
+  --toggleColor: #6ea5dd;
+}
+.header .disabled.tristate-toggle-container {
+  --toggleColor: #5c5c5c;
+}
+
+.tristate-toggle-container .tristate-backing {
+  display: inline-block;
+  background-color: currentColor;
+  width: 100%;
+  height: var(--toggleSize);
+  left: 0px;
+  top: calc(50% - var(--toggleSize)/2);
+  opacity: .5;
+  border-radius: 100px;
+  position: absolute;
+  z-index: -1;
+}
+.tristate-toggle-container > label {
+  font-size: x-small;
+  display: inline-block;
+  height: var(--toggleSize);
+  width: 33%;
+  text-align: center;
+  color: var(--toggleTextColor);
+  cursor: pointer;
+}
+
+.tristate-switch {
+  --switchDiameter: calc(var(--toggleSize) + 4px);
+  
+  position: absolute;
+  top: calc(50% - var(--switchDiameter)/2);
+  
+  border-radius: 100px;
+  height: var(--switchDiameter);
+  width: var(--switchDiameter);
+  background-color: currentColor;
+  
+  transition: all 0.3s ease-in-out;
+}
+
+/*---------------- ANIMATIONS ------------------- */
+.tristate-toggle-container .to-left {
+  left: -1px;
+}
+.tristate-toggle-container .to-center {
+  left: calc(100%/2 - var(--switchDiameter)/2);
+}
+.tristate-toggle-container .to-right {
+  left: calc(100% - var(--switchDiameter) + 1px);
+}

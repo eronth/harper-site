@@ -1,10 +1,26 @@
 import { useState } from 'react';
 import MtgCollapsibleRegion from '../MtgCollapsibleRegion/MtgCollapsibleRegion';
-import { type MtgColor, type DeckType, type Owner, type DeckStatus, type MtgDeck, deckStatuses, mtgColors } from '../../../types/mtg-types';
+import { TristateToggle } from '../../../components/TristateToggle/TristateToggle';
+import type { TogglePositions } from '../../../components/TristateToggle/TristateToggleTypes';
+import { type MtgColor, type DeckType, type DeckStatus, type MtgDeck, deckStatuses, mtgColors } from '../../../types/mtg-types';
 import './MtgDeckFilter.css';
 
+type OwnerFilter = 'Leslie' | 'both' | 'Nic';
+
+const ownerToPosition: Record<OwnerFilter, TogglePositions> = {
+  Leslie: 'left',
+  both: 'center',
+  Nic: 'right',
+};
+
+const positionToOwner: Record<TogglePositions, OwnerFilter> = {
+  left: 'Leslie',
+  center: 'both',
+  right: 'Nic',
+};
+
 interface FilterState {
-  owners: Owner[];
+  ownerFilter: OwnerFilter;
   deckTypes: DeckType[];
   colors: MtgColor[];
   deckStatuses: DeckStatus[];
@@ -17,7 +33,6 @@ interface MtgDeckFilterProps {
   onFilteredDecksChange: (filteredDecks: MtgDeck[]) => void;
 }
 
-const allOwners: Owner[] = ['Nic', 'Leslie'];
 const allDeckTypes: DeckType[] = ['Commander', '60-Card'];
 const allColors: MtgColor[] = [...mtgColors];
 const allDeckStatuses: DeckStatus[] = [...deckStatuses];
@@ -33,7 +48,7 @@ const colorNames: Record<MtgColor, string> = {
 
 export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckFilterProps) {
   const [filters, setFilters] = useState<FilterState>({
-    owners: [],
+    ownerFilter: 'both',
     deckTypes: [],
     colors: [],
     deckStatuses: [],
@@ -60,9 +75,9 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
       });
     }
 
-    // Filter by owners
-    if (newFilters.owners.length > 0) {
-      filtered = filtered.filter(deck => newFilters.owners.includes(deck.owner));
+    // Filter by owner
+    if (newFilters.ownerFilter !== 'both') {
+      filtered = filtered.filter(deck => deck.owner === newFilters.ownerFilter);
     }
 
     // Filter by deck types
@@ -77,8 +92,8 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
           case 'any':
             return newFilters.colors.some(color => deck.colors.includes(color));
           case 'exact':
-            return newFilters.colors.length === deck.colors.length &&
-                   newFilters.colors.every(color => deck.colors.includes(color));
+            return (newFilters.colors.length === deck.colors.length &&
+                   newFilters.colors.every(color => deck.colors.includes(color)));
           case 'contains':
             return newFilters.colors.every(color => deck.colors.includes(color));
           default:
@@ -105,7 +120,7 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
   };
 
   const toggleArrayFilter = <T,>(
-    key: keyof Pick<FilterState, 'owners' | 'deckTypes' | 'colors' | 'deckStatuses'>,
+    key: keyof Pick<FilterState, 'deckTypes' | 'colors' | 'deckStatuses'>,
     value: T
   ) => {
     const currentArray = filters[key] as T[];
@@ -118,7 +133,7 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
   const clearAllFilters = (e: React.MouseEvent) => {
     e.stopPropagation();
     const clearedFilters: FilterState = {
-      owners: [],
+      ownerFilter: 'both',
       deckTypes: [],
       colors: [],
       deckStatuses: [],
@@ -130,7 +145,7 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
   };
 
   const hasActiveFilters = (
-    filters.owners.length > 0
+    filters.ownerFilter !== 'both'
     || filters.deckTypes.length > 0
     || filters.colors.length > 0
     || filters.deckStatuses.length > 0
@@ -139,149 +154,145 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
 
   return (<div className='mtg-filters'>
 
-      {/* Search — always visible */}
-      <div className="search-bar-section">
-        <div className="search-input-container">
-          <input
-            type="text"
-            placeholder="Search deck names and keyterms..."
-            value={filters.searchTerm}
-            onChange={(e) => updateFilter('searchTerm', e.target.value)}
-            className="search-input"
-          />
-          {filters.searchTerm && (
-            <button
-              className="clear-search"
-              onClick={() => updateFilter('searchTerm', '')}
-              title="Clear search"
-            >
-              ×
-            </button>
+    {/* Search + Owner toggle — always visible */}
+    <div className="search-bar-section">
+      <div className="search-input-container">
+        <input
+          type="text"
+          placeholder="Search deck names and keyterms..."
+          value={filters.searchTerm}
+          onChange={(e) => updateFilter('searchTerm', e.target.value)}
+          className="search-input"
+        />
+        {filters.searchTerm && (
+          <button
+            className="clear-search"
+            onClick={() => updateFilter('searchTerm', '')}
+            title="Clear search"
+          >
+            ×
+          </button>
+        )}
+      </div>
+      <div className='nic-leslie-toggle-container'>
+        <TristateToggle
+          id="owner-filter"
+          togglePosition={ownerToPosition[filters.ownerFilter]}
+          onToggleStateChange={(pos: TogglePositions) => updateFilter(
+            'ownerFilter', 
+            positionToOwner[pos]
           )}
+          labels={{ 
+            left: (filters.ownerFilter === 'Leslie' ? '' : 'Leslie'),
+            center: '',
+            right: (filters.ownerFilter === 'Nic' ? '' : 'Nic') }}
+          />
+      </div>
+    </div>
+  
+    <MtgCollapsibleRegion 
+      title={<>
+        <i className="ms ms-ability-collect-evidence" />
+        Filter Decks
+      </>}
+      titleRight={
+        hasActiveFilters 
+        ? (
+          <button className="clear-filters" onClick={clearAllFilters}>
+            Clear All
+          </button>
+        ) : null
+      }
+    >
+      <div className="filter-content">
+
+        {/* Deck Type Filter */}
+        <div className="filter-group">
+          <h3>Deck Type</h3>
+          <div className="filter-options">
+            {allDeckTypes.map(deckType => (
+              <label key={deckType} className="filter-checkbox">
+                <input
+                  type="checkbox"
+                  checked={filters.deckTypes.includes(deckType)}
+                  onChange={() => toggleArrayFilter('deckTypes', deckType)}
+                />
+                <span className="checkmark"></span>
+                {deckType}
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Colors Filter */}
+        <div className="filter-group">
+          <h3>Colors</h3>
+          <div className="color-match-mode">
+            <label>
+              <input
+                type="radio"
+                name="colorMatchMode"
+                value="any"
+                checked={filters.colorMatchMode === 'any'}
+                onChange={() => updateFilter('colorMatchMode', 'any')}
+              />
+              Any selected colors
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="colorMatchMode"
+                value="contains"
+                checked={filters.colorMatchMode === 'contains'}
+                onChange={() => updateFilter('colorMatchMode', 'contains')}
+              />
+              Contains all selected
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="colorMatchMode"
+                value="exact"
+                checked={filters.colorMatchMode === 'exact'}
+                onChange={() => updateFilter('colorMatchMode', 'exact')}
+              />
+              Exact color match
+            </label>
+          </div>
+          <div className="filter-options color-options">
+            {allColors.map(color => (
+              <label key={color} className="filter-checkbox color-checkbox">
+                <input
+                  type="checkbox"
+                  checked={filters.colors.includes(color)}
+                  onChange={() => toggleArrayFilter('colors', color)}
+                />
+                <span className="checkmark"></span>
+                <i className={`ms ms-${color.toLowerCase()}`}></i>
+                {colorNames[color]}
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Deck Status Filter */}
+        <div className="filter-group">
+          <h3>Deck Status</h3>
+          <div className="filter-options">
+            {allDeckStatuses.map(status => (
+              <label key={status} className="filter-checkbox">
+                <input
+                  type="checkbox"
+                  checked={filters.deckStatuses.includes(status)}
+                  onChange={() => toggleArrayFilter('deckStatuses', status)}
+                />
+                <span className="checkmark"></span>
+                {status}
+              </label>
+            ))}
+          </div>
         </div>
       </div>
-    
-      <MtgCollapsibleRegion 
-        title={<>
-          <i className="ms ms-ability-collect-evidence" />
-          Filter Decks
-        </>}
-        titleRight={
-          hasActiveFilters 
-          ? (
-            <button className="clear-filters" onClick={clearAllFilters}>
-              Clear All
-            </button>
-          ) : null
-        }
-      >
-        <div className="filter-content">
-
-          {/* Owner Filter */}
-          <div className="filter-group">
-            <h3>Owner</h3>
-            <div className="filter-options">
-              {allOwners.map(owner => (
-                <label key={owner} className="filter-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={filters.owners.includes(owner)}
-                    onChange={() => toggleArrayFilter('owners', owner)}
-                  />
-                  <span className="checkmark"></span>
-                  {owner}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Deck Type Filter */}
-          <div className="filter-group">
-            <h3>Deck Type</h3>
-            <div className="filter-options">
-              {allDeckTypes.map(deckType => (
-                <label key={deckType} className="filter-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={filters.deckTypes.includes(deckType)}
-                    onChange={() => toggleArrayFilter('deckTypes', deckType)}
-                  />
-                  <span className="checkmark"></span>
-                  {deckType}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Colors Filter */}
-          <div className="filter-group">
-            <h3>Colors</h3>
-            <div className="color-match-mode">
-              <label>
-                <input
-                  type="radio"
-                  name="colorMatchMode"
-                  value="any"
-                  checked={filters.colorMatchMode === 'any'}
-                  onChange={() => updateFilter('colorMatchMode', 'any')}
-                />
-                Any selected colors
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="colorMatchMode"
-                  value="contains"
-                  checked={filters.colorMatchMode === 'contains'}
-                  onChange={() => updateFilter('colorMatchMode', 'contains')}
-                />
-                Contains all selected
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="colorMatchMode"
-                  value="exact"
-                  checked={filters.colorMatchMode === 'exact'}
-                  onChange={() => updateFilter('colorMatchMode', 'exact')}
-                />
-                Exact color match
-              </label>
-            </div>
-            <div className="filter-options color-options">
-              {allColors.map(color => (
-                <label key={color} className="filter-checkbox color-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={filters.colors.includes(color)}
-                    onChange={() => toggleArrayFilter('colors', color)}
-                  />
-                  <span className="checkmark"></span>
-                  <i className={`ms ms-${color.toLowerCase()}`}></i>
-                  {colorNames[color]}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Deck Status Filter */}
-          <div className="filter-group">
-            <h3>Deck Status</h3>
-            <div className="filter-options">
-              {allDeckStatuses.map(status => (
-                <label key={status} className="filter-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={filters.deckStatuses.includes(status)}
-                    onChange={() => toggleArrayFilter('deckStatuses', status)}
-                  />
-                  <span className="checkmark"></span>
-                  {status}
-                </label>
-              ))}
-            </div>
-          </div>
-        </div>
-      </MtgCollapsibleRegion>
+    </MtgCollapsibleRegion>
   </div>);
 }
