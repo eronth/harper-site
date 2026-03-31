@@ -29,7 +29,7 @@ interface DeckAnalysisData {
   deckTypeDistribution: { type: DeckType; count: number; percentage: number }[];
   statusDistribution: { status: DeckStatus; count: number; percentage: number }[];
   averageColorsPerDeck: number;
-  mostPopularColorCombination: { colors: MtgColor[]; count: number };
+  mostPopularColorCombinations: { colors: MtgColor[]; count: number }[];
 }
 
 export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
@@ -55,13 +55,14 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
       percentage: totalDecks > 0 ? (count / totalDecks) * 100 : 0
     })).sort((a, b) => b.count - a.count);
     
-    // Most popular color combination
-    const mostPopularCombo = Object.entries(colorCombinations)
-      .sort(([, a], [, b]) => b - a)[0];
-    const mostPopularColorCombination = {
-      colors: mostPopularCombo ? mostPopularCombo[0].split('') as MtgColor[] : [],
-      count: mostPopularCombo ? mostPopularCombo[1] : 0
-    };
+    // Most popular color combinations (top 3)
+    const mostPopularColorCombinations = Object.entries(colorCombinations)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 3)
+      .map(([combo, count]) => ({
+        colors: combo.split('') as MtgColor[],
+        count
+      }));
     
     // Deck type distribution
     const deckTypeCounts: Record<DeckType, number> = { 'Commander': 0, '60-Card': 0 };
@@ -81,7 +82,8 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
       'Testing': 0,
       'Needs Improvement': 0,
       'Good': 0,
-      'Great': 0
+      'Great': 0,
+      'Retired': 0,
     };
     decks.forEach(deck => {
       statusCounts[deck.status]++;
@@ -107,7 +109,8 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
         'Testing': 0,
         'Needs Improvement': 0,
         'Good': 0,
-        'Great': 0
+        'Great': 0,
+        'Retired': 0,
       };
       
       const ownerColorCounts: ColorStats = { W: 0, U: 0, B: 0, R: 0, G: 0, C: 0 };
@@ -144,7 +147,7 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
       deckTypeDistribution,
       statusDistribution,
       averageColorsPerDeck,
-      mostPopularColorCombination
+      mostPopularColorCombinations
     };
   }, [decks]);
 
@@ -166,14 +169,20 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
               <span className="stat-label">Avg Colors/Deck</span>
             </div>
             <div className="stat-item popular-combo">
-              <div className="stat-value">
-                {analysisData.mostPopularColorCombination.colors.map(color => (
-                  <i key={color} className={`ms ms-${color.toLowerCase()}`}></i>
+              <span className="stat-label">Top Color Combos</span>
+              <div className="popular-combos-list">
+                {analysisData.mostPopularColorCombinations.map((combo, i) => (
+                  <div key={i} className="popular-combo-row stat-value">
+                    <span className="combo-rank">#{i + 1}</span>
+                    <div className="combo-colors">
+                      {combo.colors.map(color => (
+                        <i key={color} className={`ms ms-${color.toLowerCase()}`}></i>
+                      ))}
+                    </div>
+                    <span className="combo-count">{combo.count}</span>
+                  </div>
                 ))}
               </div>
-              <span className="stat-label">
-                Most Popular ({analysisData.mostPopularColorCombination.count} decks)
-              </span>
             </div>
           </div>
         </div>

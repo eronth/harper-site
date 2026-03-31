@@ -86,13 +86,46 @@
               border-color: var(--brand-maroon);
             }
 
-            &.popular-combo .stat-value {
-              display: flex;
-              gap: 0.25rem;
-              align-items: center;
+            &.popular-combo {
+              align-items: flex-start;
 
-              .ms {
-                font-size: 1.4rem;
+              .stat-label {
+                align-self: center;
+                margin-bottom: 0.4rem;
+              }
+
+              .popular-combos-list {
+                display: flex;
+                flex-direction: column;
+                gap: 0.3rem;
+                width: 100%;
+
+                .popular-combo-row {
+                  display: flex;
+                  align-items: center;
+                  gap: 0.4rem;
+
+                  .combo-rank {
+                    font-size: 0.75rem;
+                    color: var(--text-secondary);
+                    min-width: 1.4rem;
+                  }
+
+                  .combo-colors {
+                    display: flex;
+                    gap: 0.2rem;
+                    flex: 1;
+
+                    .ms {
+                      font-size: 1.2rem;
+                    }
+                  }
+
+                  .combo-count {
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  }
+                }
               }
             }
 
