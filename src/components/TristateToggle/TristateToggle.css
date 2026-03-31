@@ -3,7 +3,7 @@
 .tristate-toggle-container {
   --toggleColor: #1976d2;
   --toggleTextColor: white;
-  --toggleSize: 18px;
+  --toggleSize: 22px;
   position: relative;
   display: inline-block;
   width: 100%;

@@ -183,9 +183,10 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
             positionToOwner[pos]
           )}
           labels={{ 
-            left: (filters.ownerFilter === 'Leslie' ? '' : 'Leslie'),
+            left: 'Les', //(filters.ownerFilter === 'Leslie' ? '' : 'Leslie'),
             center: '',
-            right: (filters.ownerFilter === 'Nic' ? '' : 'Nic') }}
+            right: 'Nic' //(filters.ownerFilter === 'Nic' ? '' : 'Nic')
+          }}
           />
       </div>
     </div>
