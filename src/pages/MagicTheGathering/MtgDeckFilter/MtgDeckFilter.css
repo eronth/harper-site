@@ -1,6 +1,11 @@
 
 .mtg-filters {
-  
+
+  .search-bar-section {
+    padding-inline: 0.25rem;
+    padding-bottom: 1rem;
+  }
+
   .clear-filters {
     background: var(--brand-maroon);
 

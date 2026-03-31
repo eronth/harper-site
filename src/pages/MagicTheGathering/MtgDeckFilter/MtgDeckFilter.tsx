@@ -138,6 +138,28 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
   );
 
   return (<div className='mtg-filters'>
+
+      {/* Search — always visible */}
+      <div className="search-bar-section">
+        <div className="search-input-container">
+          <input
+            type="text"
+            placeholder="Search deck names and keyterms..."
+            value={filters.searchTerm}
+            onChange={(e) => updateFilter('searchTerm', e.target.value)}
+            className="search-input"
+          />
+          {filters.searchTerm && (
+            <button
+              className="clear-search"
+              onClick={() => updateFilter('searchTerm', '')}
+              title="Clear search"
+            >
+              ×
+            </button>
+          )}
+        </div>
+      </div>
     
       <MtgCollapsibleRegion 
         title={<>
@@ -154,29 +176,6 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
         }
       >
         <div className="filter-content">
-
-          {/* Search Filter */}
-          <div className="filter-group">
-            <h3>Search</h3>
-            <div className="search-input-container">
-              <input
-                type="text"
-                placeholder="Search deck names and keyterms..."
-                value={filters.searchTerm}
-                onChange={(e) => updateFilter('searchTerm', e.target.value)}
-                className="search-input"
-              />
-              {filters.searchTerm && (
-                <button
-                  className="clear-search"
-                  onClick={() => updateFilter('searchTerm', '')}
-                  title="Clear search"
-                >
-                  ×
-                </button>
-              )}
-            </div>
-          </div>
 
           {/* Owner Filter */}
           <div className="filter-group">

@@ -2,7 +2,7 @@
   background: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
   border: 1px solid var(--border-light);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   box-shadow: var(--shadow-light);
   transition: all 0.3s ease;
   position: relative;
