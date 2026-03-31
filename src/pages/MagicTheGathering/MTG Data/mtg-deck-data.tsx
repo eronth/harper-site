@@ -4,6 +4,7 @@ import mahaCaseDecks from './Maha Case/mtg-deck-maha-data';
 import nicolBolasSunflowerDecks from './Nicol Bolas Sunflower Box/mtg-deck-nicolbolassunflower-data';
 import winterCaseDecks from './Winter Case/mtg-deck-winter-data';
 import lorwynCelestialReunionDecks from './Lorwyn Celestial Reuinion Case/mtg-decks-celestial-reunion-data';
+import retiredDecks from './retired';
 // Prerelease Boxes
 import zendikarDecks from './Boxes-Prerelease/Zendikar Box/mtg-deck-zendikar-data';
 import lorwynEclipsedPrereleaseBoxDecks from './Boxes-Prerelease/Lorwyn Eclipsed Box/mtg-prerelease-deck-eclipsed-data';
@@ -31,6 +32,7 @@ const mtgDecks: MtgDeck[] = [
   ...chronicleOfVictoryDecks,
   
   ...justKindaOut,
+  ...retiredDecks,
   // {
   //   id: 'aaaaa',
   //   name: 'AAAAAAA',

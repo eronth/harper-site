@@ -298,29 +298,6 @@ const mahaCaseDecks: MtgDeck[] = [
     },
     status: 'Good',
   },
-  { /* Figure of Destiny */
-    id: 'figure-of-destiny',
-    name: 'Figure of Destiny',
-    colors: ['W', 'R'],
-    shortDescription:
-      'A red-white kithkin soldiers deck focused around levelling Figure of Destiny.',
-    longDescription: <>
-      
-    </>,
-    deckType: '60-Card',
-    keyCards: [
-      mtgCard(
-        'Figure of Destiny', '1(R/W)',
-        ''
-      )
-    ],
-    owner: 'Nic',
-    location: {
-      case: caseName,
-      deckbox: dragonhawk
-    },
-    status: 'Needs Improvement',
-  },
   { /* Izzet Otters */
     id: 'izzet-otters',
     name: 'This Otter Be Fun',
