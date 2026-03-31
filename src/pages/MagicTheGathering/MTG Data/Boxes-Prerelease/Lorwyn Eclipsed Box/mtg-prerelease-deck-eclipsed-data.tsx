@@ -5,12 +5,16 @@ const caseName = "Lorwyn Eclipsed Prerelease Box";
 const dragonShield = "Dragon Shield";
 
 const lorwynEclipsedPrereleaseBoxDecks: MtgDeck[] = [
-  { /* Angry Nature Noises */
-    id: 'angry-nature-noises',
-    name: 'Angry Nature Noises',
+  { /* Ngry Nature Noises */
+    id: 'ngry-nature-noises',
+    name: 'Ngry Nature Noises',
     colors: ['G', 'W', 'B'],
-    shortDescription: 'Use Doran and similar cards to bring out the power of high toughness.',
-    longDescription: <>Use Doran and similar cards to bring out the power of high toughness.</>,
+    shortDescription: 'Use Doran and similar cards to bring out the might of high toughness.',
+    longDescription: <>
+      Use Doran and similar cards to bring out the might of high toughness. Use
+      treefolk and others with higher toughness than power, taking advantage of
+      mechanics that reward you for doing so.
+    </>,
     deckType: 'Commander',
     commander: mtgCard(
       'Doran, Besieged by Time', '1WBG',
