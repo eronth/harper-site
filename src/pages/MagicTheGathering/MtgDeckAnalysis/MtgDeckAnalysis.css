@@ -25,6 +25,17 @@
       font-style: italic;
     }
 
+    .owner-breakdown {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+
+      & > * {
+        flex: 1;
+        min-width: 0;
+      }
+    }
+
     .analysis-section {
       background: var(--bg-card);
       border-radius: 12px;

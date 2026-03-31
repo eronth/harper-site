@@ -159,7 +159,7 @@ export default function MtgDeckFilter({ decks, onFilteredDecksChange }: MtgDeckF
       <div className="search-input-container">
         <input
           type="text"
-          placeholder="Search deck names and keyterms..."
+          placeholder="Search deck names and key terms..."
           value={filters.searchTerm}
           onChange={(e) => updateFilter('searchTerm', e.target.value)}
           className="search-input"

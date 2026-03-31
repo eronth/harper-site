@@ -179,9 +179,11 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
         </div>
 
       {/* Owner Breakdown */}
-      {analysisData.ownerStats.map(ownerStat => (
-        <OwnerCollectionDataCard key={ownerStat.owner} ownerStat={ownerStat} />
-      ))}
+      <div className="owner-breakdown">
+        {analysisData.ownerStats.map(ownerStat => (
+          <OwnerCollectionDataCard key={ownerStat.owner} ownerStat={ownerStat} />
+        ))}
+      </div>
 
       {/* Collection Distribution */}
       <div className="analysis-section distribution">
