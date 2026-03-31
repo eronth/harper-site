@@ -38,9 +38,7 @@ const chronicleOfVictoryDecks: MtgDeck[] = [
       )
     ],
     owner: 'Nic',
-    location: {
-      case: caseName,
-    },
+    location: { case: caseName },
     status: 'Good'
   },
   { /* Unnamed Merrow */
@@ -52,25 +50,61 @@ const chronicleOfVictoryDecks: MtgDeck[] = [
     deckType: '60-Card',
     keyCards: [],
     owner: 'Nic',
-    location: {
-      case: caseName,
-    },
+    location: { case: caseName },
     status: 'Good'
   },
-  { /* Goblin Shitters */
-    id: 'goblin-shitters',
-    name: 'Goblin Shitters',
+  { /* Ankle Blighters */
+    id: 'ankle-blighters',
+    name: 'Ankle Blighters',
     colors: ['B', 'R'],
     shortDescription: 'A goblin blight deck, with rude attacks and damage.',
     longDescription: <></>,
     deckType: '60-Card',
-    keyCards: [
-    ],
+    keyCards: [],
     owner: 'Nic',
-    location: {
-      case: caseName,
-    },
+    location: { case: caseName },
     status: 'Good'
+  },
+  { /* Juggling Spells */
+    id: 'juggling-spells',
+    name: 'Juggling Spells',
+    colors: ['U', 'R'],
+    shortDescription: 'A deck based on cards comeing in and out of play.',
+    longDescription: <></>,
+    deckType: '60-Card',
+    keyCards: [],
+    owner: 'Nic',
+    location: { case: caseName },
+    status: 'Good'
+  },
+  { /* Redblue Mix Spells */
+    id: 'redblue-mix-spells',
+    name: 'Redblue Mix Spells',
+    colors: ['U', 'R'],
+    shortDescription: 'A deck comprised of cards that are red+blue.',
+    longDescription: <></>,
+    deckType: '60-Card',
+    keyCards: [],
+    owner: 'Nic',
+    location: { case: caseName },
+    status: 'Good'
+  },
+  { /* Generational Kithking Home */
+    id: 'generational-kithking-home',
+    name: 'Generational Kithking Home',
+    colors: ['G', 'W', 'U'],
+    shortDescription: 'New and old Kithkin alike.',
+    longDescription: <></>,
+    deckType: 'Commander',
+    commander: mtgCard(
+      '', '',
+      ''
+    ),
+    keyCards: [],
+    owner: 'Nic',
+    location: { case: caseName },
+    status: 'Good'
+
   }
 ];
 
