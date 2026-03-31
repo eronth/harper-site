@@ -7,7 +7,8 @@ import {
   faExclamationTriangle, 
   faWrench, 
   faBox, 
-  faArchive
+  faArchive,
+  faFlask
 } from '@fortawesome/free-solid-svg-icons';
 import CommanderSection from './CommanderSection/CommanderSection';
 import { renderManaCost } from './MtgHelpers';
@@ -155,11 +156,12 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
               className={`meta-icon status-icon ${getStatusClass(deck.status)}`}
               aria-label={`Deck status: ${deck.status}`}
             >
+              {deck.status === 'Retired' && <FontAwesomeIcon icon={faArchive} />}
               {deck.status === 'Great' && <FontAwesomeIcon icon={faStar} />}
               {deck.status === 'Good' && <FontAwesomeIcon icon={faCheck} />}
               {deck.status === 'Needs Improvement' && <FontAwesomeIcon icon={faExclamationTriangle} />}
+              {deck.status === 'Testing' && <FontAwesomeIcon icon={faFlask} />}
               {deck.status === 'Incomplete' && <FontAwesomeIcon icon={faWrench} />}
-              {deck.status === 'Retired' && <FontAwesomeIcon icon={faArchive} />}
             </div>
             <div className="meta-content status">
               <span className={`meta-value status ${getStatusClass(deck.status)}`}>

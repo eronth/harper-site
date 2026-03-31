@@ -9,7 +9,10 @@ const chronicleOfVictoryDecks: MtgDeck[] = [
     name: 'Giant Thrashers',
     colors: ['W', 'R'],
     shortDescription: 'An aggressive RW Giants deck using, primarily, Lorwyn (classic and eclipsed) giants to bring mighty blows.',
-    longDescription: <></>,
+    longDescription: <>
+      Get out giants and giant support to maintaing a constant threat. Then, when the time is right,
+      drop extremely powerful giants and finish your foes.
+    </>,
     deckType: '60-Card',
     keyCards: [
       mtgCard(
@@ -39,7 +42,7 @@ const chronicleOfVictoryDecks: MtgDeck[] = [
     ],
     owner: 'Nic',
     location: { case: caseName },
-    status: 'Good'
+    status: 'Testing'
   },
   { /* Unnamed Merrow */
     id: 'unnamed-merrow',
@@ -51,19 +54,22 @@ const chronicleOfVictoryDecks: MtgDeck[] = [
     keyCards: [],
     owner: 'Nic',
     location: { case: caseName },
-    status: 'Good'
+    status: 'Testing'
   },
   { /* Ankle Blighters */
     id: 'ankle-blighters',
     name: 'Ankle Blighters',
     colors: ['B', 'R'],
     shortDescription: 'A goblin blight deck, with rude attacks and damage.',
-    longDescription: <></>,
+    longDescription: <>
+      Build up a goblin army that blights for various advantages. Blight your own
+      for the benefit of the whole, and bring them back with your Aunties.
+    </>,
     deckType: '60-Card',
     keyCards: [],
     owner: 'Nic',
     location: { case: caseName },
-    status: 'Good'
+    status: 'Testing'
   },
   { /* Juggling Spells */
     id: 'juggling-spells',
@@ -75,7 +81,7 @@ const chronicleOfVictoryDecks: MtgDeck[] = [
     keyCards: [],
     owner: 'Nic',
     location: { case: caseName },
-    status: 'Good'
+    status: 'Testing'
   },
   { /* Redblue Mix Spells */
     id: 'redblue-mix-spells',
@@ -87,7 +93,7 @@ const chronicleOfVictoryDecks: MtgDeck[] = [
     keyCards: [],
     owner: 'Nic',
     location: { case: caseName },
-    status: 'Good'
+    status: 'Testing'
   },
   { /* Generational Kithking Home */
     id: 'generational-kithking-home',
@@ -103,7 +109,7 @@ const chronicleOfVictoryDecks: MtgDeck[] = [
     keyCards: [],
     owner: 'Nic',
     location: { case: caseName },
-    status: 'Good'
+    status: 'Testing'
 
   }
 ];

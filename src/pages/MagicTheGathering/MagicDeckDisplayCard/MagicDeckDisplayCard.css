@@ -224,6 +224,7 @@
       .status-great             { --deckStatusColor: oklch(75% 0.18 152.1); }
       .status-good              { --deckStatusColor: oklch(75% 0.17 144.6); }
       .status-needs-improvement { --deckStatusColor: oklch(75% 0.18  63.1); }
+      .status-testing           { --deckStatusColor: oklch(75% 0.12 255.7); }
       .status-incomplete        { --deckStatusColor: oklch(75% 0.19  29.7); }
       .status-retired           { --deckStatusColor: oklch(75% 0.13  87.3); }
 
