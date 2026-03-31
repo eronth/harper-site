@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import MtgCollapsibleRegion from '../MtgCollapsibleRegion/MtgCollapsibleRegion';
-import type { MtgColor, DeckType, Owner, DeckStatus, MtgDeck } from '../../../types/mtg-types';
+import { type MtgColor, type DeckType, type Owner, type DeckStatus, type MtgDeck, deckStatuses, mtgColors } from '../../../types/mtg-types';
 import './MtgDeckFilter.css';
 
 interface FilterState {
@@ -19,8 +19,8 @@ interface MtgDeckFilterProps {
 
 const allOwners: Owner[] = ['Nic', 'Leslie'];
 const allDeckTypes: DeckType[] = ['Commander', '60-Card'];
-const allColors: MtgColor[] = ['W', 'U', 'B', 'R', 'G', 'C'];
-const allDeckStatuses: DeckStatus[] = ['Incomplete', 'Needs Improvement', 'Good', 'Great'];
+const allColors: MtgColor[] = [...mtgColors];
+const allDeckStatuses: DeckStatus[] = [...deckStatuses];
 
 const colorNames: Record<MtgColor, string> = {
   W: 'White',

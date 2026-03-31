@@ -1,18 +1,15 @@
 import type React from "react";
 
-export type MtgColor = 'W' | 'U' | 'B' | 'R' | 'G' | 'C'; // White, Blue, Black, Red, Green, Colorless
+// White, Blue, Black, Red, Green, Colorless
+export const mtgColors = ['W', 'U', 'B', 'R', 'G', 'C'] as const;
+export type MtgColor = typeof mtgColors[number];
 
 export type DeckType = 'Commander' | '60-Card';
 
 export type Owner = 'Nic' | 'Leslie';
 
-export type DeckStatus
-  = 'Incomplete' 
-  | 'Testing' 
-  | 'Needs Improvement' 
-  | 'Good' 
-  | 'Great'
-  | 'Retired';
+export const deckStatuses = ['Incomplete', 'Testing', 'Needs Improvement', 'Good', 'Great', 'Retired'] as const;
+export type DeckStatus = typeof deckStatuses[number];
 
 export interface MtgCard {
   name: string;
