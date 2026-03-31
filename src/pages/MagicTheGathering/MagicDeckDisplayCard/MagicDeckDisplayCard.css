@@ -252,6 +252,9 @@
           svg[data-icon="wrench"] {
             color: #e74c3c;
           }
+          svg[data-icon="box-archive"] {
+            color: #c79e2c;
+          }
         }
       }
 
@@ -299,9 +302,11 @@
               color: #2ecc71; 
               text-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
             }
+            &.status-retired {
+              color: #c79e2c;
+            }
           }
         }
-
         
       }
     }

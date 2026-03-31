@@ -11,7 +11,8 @@ export type DeckStatus
   | 'Testing' 
   | 'Needs Improvement' 
   | 'Good' 
-  | 'Great';
+  | 'Great'
+  | 'Retired';
 
 export interface MtgCard {
   name: string;
