@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import Page from '../Page';
 import books from './book-data';
+import BookCard from './BookCard/BookCard';
 import type { BookRecommender } from './book-data';
 import './BookCorner.css';
-import BookCard from './BookCard/BookCard';
 
 type FilterOption = 'All' | BookRecommender;
 

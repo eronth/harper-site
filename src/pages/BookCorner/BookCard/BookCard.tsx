@@ -15,7 +15,11 @@ export default function BookCard({ book }: { book: Book }) {
         <div className='book-title-row'>
           <h3>{book.title}</h3>
           <span className={badgeClasses}>
-            {book.recommender.join(' ')}
+            {
+              book.recommender.length > 1
+              ? 'Both'
+              : book.recommender[0]
+            }
           </span>
         </div>
         
