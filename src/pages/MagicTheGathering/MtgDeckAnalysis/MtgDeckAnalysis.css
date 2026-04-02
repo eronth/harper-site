@@ -1,5 +1,8 @@
 .mtg-deck-analysis {
   
+  .mobile { display: none; }
+  .desktop { display: block; }
+  
   &::before {
     content: '';
     position: absolute;
@@ -246,26 +249,7 @@
         font-size: 1rem;
       }
     }
-
-    .analysis-content .analysis-section {
-      &.overview .stat-grid {
-        grid-template-columns: 1fr;
-      }
-
-      &.distribution .dist-item {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-        text-align: center;
-
-        .dist-bar {
-          order: 2;
-        }
-
-        .dist-value {
-          order: 1;
-          text-align: center;
-        }
-      }
-    }
+    .desktop { display: none; }
+    .mobile { display: block; }
   }
 }

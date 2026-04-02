@@ -218,7 +218,14 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
             <h4>Deck Status</h4>
             {analysisData.statusDistribution.map(({ status, count, percentage }) => (
               <div key={status} className="dist-item">
-                <span className="dist-label">{status}</span>
+                {
+                  status == 'Needs Improvement'
+                  ? <span className="dist-label">
+                      <span className="mobile">Need Improve</span>
+                      <span className="desktop">Needs Improvement</span>
+                    </span>
+                  : <span className="dist-label">{status}</span>
+                }
                 <div className="dist-bar">
                   <div 
                     className="dist-fill status-fill" 
