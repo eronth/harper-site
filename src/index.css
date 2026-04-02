@@ -100,7 +100,7 @@ button {
 }
 
 .ms {
-  --ms-size: 0.em;
+  --ms-size: 1em;
   font-size: var(--ms-size);
 }
 
