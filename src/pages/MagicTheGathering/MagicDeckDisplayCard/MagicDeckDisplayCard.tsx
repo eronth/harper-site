@@ -36,10 +36,6 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
     return deckType === 'Commander' ? 'deck-type-commander' : 'deck-type-60card';
   };
 
-  const getOwnerClass = (owner: string): string => {
-    return owner === 'Nic' ? 'owner-nic' : 'owner-leslie';
-  };
-
   const getStatusClass = (status: string): string => {
     return `status-${status.toLowerCase().replace(' ', '-')}`;
   };
@@ -119,15 +115,16 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
         <div className="deck-meta">
           <div className="meta-item owner-item">
             <div className="meta-icon owner-icon">
-              <i className="ms ms-planeswalker"></i>
+              <i className="ms ms-planeswalker" />
             </div>
             <div className="meta-content">
-              <span className={`meta-value owner ${getOwnerClass(deck.owner)}`}>
+              <span className={`meta-value owner owner-${deck.owner.toLowerCase()}`}>
                 {deck.owner}
               </span>
             </div>
           </div>
 
+          {/* The meta information about the deck. */}
           <div className="meta-item storage-info">
             <div className="meta-icon storage-icon">
               <FontAwesomeIcon icon={faBox} />
@@ -149,9 +146,7 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
             </div>
           </div>
 
-          <div className="meta-item status-item"
-            title={deck.status}
-          >
+          <div className="meta-item status-item" title={deck.status}>
             <div 
               className={`meta-icon status-icon ${getStatusClass(deck.status)}`}
               aria-label={`Deck status: ${deck.status}`}

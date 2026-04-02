@@ -187,8 +187,8 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
     <div className="mtg-deck-analysis">
       <MtgCollapsibleRegion
         title={<>
-          <i className="ms ms-ability-adventure"></i>
-          Collection Analysis
+          <i className="ms ms-ability-adventure" />
+          Collection Analysisz
         </>}
         titleRight={<>
           <div className="analysis-summary">
