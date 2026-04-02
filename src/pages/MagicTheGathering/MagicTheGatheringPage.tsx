@@ -22,7 +22,7 @@ export default function MagicTheGatheringPage() {
       <div className="mtg-header">
         <h1>
           <i className={`ms ms-${titleIconChoice}`} />
-          Magic: The Gathering Collection
+          <div>Magic: The Gathering Collection</div>
           <i className={`ms ms-${titleIconChoice}`} />
         </h1>
         <div>

@@ -31,6 +31,14 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        
+    div {
+      padding-inline: 0.25em;
+    }
   }
   
   p {
