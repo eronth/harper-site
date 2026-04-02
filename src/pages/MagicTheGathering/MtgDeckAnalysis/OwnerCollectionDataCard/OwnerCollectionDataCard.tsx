@@ -1,4 +1,5 @@
 import type { OwnerStats } from "../MtgDeckAnalysis";
+import './OwnerCollectionDataCard.css';
 
 type Props = {
   ownerStat: OwnerStats;
