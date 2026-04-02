@@ -4,34 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import Page from '../Page';
 import books from './book-data';
-import type { Book, BookRecommender } from './book-data';
+import type { BookRecommender } from './book-data';
 import './BookCorner.css';
+import BookCard from './BookCard/BookCard';
 
 type FilterOption = 'All' | BookRecommender;
-
-function BookCard({ book }: { book: Book }) {
-  const badgeClass = `book-recommender-badge recommender-${book.recommender.toLowerCase()}`;
-
-  return (
-    <article className="book-card">
-      <div className="book-card-top">
-        <div className="book-title-block">
-          <h3>{book.title}</h3>
-          <p className="book-author">{book.author}</p>
-        </div>
-        <span className={badgeClass}>
-          {book.recommender}
-        </span>
-      </div>
-      <div className="book-card-body">
-        {book.genre && (
-          <span className="book-genre-tag">{book.genre}</span>
-        )}
-        <p className="book-blurb">{book.blurb}</p>
-      </div>
-    </article>
-  );
-}
 
 export default function BookCorner() {
   const [filter, setFilter] = useState<FilterOption>('All');
