@@ -13,11 +13,11 @@ type FilterOption = 'All' | BookRecommender;
 export default function BookCorner() {
   const [filter, setFilter] = useState<FilterOption>('All');
 
-  const filterOptions: FilterOption[] = ['All', 'Nic', 'Leslie', 'Both'];
+  const filterOptions: FilterOption[] = ['All', 'Nic', 'Leslie'];
 
   const filteredBooks = useMemo(() => {
     if (filter === 'All') return books;
-    return books.filter(book => book.recommender === filter);
+    return books.filter(book => book.recommender.includes(filter));
   }, [filter]);
 
   return (

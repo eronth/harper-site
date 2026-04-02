@@ -2,7 +2,11 @@ import type { Book } from "../book-data";
 import './BookCard.css';
 
 export default function BookCard({ book }: { book: Book }) {
-  const badgeClass = `book-recommender-badge recommender-${book.recommender.toLowerCase()}`;
+  const badgeClasses = [
+    'book-recommender-badge', 
+    ...book.recommender
+      .map(r => `recommender-${r.toLowerCase()}`)
+  ].join(' ');
 
   return (
     <article className="book-card">
@@ -10,8 +14,8 @@ export default function BookCard({ book }: { book: Book }) {
 
         <div className='book-title-row'>
           <h3>{book.title}</h3>
-          <span className={badgeClass}>
-            {book.recommender}
+          <span className={badgeClasses}>
+            {book.recommender.join(' ')}
           </span>
         </div>
         

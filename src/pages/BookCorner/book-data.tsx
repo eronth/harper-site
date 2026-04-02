@@ -1,10 +1,10 @@
-export type BookRecommender = 'Nic' | 'Leslie' | 'Both';
+export type BookRecommender = 'Nic' | 'Leslie';
 
 export type Book = {
   id: string;
   title: string;
   author: string;
-  recommender: BookRecommender;
+  recommender: BookRecommender[];
   blurb: React.ReactNode;
   genre?: string;
 };
@@ -14,7 +14,7 @@ const books: Book[] = [
     id: 'the-martian',
     title: 'The Martian',
     author: 'Andy Weir',
-    recommender: 'Both',
+    recommender: ['Nic', 'Leslie'],
     genre: 'Sci-Fi',
     blurb: <>
       An astronaut gets stranded on Mars, using 
@@ -26,7 +26,7 @@ const books: Book[] = [
     id: 'immune',
     title: 'Immune',
     author: 'Philipp Dettmer',
-    recommender: 'Nic',
+    recommender: ['Nic'],
     genre: 'Non-Fiction',
     blurb: <>
       A moderately deep dive into the immune
@@ -40,7 +40,7 @@ const books: Book[] = [
     id: 'qed-quantum-electrodynamics',
     title: 'QED: Quantum Electrodynamics',
     author: 'Richard P. Feynman',
-    recommender: 'Nic',
+    recommender: ['Nic'],
     genre: 'Non-Fiction',
     blurb: <>
       A series of lectures by Richard P. Feynman, 
@@ -53,7 +53,7 @@ const books: Book[] = [
     id: 'humankind-a-hopeful-history',
     title: 'Humankind: A Hopeful History',
     author: 'Rutger Bregman',
-    recommender: 'Leslie',
+    recommender: ['Leslie'],
     genre: 'Non-Fiction',
     blurb: <>
       A book that challenges the widely-held assumption 
@@ -67,7 +67,7 @@ const books: Book[] = [
     id: 'the-radium-girls',
     title: 'The Radium Girls',
     author: 'Kate Moore',
-    recommender: 'Leslie',
+    recommender: ['Leslie'],
     genre: 'Non-Fiction',
     blurb: <>
       The true story of the young women who worked in
@@ -83,7 +83,7 @@ const books: Book[] = [
     id: 'legends-and-lattes',
     title: 'Legends & Lattes',
     author: 'Travis Baldree',
-    recommender: 'Leslie',
+    recommender: ['Leslie'],
     genre: 'Cozy Fantasy',
     blurb: <>
       This cozy fantasy novel follows Viv, an orc adventurer

@@ -52,7 +52,7 @@
           background: var(--brand-navy);
         }
   
-        &.recommender-both {
+        &.recommender-nic.recommender-leslie {
           background: var(--gradient-primary);
         }
       }
