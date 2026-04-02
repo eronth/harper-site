@@ -111,6 +111,7 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
         )}
       </div>
 
+
       <div className="deck-details">
         <div className="deck-meta">
           <div className="meta-item owner-item">
@@ -164,10 +165,10 @@ export default function MagicDeckDisplayCard({ deck }: { deck: MtgDeck }) {
               </span>
             </div>
           </div>
-        
         </div>
-
       </div>
+
+
     </div>
   </>)
 }

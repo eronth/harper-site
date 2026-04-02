@@ -7,6 +7,8 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   /* Allow tooltip to show outside bounds when hovering cards */
   &.has-tooltip {
@@ -202,6 +204,7 @@
 .deck-details {
   border-top: 1px solid var(--border-light);
   padding-top: 1rem;
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
