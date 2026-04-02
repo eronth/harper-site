@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
 import type { MtgColor, DeckType, Owner, DeckStatus, MtgDeck } from '../../../types/mtg-types';
-import './MtgDeckAnalysis.css';
 import MtgCollapsibleRegion from '../MtgCollapsibleRegion/MtgCollapsibleRegion';
 import OwnerCollectionDataCard from './OwnerCollectionDataCard/OwnerCollectionDataCard';
+import DeckCollectionDistribution from './DeckCollectionDistribution/DeckCollectionDistribution';
+import './MtgDeckAnalysis.css';
+import DeckCollectionOverview from './DeckCollectionOverview/DeckCollectionOverview';
 
 interface MtgDeckAnalysisProps {
   decks: MtgDeck[];
@@ -22,7 +24,7 @@ export type OwnerStats = {
   colorDistribution: ColorStats;
 }
 
-interface DeckAnalysisData {
+export type DeckAnalysisData = {
   totalDecks: number;
   ownerStats: OwnerStats[];
   colorPopularity: { color: MtgColor; count: number; percentage: number }[];
@@ -151,41 +153,12 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
     };
   }, [decks]);
 
-  const fullChildNode = <>
-    {(
-      <div className="analysis-content">
-        <p className="analysis-description">Quick insights into your Magic: The Gathering collection</p>
+  const fullChildNode = (
+    <div className="analysis-content">
+      <p className="analysis-description">Quick insights into your Magic: The Gathering collection</p>
         
-        {/* Collection Overview */}
-        <div className="analysis-section overview">
-          <h3>Collection Overview</h3>
-          <div className="stat-grid">
-            <div className="stat-item">
-              <span className="stat-value">{analysisData.totalDecks}</span>
-              <span className="stat-label">Total Decks</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-value">{analysisData.averageColorsPerDeck.toFixed(1)}</span>
-              <span className="stat-label">Avg Colors/Deck</span>
-            </div>
-            <div className="stat-item popular-combo">
-              <span className="stat-label">Top Color Combos</span>
-              <div className="popular-combos-list">
-                {analysisData.mostPopularColorCombinations.map((combo, i) => (
-                  <div key={i} className="popular-combo-row stat-value">
-                    <span className="combo-rank">#{i + 1}</span>
-                    <div className="combo-colors">
-                      {combo.colors.map(color => (
-                        <i key={color} className={`ms ms-${color.toLowerCase()}`}></i>
-                      ))}
-                    </div>
-                    <span className="combo-count">{combo.count}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Collection Overview */}
+      <DeckCollectionOverview analysisData={analysisData} />
 
       {/* Owner Breakdown */}
       <div className="owner-breakdown">
@@ -195,53 +168,9 @@ export default function MtgDeckAnalysis({ decks }: MtgDeckAnalysisProps) {
       </div>
 
       {/* Collection Distribution */}
-      <div className="analysis-section distribution">
-        <h3>Collection Distribution</h3>
-        <div className="distribution-grid">
-          <div className="dist-category">
-            <h4>Deck Types</h4>
-            {analysisData.deckTypeDistribution.map(({ type, count, percentage }) => (
-              <div key={type} className="dist-item">
-                <span className="dist-label">{type}</span>
-                <div className="dist-bar">
-                  <div 
-                    className="dist-fill" 
-                    style={{ width: `${percentage}%` }}
-                  ></div>
-                </div>
-                <span className="dist-value">{count}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="dist-category">
-            <h4>Deck Status</h4>
-            {analysisData.statusDistribution.map(({ status, count, percentage }) => (
-              <div key={status} className="dist-item">
-                {
-                  status == 'Needs Improvement'
-                  ? <span className="dist-label">
-                      <span className="mobile">Need Improve</span>
-                      <span className="desktop">Needs Improvement</span>
-                    </span>
-                  : <span className="dist-label">{status}</span>
-                }
-                <div className="dist-bar">
-                  <div 
-                    className="dist-fill status-fill" 
-                    style={{ width: `${percentage}%` }}
-                  ></div>
-                </div>
-                <span className="dist-value">{count}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      </div>
-    )}
-  </>; 
-
+      <DeckCollectionDistribution analysisData={analysisData} />
+    </div>
+  );
   const emptyChildNode = (
     <div className="analysis-content">
       <p>No decks available for analysis</p>
