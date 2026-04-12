@@ -2364,6 +2364,39 @@ const recipes: Recipe[] = [
         'Last stint in fridge overnight.',
       ]
     })
+  },
+  { // Lemon Herb Risotto with Seared Chicken Thighs
+    ...simpleRecipe({
+      title: 'Lemon Herb Risotto with Seared Chicken Thighs',
+      category: dinner,
+      seasons: [spring, summer],
+      ingredients: [
+        ing(2, null, 'bone-in, skin-on chicken thighs'),
+        ing(0.8, cups, 'Arborio rice'),
+        ing(3.5, cups, 'chicken stock (warm)'),
+        ing(0.5, cups, 'dry white wine'),
+        ing(2, null, 'shallots, finely diced'),
+        ing(3, null, 'garlic cloves, minced'),
+        ing(3, tablespoons, 'unsalted butter'),
+        ing(0.5, cups, 'Parmesan, freshly grated'),
+        ing(1, null, 'lemon (zest + juice)'),
+        ing(4, null, 'fresh thyme sprigs'),
+        ing(3, tablespoons, 'fresh parsley, chopped'),
+        ing(1, tablespoons, 'olive oil'),
+      ],
+      steps: [
+        "Season and prep the chicken: Pat 2 bone-in, skin-on chicken thighs dry thoroughly — this is the key to a good sear. Season generously on both sides with salt and black pepper. Let them sit at room temp while you prep everything else.",
+        "Warm your stock: Pour 3.5 cups chicken stock (warm) into a small saucepan and keep it warm over low heat. Cold stock kills risotto momentum — warm stock is non-negotiable.",
+        "Sear the chicken: Heat 1 tablespoons olive oil in a wide, heavy skillet (or dutch oven) over medium-high. Place chicken skin-side down and don't touch it. Sear until the skin is deep golden and releases easily, about 7 to 13 minutes. Flip and cook another 5 minutes. Transfer to a plate — it'll finish in the oven.",
+        "Finish chicken in oven: Pop the chicken into a 375°F oven to finish cooking while you make the risotto, about 15 to 17m 30s until internal temp hits 165°F. Rest it loosely covered when done.",
+        "Build the risotto base: In the same skillet (don't wipe it — that fond is flavor), reduce heat to medium. Add 1 tbsp of 3 tablespoons unsalted butter, then sweat 2 shallots, finely diced and 3 garlic cloves, minced with the 4 fresh thyme sprigs until soft and fragrant, about 3 minutes. Season lightly with salt.",
+        "Toast the rice: Add 0.8 cups Arborio rice to the pan and stir to coat in the butter and aromatics. Toast for 2 minutes until the edges of the grains look slightly translucent. This step builds nutty depth.",
+        "Deglaze with wine: Pour in 0.5 cups dry white wine and stir continuously until fully absorbed. You'll hear a satisfying sizzle and the pan will smell amazing.",
+        "Add stock gradually: Add the warm stock one ladleful at a time, stirring frequently and only adding the next ladle once the previous is mostly absorbed. This will take about 18 to 20 minutes total. You're looking for a creamy, loose consistency — not stiff, not soupy. Remove the thyme sprigs.",
+        "Finish the risotto: Remove from heat. Stir in remaining 3 tablespoons unsalted butter, all of 0.5 cups Parmesan, freshly grated, the zest and juice of 1 lemon (zest + juice), and most of 3 tablespoons fresh parsley, chopped. Taste and adjust salt. The risotto should flow slowly when you tilt the pan — add a splash more stock if needed.",
+        "Plate and serve: Spoon risotto into wide bowls. Slice or place the chicken thigh on top. Garnish with remaining 3 tablespoons fresh parsley, chopped, a little extra lemon zest, and a crack of black pepper. Serve immediately."
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
