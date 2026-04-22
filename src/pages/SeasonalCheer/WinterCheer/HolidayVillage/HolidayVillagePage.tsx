@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Page from '../../../Page';
 import { towns, getNewestBuildings, getBuildingsByTown } from './village-data';
 import { titleNight } from '../../../../assets/lego-village';
+import TownBuildingCard from './TownBuildingCard';
+import TownSection from './TownSection';
 import './HolidayVillagePage.css';
 
 const HolidayVillagePage: React.FC = () => {
@@ -43,33 +45,12 @@ const HolidayVillagePage: React.FC = () => {
               <h2>Newest Additions</h2>
               <div className="newest-additions-grid">
                 {newestBuildings.map((building) => (
-                  <div
+                  <TownBuildingCard
                     key={building.id}
-                    className="building-card newest"
-                    onClick={() => handleBuildingClick(building.id)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        handleBuildingClick(building.id);
-                      }
-                    }}
-                  >
-                    {building.thumbnail ? (
-                      <div
-                        className="building-card-image"
-                        style={{ backgroundImage: `url(${building.thumbnail})` }}
-                      />
-                    ) : (
-                      <div className="building-card-image placeholder">
-                        <span className="placeholder-text">📸</span>
-                      </div>
-                    )}
-                    <div className="building-card-content">
-                      <h3>{building.name}</h3>
-                      <p>{building.images.length} {building.images.length === 1 ? 'photo' : 'photos'}</p>
-                    </div>
-                  </div>
+                    building={building}
+                    onBuildingClick={handleBuildingClick}
+                    variant="newest"
+                  />
                 ))}
               </div>
             </section>
@@ -77,116 +58,25 @@ const HolidayVillagePage: React.FC = () => {
 
           {/* Towns and Buildings */}
           {/* Featured Town (Holiday Village) */}
-          {towns.filter(t => t.featured).map((town) => {
-            const townBuildings = getBuildingsByTown(town.id);
-            
-            return (
-              <section key={town.id} className="town-section featured">
-                <div className="town-header">
-                  <h2>{town.name}</h2>
-                  <p>{town.description}</p>
-                </div>
-                <div className="buildings-grid">
-                  {townBuildings.map((building) => (
-                    <div
-                      key={building.id}
-                      className="building-card"
-                      onClick={() => handleBuildingClick(building.id)}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          handleBuildingClick(building.id);
-                        }
-                      }}
-                    >
-                      {building.thumbnail ? (
-                        <div
-                          className="building-card-image"
-                          style={{ backgroundImage: `url(${building.thumbnail})` }}
-                        />
-                      ) : (
-                        <div className="building-card-image placeholder">
-                          <span className="placeholder-text">📸</span>
-                        </div>
-                      )}
-                      <div className="building-card-content">
-                        <h3>{building.name}</h3>
-                        <p className="building-description">{building.description}</p>
-                        <p className="photo-count">
-                          {building.images.length} {building.images.length === 1 ? 'photo' : 'photos'}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            );
-          })}
+          {towns.filter(t => t.featured).map((town) => (
+            <TownSection
+              key={town.id}
+              town={town}
+              buildings={getBuildingsByTown(town.id)}
+              onBuildingClick={handleBuildingClick}
+            />
+          ))}
 
           {/* Non-Featured Towns (Side by Side) */}
           <div className="side-by-side-towns">
-            {towns.filter(t => !t.featured).map((town) => {
-              const townBuildings = getBuildingsByTown(town.id);
-              
-              // Skip empty towns for now
-              if (townBuildings.filter(b => b.images.length > 0).length === 0) {
-                return (
-                  <section key={town.id} className="town-section">
-                    <div className="town-header">
-                      <h2>{town.name}</h2>
-                      <p>{town.description}</p>
-                    </div>
-                    <div className="coming-soon">
-                      <p>🎄 Buildings coming soon!</p>
-                    </div>
-                  </section>
-                );
-              }
-
-              return (
-                <section key={town.id} className="town-section">
-                  <div className="town-header">
-                    <h2>{town.name}</h2>
-                    <p>{town.description}</p>
-                  </div>
-                  <div className="buildings-grid">
-                    {townBuildings.map((building) => (
-                      <div
-                        key={building.id}
-                        className="building-card"
-                        onClick={() => handleBuildingClick(building.id)}
-                        role="button"
-                        tabIndex={0}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
-                            handleBuildingClick(building.id);
-                          }
-                        }}
-                      >
-                        {building.thumbnail ? (
-                          <div
-                            className="building-card-image"
-                            style={{ backgroundImage: `url(${building.thumbnail})` }}
-                          />
-                        ) : (
-                          <div className="building-card-image placeholder">
-                            <span className="placeholder-text">📸</span>
-                          </div>
-                        )}
-                        <div className="building-card-content">
-                          <h3>{building.name}</h3>
-                          <p className="building-description">{building.description}</p>
-                          <p className="photo-count">
-                            {building.images.length} {building.images.length === 1 ? 'photo' : 'photos'}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              );
-            })}
+            {towns.filter(t => !t.featured).map((town) => (
+              <TownSection
+                key={town.id}
+                town={town}
+                buildings={getBuildingsByTown(town.id)}
+                onBuildingClick={handleBuildingClick}
+              />
+            ))}
           </div>
         </div>
       </div>
