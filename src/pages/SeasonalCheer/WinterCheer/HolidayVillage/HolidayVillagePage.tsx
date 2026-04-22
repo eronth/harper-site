@@ -22,6 +22,12 @@ const HolidayVillagePage: React.FC = () => {
         className="hero-banner"
         style={{ backgroundImage: `url(${titleNight})` }}
       >
+        <Link
+          to="/seasonal-cheering/winter"
+          className="back-button"
+        >
+          ← Back to Winter Cheer
+        </Link>
         <div className="hero-overlay">
           <h1>Lego Holiday Village</h1>
           <p>Our growing collection of LEGO winter village sets, complete with lights and snowy charm.</p>
@@ -31,14 +37,6 @@ const HolidayVillagePage: React.FC = () => {
       <Page>
         <div className="holiday-village-page">
           <div className="holiday-village-container">
-          {/* Back Link */}
-          <Link
-            to="/seasonal-cheering/winter"
-            className="back-button"
-          >
-            ← Back to Winter Cheer
-          </Link>
-
           {/* Newest Additions Section */}
           {newestBuildings.length > 0 && (
             <section className="newest-additions-section">
