@@ -1,12 +1,11 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Page from '../../../Page';
 import { getBuildingById } from './village-data';
 import './BuildingAlbumPage.css';
 
 const BuildingAlbumPage: React.FC = () => {
   const { buildingId } = useParams<{ buildingId: string }>();
-  const navigate = useNavigate();
 
   const building = buildingId ? getBuildingById(buildingId) : undefined;
 
@@ -14,12 +13,12 @@ const BuildingAlbumPage: React.FC = () => {
     return (
       <Page>
         <div className="building-album-container">
-          <button
+          <Link
+            to="/seasonal-cheering/winter/holiday-village"
             className="back-button"
-            onClick={() => navigate('/seasonal-cheering/winter/holiday-village')}
           >
             ← Back to Holiday Village
-          </button>
+          </Link>
           <div className="error-message">
             <h1>Building Not Found</h1>
             <p>The building you're looking for doesn't exist.</p>
@@ -32,13 +31,12 @@ const BuildingAlbumPage: React.FC = () => {
   return (
     <Page>
       <div className="building-album-container">
-        <button
+        <Link
+          to="/seasonal-cheering/winter/holiday-village"
           className="back-button"
-          onClick={() => navigate('/seasonal-cheering/winter/holiday-village')}
         >
           ← Back to Holiday Village
-        </button>
-
+        </Link>
         <header className="building-album-header">
           <h1>{building.name}</h1>
           <p>{building.description}</p>

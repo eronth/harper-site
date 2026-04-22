@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Page from '../../Page';
 import './WinterCheerPage.css';
 
@@ -44,6 +44,12 @@ const WinterCheer: React.FC = () => {
 
   return (
     <Page>
+      <Link
+        to="/seasonal-cheering"
+        className="back-button"
+      >
+        ← Back to Seasonal Cheer
+      </Link>
       <div className="winter-cheer-container">
         <header className="winter-cheer-header">
           <h1>Winter Cheer</h1>

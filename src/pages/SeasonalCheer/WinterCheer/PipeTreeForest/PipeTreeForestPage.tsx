@@ -1,20 +1,19 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Page from '../../../Page';
 import './PipeTreeForestPage.css';
 
 const PipeTreeForestPage: React.FC = () => {
-  const navigate = useNavigate();
 
   return (
     <Page>
       <div className="pipe-tree-forest-container">
-        <button
+        <Link
+          to="/seasonal-cheering/winter"
           className="back-button"
-          onClick={() => navigate('/winter-cheering')}
         >
-          ← Back to Winter Village
-        </button>
+          ← Back to Winter Cheer
+        </Link>
 
         <header className="pipe-tree-forest-header">
           <h1>Wondrous Pipe Tree Forest</h1>

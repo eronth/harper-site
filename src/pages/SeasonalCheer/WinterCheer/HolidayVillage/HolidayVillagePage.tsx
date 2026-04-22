@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Page from '../../../Page';
 import { towns, getNewestBuildings, getBuildingsByTown } from './village-data';
 import { titleNight } from '../../../../assets/lego-village';
@@ -31,13 +31,13 @@ const HolidayVillagePage: React.FC = () => {
       <Page>
         <div className="holiday-village-page">
           <div className="holiday-village-container">
-          {/* Back Button */}
-          <button
+          {/* Back Link */}
+          <Link
+            to="/seasonal-cheering/winter"
             className="back-button"
-            onClick={() => navigate('/seasonal-cheering/winter')}
           >
             ← Back to Winter Cheer
-          </button>
+          </Link>
 
           {/* Newest Additions Section */}
           {newestBuildings.length > 0 && (

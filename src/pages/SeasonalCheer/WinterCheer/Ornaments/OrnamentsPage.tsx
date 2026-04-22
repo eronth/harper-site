@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Page from '../../../Page';
 import './OrnamentsPage.css';
 
@@ -35,17 +35,16 @@ const gaybirdImages = [
 ];
 
 const OrnamentsPage: React.FC = () => {
-  const navigate = useNavigate();
 
   return (
     <Page>
       <div className="ornaments-container">
-        <button
+        <Link
+          to="/seasonal-cheering/winter"
           className="back-button"
-          onClick={() => navigate('/winter-cheering')}
         >
-          ← Back to Winter Village
-        </button>
+          ← Back to Winter Cheer
+        </Link>
 
         <header className="ornaments-header">
           <h1>The Lil Gay Birdy Troupe (LGBT)</h1>
