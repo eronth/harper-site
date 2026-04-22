@@ -15,6 +15,7 @@ import SummerCheer from         './pages/SeasonalCheer/SummerCheer/SummerCheerPa
 import AutumnCheer from         './pages/SeasonalCheer/AutumnCheer/AutumnCheerPage'
 import WinterCheer from         './pages/SeasonalCheer/WinterCheer/WinterCheerPage'
 import HolidayVillagePage from  './pages/SeasonalCheer/WinterCheer/HolidayVillage/HolidayVillagePage'
+import BuildingAlbumPage from   './pages/SeasonalCheer/WinterCheer/HolidayVillage/BuildingAlbumPage'
 import OrnamentsPage from       './pages/SeasonalCheer/WinterCheer/Ornaments/OrnamentsPage'
 import PipeTreeForestPage from  './pages/SeasonalCheer/WinterCheer/PipeTreeForest/PipeTreeForestPage'
 
@@ -63,6 +64,7 @@ function App() {
             <Route path="winter">
               <Route index element={<WinterCheer />} />
               <Route path="holiday-village" element={<HolidayVillagePage />} />
+              <Route path="holiday-village/:buildingId" element={<BuildingAlbumPage />} />
               <Route path="ornaments" element={<OrnamentsPage />} />
               <Route path="pipe-tree-forest" element={<PipeTreeForestPage />} />
             </Route>

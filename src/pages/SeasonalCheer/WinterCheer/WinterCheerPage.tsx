@@ -4,6 +4,7 @@ import Page from '../../Page';
 import './WinterCheerPage.css';
 
 import titleBird from '../../../assets/gaybirds/title.webp';
+import { titleDay } from '../../../assets/lego-village';
 
 interface CheerSection {
   id: string;
@@ -20,7 +21,7 @@ const cheerSections: CheerSection[] = [
     title: 'Lego Holiday Village',
     description: 'Our growing collection of LEGO winter village sets, complete with lights and snowy charm.',
     route: '/holiday-village',
-    imageUrl: undefined, // Add image path when available
+    imageUrl: titleDay,
   },
   {
     id: 'ornaments',

@@ -1,91 +1,351 @@
-.holiday-village-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-.back-button {
-  background: var(--color-button-bg);
-  color: var(--color-button-text);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 1.5rem;
-
-  &:hover {
-    background: var(--color-button-hover-bg);
-    transform: translateX(-2px);
-  }
-
-  &:active {
-    transform: translateX(0);
-  }
-}
-
-.holiday-village-header {
-  text-align: center;
-  margin-bottom: 2rem;
-
-  & h1 {
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
-  }
-
-  & p {
-    color: var(--color-text-secondary);
-    font-size: 1.1rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-}
-
-.holiday-village-content {
-  margin-top: 2rem;
-}
-
-.image-gallery-placeholder {
-  min-height: 400px;
+/* Hero Banner - full width outside Page component */
+.hero-banner {
+  /* Negative margins to break out of .main-content padding (2rem) */
+  margin: -2rem -2rem 0 -2rem;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-bg-secondary);
-  border: 2px dashed var(--color-border);
-  border-radius: 12px;
 
-  & p {
-    color: var(--color-text-secondary);
-    font-size: 1.5rem;
+  @media (max-width: 767px) {
+    height: 300px;
+  }
+
+  & .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 0.2),
+      rgb(0 0 0 / 0.3)
+    );
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+
+    & h1 {
+      color: #ffffff;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgb(0 0 0 / 0.8);
+
+      @media (max-width: 767px) {
+        font-size: 2rem;
+      }
+    }
+
+    & p {
+      color: #ffffff;
+      font-size: 1.3rem;
+      max-width: 800px;
+      text-shadow: 1px 1px 3px rgb(0 0 0 / 0.8);
+
+      @media (max-width: 767px) {
+        font-size: 1rem;
+      }
+    }
   }
 }
 
-@media (max-width: 767px) {
-  .holiday-village-container {
-    padding: 0.75rem;
-  }
+.holiday-village-page {
+  /* Main Container */
+  & .holiday-village-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 
-  .back-button {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .holiday-village-header {
-    & h1 {
-      font-size: 1.75rem;
+    @media (max-width: 767px) {
+      padding: 1rem 0.75rem;
     }
 
-    & p {
+    & .back-button {
+      background: var(--color-card-bg);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
       font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 2rem;
+
+      &:hover {
+        background: var(--color-bg-secondary);
+        transform: translateX(-4px);
+      }
+
+      &:active {
+        transform: translateX(-2px);
+      }
+    }
+
+    /* Newest Additions Section */
+    & .newest-additions-section {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--color-border);
+
+      & h2 {
+        color: var(--color-text);
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        text-align: center;
+      }
+
+      & .newest-additions-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1024px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        & .building-card.newest {
+          scroll-snap-align: start;
+
+          & .building-card-image {
+            height: 110px;
+
+            @media (min-width: 768px) {
+              height: 120px;
+            }
+
+            &.placeholder {
+              & .placeholder-text {
+                font-size: 2rem;
+              }
+            }
+          }
+
+          & .building-card-content {
+            padding: 0.625rem;
+
+            & h3 {
+              font-size: 0.95rem;
+              margin: 0 0 0.25rem 0;
+            }
+
+            & p {
+              font-size: 0.75rem;
+            }
+          }
+        }
+      }
+    }
+
+    /* Side by Side Towns Container */
+    & .side-by-side-towns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Town Sections */
+    & .town-section {
+      margin-bottom: 4rem;
+
+      & .town-header {
+        margin-bottom: 2rem;
+        text-align: center;
+
+        & h2 {
+          color: var(--color-text);
+          font-size: 2.25rem;
+          margin-bottom: 0.75rem;
+
+          @media (max-width: 767px) {
+            font-size: 1.75rem;
+          }
+        }
+
+        & p {
+          color: var(--color-text-secondary);
+          font-size: 1.1rem;
+          max-width: 700px;
+          margin: 0 auto;
+
+          @media (max-width: 767px) {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      & .coming-soon {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--color-text-secondary);
+        font-size: 1.5rem;
+      }
+
+      & .buildings-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1024px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Featured (Holiday Village) gets double-wide on larger screens */
+      &.featured {
+        & .buildings-grid {
+          @media (min-width: 1024px) {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+      }
+    }
+
+    /* Building Cards */
+    & .building-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 24px rgb(0 0 0 / 0.2);
+      }
+
+      &:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+
+      &:active {
+        transform: translateY(-3px);
+      }
+
+      & .building-card-image {
+        width: 100%;
+        height: 220px;
+        background-size: cover;
+        background-position: center;
+        background-color: var(--color-bg-secondary);
+
+        &.placeholder {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(
+            135deg,
+            var(--color-bg-secondary) 0%,
+            var(--color-bg-tertiary) 100%
+          );
+
+          & .placeholder-text {
+            font-size: 4rem;
+            opacity: 0.3;
+          }
+        }
+
+        @media (min-width: 768px) {
+          height: 240px;
+        }
+      }
+
+      & .building-card-content {
+        padding: 1.25rem;
+
+        & h3 {
+          margin: 0 0 0.5rem 0;
+          color: var(--color-text);
+          font-size: 1.5rem;
+        }
+
+        & .building-description {
+          color: var(--color-text-secondary);
+          font-size: 0.95rem;
+          line-height: 1.5;
+          margin: 0 0 0.5rem 0;
+        }
+
+        & p {
+          margin: 0;
+          color: var(--color-text-secondary);
+          font-size: 0.9rem;
+        }
+
+        & .photo-count {
+          color: var(--color-primary);
+          font-weight: 500;
+          margin-top: 0.5rem;
+        }
+      }
     }
   }
+}
 
-  .image-gallery-placeholder {
-    min-height: 300px;
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  .holiday-village-page {
+    & .holiday-village-container {
+      & .back-button {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
 
-    & p {
-      font-size: 1.2rem;
+      & .newest-additions-section {
+        margin-bottom: 1rem;
+
+        & h2 {
+          font-size: 1rem;
+        }
+
+        & .newest-additions-grid {
+          gap: 0.5rem;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+
+      & .side-by-side-towns {
+        gap: 1.5rem;
+      }
+
+      & .town-section {
+        margin-bottom: 3rem;
+
+        & .buildings-grid {
+          gap: 1.5rem;
+        }
+      }
+
+      & .building-card {
+        & .building-card-content {
+          padding: 1rem;
+
+          & h3 {
+            font-size: 1.25rem;
+          }
+        }
+      }
     }
   }
 }
