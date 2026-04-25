@@ -4,6 +4,10 @@ import trainStationImages from '../../../../assets/lego-village/village photos/t
 import miniBakeryImages from '../../../../assets/lego-village/village photos/mini bakery';
 import greatTreeImages from '../../../../assets/lego-village/village photos/great tree';
 import icePondImages from '../../../../assets/lego-village/village photos/ice pond';
+import firehouseImages from '../../../../assets/lego-village/village photos/firehouse';
+import toyshopImages from '../../../../assets/lego-village/village photos/toyshop';
+import estateHouseImages from '../../../../assets/lego-village/village photos/estate house';
+import streetfoodStandImages from '../../../../assets/lego-village/village photos/streetfood stand';
 
 export interface VillageImage {
   src: string;
@@ -123,8 +127,12 @@ export const buildings: Building[] = [
     townId: 'holiday-village',
     name: 'Firehouse',
     description: 'The holiday village fire station, always ready to help.',
-    thumbnail: undefined,
-    images: [], // No images yet
+    thumbnail: firehouseImages[0],
+    images: firehouseImages.map((src, index) => ({
+      src,
+      alt: `Firehouse - Photo ${index + 1}`,
+      caption: '', // You can add captions later
+    })),
     isFeatured: false,
   },
   {
@@ -132,8 +140,38 @@ export const buildings: Building[] = [
     townId: 'holiday-village',
     name: 'Toyshop',
     description: 'A magical toyshop filled with holiday wonders.',
-    thumbnail: undefined,
-    images: [], // No images yet
+    thumbnail: toyshopImages[0],
+    images: toyshopImages.map((src, index) => ({
+      src,
+      alt: `Toyshop - Photo ${index + 1}`,
+      caption: '', // You can add captions later
+    })),
+    isFeatured: false,
+  },
+  {
+    id: 'estate-house',
+    townId: 'holiday-village',
+    name: 'Estate House',
+    description: 'An elegant estate showcasing grand holiday decorations.',
+    thumbnail: estateHouseImages[0],
+    images: estateHouseImages.map((src, index) => ({
+      src,
+      alt: `Estate House - Photo ${index + 1}`,
+      caption: '', // You can add captions later
+    })),
+    isFeatured: false,
+  },
+  {
+    id: 'streetfood-stand',
+    townId: 'holiday-village',
+    name: 'Streetfood Stand',
+    description: 'A cozy street vendor serving warm holiday treats.',
+    thumbnail: streetfoodStandImages[0],
+    images: streetfoodStandImages.map((src, index) => ({
+      src,
+      alt: `Streetfood Stand - Photo ${index + 1}`,
+      caption: '', // You can add captions later
+    })),
     isFeatured: false,
   },
 ];

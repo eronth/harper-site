@@ -1,4 +1,4 @@
-// Gingerbread Home images
+// Gingerbread home images
 import img1 from './PXL_20260412_001651743.jpg';
 import img2 from './PXL_20260412_001701407.jpg';
 import img3 from './PXL_20260412_001710208.jpg';

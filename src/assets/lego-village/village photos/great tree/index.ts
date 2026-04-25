@@ -1,4 +1,4 @@
-// Great Tree images
+// Great tree images
 import img1 from './PXL_20260412_005335498.jpg';
 
 export const greatTreeImages = [

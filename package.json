@@ -12,6 +12,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "generate-mtg-index": "node scripts/generate-mtg-index.js",
+    "generate-lego-village-index": "node scripts/generate-lego-village-index.js",
     "watch-mtg-cards": "node scripts/watch-mtg-cards.js"
   },
   "dependencies": {
