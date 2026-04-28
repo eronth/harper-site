@@ -12,12 +12,6 @@
 }
 
 
-.kar-modes {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
 .kar-mode-section {
   h2 {
     margin: 0 0 1rem;
@@ -47,13 +41,64 @@
   
     tbody tr {
       border-bottom: 1px solid var(--border-light);
-  
+
       &:last-child {
         border-bottom: none;
       }
-  
+
       &:hover {
         background: var(--bg-button-hover);
+      }
+    }
+
+    .kar-course-row {
+      cursor: pointer;
+
+      &:hover td:first-child {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+    }
+
+    .kar-best-lap-cell {
+      .kar-best-lap {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .kar-best-lap-icon {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        image-rendering: pixelated;
+        flex-shrink: 0;
+      }
+
+      .kar-best-lap-avg {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+    }
+
+    .kar-section-divider {
+      border-top: 3px solid var(--border-accent-strong);
+      border-bottom: 1px solid var(--border-light);
+      background: var(--bg-button);
+      pointer-events: none;
+
+      td {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+      }
+
+      &:hover {
+        background: var(--bg-button);
       }
     }
   
@@ -70,14 +115,5 @@
     .kar-time-empty {
       color: var(--text-muted);
     }
-  }
-
-  .kar-placeholder {
-    color: var(--text-secondary);
-    font-style: italic;
-    padding: 1rem;
-    background: var(--bg-card);
-    border-radius: 8px;
-    border: 1px solid var(--border-light);
   }
 }
