@@ -18,7 +18,7 @@ const HolidayVillagePage: React.FC = () => {
   return (
     <>
       {/* Hero Banner - outside Page wrapper for full-width */}
-      <div 
+      <div
         className="hero-banner"
         style={{ backgroundImage: `url(${titleNight})` }}
       >

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Page from '../Page';
-import type { Clickable } from './clickables-data';
 import clickables from './clickables-data';
+import type { Clickable } from './clickables-data';
 import type { Season } from '../../types/recipe-types';
 import './HomePage.css';
 
@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <Page>
       <div className="content-section">
-        <h2>Welcome to the&nbsp;Harper&nbsp;Space</h2>
+        <h2>Welasfcome asaf sasdf asfdasfd to the&nbsp;Harper&nbsp;Space</h2>
         <p>This is a special place where we share our adventures, recipes, and memories!</p>
         <div className="welcome-content">
           <div className="feature-grid">

@@ -1,0 +1,83 @@
+.kar-header {
+  margin-bottom: 2rem;
+
+  h1 {
+    margin: 0 0 0.25rem;
+  }
+
+  .kar-subtitle {
+    color: var(--text-secondary);
+    margin: 0;
+  }
+}
+
+
+.kar-modes {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.kar-mode-section {
+  h2 {
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-accent-strong);
+  }
+
+  .kar-times-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+  
+    th, td {
+      padding: 0.6rem 1rem;
+      text-align: left;
+    }
+  
+    th {
+      background: var(--gradient-primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+  
+    tbody tr {
+      border-bottom: 1px solid var(--border-light);
+  
+      &:last-child {
+        border-bottom: none;
+      }
+  
+      &:hover {
+        background: var(--bg-button-hover);
+      }
+    }
+  
+    .kar-time {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--brand-maroon);
+    
+      @media (prefers-color-scheme: dark) {
+        color: var(--brand-maroon-light);
+      }
+    }
+    
+    .kar-time-empty {
+      color: var(--text-muted);
+    }
+  }
+
+  .kar-placeholder {
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 1rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+  }
+}

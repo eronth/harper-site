@@ -25,6 +25,7 @@ import IndividualProjectPage from './pages/ProjectsAndCrafts/IndividualProjectPa
 import MagicTheGathering from './pages/MagicTheGathering/MagicTheGatheringPage'
 import LittleWebTools from './pages/LittleWebTools/LittleWebTools'
 import BookCorner from './pages/BookCorner/BookCorner'
+import KirbyAirRidersPage from './pages/KirbyAirRiders/KirbyAirRidersPage'
 import './App.css'
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
           <Route path="/wedding-registry" element={<WeddingRegistry />} />
           <Route path="/magic-the-gathering" element={<MagicTheGathering />} />
           <Route path="/book-corner" element={<BookCorner />} />
+          <Route path="/kirby-air-riders" element={<KirbyAirRidersPage />} />
           <Route path="/little-web-tools/:toolId?" element={<LittleWebTools />} />
         </Routes>
       </main>

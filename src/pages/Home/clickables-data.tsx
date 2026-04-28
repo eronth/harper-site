@@ -7,7 +7,8 @@ import {
   faGift,
   faWrench,
   faHouseChimney,
-  faBook
+  faBook,
+  faStar
 } from "@fortawesome/free-solid-svg-icons";
 
 export type Clickable = {
@@ -97,6 +98,14 @@ const clickables: Clickable[] = [
     },
     text: 'Our favorite books and reading recommendations.',
     path: '/book-corner',
+  },
+  { id: 'kirby-air-ride',
+    icon: <FontAwesomeIcon icon={faStar} className="tilt" />,
+    title: {
+      full: 'Kirby Air Riders',
+    },
+    text: 'Track your best speedrun times across all courses.',
+    path: '/kirby-air-riders',
   }
   // { id: 'passions',
   //   icon: <FontAwesomeIcon icon={faStar} />,
