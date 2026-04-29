@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUmbrellaBeach,
+  //faUmbrellaBeach,
   faUtensils,
   faCocktail,
   faPaintBrush,
@@ -39,15 +39,23 @@ const clickables: Clickable[] = [
     text: 'Cocktails, coffee, and beverages',
     path: '/drink-recipes'
   },
-  { id: 'vacations',
-    icon: <FontAwesomeIcon icon={faUmbrellaBeach} />,
+  { id: 'seasonal-cheering',
+    icon: <FontAwesomeIcon icon={faHouseChimney} />,
     title: {
-      full: 'Vacations and Staycations',
-      sidebar: 'Vacations',
+      full: 'Seasonal Cheer',
     },
-    text: 'Our adventures and fun experiences together',
-    path: '/vacations'
+    text: 'Our traditions and displays for every season',
+    path: '/seasonal-cheering'
   },
+  // { id: 'vacations',
+  //   icon: <FontAwesomeIcon icon={faUmbrellaBeach} />,
+  //   title: {
+  //     full: 'Vacations and Staycations',
+  //     sidebar: 'Vacations',
+  //   },
+  //   text: 'Our adventures and fun experiences together',
+  //   path: '/vacations'
+  // },
   { id: 'projects',
     icon: <FontAwesomeIcon icon={faPaintBrush} />,
     title: {
@@ -65,14 +73,6 @@ const clickables: Clickable[] = [
     text: 'Our wedding registry and gift information',
     path: '/wedding-registry'
   },
-  { id: 'seasonal-cheering',
-    icon: <FontAwesomeIcon icon={faHouseChimney} />,
-    title: {
-      full: 'Seasonal Cheer',
-    },
-    text: 'Our traditions and displays for every season',
-    path: '/seasonal-cheering'
-  },
   { id: 'little-web-tools',
     icon: <FontAwesomeIcon icon={faWrench} />,
     title: {
@@ -81,6 +81,14 @@ const clickables: Clickable[] = [
     },
     text: 'Handy utilities for web development tasks',
     path: '/little-web-tools',
+  },
+  { id: 'kirby-air-ride',
+    icon: <FontAwesomeIcon icon={faStar} className="tilt" />,
+    title: {
+      full: 'Kirby Air Riders',
+    },
+    text: 'Track your best speedrun times across all courses.',
+    path: '/kirby-air-riders',
   },
   { id: 'magic-the-gathering',
     icon: <i className={`ms ms-rarity`} />,
@@ -99,14 +107,6 @@ const clickables: Clickable[] = [
     text: 'Our favorite books and reading recommendations.',
     path: '/book-corner',
   },
-  { id: 'kirby-air-ride',
-    icon: <FontAwesomeIcon icon={faStar} className="tilt" />,
-    title: {
-      full: 'Kirby Air Riders',
-    },
-    text: 'Track your best speedrun times across all courses.',
-    path: '/kirby-air-riders',
-  }
   // { id: 'passions',
   //   icon: <FontAwesomeIcon icon={faStar} />,
   //   title: {
