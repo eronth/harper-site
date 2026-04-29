@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { vehicles, vehicleIcon } from './kar-vehicles';
 import type { VehicleTimes } from './kar-vehicles';
+import KarButton from '../KarButton/KarButton';
 import './CourseDetailModal.css';
 
 interface VehicleTimesGridProps {
@@ -50,10 +51,11 @@ interface CourseDetailModalProps {
   course: string;
   times: VehicleTimes;
   onClose: () => void;
+  onClearCourse: () => void;
   onUpdate: (vehicleId: string, field: 'bestTime' | 'bestLap', value: string) => void;
 }
 
-export function CourseDetailModal({ course, times, onClose, onUpdate }: CourseDetailModalProps) {
+export function CourseDetailModal({ course, times, onClose, onClearCourse, onUpdate }: CourseDetailModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -64,12 +66,22 @@ export function CourseDetailModal({ course, times, onClose, onUpdate }: CourseDe
     if (e.target === dialogRef.current) onClose();
   }
 
+  function handleClearCourse() {
+    if (!confirm(`Clear all times for ${course}?`)) { return; }
+    onClearCourse();
+  }
+
   return (
     <dialog ref={dialogRef} className="kar-modal" onClick={handleDialogClick} onClose={onClose}>
       <div className="kar-modal-inner">
         <div className="kar-modal-header">
           <h2>{course}</h2>
-          <button className="kar-modal-close" onClick={onClose} aria-label="Close">✕</button>
+          <div className="kar-modal-header-actions">
+            <KarButton danger small onClick={handleClearCourse}>
+              Clear Course
+            </KarButton>
+            <button className="kar-modal-close" onClick={onClose} aria-label="Close">✕</button>
+          </div>
         </div>
         <VehicleTimesGrid times={times} onUpdate={onUpdate} />
       </div>

@@ -1,13 +1,29 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Page from '../Page';
 import { CourseDetailModal } from './CourseDetailModal/CourseDetailModal';
 import { vehicleCount, getBestLapInfo } from './CourseDetailModal/kar-vehicles';
 import type { VehicleTimes, BestLapInfo } from './CourseDetailModal/kar-vehicles';
+import KarButton from './KarButton/KarButton';
 import './KirbyAirRidersPage.css';
+
+const STORAGE_KEY = 'kirby-air-riders-times';
 
 type Course = { course: string; laps: number; };
 
 type AllCourseTimes = Record<string, VehicleTimes>;
+
+function loadFromStorage(): AllCourseTimes {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as AllCourseTimes) : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveToStorage(data: AllCourseTimes) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
 
 const newCourses: Course[] = [
   { course: 'Floria Fields', laps: 3 },
@@ -71,8 +87,17 @@ function CourseRow({
 }
 
 export default function KirbyAirRidersPage() {
-  const [allTimes, setAllTimes] = useState<AllCourseTimes>({});
+  const [allTimes, setAllTimes] = useState<AllCourseTimes>(loadFromStorage);
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
+  const uploadRef = useRef<HTMLInputElement>(null);
+
+  function updateTimes(updater: (prev: AllCourseTimes) => AllCourseTimes) {
+    setAllTimes((prev) => {
+      const next = updater(prev);
+      saveToStorage(next);
+      return next;
+    });
+  }
 
   function handleUpdate(
     course: string,
@@ -80,7 +105,7 @@ export default function KirbyAirRidersPage() {
     field: 'bestTime' | 'bestLap',
     value: string
   ) {
-    setAllTimes((prev) => ({
+    updateTimes((prev) => ({
       ...prev,
       [course]: {
         ...prev[course],
@@ -92,11 +117,72 @@ export default function KirbyAirRidersPage() {
     }));
   }
 
+  function handleClearCourse(course: string) {
+    updateTimes((prev) => {
+      const next = { ...prev };
+      delete next[course];
+      return next;
+    });
+  }
+
+  function handleClearAll() {
+    if (!confirm('Clear all saved times? This cannot be undone.')) return;
+    updateTimes(() => ({}));
+  }
+
+  function handleDownload() {
+    const blob = new Blob([JSON.stringify(allTimes, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'kirby-air-riders-times.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const data = JSON.parse(ev.target?.result as string) as AllCourseTimes;
+        updateTimes(() => data);
+      } catch {
+        alert('Could not read file — make sure it is a valid JSON export.');
+      }
+    };
+    reader.readAsText(file);
+    // reset so the same file can be re-uploaded
+    e.target.value = '';
+  }
+
   return (
     <Page>
       <div className="kar-header">
         <h1>Kirby Air Riders</h1>
         <p className="kar-subtitle">Speedrun time tracker — find your personal bests!</p>
+      </div>
+
+      <div className="kar-toolbar">
+        <KarButton danger onClick={handleClearAll}>
+          Clear All
+        </KarButton>
+        <div className="kar-toolbar-right">
+          <KarButton onClick={handleDownload}>
+            Download JSON
+          </KarButton>
+          <KarButton onClick={() => uploadRef.current?.click()}>
+            Upload JSON
+          </KarButton>
+          <input
+            ref={uploadRef}
+            type="file"
+            accept="application/json,.json"
+            className="kar-upload-input"
+            onChange={handleUpload}
+          />
+        </div>
       </div>
 
       <section className="kar-mode-section">
@@ -141,6 +227,7 @@ export default function KirbyAirRidersPage() {
           course={selectedCourse}
           times={allTimes[selectedCourse] ?? {}}
           onClose={() => setSelectedCourse(null)}
+          onClearCourse={() => handleClearCourse(selectedCourse)}
           onUpdate={(vehicleId, field, value) =>
             handleUpdate(selectedCourse, vehicleId, field, value)
           }

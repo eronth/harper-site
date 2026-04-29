@@ -36,6 +36,12 @@
   }
 }
 
+.kar-modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .kar-modal-close {
   background: none;
   border: none;

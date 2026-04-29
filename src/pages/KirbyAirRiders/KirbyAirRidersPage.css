@@ -1,5 +1,5 @@
 .kar-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 
   h1 {
     margin: 0 0 0.25rem;
@@ -10,6 +10,27 @@
     margin: 0;
   }
 }
+
+
+.kar-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  .kar-toolbar-right {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    .kar-upload-input {
+      display: none;
+    }
+  }
+}
+
 
 
 .kar-mode-section {
