@@ -101,7 +101,12 @@ const clickables: Clickable[] = [
     path: '/kirby-air-riders',
   },
   { id: 'magic-the-gathering',
-    icon: <i className={`ms ms-rarity`} />,
+    icon: (
+      <span className="rarity-icon-wrapper">
+        <i className="ms ms-rarity rarity-core" />
+        <i className="ms ms-rarity rarity-glow rarity-top-glow" />
+      </span>
+    ),
     title: {
       full: 'Magic: The Gathering',
     },

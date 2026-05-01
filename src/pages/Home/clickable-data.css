@@ -10,7 +10,50 @@
 .feature-card:hover {
   .tilt {
      /* rotate about 13 degrees */
-     color: hsl(60 100% 70%);
+     color: oklch(97% 0.17 109);
      transform: rotate(13deg);     
+  }
+
+  .rarity-icon-wrapper {
+    .rarity-core {
+      color: oklch(67% 0.27 289);
+    }
+    .rarity-top-glow {
+      color: oklch(77% 0.16 60);
+    }
+  }
+}
+
+.rarity-icon-wrapper {
+  display: inline-grid;
+
+  & > i {
+    grid-area: 1 / 1;
+  }
+
+  .rarity-core,
+  .rarity-top-glow {
+    transition: color 0.5s ease;
+  }
+
+  .rarity-top-glow {
+    --top-width-offset: 30%;
+    --first-wedge-offset: 40%;
+    --tip: 75%;
+    --inner-curve-height: 44%;
+    --inner-curve-width-offset: 11%;
+    --inner-curve-pinch-height: 55%;
+    --inner-curve-pinch-width-offset: 3%;
+    clip-path: polygon(
+      calc(50% - var(--top-width-offset)) var(--first-wedge-offset),
+      calc(50% - var(--top-width-offset)) 0%,
+      calc(50% + var(--top-width-offset)) 0%,
+      calc(50% + var(--top-width-offset)) var(--first-wedge-offset),
+      calc(50% + var(--inner-curve-width-offset)) var(--inner-curve-height),
+      calc(50% + var(--inner-curve-pinch-width-offset)) var(--inner-curve-pinch-height),
+      50% var(--tip),
+      calc(50% - var(--inner-curve-pinch-width-offset)) var(--inner-curve-pinch-height),
+      calc(50% - var(--inner-curve-width-offset)) var(--inner-curve-height)
+    );
   }
 }
