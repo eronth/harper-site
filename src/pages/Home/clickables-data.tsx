@@ -3,13 +3,15 @@ import {
   //faUmbrellaBeach,
   faUtensils,
   faCocktail,
-  faPaintBrush,
+  //faPaintBrush,
   faGift,
   faWrench,
   faHouseChimney,
   faBook,
-  faStar
+  faStar,
+  faX
 } from "@fortawesome/free-solid-svg-icons";
+import './clickable-data.css';
 
 export type Clickable = {
   id: string;
@@ -56,13 +58,21 @@ const clickables: Clickable[] = [
   //   text: 'Our adventures and fun experiences together',
   //   path: '/vacations'
   // },
-  { id: 'projects',
-    icon: <FontAwesomeIcon icon={faPaintBrush} />,
+  // { id: 'projects',
+  //   icon: <FontAwesomeIcon icon={faPaintBrush} />,
+  //   title: {
+  //     full: 'Projects & Crafts',
+  //   },
+  //   text: 'Our creative endeavors and DIY projects',
+  //   path: '/projects'
+  // },
+  { id: 'placeholder',
+    icon: <FontAwesomeIcon icon={faX} />,
     title: {
-      full: 'Projects & Crafts',
+      full: 'Placeholder Section',
     },
-    text: 'Our creative endeavors and DIY projects',
-    path: '/projects'
+    text: 'I\'ll add another section here!',
+    path: '/placeholder'
   },
   { id: 'wedding-registry',
     icon: <FontAwesomeIcon icon={faGift} />,
