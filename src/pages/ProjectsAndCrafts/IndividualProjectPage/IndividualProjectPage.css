@@ -30,16 +30,16 @@
 
 
 .project-container {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgb(255 255 255 / 0.03);
   border-radius: 16px;
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgb(255 255 255 / 0.1);
 
   /* Project header */
   .project-header {
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
     
     .project-title-section {
       h1 {
@@ -105,11 +105,11 @@
         height: auto;
         min-height: 200px;
         border-radius: 12px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 16px rgb(0 0 0 / 0.3);
         transition: transform 0.3s ease;
         object-fit: cover;
         display: block;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgb(255 255 255 / 0.1);
     
         &:hover {
           transform: scale(1.02);
@@ -159,10 +159,10 @@
     gap: 2rem;
   
     .detail-section {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgb(255 255 255 / 0.05);
       border-radius: 12px;
       padding: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgb(255 255 255 / 0.1);
     
       &.full-width {
         grid-column: 1 / -1;
@@ -207,17 +207,17 @@
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(255, 255, 255, 0.1);
+          background: rgb(255 255 255 / 0.1);
           color: #fff;
           text-decoration: none;
           padding: 0.75rem 1rem;
           border-radius: 8px;
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid rgb(255 255 255 / 0.2);
           transition: all 0.2s ease;
           
           &:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.4);
+            background: rgb(255 255 255 / 0.15);
+            border-color: rgb(255 255 255 / 0.4);
             transform: translateY(-1px);
           }
         }
