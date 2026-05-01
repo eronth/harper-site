@@ -1,4 +1,16 @@
- .tilt {
-    /* rotate about 13 degrees */
-    transform: rotate(13deg);
+.tilt {
+  /* rotate about 13 degrees */
+  transition:
+    transform 0.5s ease,
+    color 0.5s ease;
+  transform: rotate(0deg);
+} 
+
+.nav-item:hover,
+.feature-card:hover {
+  .tilt {
+     /* rotate about 13 degrees */
+     color: hsl(60 100% 70%);
+     transform: rotate(13deg);     
   }
+}
