@@ -126,10 +126,21 @@ export default function AbsoluteTempConverter() {
         <p>
           The Absolute Temperature Scale (°A) is a hypothetical temperature scale where  
           absolute zero is 0&nbsp;°A and the highest possible temperature is normalized to 1&nbsp;°A. It is 
-          based on the concept of a Planck Temperature ({plankTemp}), a temperature
+          based on the concept of the Planck Temperature of ({plankTemp}), a temperature
           beyond which the laws of physics as we know them cease to be useful.
           This scale is not used in practical applications
           but really serves as a comical display of the "absolute" range of temperatures.
+        </p>
+        <p>
+          The usage of the word "degree" is not technically correct for the Absolute scale.
+          A degree is meant to be a measure of something from an decided starting point rather
+          than a given/forced end. This is why Kelvin is not in degrees while Fahrenheit and Celsius are.
+          Not having a "unit" name for the Absolute Temperature Scale felt pretty awkward, so I went with 
+          "degree" for the sake of readability and consistency with the other existing scales. Language
+          shifts, after all.
+        </p>
+        <p>
+          If the use of degree here bothers you, you could always use something like "Absolute Units" instead.
         </p>
       </div>
       
