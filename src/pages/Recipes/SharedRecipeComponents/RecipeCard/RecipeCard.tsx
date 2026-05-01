@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSquare, faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import type { Ingredient, Recipe, Steps } from "../recipe-types";
 import './RecipeCard.css';
 
@@ -313,6 +315,10 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
                           onChange={() => handleIngredientCheck(ingredientId)}
                           className="ingredient-checkbox"
                         />
+                        <FontAwesomeIcon icon={
+                          checkedIngredients.has(ingredientId)
+                          ? faSquareCheck : faSquare
+                        } className="checkbox-icon" />
                         <span className="ingredient-text">{ingredientToDisplay(ingredient)}</span>
                       </label>
                     </li>
