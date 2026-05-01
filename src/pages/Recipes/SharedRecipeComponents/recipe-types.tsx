@@ -19,10 +19,17 @@ type StandardRecipeParts = {
   seasons: Season[];
 };
 
-export type Recipe = StandardRecipeParts & {
-  ingredientsLists: Ingredients[];
+export type StandardRecipeSteps = {
   stepsLists: Steps[];
 };
+
+export type StandardRecipeIngredients = {
+  ingredientsLists: Ingredients[];
+};
+
+export type Recipe = StandardRecipeParts
+  & StandardRecipeIngredients
+  & StandardRecipeSteps;
 
 export type SimplifiedRecipe = StandardRecipeParts & {
   ingredients: Ingredient[];

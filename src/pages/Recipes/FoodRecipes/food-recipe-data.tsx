@@ -1,5 +1,11 @@
 import type { RecipeCategory, Season } from "../../../types/recipe-types";
-import type { Ingredient, QuantityUnit, Recipe, SimplifiedRecipe, Steps } from "../SharedRecipeComponents/recipe-types";
+import type {
+  Ingredient,
+  QuantityUnit,
+  Recipe, 
+  SimplifiedRecipe, 
+  StandardRecipeIngredients, StandardRecipeSteps
+} from "../SharedRecipeComponents/recipe-types";
 
 const spring: Season = 'Spring';
 const summer: Season = 'Summer';
@@ -83,12 +89,12 @@ const simpleRecipe = (r: SimplifiedRecipe): Recipe => ({
   ]
 });
 
-// const simpleIngredients = (i: Ingredient[]): Ingredients[] => (
-//   [{ ingredients: i }]
-// );
+const simpleIngredients = (i: Ingredient[]): StandardRecipeIngredients => (
+  { ingredientsLists: [{ ingredients: i }] }
+);
 
-const simpleSteps = (s: string[], s0?: string): Steps[] => (
-  [{ step0: s0, steps: s }]
+const simpleSteps = (s: string[], s0?: string): StandardRecipeSteps => (
+  { stepsLists: [{ step0: s0, steps: s }] }
 );
 
 const recipes: Recipe[] = [
@@ -115,7 +121,7 @@ const recipes: Recipe[] = [
         ],
       },
     ],
-    stepsLists: simpleSteps([
+    ...simpleSteps([
       'Fry pork in skillet.',
       'Mix sauce ingredients in a bowl.',
       'Add sauce to skillet.',
@@ -300,7 +306,7 @@ const recipes: Recipe[] = [
         ]
       }
     ],
-    stepsLists: simpleSteps(
+    ...simpleSteps(
       [
         'Cream together sugar and butter',
         'Add eggs and mix well',
@@ -377,7 +383,7 @@ const recipes: Recipe[] = [
         ]
       }
     ],
-    stepsLists: simpleSteps([
+    ...simpleSteps([
       'Soak bamboo sticks if desired.',
       'Cut that chicken into 3 - 4 chunks each.',
       'Throw chicken in bowl. Add soy, sake, mirin.',
@@ -694,7 +700,7 @@ const recipes: Recipe[] = [
         ]
       }
     ],
-    stepsLists: simpleSteps([
+    ...simpleSteps([
       'Preheat oven to 350° F.',
       'Lightly grease a 24 count mini muffin pan.',
       'Put 1 cup oats in food processor and pulverize. Original recipe says a minute, but hell no that’s way too long.',
@@ -846,7 +852,7 @@ const recipes: Recipe[] = [
         ]
       }
     ],
-    stepsLists: simpleSteps([
+    ...simpleSteps([
       'Add all the Crab Aioli stuff to bowl and mix.',
       'Pop into fridge until needed.',
       'Mix the soak ingredients and whisk.',
@@ -2019,7 +2025,7 @@ const recipes: Recipe[] = [
         ing(1, dash, 'cayenne'),
       ]
     }],
-    stepsLists: simpleSteps([
+    ...simpleSteps([
       'Score chicken',
       'Throw into bag',
       'Craft marinade, whisking.',
@@ -2064,7 +2070,7 @@ const recipes: Recipe[] = [
         ing(0, null, 'other veggies if desired'),
       ]
     }],
-    stepsLists: simpleSteps([
+    ...simpleSteps([
       'Boil spaghetti',
       'Mix soy, oyster, brown sugar, fish sauce, garlic, and ginger into sauce.',
       'Cook shrimp in skillet. Aprx 2 min.',
@@ -2305,7 +2311,7 @@ const recipes: Recipe[] = [
         ]
       }
     ],
-    stepsLists: simpleSteps([
+    ...simpleSteps([
       'Cut up the beef. Set aside.',
       'Blend the parts of the slurry until finely ground. Super fine.',
       'Put into sauté pan with oil on medium heat for 7-8 mins (until moisture evaporates)',
@@ -2366,37 +2372,91 @@ const recipes: Recipe[] = [
     })
   },
   { // Lemon Herb Risotto with Seared Chicken Thighs
-    ...simpleRecipe({
-      title: 'Lemon Herb Risotto with Seared Chicken Thighs',
-      category: dinner,
-      seasons: [spring, summer],
-      ingredients: [
-        ing(2, null, 'bone-in, skin-on chicken thighs'),
-        ing(0.8, cups, 'Arborio rice'),
-        ing(3.5, cups, 'chicken stock (warm)'),
-        ing(0.5, cups, 'dry white wine'),
-        ing(2, null, 'shallots, finely diced'),
-        ing(3, null, 'garlic cloves, minced'),
-        ing(3, tablespoons, 'unsalted butter'),
-        ing(0.5, cups, 'Parmesan, freshly grated'),
-        ing(1, null, 'lemon (zest + juice)'),
-        ing(4, null, 'fresh thyme sprigs'),
-        ing(3, tablespoons, 'fresh parsley, chopped'),
-        ing(1, tablespoons, 'olive oil'),
-      ],
-      steps: [
-        "Season and prep the chicken: Pat 2 bone-in, skin-on chicken thighs dry thoroughly — this is the key to a good sear. Season generously on both sides with salt and black pepper. Let them sit at room temp while you prep everything else.",
-        "Warm your stock: Pour 3.5 cups chicken stock (warm) into a small saucepan and keep it warm over low heat. Cold stock kills risotto momentum — warm stock is non-negotiable.",
-        "Sear the chicken: Heat 1 tablespoons olive oil in a wide, heavy skillet (or dutch oven) over medium-high. Place chicken skin-side down and don't touch it. Sear until the skin is deep golden and releases easily, about 7 to 13 minutes. Flip and cook another 5 minutes. Transfer to a plate — it'll finish in the oven.",
-        "Finish chicken in oven: Pop the chicken into a 375°F oven to finish cooking while you make the risotto, about 15 to 17m 30s until internal temp hits 165°F. Rest it loosely covered when done.",
-        "Build the risotto base: In the same skillet (don't wipe it — that fond is flavor), reduce heat to medium. Add 1 tbsp of 3 tablespoons unsalted butter, then sweat 2 shallots, finely diced and 3 garlic cloves, minced with the 4 fresh thyme sprigs until soft and fragrant, about 3 minutes. Season lightly with salt.",
-        "Toast the rice: Add 0.8 cups Arborio rice to the pan and stir to coat in the butter and aromatics. Toast for 2 minutes until the edges of the grains look slightly translucent. This step builds nutty depth.",
-        "Deglaze with wine: Pour in 0.5 cups dry white wine and stir continuously until fully absorbed. You'll hear a satisfying sizzle and the pan will smell amazing.",
-        "Add stock gradually: Add the warm stock one ladleful at a time, stirring frequently and only adding the next ladle once the previous is mostly absorbed. This will take about 18 to 20 minutes total. You're looking for a creamy, loose consistency — not stiff, not soupy. Remove the thyme sprigs.",
-        "Finish the risotto: Remove from heat. Stir in remaining 3 tablespoons unsalted butter, all of 0.5 cups Parmesan, freshly grated, the zest and juice of 1 lemon (zest + juice), and most of 3 tablespoons fresh parsley, chopped. Taste and adjust salt. The risotto should flow slowly when you tilt the pan — add a splash more stock if needed.",
-        "Plate and serve: Spoon risotto into wide bowls. Slice or place the chicken thigh on top. Garnish with remaining 3 tablespoons fresh parsley, chopped, a little extra lemon zest, and a crack of black pepper. Serve immediately."
-      ]
-    })
+    title: 'Lemon Herb Risotto with Seared Chicken Thighs',
+    category: dinner,
+    seasons: [spring, summer],
+    //ingredients:
+    ...simpleIngredients([
+      ing(2, null, 'bone-in, skin-on chicken thighs'),
+      ing(1, cups, 'Arborio rice'),
+      ing(3.5, cups, 'chicken stock (warm)'),
+      ing(0.5, cups, 'dry white wine'),
+      ing(2, null, 'shallots, finely diced'),
+      ing(3, null, 'garlic cloves, minced'),
+      ing(3, tablespoons, 'unsalted butter', 'divided'),
+      ing(0.5, cups, 'Parmesan, freshly grated'),
+      ing(1, null, 'lemon (zest + juice)'),
+      ing(4, null, 'fresh thyme sprigs'),
+      ing(3, tablespoons, 'fresh parsley, chopped'),
+      ing(1, tablespoons, 'olive oil'),
+    ]),
+    stepsLists: [
+      {
+        title: 'Prep',
+        steps: [
+          "Warm your stock: Pour 3.5 cups chicken stock (warm) into a small saucepan and keep it warm over low heat. "
+          + "Cold stock kills risotto momentum — warm stock is non-negotiable.",
+          "Set oven to 375°F."
+        ]
+      },
+      {
+        title: 'Chicken',
+        steps: [
+          "Pat 2 bone-in, skin-on chicken thighs dry thoroughly — this is the key to a good sear.",
+
+          "Season generously on both sides with salt and black pepper. "
+          + "Let them sit at room temp while you prep everything else.",
+          
+          "Sear the chicken: Heat 1 tablespoons olive oil in a wide, heavy skillet (or dutch oven) over medium-high. "
+          + "Place chicken skin-side down and don't touch it. Sear until the skin is deep golden and releases easily, "
+          + "about 7 to 13 minutes.",
+
+          "Flip and cook another 5 minutes.",
+          
+          "Transfer to a foil lined tray.",
+
+          "If you're not the forgetful type: do the next step when adding the chicken stock to the "
+          + "risotto. The timing is roughly the same here. Otherwise just do it now.",
+
+          "Pop the chicken into a 375°F oven to finish cooking while you make the risotto, "
+          + "about 15 to 17m 30s until internal temp hits 165°F.",
+          
+          "Rest it loosely covered when done.",
+        ]
+      },
+      {
+        title: 'Risotto',
+        steps: [
+          "Build the risotto base: In the same skillet as chicken "
+          + "(don't wipe it — that fond is flavor), reduce heat to medium. "
+          + "Add 1 tbsp (of 3) tablespoons unsalted butter, then sweat 2 shallots, finely diced and 3 garlic cloves, "
+          + "and 4 fresh thyme sprigs until soft and fragrant, about 3 minutes.",
+          
+          "Season lightly with salt.",
+          
+          "Toast the rice: Add Arborio rice to the pan and stir to coat in the butter and aromatics. Toast "
+          + "for 2 minutes until the edges of the grains look slightly translucent. This step builds nutty depth.",
+          
+          "Deglaze with wine: Pour in dry white wine and stir continuously until fully absorbed. You'll "
+          + "hear a satisfying sizzle and the pan will smell amazing.",
+          
+          "Add stock gradually: Add the warm stock one ladleful at a time, stirring frequently and only adding the "
+          + "next ladle once the previous is mostly absorbed. This will take like 20 minutes or more. You're "
+          + "looking for a creamy, loose consistency — not stiff, not soupy.",
+          
+          "Remove the thyme sprigs.",
+          
+          "Finish the risotto: Remove from heat. Stir in remaining 2 (of 3) tablespoons unsalted butter, all of 0.5 cups "
+          + "Parmesan (freshly grated), the zest and juice of 1 lemon (zest + juice), and most of 3 tablespoons fresh "
+          + "parsley, chopped. Taste and adjust salt. The risotto should flow slowly when you tilt the pan — add a splash more stock if needed.",
+          
+          "Plate and serve: Spoon risotto into wide bowls. Slice or place the chicken thigh on top. Garnish with "
+          + "remaining fresh parsley, chopped, a little extra lemon zest if desired, and a crack of black pepper.",
+          
+          "Serve immediately. Get the lady to like you more. Maybe you even get a kiss from it!"
+        ]
+      }
+    ]
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
