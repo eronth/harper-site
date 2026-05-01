@@ -47,7 +47,7 @@
       transition: all 0.2s ease;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgb(255 255 255 / 0.08);
         border-color: var(--border-accent);
       }
 

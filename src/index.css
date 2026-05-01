@@ -32,17 +32,17 @@
   --gradient-primary: linear-gradient(135deg, var(--brand-maroon) 0%, var(--brand-navy) 100%);
   --gradient-light: linear-gradient(135deg, var(--brand-maroon-light) 0%, var(--brand-navy-light) 100%);
   
-  --border-light: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
-  --border-accent: light-dark(rgba(139, 21, 56, 0.15), rgba(139, 21, 56, 0.2));
-  --border-accent-strong: light-dark(rgba(139, 21, 56, 0.25), rgba(139, 21, 56, 0.3));
+  --border-light: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.1));
+  --border-accent: light-dark(rgb(139 21 56 / 0.15), rgb(139 21 56 / 0.2));
+  --border-accent-strong: light-dark(rgb(139 21 56 / 0.25), rgb(139 21 56 / 0.3));
   
-  --shadow-light: light-dark(0 4px 20px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.3));
-  --shadow-strong: light-dark(0 8px 25px rgba(139, 21, 56, 0.2), 0 8px 25px rgba(139, 21, 56, 0.3));
-  --shadow-header: light-dark(0 2px 20px rgba(0, 0, 0, 0.08), 0 2px 20px rgba(0, 0, 0, 0.3));
-  --shadow-sidebar: light-dark(2px 0 20px rgba(0, 0, 0, 0.1), 2px 0 20px rgba(0, 0, 0, 0.4));
+  --shadow-light: light-dark(0 4px 20px rgb(0 0 0 / 0.1), 0 4px 20px rgb(0 0 0 / 0.3));
+  --shadow-strong: light-dark(0 8px 25px rgb(139 21 56 / 0.2), 0 8px 25px rgb(139 21 56 / 0.3));
+  --shadow-header: light-dark(0 2px 20px rgb(0 0 0 / 0.08), 0 2px 20px rgb(0 0 0 / 0.3));
+  --shadow-sidebar: light-dark(2px 0 20px rgb(0 0 0 / 0.1), 2px 0 20px rgb(0 0 0 / 0.4));
   
-  --overlay-light: light-dark(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
-  --accent-bg: light-dark(rgba(139, 21, 56, 0.08), rgba(139, 21, 56, 0.15));
+  --overlay-light: light-dark(rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.7));
+  --accent-bg: light-dark(rgb(139 21 56 / 0.08), rgb(139 21 56 / 0.15));
   
   --accent-blue: light-dark(#2b7fd9, #4a9eff);
   --accent-blue-hover: light-dark(#1d6bc4, #3d8de6);
@@ -50,11 +50,11 @@
   --danger-red: #dc3545;
   --danger-red-hover: #c82333;
 
-  --breakfast: light-dark(hsl(30, 45%, 50%), hsl(30, 40%, 40%));
-  --lunch: light-dark(hsl(60, 45%, 45%), hsl(60, 40%, 40%));
-  --dinner: light-dark(hsl(120, 45%, 45%), hsl(120, 40%, 40%));
-  --dessert: light-dark(hsl(300, 45%, 50%), hsl(300, 40%, 40%));
-  --drink: light-dark(hsl(210, 45%, 50%), hsl(210, 40%, 40%));
+  --breakfast:  light-dark(hsl( 30 45% 50%), hsl( 30 40% 40%));
+  --lunch:      light-dark(hsl( 60 45% 45%), hsl( 60 40% 40%));
+  --dinner:     light-dark(hsl(120 45% 45%), hsl(120 40% 40%));
+  --dessert:    light-dark(hsl(300 45% 50%), hsl(300 40% 40%));
+  --drink:      light-dark(hsl(210 45% 50%), hsl(210 40% 40%));
 }
 
 * {

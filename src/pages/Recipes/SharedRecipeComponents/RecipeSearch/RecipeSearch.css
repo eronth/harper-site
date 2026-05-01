@@ -1,7 +1,7 @@
 .recipe-filters {
   margin: 2rem 0;
   padding: 1.5rem;
-  background-color: rgba(135, 135, 255, 0.05);
+  background-color: rgb(135 135 255 / 0.05);
   border-radius: 8px;
   border: 1px solid #e9ecef;
   
@@ -16,7 +16,7 @@
       border-radius: 6px;
      
       &:focus {
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 0.25);
       }
     }
   }

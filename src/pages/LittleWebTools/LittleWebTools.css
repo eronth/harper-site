@@ -25,7 +25,7 @@
 
 .tools-sidebar {
   flex: 0 0 300px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(255 255 255 / 0.05);
   border-radius: 8px;
   padding: 1.5rem;
   height: fit-content;
@@ -44,7 +44,7 @@
     gap: 0.5rem;
   
     button {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgb(255 255 255 / 0.05);
       border: 2px solid transparent;
       border-radius: 6px;
       padding: 1rem;
@@ -54,13 +54,13 @@
       color: inherit;
     
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
+        background: rgb(255 255 255 / 0.1);
+        border-color: rgb(255 255 255 / 0.2);
       }
       
       &.active {
-        background: rgba(100, 150, 255, 0.2);
-        border-color: rgba(100, 150, 255, 0.5);
+        background: rgb(100 150 255 / 0.2);
+        border-color: rgb(100 150 255 / 0.5);
       }
     }
 
@@ -81,7 +81,7 @@
 
 section.tool-display {
   flex: 1;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(255 255 255 / 0.05);
   border-radius: 8px;
   padding: 2rem;
   min-height: 400px;
@@ -106,8 +106,8 @@ section.tool-display {
     margin-top: 2rem;
   
     .tool-preview-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: rgb(255 255 255 / 0.05);
+      border: 2px solid rgb(255 255 255 / 0.1);
       border-radius: 6px;
       padding: 1.5rem;
       cursor: pointer;
@@ -116,8 +116,8 @@ section.tool-display {
       color: inherit;
       
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(100, 150, 255, 0.5);
+        background: rgb(255 255 255 / 0.1);
+        border-color: rgb(100 150 255 / 0.5);
         transform: translateY(-2px);
       }
       
@@ -179,9 +179,9 @@ section.tool-display {
       textarea {
         width: 100%;
         padding: 0.75rem;
-        border: 2px solid rgba(255, 255, 255, 0.2);
+        border: 2px solid rgb(255 255 255 / 0.2);
         border-radius: 6px;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgb(0 0 0 / 0.2);
         color: inherit;
         font-family: 'Courier New', monospace;
         font-size: 0.9rem;
@@ -189,7 +189,7 @@ section.tool-display {
 
         &:focus {
           outline: none;
-          border-color: rgba(100, 150, 255, 0.5);
+          border-color: rgb(100 150 255 / 0.5);
         }
       }
       
@@ -199,8 +199,8 @@ section.tool-display {
       }
       
       .tool-button {
-        background: rgba(100, 150, 255, 0.3);
-        border: 2px solid rgba(100, 150, 255, 0.5);
+        background: rgb(100 150 255 / 0.3);
+        border: 2px solid rgb(100 150 255 / 0.5);
         border-radius: 6px;
         padding: 0.75rem 1.5rem;
         cursor: pointer;
@@ -210,8 +210,8 @@ section.tool-display {
         margin-right: 0.5rem;
       
         &:hover {
-          background: rgba(100, 150, 255, 0.4);
-          border-color: rgba(100, 150, 255, 0.7);
+          background: rgb(100 150 255 / 0.4);
+          border-color: rgb(100 150 255 / 0.7);
         }
         
         &:disabled {
@@ -232,8 +232,8 @@ section.tool-display {
 }
 
 .tool-output {
-  background: rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgb(0 0 0 / 0.3);
+  border: 2px solid rgb(255 255 255 / 0.1);
   border-radius: 6px;
   padding: 1rem;
   font-family: 'Courier New', monospace;
@@ -244,8 +244,8 @@ section.tool-display {
 }
 
 .tool-error {
-  background: rgba(255, 50, 50, 0.2);
-  border: 2px solid rgba(255, 50, 50, 0.5);
+  background: rgb(255 50 50 / 0.2);
+  border: 2px solid rgb(255 50 50 / 0.5);
   color: #ffaaaa;
 }
 
@@ -253,7 +253,7 @@ section.tool-display {
   width: 100%;
   height: 100px;
   border-radius: 6px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgb(255 255 255 / 0.2);
   margin-top: 1rem;
 }
 

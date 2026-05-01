@@ -61,28 +61,28 @@
   --season-grad-a: light-dark(#fce4ec, #2d0d14);
   --season-grad-b: light-dark(#e8f5e9, #0d2110);
   background: linear-gradient(135deg, var(--season-grad-a), var(--season-grad-b));
-  border-color: light-dark(rgba(240, 120, 160, 0.35), rgba(180, 60, 90, 0.35));
+  border-color: light-dark(rgb(240 120 160 / 0.35), rgb(180 60 90 / 0.35));
 }
 
 .season-card--summer {
   --season-grad-a: light-dark(#fffde7, #252100);
   --season-grad-b: light-dark(#fff3e0, #251400);
   background: linear-gradient(135deg, var(--season-grad-a), var(--season-grad-b));
-  border-color: light-dark(rgba(255, 193, 7, 0.4), rgba(180, 130, 0, 0.4));
+  border-color: light-dark(rgb(255 193 7 / 0.4), rgb(180 130 0 / 0.4));
 }
 
 .season-card--autumn {
   --season-grad-a: light-dark(#fff3e0, #251400);
   --season-grad-b: light-dark(#fce4e4, #250d0d);
   background: linear-gradient(135deg, var(--season-grad-a), var(--season-grad-b));
-  border-color: light-dark(rgba(230, 120, 30, 0.4), rgba(180, 70, 0, 0.4));
+  border-color: light-dark(rgb(230 120 30 / 0.4), rgb(180 70 0 / 0.4));
 }
 
 .season-card--winter {
   --season-grad-a: light-dark(#e3f2fd, #0d1f2d);
   --season-grad-b: light-dark(#f0f4ff, #131929);
   background: linear-gradient(135deg, var(--season-grad-a), var(--season-grad-b));
-  border-color: light-dark(rgba(30, 130, 220, 0.3), rgba(50, 100, 180, 0.4));
+  border-color: light-dark(rgb(30 130 220 / 0.3), rgb(50 100 180 / 0.4));
 }
 
 .season-card-emoji {
@@ -90,7 +90,7 @@
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08));
+  background: light-dark(rgb(0 0 0 / 0.06), rgb(255 255 255 / 0.08));
   display: flex;
   align-items: center;
   justify-content: center;

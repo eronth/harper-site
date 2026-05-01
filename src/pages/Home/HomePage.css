@@ -88,10 +88,10 @@
               padding: 1.5rem;
               text-decoration: none;
               transition: background-color 0.2s ease;
-              border-right: 1px solid rgba(255, 255, 255, 0.15);
+              border-right: 1px solid rgb(255 255 255 / 0.15);
               
               &:hover {
-                background: rgba(255, 255, 255, 0.1);
+                background: rgb(255 255 255 / 0.1);
               }
             }
             
@@ -115,7 +115,7 @@
               }
               
               &:hover {
-                background: rgba(255, 255, 255, 0.1);
+                background: rgb(255 255 255 / 0.1);
               }
             }
             
@@ -124,7 +124,7 @@
               
               .split-card-left,
               .split-card-right {
-                background: rgba(255, 255, 255, 0.05);
+                background: rgb(255 255 255 / 0.05);
               }
             }
           }

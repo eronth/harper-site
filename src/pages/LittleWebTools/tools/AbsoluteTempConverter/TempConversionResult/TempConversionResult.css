@@ -1,7 +1,7 @@
 .conversion-result {
   margin-top: 2rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(255 255 255 / 0.05);
   border-radius: 8px;
 
   h4 {
@@ -22,9 +22,9 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.75rem 1rem;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgb(255 255 255 / 0.03);
       border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgb(255 255 255 / 0.1);
     
       label {
         font-weight: 600;
@@ -50,7 +50,7 @@
 .conversion-result-placeholder {
   margin-top: 2rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(255 255 255 / 0.05);
   border-radius: 8px;
   opacity: 0.6;
   text-align: center;

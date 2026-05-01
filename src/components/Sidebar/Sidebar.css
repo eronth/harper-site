@@ -98,12 +98,12 @@
 
   &:hover {
     background: var(--border-light);
-    border-left-color: rgba(255, 255, 255, 0.8);
+    border-left-color: rgb(255 255 255 / 0.8);
     padding-left: 2rem;
   }
 
   &:active {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(255 255 255 / 0.2);
   }
 }
 
@@ -123,7 +123,7 @@
   
   &.nav-item-split-left {
     border-left: 4px solid transparent;
-    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: 1px solid rgb(255 255 255 / 0.15);
     padding-right: 1rem;
     flex: 1 1 auto;
     min-width: 0; /* Allow flex shrinking */
@@ -137,7 +137,7 @@
     
     &:hover {
       background: var(--border-light);
-      border-left-color: rgba(255, 255, 255, 0.8);
+      border-left-color: rgb(255 255 255 / 0.8);
       padding-left: 2rem;
     }
   }
@@ -158,12 +158,12 @@
     
     &:hover {
       background: var(--border-light);
-      border-left-color: rgba(255, 255, 255, 0.8);
+      border-left-color: rgb(255 255 255 / 0.8);
     }
   }
 
   &:active {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(255 255 255 / 0.2);
   }
 }
 

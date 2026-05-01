@@ -3,7 +3,7 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgb(255 255 255 / 0.1);
 
   .season-icons-row {
     display: grid;
@@ -59,13 +59,13 @@
     margin: -0.25rem;
     
     &:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgb(255 255 255 / 0.1);
       transform: translateY(-1px);
     }
     
     &:active {
       transform: translateY(0);
-      background: rgba(255, 255, 255, 0.2);
+      background: rgb(255 255 255 / 0.2);
     }
     
     h2 {
@@ -81,7 +81,7 @@
     margin: -0.5rem;
     
     &:active {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgb(255 255 255 / 0.15);
       transform: scale(0.98);
     }
   }
@@ -146,7 +146,7 @@
 
 .ingredients-list li.completed,
 .steps-list li.completed {
-  background: rgba(76, 175, 80, 0.1);
+  background: rgb(76 175 80 / 0.1);
   border-radius: 4px;
 }
 
@@ -177,7 +177,7 @@ ol.steps-list {
 
 /* Progress indicator styling */
 .progress-summary {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(255 255 255 / 0.05);
   border-radius: 8px;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -189,7 +189,7 @@ ol.steps-list {
 .progress-bar {
   width: 100%;
   height: 6px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgb(255 255 255 / 0.1);
   border-radius: 3px;
   overflow: hidden;
   margin: 0.5rem 0;
@@ -205,13 +205,13 @@ ol.steps-list {
   border-radius: 3px;
 
   &.ingredient-progress {
-    --low-color: hsl(226, 39%, 49%);
-    --high-color: hsl(226, 38%, 57%);
+    --low-color:  hsl(226 39% 49%);
+    --high-color: hsl(226 38% 57%);
   }
 
   &.step-progress {
-    --low-color: hsl(122, 39%, 49%);
-    --high-color: hsl(123, 38%, 57%);
+    --low-color:  hsl(122 39% 49%);
+    --high-color: hsl(123 38% 57%);
   }
 }
 
