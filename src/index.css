@@ -8,6 +8,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
+  color-scheme: dark;
   color: var(--text-primary);
 
   font-synthesis: none;
@@ -50,11 +51,11 @@
   --danger-red: #dc3545;
   --danger-red-hover: #c82333;
 
-  --breakfast:  light-dark(hsl( 30 45% 50%), hsl( 30 40% 40%));
-  --lunch:      light-dark(hsl( 60 45% 45%), hsl( 60 40% 40%));
-  --dinner:     light-dark(hsl(120 45% 45%), hsl(120 40% 40%));
-  --dessert:    light-dark(hsl(300 45% 50%), hsl(300 40% 40%));
-  --drink:      light-dark(hsl(210 45% 50%), hsl(210 40% 40%));
+  --breakfast:  light-dark(hsl( 30 45% 50%), oklch(58% 0.08  65));
+  --lunch:      light-dark(hsl( 60 45% 45%), oklch(58% 0.11 109));
+  --dinner:     light-dark(hsl(120 45% 45%), oklch(58% 0.14 144));
+  --dessert:    light-dark(hsl(300 45% 50%), oklch(58% 0.13 328));
+  --drink:      light-dark(hsl(210 45% 50%), oklch(58% 0.08 250));
 }
 
 * {
