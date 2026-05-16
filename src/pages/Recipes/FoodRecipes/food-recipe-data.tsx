@@ -2457,6 +2457,25 @@ const recipes: Recipe[] = [
         ]
       }
     ]
+  },
+  { // Shakes
+    ...simpleRecipe({
+      title: 'Malt Shakes',
+      category: dessert,
+      seasons: [ summer ],
+      ingredients: [
+        ing(2, cup, 'ice cream', 'give or take'),
+        ing(1, cup, 'milk', 'give or take'),
+        ing(2, tbsp, 'malt powder'),
+        ing(2, tbsp, 'chocolate powder'),
+      ],
+      steps: [
+        'Add to a blender.',
+        'Blend until smooth.',
+        'Pour into classic shake glasses.',
+        'Yum'
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 

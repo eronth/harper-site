@@ -735,6 +735,41 @@ const recipes: Recipe[] = [
       ],
     })
   },
+  { // Thai Spice Sweet Tea
+    ...drink({
+      title: 'Thai Spice Sweet Tea',
+      category: 'Tea',
+      seasons: [summer],
+      description: 'A refreshing and flavorful tea with a hint of cinnamon and nutmeg.',
+      ingredients: [
+        add(4, 'fresh water', { unit: 'cup' }),
+        add([2, 4], 'cardemom pods'),
+        add([2, 4], 'star anise'),
+        add([2, 4], 'cloves'),
+        add(1, 'cinnamon stick'),
+        add(1, 'tamarind paste', { unit: 'tsp', adjustments: 'optional' }),
+        add(5, 'red rooibos tea', { unit: 'bags' }),
+        add(2, 'black tea', { unit: 'bags' }),
+        add(1/2, 'sugar', { unit: 'cup' }),
+        add(1/2, 'plain coconut milk', { unit: 'cup' }),
+      ],
+      steps: [
+        'Add water to pot',
+        'Add all the spices and tamarind paste to pot',
+        'Stir',
+        'Simmer on low for 5 minutes.',
+        'Add tea!',
+        'Bring back to simmer.',
+        'Turn off heat. Steep for 5-ish minutes.',
+        'Add sugar and stir.',
+        'Strain out big time into container.',
+        'Wrap and chill in fridge until ice cold.',
+        'Fill a tall glass with ice.',
+        'Add tea nearly to top.',
+        'Top with coconut milk'
+      ]
+    })
+  }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
 export default recipes;
