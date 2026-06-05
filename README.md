@@ -1,54 +1,43 @@
-# React + TypeScript + Vite
+# harper-site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal React + TypeScript site built with Vite, deployed to GitHub Pages.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install dependencies:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Development
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the local dev server with HMR |
+| `npm run preview` | Preview the production build locally |
+
+### Build & Deploy
+
+| Command | Description |
+|---|---|
+| `npm run build` | Type-check and build for production (outputs to `dist/`) |
+| `npm run deploy` | Build and deploy to GitHub Pages via `gh-pages` |
+
+### Linting
+
+| Command | Description |
+|---|---|
+| `npm run lint` | Run ESLint across the project |
+
+### Asset Index Generation
+
+These scripts auto-generate `index.ts` files for asset directories. Run them after adding or removing files in the corresponding asset folders.
+
+| Command | Description |
+|---|---|
+| `npm run generate-mtg-index` | Regenerate the MTG card images index (`src/assets/mtg-cards/index.ts`) |
+| `npm run generate-lego-village-index` | Regenerate the Lego Village photo indexes (`src/assets/lego-village/`) |
+| `npm run watch-mtg-cards` | Watch the MTG cards directory and auto-regenerate the index on file changes |
