@@ -2457,6 +2457,132 @@ const recipes: Recipe[] = [
         ]
       }
     ]
+  },
+  { // Shakes
+    ...simpleRecipe({
+      title: 'Malt Shakes',
+      category: dessert,
+      seasons: [ summer ],
+      ingredients: [
+        ing(2, cup, 'ice cream', 'give or take'),
+        ing(1, cup, 'milk', 'give or take'),
+        ing(2, tbsp, 'malt powder'),
+        ing(2, tbsp, 'chocolate powder'),
+      ],
+      steps: [
+        'Add to a blender.',
+        'Blend until smooth.',
+        'Pour into classic shake glasses.',
+        'Yum'
+      ]
+    })
+  },
+  { // Creamy Tuscan Chicken Pasta
+    ...simpleRecipe({
+      title: 'Creamy Tuscan Chicken Pasta',
+      category: dinner,
+      seasons: [ spring, summer ],
+      ingredients: [
+        ing(2, null, 'boneless, skinless chicken breasts'),
+        ing(10, oz, 'rigatoni or penne'),
+        ing(3, null, 'garlic cloves, minced'),
+        ing(0.5, cups, 'sun-dried tomatoes in oil, drained and sliced'),
+        ing(3, cups, 'fresh baby spinach'),
+        ing(0.8, cups, 'heavy cream'),
+        ing(0.5, cups, 'chicken stock'),
+        ing(0.5, cups, 'Parmesan, grated (plus more to serve)'),
+        ing(1, tablespoons, 'olive oil'),
+        ing(1, tablespoons, 'butter'),
+        ing(1, tsp, 'Italian seasoning'),
+        ing(0.5, tsp, 'red pepper flakes'),
+      ],
+      steps: [
+        'Pound the chicken breasts to an even thickness before'
+        + ' cooking — it\'s the difference between a juicy, evenly'
+        + ' cooked breast and a dry one. A zip-lock bag and a rolling'
+        + ' pin works fine.',
+        
+        'Cook the chicken: Pound 2 boneless, skinless chicken'
+        + ' breasts to even thickness (about 3/4 inch). Season both'
+        + ' sides with salt, pepper, and 1 teaspoons Italian seasoning.',
+
+        'Heat 1 tablespoons olive oil in a skillet over medium-high'
+        + ' and cook chicken 5–12 minutes per side until golden and'
+        + ' cooked through. Rest on a cutting board, then slice.',
+
+        'Boil the pasta: Cook 10 ounces rigatoni or penne in'
+        + ' well-salted boiling water until al dente. Reserve 1 cup'
+        + ' pasta water before draining.',
+
+        'Build the sauce base: In the same skillet over medium,'
+        + ' melt 1 tablespoons butter. Add 3 garlic cloves, minced'
+        + ' and 0.5 teaspoons red pepper flakes, cook 2 minutes'
+        + ' until fragrant.',
+
+        'Add 0.5 cups sun-dried tomatoes in oil, drained and sliced and stir for another minute.',
+
+        'Simmer the cream sauce: Pour in 0.5 cups chicken stock'
+        + ' and let it reduce by half. Add 0.8 cups heavy cream and'
+        + ' bring to a gentle simmer. Let the sauce thicken slightly,'
+        + ' about 3–4 minutes.',
+
+        'Then stir in 0.5 cups Parmesan, grated (plus more to serve) until melted and smooth.',
+
+        'Finish and plate: Add 3 cups fresh baby spinach and'
+        + ' stir until wilted. Add the drained pasta and toss'
+        + ' to coat, using pasta water to loosen if needed.',
+
+        'Plate and top with sliced chicken and extra Parmesan.'
+      ]
+    })
+
+  },
+  { // Spicy Peanut Noodle Bowl
+    ...simpleRecipe({
+      title: 'Spicy Peanut Noodle Bowl',
+      category: lunch,
+      seasons: [spring, summer],
+      ingredients: [
+        ing(8, oz, 'lo mein or spaghetti noodles'),
+        ing(2, cup, 'shredded rotisserie chicken'),
+        ing(1, null, 'English cucumber', 'julienned or thinly sliced'),
+        ing(3, null, 'scallions', 'thinly sliced'),
+        ing(1, tbsp, 'toasted sesame seeds'),
+        ing(1.5, tbsp, 'creamy peanut butter'),
+        ing(2, tbsp, 'soy sauce'),
+        ing(1, tbsp, 'rice vinegar'),
+        ing(1, tbsp, 'sesame oil'),
+        ing(1, tbsp, 'honey or maple syrup'),
+        ing(1, tbsp, 'chili garlic sauce or sriracha'),
+        ing(2, null, 'garlic cloves', 'grated'),
+        ing(1, tbsp, 'fresh ginger', 'grated'),
+        ing(2, tbsp, 'warm water', '(to thin sauce)'),
+      ],
+      steps: [
+        'Cook and cool the noodles: Cook 8 ounces lo mein or spaghetti'
+        + ' noodles according to package directions. Drain and rinse'
+        + ' under cold water to stop cooking and keep them from clumping.'
+        + ' Toss with a small drizzle of sesame oil and set aside.',
+        
+        'Make the peanut sauce: Whisk together 3 tablespoons creamy' 
+        + ' peanut butter, 2 tablespoons soy sauce, 1 tablespoons rice'
+        + ' vinegar, 1 tablespoons sesame oil, 1 tablespoons honey or'
+        + ' maple syrup, 1 tablespoons chili garlic sauce or sriracha, '
+        + ' 2 garlic cloves, grated, and 1 teaspoons fresh ginger, grated'
+        + ' until smooth. Add 2 tablespoons warm water (to thin sauce) one'
+        + ' tablespoon at a time until the sauce is pourable but still'
+        + ' thick and coats a spoon. Taste — adjust heat with more chili'
+        + ' sauce, or balance with a touch more honey if too sharp.',
+        
+        'Assemble the bowl: Add the noodles to a bowl and pour most of'
+        + ' the sauce over them, tossing to coat evenly. Pile on 2 cups'
+        + ' cups shredded rotisserie chicken and 1 English cucumber,'
+        + ' julienned or thinly sliced. Drizzle remaining sauce on top,'
+        + ' then scatter 3 scallions, thinly sliced and 1 tablespoons'
+        + ' toasted sesame seeds over everything. Serve immediately or'
+        + ' refrigerate — it\'s excellent cold.'
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
