@@ -298,6 +298,40 @@ const mahaCaseDecks: MtgDeck[] = [
     },
     status: 'Good',
   },
+  { /* R/U Spellsling */
+    id: 'ru-spellsling',
+    name: 'R/U Spellsling',
+    colors: ['U', 'R'],
+    shortDescription: 'A spellslinging deck with a focus on instants and sorceries.',
+    longDescription: <>
+      This deck focuses on casting a high volume of instants and sorceries to control the board and deal damage. With a mix of burn spells, counterspells, and card draw, this deck aims to outpace opponents with its versatility and speed.
+    </>,
+    deckType: '60-Card',
+    keyCards: [
+      mtgCard(
+        'Tempest Angler', '1U/RU/R',
+        'https://scryfall.com/card/blb/235/tempest-angler'
+      ),
+      mtgCard(
+        'Mindwrack Liege', '3U/RU/RU/R',
+        'https://scryfall.com/card/eve/104/mindwrack-liege'
+      ),
+      mtgCard(
+        'Shrewd Hatchling', '3U/R',
+        'https://scryfall.com/card/eve/112/shrewd-hatchling'
+      ),
+      mtgCard(
+        'Riverfall Mimic', '1U/R',
+        'https://scryfall.com/card/eve/111/riverfall-mimic'
+      )
+    ],
+    owner: 'Nic',
+    location: {
+      case: caseName,
+      deckbox: dragonhawk
+    },
+    status: 'Needs Improvement',
+  },
   { /* Izzet Otters */
     id: 'izzet-otters',
     name: 'This Otter Be Fun',
