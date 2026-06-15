@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import WebTool from '../../WebTool';
 import { deepCopyGrid, getBoardValidity, isBoardFull, isBoardSolvable, isBoardValid, isGameOver } from './SudokuBoardStateChecks';
-import './Sudoku.css';
 import type { SudokuGridType } from './SudokuGrid/SudokuGrid';
 import SudokuGrid from './SudokuGrid/SudokuGrid';
+import './Sudoku.css';
 
 
 

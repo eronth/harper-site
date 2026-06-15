@@ -11,11 +11,13 @@ import CronExpressionBuilder from './tools/aa programmer tools/CronExpressionBui
 import ColorBlindVisualizer from './tools/ColorBlindVisualizer/ColorBlindVisualizer.tsx';
 import TimestampConverterTool from './tools/TimestampConverterTool/TimestampConverterTool.tsx';
 import Sudoku from './tools/Sudoku/Sudoku.tsx';
+import StarViewer from './tools/StarViewer/StarViewer.tsx';
 
 
 const toolIds = {
   absoluteTempConverter: 'absolute-temp-converter',
   wordCharCount: 'word-char-count',
+  starViewer: 'star-viewer',
 };
 type ToolId = typeof toolIds[keyof typeof toolIds];
 interface Tool {
@@ -67,6 +69,12 @@ const tools: Tool[] = [
     name: 'Pseudosudoku',
     description: 'Play Pseudosudoku where you and a bot try to fill a board.',
     component: Sudoku,
+  },
+  {
+    id: toolIds.starViewer,
+    name: 'Star Viewer',
+    description: 'View different star symbols.',
+    component: StarViewer,
   }
 ];
 

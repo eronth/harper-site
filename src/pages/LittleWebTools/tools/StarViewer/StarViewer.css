@@ -1,0 +1,54 @@
+.star-viewer {
+  .star-field {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: #0d0d14;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .star {
+    position: absolute;
+    line-height: 1;
+    user-select: none;
+    animation: twinkle var(--twinkle-duration, 3s) ease-in-out infinite;
+    animation-delay: var(--twinkle-delay, 0s);
+    --star-color: white;
+    color: var(--star-color);
+    text-shadow: 0 0 6px var(--star-color / 0.667);
+
+    &.color-stone-blue {
+      --star-color: oklch(64% 0.05514 239);
+    }
+
+    &.color-teal {
+      --star-color: oklch(64% 0.08788 195);
+    }
+
+    &.color-brick-red {
+      --star-color: oklch(46% 0.10 25);
+    }
+
+    &.color-uranium-green {
+      --star-color: oklch(72% 0.10 128);
+    }
+
+    &.color-plasma-violet {
+      --star-color: oklch(58% 0.09 295);
+    }
+
+    &.color-radium-pale {
+      --star-color: oklch(88% 0.05 145);
+    }
+
+    &.color-reactor-orange {
+      --star-color: oklch(68% 0.10 48);
+    }
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(0.9); }
+}
