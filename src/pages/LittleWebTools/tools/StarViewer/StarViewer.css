@@ -1,4 +1,10 @@
 .star-viewer {
+  .bg-toggle {
+    margin-bottom: 0.75rem;
+    padding: 0.35rem 0.85rem;
+    cursor: pointer;
+  }
+
   .star-field {
     position: relative;
     width: 100%;
@@ -6,6 +12,11 @@
     background: #0d0d14;
     border-radius: 8px;
     overflow: hidden;
+
+    &.skin-tone {
+      /* placeholder — update to match your skin tone */
+      background: #9c774f;
+    }
   }
 
   .star {

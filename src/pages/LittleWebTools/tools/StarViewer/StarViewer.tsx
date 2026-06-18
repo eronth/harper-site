@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import WebTool from "../../WebTool";
 import './StarViewer.css';
 
@@ -26,6 +26,8 @@ function seededRandom(seed: number) {
 }
 
 export default function StarViewer() {
+  const [skinTone, setSkinTone] = useState(false);
+
   const starsArray = useMemo(() => {
     return Array.from({ length: STAR_COUNT }, (_, i) => ({
       id: i,
@@ -43,7 +45,10 @@ export default function StarViewer() {
     <WebTool css='star-viewer'>
       <div>
         <h1>Star Viewer</h1>
-        <div className="star-field">
+        <button className="bg-toggle" onClick={() => setSkinTone(t => !t)}>
+          {skinTone ? 'Dark background' : 'Skin tone background'}
+        </button>
+        <div className={`star-field ${skinTone ? 'skin-tone' : ''}`}>
           {starsArray.map(star => (
             <span
               key={star.id}
