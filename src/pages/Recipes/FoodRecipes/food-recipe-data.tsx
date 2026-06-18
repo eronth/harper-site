@@ -2583,6 +2583,24 @@ const recipes: Recipe[] = [
         + ' refrigerate — it\'s excellent cold.'
       ]
     })
+  },
+  { // Greek Chicken
+    ...simpleRecipe({
+      title: 'Greek Chicken',
+      category: dinner,
+      seasons: [spring, summer],
+      ingredients: [
+        ing(1, null, 'pack chicken breast'),
+        ing(0, null, 'greek spice'),
+        ing(1, tbsp, 'cinnamon'),
+        saltAndPepper
+      ],
+      steps: [
+        'Salt and pepper the chicken.',
+        'Add spices',
+        'Pan fry the chicken',
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
