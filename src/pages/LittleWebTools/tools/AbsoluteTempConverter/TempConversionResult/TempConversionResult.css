@@ -56,3 +56,9 @@
   text-align: center;
   font-size: 1.1rem;
 }
+
+@media (max-width: 768px) {
+  .conversion-result .conversion-grid {
+    grid-template-columns: 1fr;
+  }
+}

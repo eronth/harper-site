@@ -55,3 +55,9 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .common-temps .common-temps-grid {
+    grid-template-columns: 1fr;
+  }
+}
