@@ -22,7 +22,13 @@
 }
 
 @media (max-width: 480px) {
-  .recipe-grid {
-    gap: 0.5rem;
+  .recipes-page { 
+    .results-info {
+      margin-top: 0;
+      padding-top: 0rem;
+    }
+    .recipe-grid {
+      gap: 0.5rem;
+    }
   }
 }

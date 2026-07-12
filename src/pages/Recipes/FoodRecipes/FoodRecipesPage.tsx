@@ -27,9 +27,8 @@ const FoodRecipes: React.FC = () => {
   }, []);
   
   return (
-    <Page>
+    <Page className="recipes-page">
       <h1>Food Recipes</h1>
-      <p>Our favorite recipes to cook together.</p>
       
       <RecipeSearch
         recipes={initialRecipes}

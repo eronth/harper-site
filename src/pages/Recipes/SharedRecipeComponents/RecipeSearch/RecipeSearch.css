@@ -4,7 +4,7 @@
   background-color: rgb(135 135 255 / 0.05);
   border-radius: 8px;
   border: 1px solid #e9ecef;
-  
+
   .search-box {
     margin-bottom: 1.5rem;
 
@@ -14,39 +14,122 @@
       padding: 0.75rem 1rem;
       font-size: 1rem;
       border-radius: 6px;
-     
+
       &:focus {
         box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 0.25);
       }
     }
   }
 
-  .checkbox-filters {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    
+  .icon-filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    margin-bottom: 0.75rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     .filter-label {
       font-weight: 600;
-      margin-right: 0.5rem;
+      color: hsl(210, 13%, 83%);
+      min-width: 4.5rem;
     }
   }
 
-  .filter-checkbox {
+  .icon-toggle-group {
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  /* A single toggleable icon tile */
+  .icon-toggle {
+    --tile: 3.25rem;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    cursor: pointer;
-    font-size: 0.95rem;
+    justify-content: center;
+    gap: 0.15rem;
+    width: var(--tile);
+    padding: 0.35rem 0.2rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
     color: hsl(210, 13%, 73%);
-    user-select: none;
     cursor: pointer;
-    
-    input[type="checkbox"] {
-      margin-right: 0.5rem;
-      transform: scale(1.1);
-      accent-color: #f7f7f7;
+    user-select: none;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+
+    .icon-toggle-img {
+      width: 1.9rem;
+      height: 1.9rem;
+      object-fit: contain;
+      /* Unselected artwork already reads as greyed, nudge it back further */
+      opacity: 0.7;
+      transition: opacity 0.15s ease, transform 0.15s ease;
     }
-    &:hover {
-      color: hsl(210, 13%, 83%);
+
+    .icon-toggle-fa {
+      font-size: 1.4rem;
+      line-height: 1.9rem;
+      /* Desaturated to match the greyscale season art until selected */
+      color: hsl(210, 10%, 62%);
+      opacity: 0.65;
+      transition: color 0.15s ease, opacity 0.15s ease, transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .icon-toggle-caption {
+      font-size: 0.65rem;
+      line-height: 1.1;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      white-space: nowrap;
+    }
+
+    &:hover:not(:disabled) {
+      background: rgb(135 135 255 / 0.1);
+      color: hsl(210, 13%, 88%);
+
+      .icon-toggle-img,
+      .icon-toggle-fa {
+        opacity: 0.9;
+      }
+
+      /* Preview the category's colour on hover so the toggle telegraphs its selected state */
+      .icon-toggle-fa {
+        color: color-mix(in srgb, var(--icon-active-color, #fff) 60%, hsl(210, 10%, 62%));
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgb(123 173 255 / 0.8);
+      outline-offset: 1px;
+    }
+
+    &.active {
+      color: #fff;
+
+      .icon-toggle-img,
+      .icon-toggle-fa {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      /* Each category carries its own --icon-active-color (set inline from the icon map) */
+      .icon-toggle-fa {
+        color: var(--icon-active-color, #fff);
+        /* filter: drop-shadow(0 0 5px color-mix(in srgb, var(--icon-active-color, #fff) 55%, transparent)); */
+      }
+    }
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
     }
   }
 }
@@ -56,50 +139,39 @@
   .recipe-filters {
     padding: 1rem;
     margin: 1.5rem 0;
-  }
+
+    .search-box {
+      margin-bottom: 1rem;
+    }
   
-  .recipe-filters .search-box {
-    margin-bottom: 1rem;
-  }
+    .search-input {
+      max-width: 100%;
+      padding: 0.625rem 0.875rem;
+    }
   
-  .recipe-filters .search-input {
-    max-width: 100%;
-    padding: 0.625rem 0.875rem;
+    .filter-label {
+      margin-bottom: 0.1rem;
+    }
   }
-  
-  .recipe-filters .checkbox-filters {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 0.75rem;
-  }
-  
-  .season-filters {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  
-  .filter-label {
-    margin-bottom: 0.5rem;
-  }
+
 }
 
 @media (max-width: 480px) {
   .recipe-filters {
     padding: 0.75rem;
-    margin: 1rem 0;
-  }
+    margin: .5rem 0;
+
+    .icon-toggle {
+      --tile: 3rem;
   
-  .recipe-filters .checkbox-filters {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-  }
+      .icon-toggle-img {
+        width: 1.7rem;
+        height: 1.7rem;
+      }
   
-  .recipe-filters .filter-checkbox {
-    font-size: 0.875rem;
-  }
-  
-  .recipe-filters .search-input {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.95rem;
+      .icon-toggle-fa {
+        font-size: 1.25rem;
+      }
+    }
   }
 }

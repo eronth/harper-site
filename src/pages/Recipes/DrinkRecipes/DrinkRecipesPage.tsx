@@ -10,6 +10,7 @@ import { drinkCategories, type DrinkCategory, type Season } from '../../../types
 import recipes from './drink-recipe-data';
 import hotChocolateRecipes from './hot-chocolate-recipe-data';
 
+
 const DrinkRecipes: React.FC = () => {
   const initialRecipes = useMemo(() => [...recipes, ...hotChocolateRecipes], []);
   const [searchParams] = useSearchParams();
@@ -25,9 +26,8 @@ const DrinkRecipes: React.FC = () => {
   }, []);
   
   return (
-    <Page>
+    <Page className="recipes-page">
       <h1>Drink Recipes</h1>
-      <p>Our favorite cocktails and beverages.</p>
       
       <RecipeSearch
         recipes={initialRecipes}
