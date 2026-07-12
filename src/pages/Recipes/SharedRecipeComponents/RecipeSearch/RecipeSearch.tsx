@@ -5,8 +5,8 @@ import {
   faEgg,
   faBurger,
   faDrumstickBite,
-  faIceCream,
   faCookieBite,
+  faSunPlantWilt,
   faMartiniGlassCitrus,
   faBlender,
   faMugSaucer,
@@ -59,8 +59,8 @@ const categoryIcons: Partial<Record<RecipeCategory, CategoryIcon>> = {
   Breakfast: { icon: faEgg, color: '#f5c542' },            // yolk gold
   Lunch: { icon: faBurger, color: '#ec8c3f' },             // burger orange
   Dinner: { icon: faDrumstickBite, color: '#e07a5f' },     // roasted terracotta
-  Dessert: { icon: faIceCream, color: '#f48fb1' },         // ice cream pink
-  Desert: { icon: faCookieBite, color: '#cf9a5e' },        // cookie tan
+  Dessert: { icon: faCookieBite, color: '#d59b62' },        // cookie tan
+  Desert: { icon: faSunPlantWilt, color: '#e9d83b' },       // the joke one: sun-scorched sand
   Cocktail: { icon: faMartiniGlassCitrus, color: '#5fd4e8' }, // citrus aqua
   Smoothie: { icon: faBlender, color: '#b884e6' },         // berry purple
   Coffee: { icon: faMugSaucer, color: '#c08f63' },         // coffee brown
