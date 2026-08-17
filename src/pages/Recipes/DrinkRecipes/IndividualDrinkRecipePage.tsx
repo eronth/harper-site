@@ -1,6 +1,6 @@
 import IndividualRecipePage from '../SharedRecipeComponents/IndividualRecipePage/IndividualRecipePage';
-import recipes from './drink-recipe-data';
-import hotChocolateRecipes from './hot-chocolate-recipe-data';
+import recipes from '../../../data/recipes/drink-recipe-data';
+import hotChocolateRecipes from '../../../data/recipes/hot-chocolate-recipe-data';
 
 export default function IndividualDrinkRecipePage() {
   return (

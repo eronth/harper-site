@@ -1,5 +1,5 @@
-import type { Season } from "../../../types/recipe-types";
-import type { Ingredient, QuantityUnit, Recipe } from "../SharedRecipeComponents/recipe-types";
+import type { Season } from "../../types/recipe-types";
+import type { Ingredient, QuantityUnit, Recipe } from "../../pages/Recipes/SharedRecipeComponents/recipe-types";
 import type { DrinkRecipe } from "./drink-recipe-data";
 
 type HotChocolateRecipe = Omit<DrinkRecipe, 'category' | 'steps' | 'seasons'> & {

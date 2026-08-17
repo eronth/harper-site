@@ -7,8 +7,8 @@ import RecipeSearch from '../SharedRecipeComponents/RecipeSearch/RecipeSearch';
 // Types
 import { drinkCategories, type DrinkCategory, type Season } from '../../../types/recipe-types';
 // Data
-import recipes from './drink-recipe-data';
-import hotChocolateRecipes from './hot-chocolate-recipe-data';
+import recipes from '../../../data/recipes/drink-recipe-data';
+import hotChocolateRecipes from '../../../data/recipes/hot-chocolate-recipe-data';
 
 
 const DrinkRecipes: React.FC = () => {
