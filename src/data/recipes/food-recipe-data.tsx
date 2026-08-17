@@ -2683,6 +2683,48 @@ const recipes: Recipe[] = [
         'Top with toppings and eat using teeth.',
       ]
     })
+  },
+  { // Egg Foo Young for One
+    title: 'Egg Foo Young for One',
+    category: breakfast,
+    seasons: [],
+    ingredientsLists: [{
+      title: 'Gravy',
+      ingredients: [
+        ing(1/2, cup, 'chicken broth'),
+        ing(1, tbsp, 'rice vinegar'),
+        ing(1, tbsp, 'oyster sauce'),
+        ing(1, tsp, 'soy sauce'),
+        ing(1/2, tsp, 'white sugar'),
+        ing(1+1/2, tsp, 'cornstarch'),
+        ing(1, tbsp, 'water')
+      ]}, {
+      title: 'Egg Foo Young',
+      ingredients: [
+        ing(1/2, teaspoon, 'cornstarch'),
+        ing(2, teaspoon, 'water'),
+        ing(1, teaspoon, 'soy sauce'),
+        ing(2, null, 'large eggs'),
+        ing(1/8, teaspoon, 'sesame oil'),
+        ing(1/8, teaspoon, 'garlic powder'),
+        ing(1, pinch, 'salt'),
+        ing(1, pinch, 'ground white pepper'),
+        ing(1, pinch, 'cayenne pepper'),
+        ing(1/3, cup, 'bean sprouts'),
+        ing(1/3, cup, 'thinly sliced cabbage'),
+        ing(1/4, cup, 'sliced or diced ham'),
+        ing(2, tablespoons, 'thinly sliced green onions, white part only, plus sliced green tops for garnish'),
+        ing(2, tablespoons, 'shredded carrot (use a vegetable peeler for fine shreds)'),
+        ing(1/3, cup, 'avocado oil'),
+      ]}
+    ],
+    ...simpleSteps([
+      'For gravy, add chicken broth, rice vinegar, oyster sauce, soy sauce, and sugar to a saucepan. Whisk to combine, and place over medium-high heat. Stir cornstarch and water together in a small bowl until dissolved to make a slurry. As soon as the saucepan comes to a boil, stir the slurry again to be sure it is dissolved, and pour into the boiling broth, whisking quickly as you pour.',
+      'Reduce heat to low, and cook for 1 more minute, stirring with the whisk or a ladle. If you want a thicker gravy, you can always make another slurry and whisk in a little more. Once the gravy is as thick as you like, and nice and shiny, turn off the heat and keep warm on the back of the stove.',
+      'For egg foo young, add cornstarch, water, and soy sauce to a mixing bowl. Stir with a fork until cornstarch is dissolved. Add eggs, sesame oil, garlic powder, salt, white pepper, cayenne, bean sprouts, cabbage, ham, green onions, and carrot. Mix with a fork until well combined.',
+      'Heat the avocado oil in a nonstick skillet over medium-high heat until it shimmers. Spoon the egg foo young mixture into three evenly-sized piles in the pan. Using a spatula, cut the egg that has run in between the piles, dividing the three portions. Flip the excess egg over the tops of the piles to form three round patties. Excess egg can also be cut away with the spatula and placed on top. Flip the patties over, and cook the other side until it is browned and the edges are getting crispy, about 2 minutes. Flip patties back over and brown the first side for another 30 seconds.',
+      'Serve with the warm sauce, alongside some rice. Garnish with sliced green onion tops.',
+    ])
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 
