@@ -2658,6 +2658,31 @@ const recipes: Recipe[] = [
         'Bake for 12 to 15 mins, use your nose!',
       ]
     })
+  },
+  { // Skillet Pineapple BBQ Chicken
+    ...simpleRecipe({
+      title: 'Skillet Pineapple BBQ Chicken',
+      category: dinner,
+      seasons: [summer],
+      ingredients: [
+        ing(1, tbsp, 'cooking oil'),
+        ing(6, null, 'boneless chicken thighs', 'maybe skinless, maybe not'),
+        ing(20, oz, 'can of pineapple slices, with juice'),
+        ing(1/2, cup, 'bbq sauce'),
+        ing(0, null, 'green onions'),
+        saltAndPepper
+      ],
+      steps: [
+        'Heat skillet + season chicken with salt and pepper.',
+        'Add chicken to simmering skillet and cook until brown on both sides. Remove.',
+        'Low heat. Add .5 cup pineapple juice and scrape skillet.',
+        'Add BBQ sauce. Add salt and more pineapple juice as needed until thickened.',
+        'Re-add chicken thighs, dredge in BBQ sauce.',
+        'Add them pineapple slices. Dredge in BBQ.',
+        'Put skillet 6 inches from broiler for 5 mins until the BBQ sauce barely caramelizes.',
+        'Top with toppings and eat using teeth.',
+      ]
+    })
   }
 ].sort((a, b) => a.title.localeCompare(b.title));
 

@@ -6,6 +6,7 @@ type HotChocolateRecipe = Omit<DrinkRecipe, 'category' | 'steps' | 'seasons'> & 
   steps?: string[];
   seasons?: Season[];
   toppings?: Ingredient[];
+  withoutBase?: boolean
 };
 
 const cup: QuantityUnit = 'cup';
@@ -62,7 +63,7 @@ const hotChocolate = (r: HotChocolateRecipe): Recipe => ({
   ingredientsLists: [{
     title: 'Hot Chocolate',
     ingredients: [
-      ...baseHotChocolateIngredients,
+      ...(r.withoutBase ? [] : baseHotChocolateIngredients),
       ...r.ingredients
     ],
   }, {
@@ -73,7 +74,7 @@ const hotChocolate = (r: HotChocolateRecipe): Recipe => ({
     {
       step0: r.step0,
       steps: [
-        ...baseHotChocolateSteps,
+        ...(r.withoutBase ? [] : baseHotChocolateSteps),
         ...(r.steps ?? [])
       ],
     },
@@ -130,6 +131,30 @@ const recipes: Recipe[] = [
         top('Marshmallows'),
       ],
     }),
+  },
+  { // Crot Pot Hot Choc, or Crock-Chocolate
+    ...hotChocolate({
+      title: 'Crot Pot Hot Chocolate, or Crock-Chocolate',
+      description: '',
+      withoutBase: true, // !! //
+      ingredients: [
+        add(1.5, cup, 'heavy whipping cream'),
+        add(1, null, '14oz can sweetened condensed milk'),
+        add(6, cup, 'milk'),
+        add(1, tsp, 'vanilla'),
+        add(1, null, 'bag of semi-sweet chocolate chips'),
+      ],
+      toppings: [
+        top('Many toppings, let the guests decide!'),
+      ],
+      steps: [
+        'Add everything except chocolate (and toppings) to a crock pot.',
+        'Get the pot warming things up for a bit.',
+        'Add chocolate and stir to melt.',
+        'Prep toppings or add-ons near the crock pot.',
+        'Guests can serve themselves directly from the crock pot!',
+      ]
+    })
   }
 ];
 
