@@ -1,11 +1,11 @@
-import type { RecipeCategory, Season } from "../../../types/recipe-types";
+import type { RecipeCategory, Season } from "../../types/recipe-types";
 import type {
   Ingredient,
   QuantityUnit,
   Recipe, 
   SimplifiedRecipe, 
   StandardRecipeIngredients, StandardRecipeSteps
-} from "../SharedRecipeComponents/recipe-types";
+} from "../../pages/Recipes/SharedRecipeComponents/recipe-types";
 
 const spring: Season = 'Spring';
 const summer: Season = 'Summer';
@@ -51,7 +51,7 @@ const slices: QuantityUnit = 'slices';
 const handfull: QuantityUnit = 'handfull';
 const bag: QuantityUnit = 'bag';
 
-//const breakfast: RecipeCategory = 'Breakfast';
+const breakfast: RecipeCategory = 'Breakfast';
 const lunch: RecipeCategory = 'Lunch';
 const dinner: RecipeCategory = 'Dinner';
 const snack: RecipeCategory = 'Dessert'; // Using Dessert as Snack category
@@ -2599,6 +2599,63 @@ const recipes: Recipe[] = [
         'Salt and pepper the chicken.',
         'Add spices',
         'Pan fry the chicken',
+      ]
+    })
+  },
+  { // Beignets
+    ...simpleRecipe({
+      title: 'Beignets',
+      category: breakfast,
+      seasons: [spring, summer],
+      ingredients: [
+        ing(3/4, cup, 'whole milk'),
+        ing(1/4, cup, 'sugar'),
+        ing(2+1/4, tsp, 'instant yeast (one packet)'),
+        ing(1, null, 'egg'),
+        ing(1, tsp, 'vanilla'),
+        ing(2, tbsp, 'melted unsalted butter'),
+        ing(1/2, tsp, 'salt'),
+        ing(2+1/2, cup, 'all-purpose flour'),
+        ing(0, null, 'oil')
+      ],
+      steps: [
+        'Mixx all ingredients together.',
+        'Knead the dough for about 5-7 minutes (or less, whatever).',
+        'Cover at let rise for about 1 to 1.5 hours.',
+        'Gently roll dough on floured surface until about 1/4 inch thick.',
+        'Cut into roughly 2 or 3 inch squares.',
+        'Get oil hot in a pan or skillet with enough depth for the beignets.',
+        'Fry one side in oil for 45 seconds (give or take 15), then flip for another 30-ish seconds.',
+        'Honestly, just kinda use your eyes to see how golden they are.',
+        'Then, right into bowl of powdered sugar. Seal the bowl and give it a quick shake to coat them.',
+        'Out of the bowl and onto a plate or similar to cool a bit.',
+        'Serve warm, but not too hot!'
+      ]
+    })
+  },
+  { // Drop Biscuits
+    ...simpleRecipe({
+      title: 'Drop Biscuits',
+      category: breakfast,
+      seasons: [...allSeasons],
+      ingredients: [
+        ing(2, cup, 'all-purpose flour'),
+        ing(1, tbsp, 'white sugar'),
+        ing(2+1/2, tsp, 'baking powder'),
+        ing(1/2, tsp, 'salt'),
+        ing(1/2, cup, 'chilled butter', 'diced'),
+        ing(1+1/4, cup, 'whole milk'),
+        ing(0, null, 'curry powder maybe?'),
+        ing(0, null, 'garlic/herb maybe?'),
+        ing(0, null, 'tajin maybe?'),
+      ],
+      steps: [
+        'Preheat oven to 450°F',
+        'Mix flour, sugar, baking powder, and salt in large bowl.',
+        'Using mixer, cut cold butter and add until corse crumbs.',
+        'Stir in milk, a little at a time, until dough is moistened.',
+        'Drop heaping spoonfuls of dough onto baking sheet.',
+        'Bake for 12 to 15 mins, use your nose!',
       ]
     })
   }

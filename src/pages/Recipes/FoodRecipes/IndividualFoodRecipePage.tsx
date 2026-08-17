@@ -1,5 +1,5 @@
 import IndividualRecipePage from '../SharedRecipeComponents/IndividualRecipePage/IndividualRecipePage';
-import recipes from './food-recipe-data';
+import recipes from '../../../data/recipes/food-recipe-data';
 
 export default function IndividualFoodRecipePage() {
   return (

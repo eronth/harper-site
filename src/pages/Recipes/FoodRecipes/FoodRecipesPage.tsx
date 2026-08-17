@@ -7,7 +7,7 @@ import RecipeSearch from '../SharedRecipeComponents/RecipeSearch/RecipeSearch';
 // Types
 import { mealCategories, type MealCategory, type Season } from '../../../types/recipe-types';
 // Data
-import recipes from './food-recipe-data';
+import recipes from '../../../data/recipes/food-recipe-data';
 // CSS
 import './FoodRecipesPage.css';
 

@@ -1,4 +1,4 @@
-import type { Book } from "../book-data";
+import type { Book } from "../../../data/book-data";
 import './BookCard.css';
 
 export default function BookCard({ book }: { book: Book }) {
