@@ -46,6 +46,7 @@ const DrinkRecipes: React.FC = () => {
             key={index}
             className="drink" 
             recipe={recipe}
+            useFoodBlogPreamble={false}
             unnumbered
           />
         ))}

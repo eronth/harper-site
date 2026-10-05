@@ -14,6 +14,7 @@ type StandardRecipeParts = {
   title: string;
   subtitle?: string;
   category: RecipeCategory;
+  foodBlogPreamble?: React.ReactNode;
   searchTerms?: string[];
   description?: string;
   seasons: Season[];

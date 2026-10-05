@@ -20,8 +20,9 @@ type Props = {
   unnumbered?: boolean; // If true, steps will be displayed as an unnumbered list
   interactive?: boolean; // If true, enables checkboxes for tracking progress
   className?: string; // Optional additional class for styling
+  useFoodBlogPreamble: boolean; // If true, displays the food blog preamble
 };
-export default function RecipeCard({ recipe, unnumbered, interactive = false, className }: Props) {
+export default function RecipeCard({ recipe, unnumbered, interactive = false, className, useFoodBlogPreamble }: Props) {
   const location = useLocation();
   const [quantity, setQuantity] = React.useState(1);
   const maxQuantity = 5;
@@ -295,6 +296,11 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
         )}
       </div>
       <div className="subtitle">{recipe.subtitle || <>&nbsp;</>}</div>
+      {useFoodBlogPreamble && recipe.foodBlogPreamble && (
+        <div className="food-blog-preamble">
+          {recipe.foodBlogPreamble}
+        </div>
+      )}
       {progressSummary}
       <hr />
       <div>
