@@ -15,6 +15,8 @@ const FoodRecipes: React.FC = () => {
   const initialRecipes = useMemo(() => [...recipes], []);
   const [searchParams] = useSearchParams();
   const [filteredRecipes, setFilteredRecipes] = useState([...initialRecipes]);
+  // When on, every card on the page shows its food blog preamble
+  const [foodBlogMode, setFoodBlogMode] = useState(false);
   // Only meal categories for this page
   const filterCats: MealCategory[] = useMemo(() => [...mealCategories], []);
 
@@ -37,13 +39,25 @@ const FoodRecipes: React.FC = () => {
         initialSeason={initialSeason}
       />
 
-      <div className="results-info">
-        Showing {filteredRecipes.length} of {initialRecipes.length} recipes
+      <div className="recipe-grid-controls">
+        <div className="results-info">
+          Showing {filteredRecipes.length} of {initialRecipes.length} recipes
+        </div>
+
+        <label className="food-blog-toggle">
+          <input
+            type="checkbox"
+            checked={foodBlogMode}
+            onChange={(e) => setFoodBlogMode(e.target.checked)}
+          />
+          <span className="food-blog-toggle-track" aria-hidden="true" />
+          <span className="food-blog-toggle-caption">Food Blog Mode</span>
+        </label>
       </div>
 
       <div className="recipe-grid">
         {filteredRecipes.map((recipe, index) => (
-          <RecipeCard key={index} recipe={recipe} useFoodBlogPreamble={false} />
+          <RecipeCard key={index} recipe={recipe} useFoodBlogPreamble={foodBlogMode} />
         ))}
       </div>
     </Page>
