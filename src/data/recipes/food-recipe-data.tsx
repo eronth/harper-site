@@ -519,7 +519,7 @@ const recipes: Recipe[] = [
       steps: [
         'Preheat to 400° F.',
         'Cut acorn squash lengthwise, scoop out seeds.',
-        'Mix 1 tbsp maple and 1 tbsp olive oil.',
+        'Mix {1 tbsp} maple and {1 tbsp} olive oil.',
         'Brush insides with the mix. Sprinkle with salt.',
         'Place skin-side up on baking sheet, roast in oven for 30-40 mins until you can pierce skin and flesh with fork. Then remove, turn back over.',
         'While roasting, brown Italian sausage.',
@@ -527,7 +527,7 @@ const recipes: Recipe[] = [
         'Sauté parsnips and onions in olive oil (10 min).',
         'Add apples, kale, and sage for 5 mins.',
         'Splash with white wine, add pecans.',
-        'When wine evaporates, add 1 tbsp maple.',
+        'When wine evaporates, add the remaining maple.',
         'Add sausage back in, mix, add nutmeg.',
         'Fill squash with mixture, oven for 15-20 mins.',
       ]
@@ -580,7 +580,7 @@ const recipes: Recipe[] = [
       {
         title: 'Rice Mixture',
         steps: [
-          'Medium heat. 2 tbl olive oil in large skillet/paella pan. Add pepper flakes and rice.',
+          'Medium heat. {2 tbl} olive oil in large skillet/paella pan. Add pepper flakes and rice.',
           'Cook and stir for 3 minutes or less.',
           'Add saffron, bay leafe, parsley, stock, and zest. Stir until well combined and boiling.',
           'Reduce heat to medium-low, cover and let simmer for 20 minutes.',
@@ -703,7 +703,7 @@ const recipes: Recipe[] = [
     ...simpleSteps([
       'Preheat oven to 350° F.',
       'Lightly grease a 24 count mini muffin pan.',
-      'Put 1 cup oats in food processor and pulverize. Original recipe says a minute, but hell no that’s way too long.',
+      'Put {1 cup} oats in food processor and pulverize. Original recipe says a minute, but hell no that’s way too long.',
       'Add stage 2 stuff and pulse until apricots are in small bits.',
       'Add stage 3 and pulse until combined.',
       'Divide into muffin cups.',
@@ -880,7 +880,7 @@ const recipes: Recipe[] = [
         ing(1.5, cup, 'shredded Manchego OR Monterey jack cheese')
       ],
       steps: [
-        'Cook pasta, drain, reserve ¾ cup water.',
+        'Cook pasta, drain, reserve {¾ cup} water.',
         'In large skillet, sauté sausage until light brown.',
         'Reduce heat to med-low.',
         'Add pumpkin, cream, salt, pepper.',
@@ -912,12 +912,12 @@ const recipes: Recipe[] = [
       steps: [
         'Oven to 375°',
         'Cook gnocchi as says package.',
-        'Separate a small bit of truffle butter from the 2 tbl. ',
-        'Melt rest of 2 tbl truffle and 1 tbl regular butter in oven proof pan.',
+        'Separate a small bit of the truffle butter.',
+        'Melt rest of the truffle butter and the regular butter in oven proof pan.',
         'Whisk in flour for ~3 mins.',
         'Whisk in milk for 5-10 mins.',
         'Melt extra trutter into bread crumbs.',
-        'Mix with 2 tbl parmesan and garlic in food processor. Set aside.',
+        'Mix with {2 tbl} parmesan and garlic in food processor. Set aside.',
         'Add remaining cheeses to sauce. Stir.',
         'Add salt and white pepper.',
         'Add drained gnocchi and stir.',
@@ -1331,10 +1331,10 @@ const recipes: Recipe[] = [
         'Add chicken broth and reserved pork and any accumulated juices.',
       'Bring to a simmer, reduce to medium-low, cover, let simmer for 40 mins.',
         'And back to medium-high.',
-        'Get to strong simmer, add potatoes, leeks, and 1 1/4 cups of chestnuts. Season with salt and pepper.',
+        'Get to strong simmer, add potatoes, leeks, and {1 1/4 cups} of chestnuts. Season with salt and pepper.',
         'Would you believe it\'s time for medium-low? Replace lid, simmer for 20 mins.',
         'Remove from heat and let it sit for 30 minutes. Remove bay leaves.',
-        'Transfer about 3/4 cup of stew (including potato cubes) to blender, blend smooth (30 sec.).',
+        'Transfer about {3/4 cup} of stew (including potato cubes) to blender, blend smooth (30 sec.).',
         'Scrape smooth mixture and add the vinegar, stir to incorporate.',
         'If needed, re-heat stew before serving.',
         'This shit is delicious on day 2 as well.'
@@ -1471,9 +1471,9 @@ const recipes: Recipe[] = [
       {
         title: "Tips and Variations",
         steps: [
-          "For extra richness: Stir in 1-2 tbsp of butter or a splash of heavy cream at the end.",
+          "For extra richness: Stir in {1-2 tbsp} of butter or a splash of heavy cream at the end.",
           "Make it even heartier: Add mushrooms, pearl onions, or chunks of celery.",
-          "For a thicker stew: Remove 1 cup of the broth, blend with some of the vegetables, and stir back into the pot. Alternatively, make a quick cornstarch slurry (1 tbsp cornstarch + 2 tbsp water) and stir it in during the last 5 minutes of cooking.",
+          "For a thicker stew: Remove {1 cup} of the broth, blend with some of the vegetables, and stir back into the pot. Alternatively, make a quick cornstarch slurry ({1 tbsp} cornstarch + {2 tbsp} water) and stir it in during the last 5 minutes of cooking.",
           "This stew is hearty, comforting, and packed with deep, rich flavors to warm you up on a cold winter day. Enjoy! 🥣",
         ]
       }
@@ -1695,8 +1695,8 @@ const recipes: Recipe[] = [
         ing(0.5, tsp, 'crushed red pepper flakes')
       ],
       steps: [
-        'Cut chicken into 1 inch pieces and toss with 2 tbsp of cornstarch, salt, pepper.',
-        'Add 2 tbsp canola oil to skillet on medium heat, let heat until adding chicken would sizzle.',
+        'Cut chicken into 1 inch pieces and toss with {2 tbsp} of cornstarch, salt, pepper.',
+        'Add {2 tbsp} canola oil to skillet on medium heat, let heat until adding chicken would sizzle.',
         'Add about half the chicken, let it cook 3 min without stirring. Flip, cook another 3 mins.',
         'Remove chicken onto plate. Add remaining oil. Cook rest of chicken the same way.',
         'Remove chicken to plate, add garlic and cook until you smell it. 20 sec',
@@ -1788,9 +1788,9 @@ const recipes: Recipe[] = [
       ],
       steps: [
         'Preheat oven to 375° F.',
-        'Honey mustard: Combine Dijon, honey, ½ tsp salt, apple cider vinegar, paprika. Stir to smooth.',
+        'Honey mustard: Combine Dijon, honey, {½ tsp} salt, apple cider vinegar, paprika. Stir to smooth.',
         'Season chicken breasts with salt and pepper.',
-        'Heat 1tbsp olive oil in skillet. Sear chicken until gold brown (~3 min/side). Move chicken to plate.',
+        'Heat {1 tbsp} olive oil in skillet. Sear chicken until gold brown (~3 min/side). Move chicken to plate.',
         'Add shallots and potatoes and remaining oil.',
         'Toss to combine. Sprinkle rosemary on.',
         'In oven uncovered for 15 mins.',
@@ -1877,7 +1877,7 @@ const recipes: Recipe[] = [
         'Boil pasta',
         'Slice chicken into ¼ in. strips.',
         'Season with salt and pepper.',
-        'Melt 1 tbl spoon butter in skillet',
+        'Melt {1 tbl spoon} butter in skillet',
         'Brown chicken 1 layer at a time.',
         'Transfer chicken out of skillet.',
         'Add remaining butter.',
@@ -2198,7 +2198,7 @@ const recipes: Recipe[] = [
         'Start rice.',
         'Cut chicken into 1 inch pieces, place in gallon resealable bag.',
         'In medium saucepan (turned off) combine chicken broth, zest, orange juice, vinegar, soy, sugar, ginger, garlic, Sirach, and pepper. Mix well.',
-        'Measure ⅔ cup mixture into chicken bag.',
+        'Measure {⅔ cup} mixture into chicken bag.',
         'Seal bag without air. Fridge 30 mins.',
         'Bring mixture to medium heat to boil.',
         'Add cornstarch-water mix to mixture.',
@@ -2238,7 +2238,7 @@ const recipes: Recipe[] = [
         'Remaining oil in skillet on med-high.',
         'Cook chicken on all sides until golden brown, not just gross tan.',
         'Put in oven for 5-7 mins.',
-        'Add wine, broth, and lemon juice to skillet until reduced to about ½ cup.',
+        'Add wine, broth, and lemon juice to skillet until reduced to about {½ cup}.',
         'Spoon over top, serve with wedges.',
       ]
     })
@@ -2272,7 +2272,7 @@ const recipes: Recipe[] = [
         'Add dill, sauté, add pepper.',
         'Remove from heat.',
         'Combine cream and cheese in bowl.',
-        'Add spinach, bacon, and 1 egg yolk.',
+        'Add spinach, bacon, and {1} egg yolk.',
         'Stir that shit! Oven to 450° F.',
         'Prepare pastries. (fix seams, cut, etc).',
         'About 2 tbsp of mix to each puff.',
@@ -2398,7 +2398,7 @@ const recipes: Recipe[] = [
       {
         title: 'Prep',
         steps: [
-          "Warm your stock: Pour 3.5 cups chicken stock (warm) into a small saucepan and keep it warm over low heat. "
+          "Warm your stock: Pour the chicken stock into a small saucepan and keep it warm over low heat. "
           + "Cold stock kills risotto momentum — warm stock is non-negotiable.",
           "Set oven to 375°F."
         ]
@@ -2406,12 +2406,12 @@ const recipes: Recipe[] = [
       {
         title: 'Chicken',
         steps: [
-          "Pat 2 bone-in, skin-on chicken thighs dry thoroughly — this is the key to a good sear.",
+          "Pat the chicken thighs dry thoroughly — this is the key to a good sear.",
 
           "Season generously on both sides with salt and black pepper. "
           + "Let them sit at room temp while you prep everything else.",
           
-          "Sear the chicken: Heat 1 tablespoons olive oil in a wide, heavy skillet (or dutch oven) over medium-high. "
+          "Sear the chicken: Heat the olive oil in a wide, heavy skillet (or dutch oven) over medium-high. "
           + "Place chicken skin-side down and don't touch it. Sear until the skin is deep golden and releases easily, "
           + "about 7 to 13 minutes.",
 
@@ -2433,8 +2433,8 @@ const recipes: Recipe[] = [
         steps: [
           "Build the risotto base: In the same skillet as chicken "
           + "(don't wipe it — that fond is flavor), reduce heat to medium. "
-          + "Add 1 tbsp (of 3) tablespoons unsalted butter, then sweat 2 shallots, finely diced and 3 garlic cloves, "
-          + "and 4 fresh thyme sprigs until soft and fragrant, about 3 minutes.",
+          + "Add {1 tbsp} of the butter, then sweat the shallots, garlic, "
+          + "and thyme sprigs until soft and fragrant, about 3 minutes.",
           
           "Season lightly with salt.",
           
@@ -2450,12 +2450,12 @@ const recipes: Recipe[] = [
           
           "Remove the thyme sprigs.",
           
-          "Finish the risotto: Remove from heat. Stir in remaining 2 (of 3) tablespoons unsalted butter, all of 0.5 cups "
-          + "Parmesan (freshly grated), the zest and juice of 1 lemon (zest + juice), and most of 3 tablespoons fresh "
-          + "parsley, chopped. Taste and adjust salt. The risotto should flow slowly when you tilt the pan — add a splash more stock if needed.",
+          "Finish the risotto: Remove from heat. Stir in the remaining butter, all of the "
+          + "Parmesan, the zest and juice of the lemon, and most of the "
+          + "parsley. Taste and adjust salt. The risotto should flow slowly when you tilt the pan — add a splash more stock if needed.",
           
           "Plate and serve: Spoon risotto into wide bowls. Slice or place the chicken thigh on top. Garnish with "
-          + "remaining fresh parsley, chopped, a little extra lemon zest if desired, and a crack of black pepper.",
+          + "the remaining parsley, a little extra lemon zest if desired, and a crack of black pepper.",
           
           "Serve immediately. Get the lady to like you more. Maybe you even get a kiss from it!"
         ]
@@ -2506,33 +2506,31 @@ const recipes: Recipe[] = [
         + ' cooked breast and a dry one. A zip-lock bag and a rolling'
         + ' pin works fine.',
         
-        'Cook the chicken: Pound 2 boneless, skinless chicken'
-        + ' breasts to even thickness (about 3/4 inch). Season both'
-        + ' sides with salt, pepper, and 1 teaspoons Italian seasoning.',
+        'Cook the chicken: Pound the chicken breasts to even'
+        + ' thickness (about 3/4 inch). Season both sides with salt,'
+        + ' pepper, and the Italian seasoning.',
 
-        'Heat 1 tablespoons olive oil in a skillet over medium-high'
+        'Heat the olive oil in a skillet over medium-high'
         + ' and cook chicken 5–12 minutes per side until golden and'
         + ' cooked through. Rest on a cutting board, then slice.',
 
-        'Boil the pasta: Cook 10 ounces rigatoni or penne in'
-        + ' well-salted boiling water until al dente. Reserve 1 cup'
-        + ' pasta water before draining.',
+        'Boil the pasta: Cook the pasta in well-salted boiling water'
+        + ' until al dente. Reserve {1 cup} pasta water before draining.',
 
         'Build the sauce base: In the same skillet over medium,'
-        + ' melt 1 tablespoons butter. Add 3 garlic cloves, minced'
-        + ' and 0.5 teaspoons red pepper flakes, cook 2 minutes'
-        + ' until fragrant.',
+        + ' melt the butter. Add the garlic and red pepper flakes,'
+        + ' cook 2 minutes until fragrant.',
 
-        'Add 0.5 cups sun-dried tomatoes in oil, drained and sliced and stir for another minute.',
+        'Add the sun-dried tomatoes and stir for another minute.',
 
-        'Simmer the cream sauce: Pour in 0.5 cups chicken stock'
-        + ' and let it reduce by half. Add 0.8 cups heavy cream and'
+        'Simmer the cream sauce: Pour in the chicken stock'
+        + ' and let it reduce by half. Add the heavy cream and'
         + ' bring to a gentle simmer. Let the sauce thicken slightly,'
         + ' about 3–4 minutes.',
 
-        'Then stir in 0.5 cups Parmesan, grated (plus more to serve) until melted and smooth.',
+        'Then stir in the Parmesan until melted and smooth.',
 
-        'Finish and plate: Add 3 cups fresh baby spinach and'
+        'Finish and plate: Add the spinach and'
         + ' stir until wilted. Add the drained pasta and toss'
         + ' to coat, using pasta water to loosen if needed.',
 
@@ -2563,28 +2561,24 @@ const recipes: Recipe[] = [
         ing(2, tbsp, 'warm water', '(to thin sauce)'),
       ],
       steps: [
-        'Cook and cool the noodles: Cook 8 ounces lo mein or spaghetti'
-        + ' noodles according to package directions. Drain and rinse'
-        + ' under cold water to stop cooking and keep them from clumping.'
-        + ' Toss with a small drizzle of sesame oil and set aside.',
+        'Cook and cool the noodles: Cook the noodles according to'
+        + ' package directions. Drain and rinse under cold water to'
+        + ' stop cooking and keep them from clumping. Toss with a'
+        + ' small drizzle of sesame oil and set aside.',
         
-        'Make the peanut sauce: Whisk together 3 tablespoons creamy' 
-        + ' peanut butter, 2 tablespoons soy sauce, 1 tablespoons rice'
-        + ' vinegar, 1 tablespoons sesame oil, 1 tablespoons honey or'
-        + ' maple syrup, 1 tablespoons chili garlic sauce or sriracha, '
-        + ' 2 garlic cloves, grated, and 1 teaspoons fresh ginger, grated'
-        + ' until smooth. Add 2 tablespoons warm water (to thin sauce) one'
-        + ' tablespoon at a time until the sauce is pourable but still'
-        + ' thick and coats a spoon. Taste — adjust heat with more chili'
-        + ' sauce, or balance with a touch more honey if too sharp.',
+        'Make the peanut sauce: Whisk together the peanut butter,'
+        + ' soy sauce, rice vinegar, sesame oil, honey or maple syrup,'
+        + ' chili garlic sauce or sriracha, garlic, and ginger until'
+        + ' smooth. Add the warm water one tablespoon at a time until'
+        + ' the sauce is pourable but still thick and coats a spoon.'
+        + ' Taste — adjust heat with more chili sauce, or balance with'
+        + ' a touch more honey if too sharp.',
         
         'Assemble the bowl: Add the noodles to a bowl and pour most of'
-        + ' the sauce over them, tossing to coat evenly. Pile on 2 cups'
-        + ' cups shredded rotisserie chicken and 1 English cucumber,'
-        + ' julienned or thinly sliced. Drizzle remaining sauce on top,'
-        + ' then scatter 3 scallions, thinly sliced and 1 tablespoons'
-        + ' toasted sesame seeds over everything. Serve immediately or'
-        + ' refrigerate — it\'s excellent cold.'
+        + ' the sauce over them, tossing to coat evenly. Pile on the'
+        + ' chicken and cucumber. Drizzle remaining sauce on top, then'
+        + ' scatter the scallions and sesame seeds over everything.'
+        + ' Serve immediately or refrigerate — it\'s excellent cold.'
       ]
     })
   },
@@ -2679,7 +2673,7 @@ const recipes: Recipe[] = [
       steps: [
         'Heat skillet + season chicken with salt and pepper.',
         'Add chicken to simmering skillet and cook until brown on both sides. Remove.',
-        'Low heat. Add .5 cup pineapple juice and scrape skillet.',
+        'Low heat. Add {.5 cup} pineapple juice and scrape skillet.',
         'Add BBQ sauce. Add salt and more pineapple juice as needed until thickened.',
         'Re-add chicken thighs, dredge in BBQ sauce.',
         'Add them pineapple slices. Dredge in BBQ.',
@@ -2772,7 +2766,7 @@ const recipes: Recipe[] = [
       'Cover. Fridge for hour.',
       'Cut into diamonds.',
       'Oven for 350° for hour.',
-      'Sugar, 3 cloves, and honey in pot.',
+      'Sugar, cloves, and honey in pot.',
       'Add cold water, put over medium high heat.',
       'At boil, turn off heat.',
       'Add extract and water.',
@@ -3048,7 +3042,7 @@ const recipes: Recipe[] = [
         'Add egg and vanilla. Mix again.',
         'Sift in all the flour, baking soda, and salt.',
         'The result should be very doughy and not very gooey.',
-        'Chop up 80g of dark chocolate, combine.',
+        'Chop up the dark chocolate, combine.',
         'Refrigerate 1 hour.',
         'Split into 30g increments, flatten, add marshmallows, wrap up.',
         'Bake at 350°F for 11 mins.',
@@ -3075,11 +3069,11 @@ const recipes: Recipe[] = [
         ing(1, tbsp, 'toasted sesame seeds', 'plus extra'),
       ],
       steps: [
-        'Heat 1 tbsp veg oil in skillet/wok on med high.',
+        'Heat half the veg oil in skillet/wok on med high.',
         'Add cabbage, toss often, until brown (4 min).',
         'Reduce to low, keep cooking cabbage.',
         'Boil that udon. Transfer to large bowl. Toss with sesame oil. Transfer cabbage to same bowl.',
-        'Heat 1 tbsp veg oil in same skillet, med high.',
+        'Heat the remaining veg oil in same skillet, med high.',
         'Add pork, break up and spread on surface.',
         'Cook undisturbed until browning on one side.',
         'Then cook until no pink.',
@@ -3200,7 +3194,7 @@ const recipes: Recipe[] = [
         'Combine chili oil, garlic, ginger, spring onion, soy sauce, and water into bowl. Set aside.',
         'In dry wok, med heat, add cashews.',
         'Toast 1 minute and stir continually.',
-        'Remove cashews. Add 2 tbsp oil to wok.',
+        'Remove cashews. Add the peanut oil to wok.',
         'Add chicken until browned. Remove.',
         'Add mushrooms, carrots, and water chestnuts (3 mins).',
         'Return chicken and cashews to wok. Add stir fry sauce and stir-fry for 3 mins.',

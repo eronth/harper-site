@@ -53,6 +53,10 @@ export type Ingredient = {
 export type Steps = {
   title?: string;
   step0?: string;
+  // Wrap amounts that should scale with
+  // the recipe in braces: 'Heat {1 tbsp} oil'.
+  // Only needed when the amount isn't already
+  // a whole ingredient line.
   steps: string[];
 };
 

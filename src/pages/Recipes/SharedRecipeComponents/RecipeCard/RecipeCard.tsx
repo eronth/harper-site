@@ -15,6 +15,32 @@ import summerDisabledIcon from '../../../../assets/season-icons/disabled/summer.
 import autumnDisabledIcon from '../../../../assets/season-icons/disabled/autumn.png';
 import winterDisabledIcon from '../../../../assets/season-icons/disabled/winter.png';
 
+// How close a decimal must be to a fraction to display as that fraction
+const fractionTolerance = 0.015;
+
+const unicodeFractions: Record<string, number> = {
+  '½': 1/2, '⅓': 1/3, '⅔': 2/3, '¼': 1/4, '¾': 3/4,
+  '⅕': 1/5, '⅖': 2/5, '⅗': 3/5, '⅘': 4/5, '⅙': 1/6, '⅚': 5/6,
+  '⅛': 1/8, '⅜': 3/8, '⅝': 5/8, '⅞': 7/8,
+};
+const fractionChars = Object.keys(unicodeFractions).join('');
+// One amount: '1 1/4', '1/4', '1.5', '.5', '1½', or '½'
+const amount = `\\d+\\s+\\d+\\/\\d+|\\d+\\/\\d+|\\d*\\.?\\d+[${fractionChars}]?|[${fractionChars}]`;
+// An amount or range ('1-2'), then whatever follows it ('tbsp', 'cup', ...)
+const stepAmountPattern = new RegExp(`^\\s*(${amount})(?:\\s*[-–]\\s*(${amount}))?(.*)$`, 's');
+
+function parseAmount(text: string): number {
+  return text.trim().split(/\s+/).reduce((total, part) => {
+    const [numerator, denominator] = part.split('/');
+    if (denominator) {
+      return total + Number(numerator) / Number(denominator);
+    }
+    const fraction = unicodeFractions[part.slice(-1)] ?? 0;
+    const whole = fraction ? part.slice(0, -1) : part;
+    return total + (whole ? Number(whole) : 0) + fraction;
+  }, 0);
+}
+
 type Props = {
   recipe: Recipe;
   unnumbered?: boolean; // If true, steps will be displayed as an unnumbered list
@@ -142,45 +168,58 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
   }
 
   const fractionize = (quantity: number): string => {
-    // First pull the decimal part of the number
-    const decimalPart = quantity % 1;
-    // If the decimal part is 0, return an the original number
-    if (decimalPart === 0) {
-      return quantity.toString();
-    } else {
-      const wholePart = Math.floor(quantity);
-      const wholeText = wholePart ? `${wholePart}` : '';
-      return `${wholeText}${decimalToFraction(decimalPart)}`;
+    // First split off the whole number
+    let wholePart = Math.floor(quantity);
+    let decimalPart = quantity - wholePart;
+    // Float math (⅔ × 2 = 1.3333333333333333) and approximations like 0.33
+    // land near a fraction rather than on it, so snap anything close enough
+    if (decimalPart < fractionTolerance) {
+      decimalPart = 0;
+    } else if (decimalPart > 1 - fractionTolerance) {
+      wholePart += 1;
+      decimalPart = 0;
     }
+    // If the decimal part is 0, return just the whole number
+    if (decimalPart === 0) {
+      return wholePart.toString();
+    }
+    const wholeText = wholePart ? `${wholePart}` : '';
+    const fraction = decimalToFraction(decimalPart);
+    // No matching symbol? Show a rounded decimal rather than dropping it
+    return fraction ? `${wholeText}${fraction}` : `${+quantity.toFixed(2)}`;
   }
 
   function decimalToFraction(decimal: number): string {
-    switch (decimal) {
+    const fractions: [number, string][] = [
       // Halve
-      case 0.5: return '½';
+      [1/2, '½'],
       // Thirds
-      case 0.33:
-      case 1/3: return '⅓';
-      case 0.66:
-      case 2/3: return '⅔';
+      [1/3, '⅓'], [2/3, '⅔'],
       // Fourths
-      case 0.25: return '¼';
-      case 0.75: return '¾';
+      [1/4, '¼'], [3/4, '¾'],
       // Fifths for some reason
-      case 0.2: return '⅕';
-      case 0.4: return '⅖';
-      case 0.6: return '⅗';
-      case 0.8: return '⅘';
+      [1/5, '⅕'], [2/5, '⅖'], [3/5, '⅗'], [4/5, '⅘'],
       // Sixths
-      case 1/6: return '⅙';
-      case 5/6: return '⅚';
+      [1/6, '⅙'], [5/6, '⅚'],
       // Eighths
-      case 0.125: return '⅛';
-      case 0.375: return '⅜';
-      case 0.625: return '⅝';
-      case 0.875: return '⅞';
-      default: return '';
-    };
+      [1/8, '⅛'], [3/8, '⅜'], [5/8, '⅝'], [7/8, '⅞'],
+    ];
+    return fractions.find(([value]) => Math.abs(value - decimal) < fractionTolerance)?.[1] ?? '';
+  }
+
+  // Scales {amount} tokens in step text, e.g. 'Heat {1 tbsp} oil' or 'Reduce to {½ cup}'.
+  // At ×1 the text inside the braces is shown exactly as written.
+  function scaleStepText(text: string): string {
+    return text.replace(/\{([^{}]*)\}/g, (_, inner: string) => {
+      const match = inner.match(stepAmountPattern);
+      if (quantity === 1 || !match) {
+        return inner;
+      }
+      const [, low, high, rest] = match;
+      const scaledLow = fractionize(parseAmount(low) * quantity);
+      const scaledHigh = high ? `-${fractionize(parseAmount(high) * quantity)}` : '';
+      return `${scaledLow}${scaledHigh}${rest}`;
+    });
   }
 
   const seasonsIcons = (<>
@@ -210,7 +249,7 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
                 onChange={() => handleStepCheck(getStepId(listIndex, 0, true))}
                 className="step-checkbox"
               />
-              <span className="step-text">{steps.step0}</span>
+              <span className="step-text">{scaleStepText(steps.step0)}</span>
             </label>
           </li>
         )}
@@ -225,7 +264,7 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
                   onChange={() => handleStepCheck(stepId)}
                   className="step-checkbox"
                 />
-                <span className="step-text">{step}</span>
+                <span className="step-text">{scaleStepText(step)}</span>
               </label>
             </li>
           );
@@ -233,9 +272,9 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
       </>;
     } else {
       return <>
-        {steps.step0 && <li className="step-0">{steps.step0}</li>}
+        {steps.step0 && <li className="step-0">{scaleStepText(steps.step0)}</li>}
         {steps.steps.map((step, j) => (
-          <li key={'step-list-'+listIndex+'-item-'+j}>{step}</li>
+          <li key={'step-list-'+listIndex+'-item-'+j}>{scaleStepText(step)}</li>
         ))}
       </>;
     }
