@@ -7,6 +7,7 @@ export default function IndividualFoodRecipePage() {
       recipes={recipes}
       backPath="/food-recipes"
       backLabel="Food Recipes"
+      allowFoodBlogMode
     />
   );
 }

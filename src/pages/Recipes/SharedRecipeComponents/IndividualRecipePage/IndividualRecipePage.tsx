@@ -1,8 +1,11 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Page from '../../../Page';
 import RecipeCard from '../RecipeCard/RecipeCard';
+import FoodBlogModeToggle from '../FoodBlogModeToggle/FoodBlogModeToggle';
+import { foodBlogModeFromParams, withFoodBlogModeParam } from '../FoodBlogModeToggle/food-blog-mode';
 import type { Recipe } from '../recipe-types';
 import './IndividualRecipePage.css';
 
@@ -12,11 +15,22 @@ type Props = {
   backLabel: string;
   unnumbered?: boolean;
   className?: string;
+  allowFoodBlogMode?: boolean; // If true, offers the Food Blog Mode toggle on this page
 };
 
-export default function IndividualRecipePage({ recipes, backPath, backLabel, unnumbered, className }: Props) {
+export default function IndividualRecipePage({ recipes, backPath, backLabel, unnumbered, className, allowFoodBlogMode = false }: Props) {
   const { recipeId } = useParams<{ recipeId: string }>();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+
+  // Seeded from the link that got us here, so the page opens in whatever mode
+  // the list page was showing; the toggle below takes over from there.
+  const [foodBlogMode, setFoodBlogMode] = useState(
+    () => allowFoodBlogMode && foodBlogModeFromParams(searchParams)
+  );
+
+  // Hand the mode back to the list page so it stays on across a round trip
+  const goBack = () => navigate(withFoodBlogModeParam(backPath, foodBlogMode));
   
   // Create a slug from recipe title for URL-friendly ID
   const createSlug = (title: string): string => {
@@ -35,7 +49,7 @@ export default function IndividualRecipePage({ recipes, backPath, backLabel, unn
         <div className="individual-recipe-page">
           <button 
             className="back-button"
-            onClick={() => navigate(backPath)}
+            onClick={goBack}
           >
             <FontAwesomeIcon icon={faArrowLeft} />
             Back to {backLabel}
@@ -52,16 +66,28 @@ export default function IndividualRecipePage({ recipes, backPath, backLabel, unn
   return (
     <Page>
       <div className="individual-recipe-page">
-        <button 
-          className="back-button"
-          onClick={() => navigate(backPath)}
-        >
-          <FontAwesomeIcon icon={faArrowLeft} />
-          Back to {backLabel}
-        </button>
-        
+        <div className="individual-recipe-controls">
+          <button 
+            className="back-button"
+            onClick={goBack}
+          >
+            <FontAwesomeIcon icon={faArrowLeft} />
+            Back to {backLabel}
+          </button>
+
+          {allowFoodBlogMode && (
+            <FoodBlogModeToggle checked={foodBlogMode} onChange={setFoodBlogMode} />
+          )}
+        </div>
+
         <div className="individual-recipe-container">
-          <RecipeCard recipe={recipe} interactive unnumbered={unnumbered} className={className} />
+          <RecipeCard
+            recipe={recipe}
+            interactive
+            unnumbered={unnumbered}
+            className={className}
+            useFoodBlogPreamble={foodBlogMode}
+          />
         </div>
       </div>
     </Page>

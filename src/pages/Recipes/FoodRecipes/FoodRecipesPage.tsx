@@ -4,6 +4,8 @@ import { useSearchParams } from 'react-router-dom';
 import Page from '../../Page';
 import RecipeCard from '../SharedRecipeComponents/RecipeCard/RecipeCard';
 import RecipeSearch from '../SharedRecipeComponents/RecipeSearch/RecipeSearch';
+import FoodBlogModeToggle from '../SharedRecipeComponents/FoodBlogModeToggle/FoodBlogModeToggle';
+import { foodBlogModeFromParams } from '../SharedRecipeComponents/FoodBlogModeToggle/food-blog-mode';
 // Types
 import { mealCategories, type MealCategory, type Season } from '../../../types/recipe-types';
 // Data
@@ -15,8 +17,9 @@ const FoodRecipes: React.FC = () => {
   const initialRecipes = useMemo(() => [...recipes], []);
   const [searchParams] = useSearchParams();
   const [filteredRecipes, setFilteredRecipes] = useState([...initialRecipes]);
-  // When on, every card on the page shows its food blog preamble
-  const [foodBlogMode, setFoodBlogMode] = useState(false);
+  // When on, every card on the page shows its food blog preamble.
+  // Seeded from the URL so coming back from an individual recipe keeps the mode.
+  const [foodBlogMode, setFoodBlogMode] = useState(() => foodBlogModeFromParams(searchParams));
   // Only meal categories for this page
   const filterCats: MealCategory[] = useMemo(() => [...mealCategories], []);
 
@@ -44,15 +47,7 @@ const FoodRecipes: React.FC = () => {
           Showing {filteredRecipes.length} of {initialRecipes.length} recipes
         </div>
 
-        <label className="food-blog-toggle">
-          <input
-            type="checkbox"
-            checked={foodBlogMode}
-            onChange={(e) => setFoodBlogMode(e.target.checked)}
-          />
-          <span className="food-blog-toggle-track" aria-hidden="true" />
-          <span className="food-blog-toggle-caption">Food Blog Mode</span>
-        </label>
+        <FoodBlogModeToggle checked={foodBlogMode} onChange={setFoodBlogMode} />
       </div>
 
       <div className="recipe-grid">

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquare, faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import type { Ingredient, Recipe, Steps } from "../recipe-types";
+import { withFoodBlogModeParam } from "../FoodBlogModeToggle/food-blog-mode";
 import './RecipeCard.css';
 
 // Import season icons
@@ -70,19 +71,20 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
       .replace(/^-+|-+$/g, '');
   };
 
-  // Determine the base path for the recipe link
+  // Determine the base path for the recipe link, carrying the current
+  // food blog mode along so the individual page opens in the same mode
   const getRecipeLink = (): string => {
     const currentPath = location.pathname;
     const recipeSlug = createSlug(recipe.title);
-    
+
     if (currentPath.includes('/food-recipes')) {
-      return `/food-recipes/recipe/${recipeSlug}`;
+      return withFoodBlogModeParam(`/food-recipes/recipe/${recipeSlug}`, useFoodBlogPreamble);
     } else if (currentPath.includes('/drink-recipes')) {
-      return `/drink-recipes/recipe/${recipeSlug}`;
+      return withFoodBlogModeParam(`/drink-recipes/recipe/${recipeSlug}`, useFoodBlogPreamble);
     }
-    
+
     // Fallback - shouldn't happen in normal use
-    return `/recipe/${recipeSlug}`;
+    return withFoodBlogModeParam(`/recipe/${recipeSlug}`, useFoodBlogPreamble);
   };
 
   // Interactive functions (only used when interactive=true)

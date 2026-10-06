@@ -4,6 +4,20 @@
   padding: 1rem;
 }
 
+/* Row holding the back button and the page's display toggles */
+.individual-recipe-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+
+  .back-button {
+    margin-bottom: 0;
+  }
+}
+
 .back-button {
   display: flex;
   align-items: center;
