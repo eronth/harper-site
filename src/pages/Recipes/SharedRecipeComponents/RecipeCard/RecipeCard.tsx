@@ -158,14 +158,22 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
     switch (decimal) {
       // Halve
       case 0.5: return '½';
-      // Fourths
-      case 0.25: return '¼';
-      case 0.75: return '¾';
       // Thirds
       case 0.33:
       case 1/3: return '⅓';
       case 0.66:
       case 2/3: return '⅔';
+      // Fourths
+      case 0.25: return '¼';
+      case 0.75: return '¾';
+      // Fifths for some reason
+      case 0.2: return '⅕';
+      case 0.4: return '⅖';
+      case 0.6: return '⅗';
+      case 0.8: return '⅘';
+      // Sixths
+      case 1/6: return '⅙';
+      case 5/6: return '⅚';
       // Eighths
       case 0.125: return '⅛';
       case 0.375: return '⅜';
@@ -313,7 +321,8 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
                 if (interactive) {
                   const ingredientId = getIngredientId(i, j);
                   return (
-                    <li key={'ingredient-list-'+i+'-item-'+j} className={checkedIngredients.has(ingredientId) ? 'completed' : ''}>
+                    <li key={'ingredient-list-'+i+'-item-'+j}
+                      className={checkedIngredients.has(ingredientId) ? 'completed' : ''}>
                       <label className="ingredient-checkbox-label">
                         <input
                           type="checkbox"

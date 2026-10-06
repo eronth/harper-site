@@ -2687,6 +2687,7 @@ const recipes: Recipe[] = [
   { // Egg Foo Young for One
     title: 'Egg Foo Young for One',
     category: breakfast,
+    searchTerms: ['yung'],
     seasons: [],
     ingredientsLists: [{
       title: 'Gravy',
@@ -2725,7 +2726,781 @@ const recipes: Recipe[] = [
       'Heat the avocado oil in a nonstick skillet over medium-high heat until it shimmers. Spoon the egg foo young mixture into three evenly-sized piles in the pan. Using a spatula, cut the egg that has run in between the piles, dividing the three portions. Flip the excess egg over the tops of the piles to form three round patties. Excess egg can also be cut away with the spatula and placed on top. Flip the patties over, and cook the other side until it is browned and the edges are getting crispy, about 2 minutes. Flip patties back over and brown the first side for another 30 seconds.',
       'Serve with the warm sauce, alongside some rice. Garnish with sliced green onion tops.',
     ])
-  }
+  },
+  { // Baklava
+    title: 'Baklava',
+    category: dessert,
+    seasons: [],
+    ingredientsLists: [
+      {
+        ingredients: [
+          ing(1, null, 'pack filo/phyllo dough'),
+          ing(1, null, 'stick unsalted butter'),
+        ]
+      },
+      {
+        title: 'Syrup',
+        ingredients: [
+          ing(1.5, cup, 'sugar'),
+          ing(3/4, cup, 'water'),
+          ing(1/4, cup, 'honey'),
+          ing(3, null, 'whole cloves'),
+          ing(1/4, tsp, 'vanilla'),
+          ing(1.5, tsp, 'orange blossom water'),
+        ]
+      },
+      {
+        title: 'Nut Mixture',
+        ingredients: [
+          ing(2.5, cup, 'walnut halves'),
+          ing(1, cup, 'shelled pistachios'),
+          ing(1.5, tsp, 'cinnamon'),
+        ]
+      }
+    ],
+    ...simpleSteps([
+      'Pulse nut mixture in blender.',
+      'Brush melted butter in pan.',
+      '2 filo in layer, butter. x3.',
+      '1/3 nut mixture.',
+      '2 sheet filo, nuts, 2 sheets, nuts.',
+      'Repeat step 3.',
+      'Cover. Fridge for hour.',
+      'Cut into diamonds.',
+      'Oven for 350° for hour.',
+      'Sugar, 3 cloves, and honey in pot.',
+      'Add cold water, put over medium high heat.',
+      'At boil, turn off heat.',
+      'Add extract and water.',
+    ])
+  },
+  { // Beef Lo Mein-ish
+    ...simpleRecipe({
+      title: 'Beef Lo Mein-ish',
+      searchTerms: ['crockpot', 'slow cooker'],
+      category: dinner,
+      seasons: [...allSeasons],
+      ingredients: [
+        ing(1, lb, 'ground beef'),
+        saltAndPepper,
+        ing(1, null, 'onion'),
+        ing(1, bag, 'oriental veggies'),
+        ing(1/4, cup, 'water'),
+        ing(3, tbsp, 'soy sauce'),
+        ing(1, null, 'packet brown gravy mix'),
+      ],
+      steps: [
+        'Throw it all in the crockpot.',
+        'Mix it up a little.',
+        'Put on low for 7-8 hours.',
+        'Mix it up some more.',
+        'Serve on rice.',
+      ]
+    })
+  },
+  { // Ana's Mint Glacier Cookies
+    ...simpleRecipe({
+      title: 'Ana\'s Mint Glacier Cookies',
+      searchTerms: ['peppermint', 'chocolate', 'christmas', 'holiday'],
+      category: dessert,
+      seasons: [],
+      ingredients: [
+        ing(1.5, cup, 'flour'),
+        ing(2/3, cup, 'cocoa powder'),
+        ing(1, tsp, 'baking powder'),
+        ing(1/4, tsp, 'salt'),
+        ing(1, null, 'stick unsalted butter'),
+        ing(3/4, cup, 'sugar'),
+        ing(1/2, cup, 'brown sugar'),
+        ing(3, null, 'eggs'),
+        ing(1, tsp, 'peppermint extract'),
+        ing(1.5, cup, 'powdered sugar'),
+      ],
+      steps: [
+        'Preheat oven to 350°.',
+        'Whisk flour, cocoa, baking powder, and salt together until combined.',
+        'Mix sugars and butter for 1 min.',
+        'Add 1 egg at a time, mixing.',
+        'Add peppermint extract.',
+        'Slowly add flour until sticky dough is formed.',
+        'Chill in freezer for 10 min.',
+        'Powdered sugar into bowl.',
+        'Use teaspoon sized balls, roll them in powdered sugar, place on cookie sheet.',
+        'Bake for 11 mins.',
+        'Let cool for 5 mins.',
+      ]
+    })
+  },
+  { // Beef Pirozhki
+    title: 'Beef Pirozhki',
+    category: dinner,
+    seasons: [],
+    ingredientsLists: [
+      {
+        title: 'Beef Filling',
+        ingredients: [
+          ing(1/2, tbsp, 'olive oil'),
+          ing(1/2, tbsp, 'butter'),
+          ing(1, null, 'onion', 'diced'),
+          ing(1, lb, 'ground beef'),
+          ing(1, tsp, 'salt'),
+          ing(1/4, tsp, 'black pepper'),
+          ing(2, clove, 'garlic'),
+          ing(1, tsp, 'dried dill'),
+          ing(1/6, null, 'cup broth'),
+          ing(1/8, cup, 'cheddar'),
+          ing(1, tbsp, 'parmesan'),
+        ]
+      },
+      {
+        title: 'Dough',
+        ingredients: [
+          ing(1, cup, 'warm milk', 'scant cup'),
+          ing(1, null, 'package active dry yeast'),
+          ing(2, tsp, 'white sugar'),
+          ing(1, tsp, 'salt'),
+          ing(1, null, 'large egg'),
+          ing(2, tbsp, 'melted butter'),
+          ing(3, cup, 'flour'),
+        ]
+      }
+    ],
+    ...simpleSteps([
+      'Warm milk + yeast until alive (10 min).',
+      'Add rest of ingredients (hold back some flour for now).',
+      'Mix by hand, adding flour as needed.',
+      'Place dough in bowl with drops of oil and rub all over and cover.',
+      'Place in warm spot to rise for 1.5 hours.',
+      'Meanwhile: Add all beef filling ingredients except dill, cheese, and broth to a pan.',
+      'Cook through until moisture vanishes.',
+      'Add dill and broth.',
+      'Grate cheese over for more goodness.',
+      'Stir one last time.',
+      'Use dough to make small disks.',
+      'Fill dough disks and deep fry.',
+    ])
+  },
+  { // Earl Grey Cookies
+    ...simpleRecipe({
+      title: 'Earl Grey Cookies',
+      searchTerms: ['tea'],
+      category: dessert,
+      seasons: [],
+      ingredients: [
+        ing(100, g, 'pastry flour'),
+        ing(20, g, 'tapioca starch'),
+        ing(50, g, 'oil'),
+        ing(20, g, 'coconut milk'),
+        ing(1/5, null, 'cup stevia'),
+        ing(1, tbsp, 'earl grey'),
+        ing(1, tsp, 'vanilla extract'),
+        ing(1/2, tsp, 'baking powder'),
+      ],
+      steps: [
+        'Mix all ingredients.',
+        'Roll into tube, wrap in foil.',
+        'Freezer 30 mins.',
+        'Bake 350°F/180°C 15 min.',
+      ]
+    })
+  },
+  { // Papporkakor
+    ...simpleRecipe({
+      title: 'Papporkakor',
+      searchTerms: ['pepparkakor', 'gingerbread', 'ginger snaps', 'swedish', 'christmas', 'holiday'],
+      category: dessert,
+      seasons: [winter],
+      ingredients: [
+        ing(200, g, 'brown sugar', '7 oz'),
+        ing(200, g, 'white sugar', '7 oz'),
+        ing(200, g, 'dark corn syrup', '7 oz'),
+        ing(150, 'ml', 'water', 'approx ¾ cup'),
+        ing(300, g, 'butter', '10 oz'),
+        ing(2, tbsp, 'ground cinnamon'),
+        ing(2, tbsp, 'ground ginger'),
+        ing(2, tbsp, 'ground cloves'),
+        ing(1, tbsp, 'baking soda'),
+        ing([900, 1000], g, 'flour', '2–2¼ lb'),
+      ],
+      step0: 'FOR THE LOVE OF GOD CUT THIS IN HALF!',
+      steps: [
+        'Preheat oven to 350°F.',
+        'Heat the brown sugar, white sugar, corn syrup and water in a pot.',
+        'Add the butter and let it melt.',
+        'Stir and let cool slightly, then blend in the spices and baking soda.',
+        'Mix in flour to smooth consistency.',
+        'Sprinkle a little flour on top and put the dough out to cool overnight.',
+        'Roll it thin and cut into shapes, using the desired cookie cutters.',
+        'Bake in the oven for 8–10 minutes.',
+        'Let them cool!',
+      ]
+    })
+  },
+  { // Fuller Ramen
+    ...simpleRecipe({
+      title: 'Fuller Ramen',
+      subtitle: 'A dish to fill out your ramen pack.',
+      searchTerms: ['gyoza', 'noodles', 'soup'],
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(10, oz, 'chicken', 'half pack, or pork'),
+        ing(6, cup, 'chicken stock'),
+        ing(2, tbsp, 'soy sauce'),
+        ing(2, tbsp, 'mirin'),
+        ing(2, tbsp, 'miso'),
+        ing(1, tbsp, 'vegetable oil'),
+        ing(1/2, tbsp, 'butter'),
+        ing(1, tsp, 'ginger spice'),
+        ing(4, null, 'frozen gyoza'),
+        ing(14, oz, 'cooked ramen noodles'),
+        ing(2, null, 'soft boiled eggs'),
+        ing(2, null, 'garlic cloves'),
+        ing(0, null, 'green onion'),
+      ],
+      steps: [
+        'Oil in pot. Heat. Cook chicken. Remove.',
+        'Save chicken fat from pot, add garlic.',
+        '+stock, +ginger, scrape pan, +soy, +mirin.',
+        'Add slight mushroom flavoring.',
+        'Simmer for 10 minutes.',
+        'In separate pan, chicken fat and butter.',
+        'Add frozen gyoza, crisp up on one side.',
+        'Add a bit of water to pan and add lid.',
+        'Steam for 3-4 mins. Remove lid and let sizzle a bit longer.',
+        'Strain broth if needed. Broth into pot.',
+        'Add miso paste. Smush to spread.',
+        'Cook noodles. Simultaneously, 5 minute soft boiled egg:'
+        + ' bring water to boil, add egg, let water return to boil, then cook 5 mins.',
+        'Avengers: Assemble.',
+      ]
+    })
+  },
+  { // Crispy Chicken Gyoza Ramen
+    ...simpleRecipe({
+      title: 'Crispy Chicken Gyoza Ramen',
+      searchTerms: ['noodles', 'soup'],
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(0, null, 'chicken thighs'),
+        ing(1, tbsp, 'vegetable oil'),
+        ing(4, null, 'cm piece ginger', 'sliced'),
+        ing(2, null, 'garlic cloves', 'sliced'),
+        ing(6, cup, 'chicken stock'),
+        ing(2, tbsp, 'soy sauce'),
+        ing(2, tbsp, 'mirin'),
+        ing(2, tbsp, 'miso paste'),
+        ing(1, tbsp, 'butter'),
+        ing(12, null, 'frozen gyoza'),
+        ing(400, g, 'cooked ramen noodles', '14 oz'),
+        ing(2, null, 'soft boiled eggs', 'halved, to serve'),
+        ing(1/4, cup, 'spring onion (scallions)', 'sliced'),
+      ],
+      steps: [
+        'Salt chicken thighs, oil in heating pot.',
+        'When oil is hot, put chicken in and fry it.',
+        'Remove and place chicken on plate.',
+        'Pour remaining oil into gyoza pan.',
+        'Add garlic and ginger to chicken pot.',
+        'After garlic is cooked, add chicken stock.',
+        'Scrape pan, add soy and mirin.',
+        'Simmer for 10 minutes.',
+        'Heat gyoza pan. Maybe add butter.',
+        'Once hot, add gyoza. Let bottom crisp.',
+        'Add water, add lid, let gyoza steam.',
+        'Strain broth, put into same pan.',
+        'Add miso, let dissolve, then add noodles.',
+        'Prepare eggs: In new pan/pot, add enough water to cover eggs and bring to a decent boil.'
+        + ' Add eggs and cook for 6½ minutes (possibly just 6 mins 15 seconds?).'
+        + ' Crack and peel gently. Slice in half.',
+        'Bowl up.',
+      ]
+    })
+  },
+  { // MMCCC
+    ...simpleRecipe({
+      title: 'MMCCC',
+      searchTerms: ['marshmallow', 'chocolate', 'cookies'],
+      category: dessert,
+      seasons: [],
+      ingredients: [
+        ing(100, g, 'unsalted butter'),
+        ing(80, g, 'dark brown sugar'),
+        ing(50, g, 'brown sugar'),
+        ing(1, null, 'egg'),
+        ing(2, g, 'vanilla extract'),
+        ing(120, g, 'bread flour'),
+        ing(80, g, 'all-purpose flour'),
+        ing(2, g, 'baking soda'),
+        ing(1, g, 'salt'),
+        ing(80, g, 'dark chocolate'),
+        ing(0, null, 'frozen marshmallows'),
+      ],
+      steps: [
+        'Preheat oven to 350°F.',
+        'Mash that like button (or the butter).',
+        'Add in sugars, mix well.',
+        'Add egg and vanilla. Mix again.',
+        'Sift in all the flour, baking soda, and salt.',
+        'The result should be very doughy and not very gooey.',
+        'Chop up 80g of dark chocolate, combine.',
+        'Refrigerate 1 hour.',
+        'Split into 30g increments, flatten, add marshmallows, wrap up.',
+        'Bake at 350°F for 11 mins.',
+      ]
+    })
+  },
+  { // Stir-Fried Udon
+    ...simpleRecipe({
+      title: 'Hearty Stir-Fried Udon',
+      searchTerms: ['noodles', 'pork', 'cabbage'],
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(2, tbsp, 'vegetable oil'),
+        ing(4, cup, 'green cabbage', 'coarsely chopped, about ¼ of a head'),
+        ing(2, null, 'packages instant udon noodles', '7 oz each'),
+        ing(2, tsp, 'toasted sesame oil'),
+        ing(8, oz, 'ground pork'),
+        ing(5, null, 'scallions', 'white and pale-green parts coarsely chopped, dark-green parts thinly sliced'),
+        ing(2, tsp, 'fresh ginger', 'finely grated'),
+        ing(1, tsp, 'crushed red pepper flakes'),
+        ing(1/3, cup, 'mirin'),
+        ing(1/3, cup, 'soy sauce'),
+        ing(1, tbsp, 'toasted sesame seeds', 'plus extra'),
+      ],
+      steps: [
+        'Heat 1 tbsp veg oil in skillet/wok on med high.',
+        'Add cabbage, toss often, until brown (4 min).',
+        'Reduce to low, keep cooking cabbage.',
+        'Boil that udon. Transfer to large bowl. Toss with sesame oil. Transfer cabbage to same bowl.',
+        'Heat 1 tbsp veg oil in same skillet, med high.',
+        'Add pork, break up and spread on surface.',
+        'Cook undisturbed until browning on one side.',
+        'Then cook until no pink.',
+        'Add pale parts of scallions, ginger, and red pepper. Continue to cook and toss.',
+        'Add udon mixture, mirin, and soy. More cook and toss and scraping.',
+        'Remove from heat and fold in sesame seeds and dark green parts of scallions.',
+        'Serve topped with sesame seeds.',
+      ]
+    })
+  },
+  // { // Hearty Tasty Udon
+  //   ...simpleRecipe({
+  //     title: 'Hearty Tasty Udon',
+  //     searchTerms: ['noodles', 'pork', 'cabbage', 'stir fry'],
+  //     category: dinner,
+  //     seasons: [],
+  //     ingredients: [
+  //       ing(2, tbsp, 'vegetable oil', 'divided'),
+  //       ing(4, cup, 'green cabbage', 'cut'),
+  //       ing(3, tsp, 'baking powder'),
+  //       ing(2, null, 'udon noodle packs', 'out of a pack of three'),
+  //       ing(2, tsp, 'toasted sesame oil'),
+  //       ing(8, oz, 'ground pork'),
+  //       ing(5, null, 'scallions', 'white and pale-green coarse chopped'),
+  //       ing(2, tsp, 'ginger', 'finely grated'),
+  //       ing(1, tsp, 'crushed red pepper flakes'),
+  //       ing(1/3, cup, 'mirin'),
+  //       ing(1/3, cup, 'soy sauce'),
+  //       ing(1, tbsp, 'sesame seeds'),
+  //     ],
+  //     steps: [
+  //       'Heat oil on med-high in skillet.',
+  //       'Add cabbage and cook (approx. 4 mins).',
+  //       'Reduce heat to low. Toss longer.',
+  //       'Remove cabbage from heat.',
+  //       'Boil udon in pot. Drain, transfer to wok.',
+  //       'Toss udon with some oil and add cabbage.',
+  //       'Add pork and oil to med-high skillet.',
+  //       'Break up and spread pork to heat.',
+  //       'Cook undisturbed (approx. 3 mins).',
+  //       'Start tossing until cooked through.',
+  //       'Add scallion, ginger, red pepper. Cook 1 min.',
+  //       'Add mirin and soy to udon mixture, stir up.',
+  //       'Transfer udon mixture to pan, stir stir and scrape until everything is all mixed.',
+  //       'Remove from heat, serve in bowl, add sesame seed and dark green part of scallions.',
+  //     ]
+  //   })
+  // },
+  { // Chinese Honey Chicken
+    title: 'Chinese Honey Chicken',
+    category: dinner,
+    seasons: [],
+    ingredientsLists: [
+      {
+        ingredients: [
+          ing(600, g, 'chicken breast', '1.3 lb, cut into cubes'),
+          ing(1/2, cup, 'chicken stock'),
+          ing(2, tbsp, 'Chinese shaoxing wine'),
+          ing(2, tbsp, 'white vinegar'),
+          ing(3, tbsp, 'honey'),
+          ing(1, tbsp, 'light soy sauce'),
+          ing(1/4, cup, 'sugar'),
+          ing(2, null, 'garlic cloves', 'finely chopped'),
+          ing(1.5, cup, 'plain flour', 'maybe less?'),
+          ing(2, tsp, 'corn starch', 'dissolved in 2 tbsp water'),
+          ing(0, null, 'vegetable oil', 'for frying'),
+          ing(1, tbsp, 'vegetable oil', 'extra'),
+          ing(1, tsp, 'sesame seeds'),
+        ]
+      },
+      {
+        title: 'Marinade',
+        ingredients: [
+          ing(2, tbsp, 'light soy sauce'),
+          ing(1, tbsp, 'Chinese shaoxing wine'),
+          ing(1, null, 'egg white', 'lightly whisked'),
+        ]
+      }
+    ],
+    ...simpleSteps([
+      'Whisk marinade. Add chicken. Let sit 10-20 min.',
+      'In another bowl, mix together chicken stock, wine, vinegar, honey, soy sauce, and sugar.',
+      'Put flour in large (metal) bowl. Pour in chicken.',
+      'Use hands to coat chicken in flour.',
+      'Fill high walled pan/wok/pot with a layer of vegetable oil. Heat over high heat (to 325°F).',
+      'Fry chicken pieces and drain on paper towel.',
+      'In clean wok, add a bit of oil then cook garlic for 10 seconds or until fragrant.',
+      'Add sauce mix. Cook 2-3 mins until foam.',
+      'Add corn starch. Cook 1-2 more mins.',
+      'Add chicken, toss until evenly coated.',
+      'Bowl up, add sesame seeds.',
+    ])
+  },
+  { // Chinese Chicken Stir-Fry
+    ...simpleRecipe({
+      title: 'Chinese Chicken Stir-Fry',
+      searchTerms: ['cashew chicken'],
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(1, tsp, 'chili oil'),
+        ing(2, clove, 'garlic', 'minced'),
+        ing(1, tbsp, 'ginger', 'minced'),
+        ing(3, null, 'spring onions', 'washed and sliced thin'),
+        ing(3, tbsp, 'soy sauce'),
+        ing(3/4, cup, 'water'),
+        ing(3/4, cup, 'unsalted cashews'),
+        ing(2, tbsp, 'peanut oil'),
+        ing(1.5, lb, 'chicken breast', 'cut into 2in pieces'),
+        ing(1, cup, 'carrots', 'sliced thin'),
+        ing(1, null, 'can whole water chestnuts'),
+        ing(1, tbsp, 'cornstarch', 'mixed with 2 tbsp water'),
+      ],
+      steps: [
+        'Gather ingredients.',
+        'Combine chili oil, garlic, ginger, spring onion, soy sauce, and water into bowl. Set aside.',
+        'In dry wok, med heat, add cashews.',
+        'Toast 1 minute and stir continually.',
+        'Remove cashews. Add 2 tbsp oil to wok.',
+        'Add chicken until browned. Remove.',
+        'Add mushrooms, carrots, and water chestnuts (3 mins).',
+        'Return chicken and cashews to wok. Add stir fry sauce and stir-fry for 3 mins.',
+        'Add cornstarch and water mixture, stir to thicken, remove from heat.',
+        'Serve with white rice and enjoy!',
+      ]
+    })
+  },
+  // { // Mormors Svensk Köttbullar
+  //   ...simpleRecipe({
+  //     title: 'Mormors Svensk Köttbullar',
+  //     subtitle: 'Grandma\'s Swedish meatballs',
+  //     searchTerms: ['swedish meatballs', 'meatballs', 'kottbullar'],
+  //     category: dinner,
+  //     seasons: [],
+  //     ingredients: [
+  //       ing(1, null, 'large egg', 'lightly beaten'),
+  //       ing(1/2, cup, 'crushed saltines', '~10 crackers'),
+  //       ing(1/4, tsp, 'salt'),
+  //       ing(1/4, tsp, 'pepper'),
+  //       ing(1/2, lb, 'ground beef'),
+  //       ing(1/2, lb, 'ground pork sausage'),
+  //       ing(1/4, cup, 'all-purpose flour', 'plus 2 tbsp, divided'),
+  //       ing(2.5, cup, 'beef broth'),
+  //     ],
+  //     steps: [
+  //       'Mix egg, saltines, salt, pepper. Add meat.',
+  //       'Mix lightly but thoroughly.',
+  //       'Shape into 1 in. balls.',
+  //       'Toss with ¼ cup flour, lightly coating.',
+  //       'In large skillet, brown meatballs over med-high.',
+  //       'Add 2 cups broth, bring to boil.',
+  //       'Reduce heat, simmer covered until cooked through (5-6 mins).',
+  //       'Remove meatballs with slotted spoon.',
+  //       'Mix remaining flour and broth until smooth; add to pan.',
+  //       'Bring to boil; cook and stir until thickened (1-2 minutes).',
+  //       'Re-add meatballs to pan, heat through.',
+  //       'Serve with mashed potatoes!',
+  //     ]
+  //   })
+  // },
+  { // Hoisin Beef Noodles
+    ...simpleRecipe({
+      title: 'Hoisin Beef Noodles',
+      searchTerms: ['egg noodles', 'stir fry'],
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(1, lb, 'minced beef'),
+        ing(0, null, 'vegetable oil'),
+        ing(1, null, 'onion', 'sliced'),
+        ing(2, null, 'garlic cloves', 'finely chopped'),
+        ing(2, cup, 'Chinese cabbage', 'shredded'),
+        ing(1, cup, 'carrot', 'shredded'),
+        ing(150, g, 'Chinese egg noodles', 'do only one package'),
+        ing(2, tbsp, 'oyster sauce'),
+        ing(2, tbsp, 'hoisin sauce'),
+        ing(1, tsp, 'dark sweet soy sauce'),
+        ing(2, tsp, 'white vinegar'),
+      ],
+      steps: [
+        'Heat oil in wok. Drop beef in. Spread beef out and just let sizzle and char for like 5 mins or so (until quite dry).',
+        'Drop noodles into water, set to boil.',
+        'Toss meat once slightly charred.',
+        'Add onion. Stir fry for a bit.',
+        'Add garlic. Stir fry for a bit.',
+        'Add cabbage. Stir fry for a bit.',
+        'Add carrot, stir fry for a min.',
+        'Turn off heat.',
+        'Finish noodles. Drain, add noodles to beef.',
+        'Add the sauces and vinegar, mix well.',
+        'Top with sesame seeds and gronion if desired.',
+        'Serve!',
+      ]
+    })
+  },
+  { // Sesame Chicken
+    title: 'Sesame Chicken',
+    category: dinner,
+    seasons: [],
+    ingredientsLists: [
+      {
+        ingredients: [
+          ing(1, lb, 'chicken breast', 'thin strips'),
+          ing(1/2, cup, 'chicken stock'),
+          ing(3, tbsp, 'white vinegar'),
+          ing(4, tbsp, 'sugar'),
+          ing(2, tbsp, 'soy sauce'),
+          ing(1.5, cup, 'plain flour', 'all-purpose'),
+          ing(2, tsp, 'cornstarch', 'in 2 tbsp water'),
+          ing(0, null, 'vegetable oil'),
+          ing(0, null, 'sesame seeds'),
+        ]
+      },
+      {
+        title: 'Marinade',
+        ingredients: [
+          ing(2, tbsp, 'soy sauce'),
+          ing(1, null, 'garlic clove', 'finely grated'),
+          ing(1, null, 'egg white'),
+          ing(1, tsp, 'sesame oil'),
+        ]
+      }
+    ],
+    ...simpleSteps([
+      'Mix marinade in bowl, add chicken.',
+      'Let sit 10 mins.',
+      'In another bowl, mix chicken stock, vinegar, sugar, and soy sauce.',
+      'Put flour in large bowl, pour in chicken and marinade. Mix until craggy.',
+      'Fill pot with oil on high heat.',
+      'Cook chicken until crispy.',
+      'In wok, add sauce from earlier. Simmer 1 min.',
+      'Add cornstarch mix, cook until thickened.',
+      'Add and toss chicken.',
+      'Serve topped with sesame seeds.',
+    ])
+  },
+  { // Pork Belly Bao Bun
+    title: 'Pork Belly Bao Bun',
+    searchTerms: ['bao', 'steamed buns', 'hoisin'],
+    category: dinner,
+    seasons: [],
+    ingredientsLists: [
+      {
+        ingredients: [
+          ing(1/4, cup, 'hoisin'),
+          ing(1, null, 'cucumber', 'thin sliced'),
+          ing(1/4, cup, 'spring onion', 'finely sliced'),
+        ]
+      },
+      {
+        title: 'Pork',
+        ingredients: [
+          ing(800, g, 'pork belly'),
+          ing(1/4, cup, 'sea salt'),
+          ing(1/4, cup, 'sugar'),
+        ]
+      },
+      {
+        title: 'Bao Buns',
+        ingredients: [
+          ing(360, g, 'all-purpose flour'),
+          ing(20, g, 'skim-milk powder'),
+          ing(35, g, 'white sugar'),
+          ing(4, g, 'baking powder'),
+          ing(5, g, 'instant dry yeast'),
+          ing(35, g, 'vegetable oil'),
+          ing(200, g, 'warm water'),
+          ing(14, null, 'squares of baking paper', '10cm x 10cm'),
+        ]
+      }
+    ],
+    stepsLists: [
+      {
+        title: 'Pork',
+        steps: [
+          'Combine salt and sugar in small bowl.',
+          'Place pork in deep dish, rub mix on pork.',
+          'Cover and set aside in fridge overnight.',
+          'Preheat 200°F.',
+          'Remove pork, rinse excess brine, dry.',
+          'Return pork and roast for 4 hours.',
+        ]
+      },
+      {
+        title: 'Bao Buns (meantime)',
+        steps: [
+          'Flour, milk powder, baking powder, yeast, and sugar in large bowl. In separate bowl, mix vegetable oil and water.'
+          + ' Make well in dry ingredients, pour in liquids and begin stirring/kneading.',
+          'Knead for 5 min. Put in bowl covered, rest for 90 mins.',
+          'Once risen, transfer the dough to a work surface and dust with flour.'
+          + ' ‘Punch down’ the dough by kneading it for 5 to 10 minutes.'
+          + ' The aim here is to remove as many air bubbles as possible.',
+          'Use a rolling pin to roll the dough out to 1cm thick.'
+          + ' Dip your fingers in vegetable oil and lightly spread the oil over the surface of the dough.',
+          'Use an 8cm diameter pastry cutter (or a plastic cup of the same diameter) to cut out rounds. Remove the excess dough.',
+          'Fold rounds in half and flatten slightly with the rolling pin.'
+          + ' Place on a square of baking paper and place directly into a large bamboo steamer or onto a tray.'
+          + ' Repeat with remaining dough (excess dough can be re-rolled and used).',
+          'Cover the folded rounds and set aside to prove for 30 minutes.',
+          'Fill wok 1/3 with water on heat.',
+          'When boiling, bamboo steamer over wok 12 mins.',
+          'Then turn off heat but don’t remove/open steamer.',
+        ]
+      },
+      {
+        title: 'Assemble',
+        steps: [
+          'Turn oven to 390°F, pork back in 5-10 mins.',
+          'Transfer to cutting board and slice.',
+          'Hoisin in bottom of bao, then pork and cucumber.',
+        ]
+      }
+    ]
+  },
+  { // Yule Log
+    title: 'Yule Log',
+    searchTerms: ['bûche de noël', 'buche de noel', 'christmas', 'holiday', 'chocolate', 'cake'],
+    category: dessert,
+    seasons: [winter],
+    ingredientsLists: [
+      {
+        title: 'Sponge Cake',
+        ingredients: [
+          ing(1, null, '13x18” sheet pan'),
+          ing(2, tbsp, 'melted butter', 'for greasing pan'),
+          ing(1/2, cup, 'unsweetened cocoa powder'),
+          ing(2, tbsp, 'all-purpose flour'),
+          ing(1/2, tsp, 'kosher salt'),
+          ing(5, null, 'large eggs', 'room temp'),
+          ing(2/3, cup, 'white sugar'),
+          ing(1/2, tsp, 'vanilla'),
+        ]
+      },
+      {
+        title: 'Filling (only use ⅔)',
+        ingredients: [
+          ing(1+2/3, null, 'cups powdered sugar'),
+          ing(1/2, cup, 'butter', 'room temp'),
+          ing(1.5, tbsp, 'unsweetened cocoa powder'),
+          ing(2, tbsp, 'coffee liquor', 'or milk'),
+          ing(1/3, cup, 'mascarpone cheese'),
+        ]
+      },
+      {
+        title: 'Ganache Frosting',
+        ingredients: [
+          ing(1/2, cup, 'hot heavy cream'),
+          ing(4, oz, 'dark chocolate chips', 'or chopped chocolate'),
+        ]
+      }
+    ],
+    ...simpleSteps([
+      'Mix the sponge cake stuff. Bake at 400°F for approx 10 mins.',
+      'Follow the rest here: https://foodwishes.blogspot.com/2018/12/chocolate-yule-log-this-buche-de-noel.html',
+    ])
+  },
+  { // Asparagus Ham Dinner
+    ...simpleRecipe({
+      title: 'Asparagus Ham Dinner',
+      searchTerms: ['pasta'],
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(2, cup, 'uncooked corkscrew or spiral pasta'),
+        ing(3/4, lb, 'fresh asparagus', '1-inch pieces'),
+        ing(1, null, 'medium yellow pepper', 'sliced'),
+        ing(1, tbsp, 'olive oil'),
+        ing(6, null, 'medium tomatoes', 'diced'),
+        ing(6, oz, 'boneless fully cooked ham', 'cubed'),
+        ing(1/4, cup, 'fresh parsley', 'minced'),
+        ing(1/2, tsp, 'salt'),
+        ing(1/2, tsp, 'dried oregano'),
+        ing(1/2, tsp, 'dried basil'),
+        ing(1/8, tsp, 'cayenne pepper'),
+        ing(1/4, cup, 'shredded Parmesan cheese'),
+      ],
+      steps: [
+        'Cook pasta according to package directions.',
+        'Meanwhile, in a large cast-iron or other heavy skillet, sauté asparagus and yellow pepper in oil until crisp-tender.',
+        'Add tomatoes and ham; heat through.',
+        'Drain pasta; add to mixture.',
+        'Stir in parsley and seasonings.',
+        'Sprinkle with cheese.',
+      ]
+    })
+  },
+  { // Bohemian Orange Chicken
+    ...simpleRecipe({
+      title: 'Bohemian Orange Chicken',
+      searchTerms: ['caraway'],
+      category: dinner,
+      seasons: [],
+      ingredients: [
+        ing(0, null, 'bone-in, skin-on chicken thighs', 'we used boneless/skinless and it was fine'),
+        ing(2, tsp, 'salt', 'plus 1 pinch'),
+        ing(1/2, cup, 'onion', 'diced'),
+        ing(1, tbsp, 'white sugar'),
+        ing(2, clove, 'garlic', 'minced'),
+        ing(1, null, 'medium orange', 'zested and squeezed'),
+        ing(2, tbsp, 'lemon juice', 'fresh squeezed'),
+        ing(2, cup, 'chicken broth'),
+        ing(1/8, tsp, 'ground cinnamon'),
+        ing(1/8, tsp, 'cayenne'),
+        ing(1/8, tsp, 'black pepper', 'fresh ground'),
+        ing(1, tbsp, 'caraway seeds'),
+      ],
+      steps: [
+        'Salt the chicken. Preheat oven to 350°F.',
+        'Heat olive oil in cast iron skillet over high heat.',
+        'Add chicken skin down, 4-5 mins. Sear other side for 3-4 mins after. Remove chicken. Drain fat.',
+        'Add onion, pinch of salt, and sugar to pot.',
+        'Go until sugar and/or onion is caramelized.',
+        'Add garlic. Cook until fragrant (30 seconds).',
+        'Add orange zest, orange and lemon juice, and broth. Turn heat to med-high or high.',
+        'Add cinnamon, cayenne, and pepper.',
+        'Stir and bring to boil until reduced by half.',
+        'Transfer chicken + juices to skillet.',
+        'Baste chicken with sauce and add caraway.',
+        'Bake in oven for 1 hour.',
+        'Remove from oven, baste, return to oven.',
+        'Bake for another 20 minutes. Add water if running low on liquid. Bake until 165°F.',
+        'Garnish with orange zest (or don\'t) and serve.',
+      ]
+    })
+  },
 ].sort((a, b) => a.title.localeCompare(b.title));
 
 export default recipes;
