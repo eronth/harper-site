@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquare, faSquareCheck } from "@fortawesome/free-regular-svg-icons";
+import confetti from "canvas-confetti";
 import type { Ingredient, Recipe, Steps } from "../recipe-types";
 import { withFoodBlogModeParam } from "../FoodBlogModeToggle/food-blog-mode";
 import './RecipeCard.css';
@@ -15,6 +16,31 @@ import springDisabledIcon from '../../../../assets/season-icons/disabled/spring.
 import summerDisabledIcon from '../../../../assets/season-icons/disabled/summer.png';
 import autumnDisabledIcon from '../../../../assets/season-icons/disabled/autumn.png';
 import winterDisabledIcon from '../../../../assets/season-icons/disabled/winter.png';
+
+// Pick-me-ups shown when a list gets finished off
+const ingredientCheers = [
+  'Ready!',
+  'Time to Cook!',
+  'Prepped and ready!',
+  'Mise en place!',
+  'Let\'s go!',
+  'Ding!',
+  'Level up!',
+  'Boss time',
+  'Stuff gathered!',
+  'Celebreate progress'
+];
+const stepCheers = [
+  'Woo!',
+  'Nailed it!',
+  'Bon appétit!',
+  'Cheers!',
+  'Chef\'s kiss!',
+  'Mission complete!',
+  'Food for thought',
+  'Time to eat!',
+  'Dig in'
+];
 
 // How close a decimal must be to a fraction to display as that fraction
 const fractionTolerance = 0.015;
@@ -62,6 +88,7 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
   // State for tracking checked ingredients and steps (only when interactive)
   const [checkedIngredients, setCheckedIngredients] = React.useState<Set<string>>(new Set());
   const [checkedSteps, setCheckedSteps] = React.useState<Set<string>>(new Set());
+  const [cheer, setCheer] = React.useState<{ word: string; x: number; y: number; key: number } | null>(null);
 
   // Create a slug from recipe title for URL-friendly ID
   const createSlug = (title: string): string => {
@@ -96,7 +123,24 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
     return `step-${listIndex}-${isStep0 ? '0' : itemIndex}`;
   };
 
-  const handleIngredientCheck = (id: string) => {
+  // Celebrate from the checkbox that finished off the list
+  const celebrate = (from: HTMLElement, cheers: string[]) => {
+    const rect = (from.closest('label') ?? from).getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    confetti({
+      particleCount: 120,
+      spread: 80,
+      origin: { x: x / window.innerWidth, y: y / window.innerHeight },
+      disableForReducedMotion: true,
+    });
+    setCheer({ word: cheers[Math.floor(Math.random() * cheers.length)], x, y, key: Date.now() });
+  };
+
+  const handleIngredientCheck = (id: string, from: HTMLElement) => {
+    if (!checkedIngredients.has(id) && checkedIngredients.size + 1 === getTotalIngredients()) {
+      celebrate(from, ingredientCheers);
+    }
     setCheckedIngredients(prev => {
       const newSet = new Set(prev);
       if (newSet.has(id)) {
@@ -108,7 +152,10 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
     });
   };
 
-  const handleStepCheck = (id: string) => {
+  const handleStepCheck = (id: string, from: HTMLElement) => {
+    if (!checkedSteps.has(id) && checkedSteps.size + 1 === getTotalSteps()) {
+      celebrate(from, stepCheers);
+    }
     setCheckedSteps(prev => {
       const newSet = new Set(prev);
       if (newSet.has(id)) {
@@ -248,7 +295,7 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
               <input
                 type="checkbox"
                 checked={checkedSteps.has(getStepId(listIndex, 0, true))}
-                onChange={() => handleStepCheck(getStepId(listIndex, 0, true))}
+                onChange={e => handleStepCheck(getStepId(listIndex, 0, true), e.currentTarget)}
                 className="step-checkbox"
               />
               <span className="step-text">{scaleStepText(steps.step0)}</span>
@@ -263,7 +310,7 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
                 <input
                   type="checkbox"
                   checked={checkedSteps.has(stepId)}
-                  onChange={() => handleStepCheck(stepId)}
+                  onChange={e => handleStepCheck(stepId, e.currentTarget)}
                   className="step-checkbox"
                 />
                 <span className="step-text">{scaleStepText(step)}</span>
@@ -329,6 +376,16 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
 
   return (
     <div className={`recipe-card ${interactive ? 'interactive-recipe-card' : ''}`}>
+      {cheer && (
+        <span key={cheer.key}
+          className="recipe-cheer"
+          style={{ left: cheer.x, top: cheer.y }}
+          onAnimationEnd={() => setCheer(null)}
+          aria-live="polite"
+        >
+          {cheer.word}
+        </span>
+      )}
       <div className="season-icons-row">
         <div className="season-icons">
           {seasonsIcons}
@@ -368,7 +425,7 @@ export default function RecipeCard({ recipe, unnumbered, interactive = false, cl
                         <input
                           type="checkbox"
                           checked={checkedIngredients.has(ingredientId)}
-                          onChange={() => handleIngredientCheck(ingredientId)}
+                          onChange={e => handleIngredientCheck(ingredientId, e.currentTarget)}
                           className="ingredient-checkbox"
                         />
                         <FontAwesomeIcon icon={
