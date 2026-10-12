@@ -1,9 +1,10 @@
 @import 'mana-font/css/mana.css';
 
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  font-family: var(--font-system);
   line-height: 1.5;
   font-weight: 400;
 
@@ -15,6 +16,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --sidebar-hover-bump: 2rem;
 
   /* Color Variables */
   --bg-card:         light-dark(rgb(255 255 255 / 0.95), rgb(45 45 45 / 0.95));
@@ -56,6 +59,81 @@
   --dinner:     light-dark(hsl(120 45% 45%), oklch(58% 0.14 144));
   --dessert:    light-dark(hsl(300 45% 50%), oklch(58% 0.13 328));
   --drink:      light-dark(hsl(210 45% 50%), oklch(58% 0.08 250));
+}
+
+/* Retro (1940s–60s) palette, switched on by the header's RetroToggle.
+   It's a light, printed-paper look, so it pins the light scheme and remaps the
+   shared variables; component-level overrides live in retro.css. */
+:root[data-style='retro'] {
+  color-scheme: light;
+
+  --sidebar-hover-bump: 1.75rem;
+
+  --retro-paper:       #f3e9d2;
+  --retro-paper-deep:  #e8d9b8;
+  --retro-card:        #fbf6ea;
+  --retro-cream:       #fdf7e8;
+  --retro-ink:         #2b2118;
+  --retro-ink-soft:    #5b4a3a;
+  --retro-ink-faint:   #7a6550;
+  --retro-cherry:      #b8352b;
+  --retro-cherry-dark: #8e2720;
+  --retro-teal:        #1f6f6b;
+  --retro-teal-dark:   #16514e;
+  --retro-mustard:     #e3a72f;
+  --retro-avocado:     #5f6b2a;
+
+  --font-retro-script:  'Yellowtail', cursive;
+  --font-retro-display: 'Josefin Sans', 'Futura', 'Century Gothic', sans-serif;
+  --font-retro-body:    'Lora', Georgia, serif;
+
+  /* Atomic-age wallpaper (starburst, sparkle, boomerang, dots) over paper grain.
+     Data URIs can't read variables, so the hexes mirror the palette above. */
+  --retro-paper-bg:
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'><path transform='translate(24 36) scale(.3)' fill='%231f6f6b' fill-opacity='.13' d='M50 0L55.7 28.7L75 6.7L65.6 34.4L93.3 25L71.3 44.3L100 50L71.3 55.7L93.3 75L65.6 65.6L75 93.3L55.7 71.3L50 100L44.3 71.3L25 93.3L34.4 65.6L6.7 75L28.7 55.7L0 50L28.7 44.3L6.7 25L34.4 34.4L25 6.7L44.3 28.7Z'/><path fill='%23e3a72f' fill-opacity='.28' d='M175 40q4 16 20 20q-16 4-20 20q-4-16-20-20q16-4 20-20z'/><path fill='%23b8352b' fill-opacity='.12' d='M140 180c14-22 44-28 62-10c-22-6-40 2-52 18z'/><path fill='none' stroke='%231f6f6b' stroke-opacity='.22' stroke-width='2' stroke-linecap='round' d='M100 112v16M92 120h16M94.3 114.3l11.4 11.4M105.7 114.3l-11.4 11.4'/><g fill-opacity='.3'><circle cx='60' cy='190' r='3' fill='%23e3a72f'/><circle cx='210' cy='130' r='2.5' fill='%231f6f6b'/><circle cx='120' cy='30' r='2' fill='%23b8352b'/></g></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .17 0 0 0 0 .13 0 0 0 0 .09 0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    var(--retro-paper);
+
+  --bg-card:         var(--retro-card);
+  --bg-button:       #efe2c4;
+  --bg-button-hover: #e5d2a8;
+
+  --text-primary:    var(--retro-ink);
+  --text-secondary:  var(--retro-ink-soft);
+  --text-muted:      var(--retro-ink-faint);
+
+  --brand-maroon:       var(--retro-cherry);
+  --brand-navy:         var(--retro-teal);
+  --brand-maroon-light: var(--retro-cherry-dark);
+  --brand-navy-light:   var(--retro-teal);
+
+  --gradient-primary: linear-gradient(135deg, var(--retro-teal) 0%, var(--retro-teal-dark) 100%);
+  --gradient-light:   linear-gradient(135deg, var(--retro-cherry) 0%, var(--retro-teal) 100%);
+
+  --border-light:         rgb(43 33 24 / 0.2);
+  --border-accent:        rgb(43 33 24 / 0.35);
+  --border-accent-strong: rgb(43 33 24 / 0.55);
+
+  /* Hard offset shadows read like misregistered print rather than glow */
+  --shadow-light:   4px 4px 0 var(--retro-ink);
+  --shadow-strong:  6px 6px 0 var(--retro-cherry);
+  --shadow-header:  none;
+  --shadow-sidebar: none;
+
+  --overlay-light: rgb(43 33 24 / 0.55);
+  --accent-bg:     rgb(227 167 47 / 0.22);
+
+  --accent-blue:       var(--retro-teal);
+  --accent-blue-hover: var(--retro-teal-dark);
+
+  --danger-red:       var(--retro-cherry);
+  --danger-red-hover: var(--retro-cherry-dark);
+
+  --breakfast: #9a5a16;
+  --lunch:     var(--retro-avocado);
+  --dinner:    var(--retro-cherry);
+  --dessert:   #b03a74;
+  --drink:     #2a5d8a;
 }
 
 * {

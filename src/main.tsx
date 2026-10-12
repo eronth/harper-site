@@ -1,8 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
-import './index.css'
 import App from './App.tsx'
+
+// css
+import './index.css'
+// Loaded after every page stylesheet so its element-level defaults win ties
+import './retro.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

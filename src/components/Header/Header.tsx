@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import RetroToggle from '../RetroToggle/RetroToggle';
 import './Header.css';
 
 interface HeaderProps {
@@ -45,6 +46,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
       <Link to="/" className="header-title-link">
         <h1 className="header-title">{randomTitle}</h1>
       </Link>
+      <RetroToggle />
     </header>
   );
 };

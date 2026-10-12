@@ -10,6 +10,16 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="icon" href="/favicon.ico">
     <title>N&L</title>
+    <!-- Retro skin fonts; the files only download once retro mode actually uses them -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Yellowtail&display=swap">
+    <script>
+      // Apply a saved retro choice before first paint (key matches retro-mode.ts)
+      try {
+        if (localStorage.getItem('retroMode') === 'true') document.documentElement.dataset.style = 'retro';
+      } catch (e) {}
+    </script>
     <style>
       /* Prevent white flash on page load */
       body {

@@ -26,6 +26,7 @@
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--border-light);
     cursor: pointer;
+    background-color: var(--retro-card);
 
     .title {
       font-size: 1.2em;

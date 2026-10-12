@@ -1,0 +1,766 @@
+/*
+ * Retro (1940s–60s) skin: diner signage, atomic-age wallpaper, printed cards.
+ * Switched on by RetroToggle, which sets data-style="retro" on <html>.
+ * The palette and shared-variable remaps live in index.css; this file covers
+ * the shapes, type and the spots that hardcode dark-theme colors.
+ *
+ * Element defaults sit inside :where() so they stay at element specificity and
+ * any component's own rules still win; component overrides are prefixed with
+ * :root[data-style='retro'] so they beat the component rule they replace.
+ */
+
+/* ===== Element defaults ===== */
+
+:where(:root[data-style='retro']) {
+  h1 {
+    font-family: var(--font-retro-script);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-retro-display);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  a {
+    color: var(--retro-teal);
+  }
+
+  button {
+    border: 2px solid var(--retro-ink);
+    border-radius: 999px;
+    font-family: var(--font-retro-display);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+
+    &:focus,
+    &:focus-visible {
+      outline-color: var(--retro-teal);
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 2px dotted var(--border-accent);
+  }
+
+  ::selection {
+    background: var(--retro-mustard);
+    color: var(--retro-ink);
+  }
+}
+
+/* Zero specificity: any component that styles its own fields keeps its look */
+:where(:root[data-style='retro'] :is(
+  input:not([type='checkbox'], [type='radio'], [type='range'], [type='color']),
+  select,
+  textarea
+)) {
+  background-color: var(--retro-card);
+  color: var(--retro-ink);
+  border: 2px solid var(--border-accent-strong);
+  border-radius: 8px;
+
+  &:focus-visible {
+    outline: 2px solid var(--retro-teal);
+    outline-offset: 1px;
+  }
+}
+
+/* ===== Page canvas ===== */
+
+:root[data-style='retro'] {
+  body {
+    --gradient-bg: var(--retro-paper-bg);
+    background: var(--gradient-bg);
+    color: var(--text-primary);
+  }
+
+  .app {
+    font-family: var(--font-retro-body);
+  }
+
+  /* Page titles read like hand-painted diner signs (except ones over photos or with gradient fills) */
+  main h1:not(.hero-overlay h1, .registry-container h1, .mtg-header h1) {
+    color: var(--retro-cherry);
+    text-shadow: 2px 2px 0 rgb(227 167 47 / 0.55);
+  }
+
+  :is(.projects-header, .book-corner-header) p {
+    color: var(--text-secondary);
+  }
+}
+
+/* ===== Header: cherry diner awning with mustard and teal pinstripes ===== */
+
+:root[data-style='retro'] {
+  .header {
+    background: var(--retro-cherry);
+    border-bottom: none;
+    box-shadow:
+      0 4px 0 var(--retro-mustard),
+      0 8px 0 var(--retro-teal),
+      0 10px 16px rgb(43 33 24 / 0.25);
+  }
+
+  .hamburger-btn {
+    color: var(--retro-cream);
+    border: none;
+    border-radius: 8px;
+  }
+
+  .header-title {
+    color: var(--retro-cream);
+    font-size: 2rem;
+    text-shadow: 2px 2px 0 var(--retro-cherry-dark);
+
+    /* These two are laid out in ems/px of the original font and size, so they keep it */
+    .float-text {
+      font-family: var(--font-system);
+      font-size: 0.79em;
+      color: var(--retro-mustard);
+      -webkit-text-stroke: 1.5px var(--retro-ink);
+      text-shadow: none;
+    }
+
+    .transformative-title {
+      font-family: var(--font-system);
+      font-size: 0.75em;
+      text-shadow: none;
+    }
+  }
+
+  .retro-toggle {
+    color: var(--retro-cream);
+    font-family: var(--font-retro-display);
+  }
+}
+
+/* ===== Sidebar: teal panel, slides out with its own pinstripes ===== */
+
+:root[data-style='retro'] {
+  .sidebar {
+    background: var(--retro-teal);
+    border-right: none;
+
+    /* Only when open, or the stripes peek in from the left edge */
+    &.sidebar-open {
+      box-shadow:
+        4px 0 0 var(--retro-mustard),
+        8px 0 0 var(--retro-cherry),
+        12px 0 24px rgb(43 33 24 / 0.3);
+    }
+  }
+
+  .sidebar-header {
+    border-bottom: 2px dashed rgb(253 247 232 / 0.4);
+
+    a {
+      text-decoration: none;
+    }
+
+    h2 {
+      font-family: var(--font-retro-script);
+      font-weight: 400;
+      font-size: 2.1rem;
+      letter-spacing: 0.01em;
+      color: var(--retro-cream);
+      text-shadow: 2px 2px 0 var(--retro-teal-dark);
+    }
+  }
+
+  .close-btn {
+    color: var(--retro-cream);
+    border: none;
+  }
+
+  .nav-item,
+  .nav-item-split {
+    color: var(--retro-cream);
+    font-family: var(--font-retro-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.95rem;
+
+    &:hover {
+      background: rgb(0 0 0 / 0.15);
+      border-left-color: var(--retro-mustard);
+    }
+  }
+}
+
+/* ===== Home ===== */
+
+:root[data-style='retro'] .main-content .content-section {
+  position: relative;
+  background: var(--retro-card);
+  border: 2px solid var(--retro-ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--retro-teal);
+  backdrop-filter: none;
+
+  /* Starburst pinned to the corner like a sale sticker */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -22px;
+    right: -18px;
+    width: 64px;
+    height: 64px;
+    background: var(--retro-mustard);
+    mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 0L55.7 28.7L75 6.7L65.6 34.4L93.3 25L71.3 44.3L100 50L71.3 55.7L93.3 75L65.6 65.6L75 93.3L55.7 71.3L50 100L44.3 71.3L25 93.3L34.4 65.6L6.7 75L28.7 55.7L0 50L28.7 44.3L6.7 25L34.4 34.4L25 6.7L44.3 28.7Z'/></svg>") center / contain no-repeat;
+    transform: rotate(8deg);
+    pointer-events: none;
+  }
+
+  h2 {
+    font-family: var(--font-retro-script);
+    font-weight: 400;
+    font-size: 2.75rem;
+    letter-spacing: 0.01em;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--retro-cherry);
+    text-shadow: 2px 2px 0 rgb(227 167 47 / 0.55);
+  }
+
+  .welcome-content .instruction {
+    background: var(--accent-bg);
+    color: var(--retro-ink);
+    border: 2px dashed var(--retro-cherry);
+    border-radius: 999px;
+    font-family: var(--font-retro-script);
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  /* Feature cards cycle through a 1950s kitchen palette */
+  .welcome-content .feature-grid .feature-card {
+    --card-bg: var(--retro-teal);
+    --card-fg: var(--retro-cream);
+    background: var(--card-bg);
+    border: 2px solid var(--retro-ink);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--retro-ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:nth-child(4n + 2) {
+      --card-bg: var(--retro-cherry);
+    }
+
+    &:nth-child(4n + 3) {
+      --card-bg: var(--retro-mustard);
+      --card-fg: var(--retro-ink);
+    }
+
+    &:nth-child(4n + 4) {
+      --card-bg: var(--retro-avocado);
+    }
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--retro-ink);
+    }
+
+    h3 {
+      color: var(--card-fg);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    p {
+      color: var(--card-fg);
+    }
+
+    &.split-card {
+      .split-card-left {
+        border-right: 2px dashed color-mix(in srgb, var(--card-fg) 45%, transparent);
+      }
+
+      .split-card-right .season-indicator {
+        color: var(--card-fg);
+        font-family: var(--font-retro-display);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .split-card-left:hover,
+      .split-card-right:hover {
+        background: rgb(0 0 0 / 0.12);
+      }
+
+      &:hover {
+        transform: translate(-2px, -2px);
+      }
+    }
+  }
+}
+
+:root[data-style='retro'] {
+  .feature-card:hover .tilt,
+  .nav-item:hover .tilt {
+    color: var(--retro-mustard);
+  }
+
+  /* Mustard on mustard would vanish */
+  .feature-card:nth-child(4n + 3):hover .tilt {
+    color: var(--retro-cherry);
+  }
+}
+
+@media (max-width: 768px) {
+  :root[data-style='retro'] .main-content .content-section {
+    &::before {
+      top: -16px;
+      right: -6px;
+      width: 48px;
+      height: 48px;
+    }
+
+    h2 {
+      font-size: 2.1rem;
+    }
+  }
+
+  :root[data-style='retro'] .header-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root[data-style='retro'] .header-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* ===== Shared card look: cream stock, inked edge, offset shadow ===== */
+
+:root[data-style='retro'] {
+  :is(.recipe-card, .book-card, .project-card, .deck-card, .project-container, .tools-sidebar, section.tool-display) {
+    background: var(--retro-card);
+    border: 2px solid var(--retro-ink);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--retro-ink);
+  }
+
+  /* Filter panels are the "form" part of the page: deeper paper, dashed edge */
+  :is(.recipe-filters, .project-filters) {
+    background: var(--retro-paper-deep);
+    border: 2px dashed var(--border-accent-strong);
+    border-radius: 14px;
+  }
+
+  /* Season cards keep their pastel gradients, just get the inked edge */
+  .season-card {
+    border: 2px solid var(--retro-ink);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--retro-ink);
+  }
+
+  :is(.book-card, .project-card, .deck-card, .season-card) {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+      background-color: var(--retro-card);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--retro-cherry);
+    }
+  }
+
+  .filter-btn.active {
+    border-color: var(--retro-ink);
+  }
+
+  :is(.individual-recipe-page, .individual-project-page) .back-button {
+    /* Set outright: a later, unscoped .back-button rule (Ornaments page) clears the fill */
+    background: var(--retro-teal);
+    border: 2px solid var(--retro-ink);
+    border-radius: 999px;
+    box-shadow: 3px 3px 0 var(--retro-ink);
+    color: var(--retro-cream);
+    font-family: var(--font-retro-display);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+
+    &:hover {
+      background: var(--retro-cherry);
+    }
+  }
+}
+
+/* ===== Recipes: vintage index cards ===== */
+
+:root[data-style='retro'] .recipe-card {
+  /* The red rule under the title, like a 3x5 recipe card */
+  .recipe-title-region {
+    border-bottom: 2px solid var(--retro-cherry);
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .recipe-title-link:hover {
+    background: var(--accent-bg);
+  }
+
+  .subtitle {
+    font-family: var(--font-retro-body);
+    color: var(--text-secondary);
+  }
+
+  .adjustments {
+    color: var(--text-secondary);
+  }
+
+  h3 {
+    color: var(--retro-teal);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+  }
+
+  h4 {
+    color: var(--text-muted);
+    font-family: var(--font-retro-body);
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .ingredient-checkbox-label:hover,
+  .step-checkbox-label:hover {
+    background: rgb(43 33 24 / 0.05);
+  }
+
+  .ingredients-list li.completed,
+  .steps-list li.completed {
+    background: color-mix(in srgb, var(--retro-avocado) 14%, transparent);
+  }
+
+  .ingredients-list li.completed .ingredient-text,
+  .steps-list li.completed .step-text {
+    color: var(--text-muted);
+  }
+
+  .progress-summary {
+    background: var(--accent-bg);
+    border: 1px dashed var(--border-accent);
+    color: var(--text-secondary);
+  }
+
+  .progress-bar {
+    background: rgb(43 33 24 / 0.12);
+  }
+
+  .progress-fill.ingredient-progress {
+    --low-color:  var(--retro-teal-dark);
+    --high-color: var(--retro-teal);
+  }
+
+  .progress-fill.step-progress {
+    --low-color:  var(--retro-avocado);
+    --high-color: var(--retro-mustard);
+  }
+}
+
+:root[data-style='retro'] .recipe-filters {
+  .icon-filters .filter-label {
+    color: var(--text-primary);
+    font-family: var(--font-retro-display);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .icon-toggle {
+    border-radius: 10px;
+    color: var(--text-secondary);
+
+    &:hover:not(:disabled) {
+      background: var(--accent-bg);
+      color: var(--text-primary);
+    }
+
+    &:focus-visible {
+      outline-color: var(--retro-teal);
+    }
+
+    &.active {
+      background: var(--retro-card);
+      border-color: var(--retro-ink);
+      color: var(--text-primary);
+    }
+  }
+}
+
+:root[data-style='retro'] .food-blog-toggle {
+  color: var(--text-secondary);
+  font-family: var(--font-retro-display);
+
+  .food-blog-toggle-track {
+    border-color: var(--retro-ink);
+    background: var(--retro-paper-deep);
+
+    &::after {
+      background: var(--text-muted);
+    }
+  }
+
+  &:hover {
+    color: var(--text-primary);
+
+    .food-blog-toggle-track {
+      background: var(--bg-button-hover);
+    }
+  }
+
+  input[type="checkbox"]:focus-visible + .food-blog-toggle-track {
+    outline-color: var(--retro-teal);
+  }
+
+  input[type="checkbox"]:checked + .food-blog-toggle-track {
+    background: var(--retro-teal);
+    border-color: var(--retro-ink);
+
+    &::after {
+      background: var(--retro-cream);
+    }
+  }
+
+  &:has(input[type="checkbox"]:checked) {
+    color: var(--text-primary);
+  }
+}
+
+/* ===== Projects ===== */
+
+:root[data-style='retro'] {
+  .results-info {
+    color: var(--text-secondary);
+  }
+
+  .project-card {
+    .project-image {
+      border-bottom: 2px solid var(--retro-ink);
+    }
+
+    .project-info {
+      .project-header .project-title {
+        color: var(--text-primary);
+      }
+
+      .project-header .project-meta .project-worker {
+        color: var(--text-secondary);
+      }
+
+      .project-description {
+        color: var(--text-secondary);
+      }
+
+      .project-footer {
+        border-top: 2px dotted var(--border-accent);
+
+        .project-category {
+          background: var(--retro-mustard);
+          color: var(--retro-ink);
+        }
+
+        .project-dates-container .project-date {
+          color: var(--text-muted);
+        }
+      }
+    }
+  }
+
+  .project-filters .filter-section {
+    .filter-label {
+      color: var(--text-primary);
+      font-family: var(--font-retro-display);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .filter-select {
+      background: var(--retro-card);
+      border: 2px solid var(--border-accent-strong);
+      color: var(--text-primary);
+
+      &:hover,
+      &:focus {
+        background: var(--retro-card);
+        border-color: var(--retro-ink);
+      }
+
+      option {
+        background: var(--retro-card);
+        color: var(--text-primary);
+      }
+    }
+  }
+
+  .project-container {
+    .project-header {
+      border-bottom: 2px dotted var(--border-accent);
+
+      .project-title-section .project-meta-info {
+        .project-worker,
+        .project-category {
+          color: var(--text-secondary);
+        }
+      }
+
+      .project-dates .date-item {
+        color: var(--text-muted);
+      }
+    }
+
+    .project-images .project-image-item {
+      img {
+        border: 2px solid var(--retro-ink);
+        box-shadow: 4px 4px 0 var(--retro-ink);
+      }
+
+      .image-caption {
+        color: var(--text-muted);
+      }
+    }
+
+    .project-description {
+      h2 {
+        color: var(--retro-teal);
+      }
+
+      .description-content p {
+        color: var(--text-secondary);
+      }
+    }
+
+    .project-details-grid .detail-section {
+      background: var(--retro-paper);
+      border: 2px solid var(--border-accent);
+
+      h3 {
+        color: var(--retro-teal);
+      }
+
+      :is(ul, ol) li {
+        color: var(--text-secondary);
+      }
+
+      .related-links .related-link {
+        background: var(--accent-bg);
+        border: 2px solid var(--retro-ink);
+        color: var(--text-primary);
+
+        &:hover {
+          background: var(--retro-mustard);
+          border-color: var(--retro-ink);
+        }
+      }
+    }
+  }
+}
+
+/* ===== Little web tools ===== */
+
+:root[data-style='retro'] {
+  .tools-sidebar .tools-nav button {
+    background: var(--retro-paper);
+    border: 2px solid transparent;
+    border-radius: 10px;
+
+    &:hover {
+      background: var(--bg-button-hover);
+      border-color: var(--retro-ink);
+    }
+
+    &.active {
+      background: color-mix(in srgb, var(--retro-teal) 15%, transparent);
+      border-color: var(--retro-teal);
+    }
+  }
+
+  section.tool-display .tool-grid-preview .tool-preview-card {
+    background: var(--retro-paper);
+    border: 2px solid var(--border-accent);
+    border-radius: 10px;
+
+    &:hover {
+      background: var(--retro-paper);
+      border-color: var(--retro-teal);
+      box-shadow: 3px 3px 0 var(--retro-teal);
+    }
+  }
+
+  .tool-display .tool-active .tool-content {
+    :is(select, input:not([type="checkbox"]), textarea) {
+      background: var(--retro-card);
+      border-color: var(--border-accent-strong);
+
+      &:focus {
+        border-color: var(--retro-teal);
+      }
+    }
+
+    .tool-button {
+      background: var(--retro-mustard);
+      border-color: var(--retro-ink);
+      color: var(--retro-ink);
+
+      &:hover {
+        background: color-mix(in srgb, var(--retro-mustard) 82%, var(--retro-ink));
+        border-color: var(--retro-ink);
+      }
+    }
+  }
+
+  .tool-output {
+    background: var(--retro-paper);
+    border-color: var(--border-accent);
+  }
+
+  .tool-error {
+    background: color-mix(in srgb, var(--retro-cherry) 12%, transparent);
+    border-color: var(--retro-cherry);
+    color: var(--retro-cherry-dark);
+  }
+}
+
+/* ===== Magic: the Gathering ===== */
+
+:root[data-style='retro'] {
+  .deck-card::before {
+    height: 6px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--retro-cherry) 0 12px,
+      var(--retro-mustard) 12px 24px,
+      var(--retro-teal) 24px 36px
+    );
+  }
+
+  .deck-info .key-cards .key-card {
+    background: var(--retro-paper);
+
+    &:hover {
+      background: var(--accent-bg);
+    }
+
+    a {
+      color: var(--retro-teal);
+
+      &:hover {
+        color: var(--retro-teal-dark);
+      }
+    }
+  }
+
+  .commander-section .commander-names a:hover {
+    color: var(--retro-cherry);
+    background: var(--accent-bg);
+  }
+}

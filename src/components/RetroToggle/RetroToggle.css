@@ -1,0 +1,105 @@
+/* Switch-style checkbox in the header; checked means the retro skin is on */
+.retro-toggle {
+  flex: none;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: var(--border-light);
+  }
+
+  /* Keep the native checkbox for a11y/keyboard, but hide it visually */
+  input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .retro-toggle-icon {
+    font-size: 1.1rem;
+    transition: transform 0.6s ease;
+  }
+
+  .retro-toggle-track {
+    position: relative;
+    flex: none;
+    width: 2.25rem;
+    height: 1.2rem;
+    border-radius: 999px;
+    border: 1px solid rgb(255 255 255 / 0.5);
+    background: rgb(255 255 255 / 0.15);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0.15rem;
+      width: 0.85rem;
+      height: 0.85rem;
+      border-radius: 50%;
+      background: rgb(255 255 255 / 0.75);
+      transform: translateY(-50%);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+  }
+
+  input[type="checkbox"]:focus-visible ~ .retro-toggle-track {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+
+  /* Checked means retro is on, so the retro palette variables are available here */
+  input[type="checkbox"]:checked {
+    ~ .retro-toggle-icon {
+      transform: rotate(360deg);
+    }
+
+    ~ .retro-toggle-caption {
+      font-family: var(--font-retro-script);
+      font-size: 1.35em;
+      font-weight: 400;
+    }
+
+    ~ .retro-toggle-track {
+      background: var(--retro-mustard);
+      border-color: var(--retro-ink);
+
+      &::after {
+        background: var(--retro-cream);
+        box-shadow: 0 0 0 1px var(--retro-ink);
+        transform: translate(1.05rem, -50%);
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .retro-toggle {
+    padding: 0.35rem 0.5rem;
+
+    /* Icon and switch carry it on phones; the caption stays for screen readers */
+    .retro-toggle-caption {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+}
