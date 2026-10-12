@@ -15,6 +15,23 @@
   }
 }
 
+/* Recommender colors, shared by the card badges and the filter buttons.
+   Carrying both classes means "both of us" (the All Books filter, shared books). */
+.recommender-nic {
+  --recommender-bg:   var(--recommender-nic-bg);
+  --recommender-text: var(--recommender-nic-text);
+}
+
+.recommender-leslie {
+  --recommender-bg:   var(--recommender-leslie-bg);
+  --recommender-text: var(--recommender-leslie-text);
+}
+
+.recommender-nic.recommender-leslie {
+  --recommender-bg:   var(--recommender-both-bg);
+  --recommender-text: var(--recommender-both-text);
+}
+
 /* Filter buttons */
 .book-filters {
   display: flex;
@@ -41,9 +58,9 @@
   }
 
   &.active {
-    background: var(--gradient-primary);
+    background: var(--recommender-bg);
     border-color: transparent;
-    color: #fff;
+    color: var(--recommender-text);
   }
 }
 

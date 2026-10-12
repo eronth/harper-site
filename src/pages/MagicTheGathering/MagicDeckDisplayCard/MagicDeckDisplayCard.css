@@ -28,7 +28,7 @@
   }
   
   &:hover {
-    transform: translateY(-4px);
+    /* transform: translateY(-2px); */
     background: rgb(255 255 255 / 0.08);
     box-shadow: var(--shadow-strong);
     border-color: var(--border-accent-strong);

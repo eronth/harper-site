@@ -59,6 +59,14 @@
   --dinner:     light-dark(hsl(120 45% 45%), oklch(58% 0.14 144));
   --dessert:    light-dark(hsl(300 45% 50%), oklch(58% 0.13 328));
   --drink:      light-dark(hsl(210 45% 50%), oklch(58% 0.08 250));
+
+  /* Book Corner recommender colors (badges and filter buttons) */
+  --recommender-nic-bg:      var(--brand-maroon);
+  --recommender-nic-text:    #fff;
+  --recommender-leslie-bg:   var(--brand-navy);
+  --recommender-leslie-text: #fff;
+  --recommender-both-bg:     var(--gradient-primary);
+  --recommender-both-text:   #fff;
 }
 
 /* Retro (1940s–60s) palette, switched on by the header's RetroToggle.
@@ -76,12 +84,15 @@
   --retro-ink:         #2b2118;
   --retro-ink-soft:    #5b4a3a;
   --retro-ink-faint:   #7a6550;
-  --retro-cherry:      #b8352b;
-  --retro-cherry-dark: #8e2720;
-  --retro-teal:        #1f6f6b;
-  --retro-teal-dark:   #16514e;
-  --retro-mustard:     #e3a72f;
-  --retro-avocado:     #5f6b2a;
+
+  --retro-cherry:      oklch(52.5% 0.17  29);
+  --retro-teal:        oklch(49.3% 0.08 190);
+  --retro-mustard:     oklch(76.6% 0.14  80);
+  --retro-avocado:     oklch(50.3% 0.09 119);
+  
+  --retro-cherry-dark: oklch(43.4% 0.14 29);
+  --retro-teal-dark:   oklch(39.7% 0.06 190);
+  --retro-mustard-dark:oklch(66.6% 0.14 80);
 
   --font-retro-script:  'Yellowtail', cursive;
   --font-retro-display: 'Josefin Sans', 'Futura', 'Century Gothic', sans-serif;
@@ -134,6 +145,13 @@
   --dinner:    var(--retro-cherry);
   --dessert:   #b03a74;
   --drink:     #2a5d8a;
+
+  --recommender-nic-bg:      var(--retro-teal);
+  --recommender-nic-text:    var(--retro-cream);
+  --recommender-leslie-bg:   var(--retro-mustard-dark);
+  --recommender-leslie-text: var(--retro-cream);
+  --recommender-both-bg:     var(--retro-cherry);
+  --recommender-both-text:   var(--retro-cream);
 }
 
 * {

@@ -42,19 +42,8 @@
         border-radius: 9999px;
         font-size: 0.75rem;
         font-weight: 600;
-        color: #fff;
-  
-        &.recommender-nic {
-          background: var(--brand-maroon);
-        }
-  
-        &.recommender-leslie {
-          background: var(--brand-navy);
-        }
-  
-        &.recommender-nic.recommender-leslie {
-          background: var(--gradient-primary);
-        }
+        background: var(--recommender-bg);
+        color: var(--recommender-text);
       }
     }
     

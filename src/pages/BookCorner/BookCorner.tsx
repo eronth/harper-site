@@ -15,6 +15,12 @@ export default function BookCorner() {
 
   const filterOptions: FilterOption[] = ['All', 'Nic', 'Leslie'];
 
+  // Same classes as the card badges, so each filter lights up in its recommender's color
+  const recommenderClasses = (option: FilterOption) =>
+    option === 'All'
+      ? 'recommender-nic recommender-leslie'
+      : `recommender-${option.toLowerCase()}`;
+
   const filteredBooks = useMemo(() => {
     if (filter === 'All') return books;
     return books.filter(book => book.recommender.includes(filter));
@@ -31,7 +37,7 @@ export default function BookCorner() {
         {filterOptions.map(option => (
           <button
             key={option}
-            className={`filter-btn${filter === option ? ' active' : ''}`}
+            className={`filter-btn ${recommenderClasses(option)}${filter === option ? ' active' : ''}`}
             onClick={() => setFilter(option)}
           >
             {option === 'All' ? 'All Books' : option}
